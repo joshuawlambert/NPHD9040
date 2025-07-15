@@ -2,7 +2,7 @@
 
 project:
   type: website
-  output-dir: _site
+  output-dir: docs
 
 website:
   title: "NPHD 9040 -- Applied Multivariable Analysis"
