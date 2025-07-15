@@ -1,0 +1,305 @@
+# Flashcards: ANOVA
+
+## Understanding Hypothesis Testing
+
+What is a null hypothesis?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The null hypothesis (H₀) in hypothesis testing states that there is no significant difference or relationship between variables.
+:::
+:::
+
+## Constructing Hypotheses
+
+What is the purpose of formulating both written and mathematical hypotheses?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Formulating both written and mathematical hypotheses ensures clarity and precision in stating the research question and allows for statistical testing.
+:::
+:::
+
+## Type 1 Error
+
+What is Type 1 Error?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Type 1 Error occurs when the null hypothesis is incorrectly rejected, indicating a significant result when there is no true effect or relationship (false positive).
+:::
+:::
+
+## Type 2 Error
+
+What is Type 2 Error?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Type 2 Error occurs when the null hypothesis is incorrectly retained, failing to detect a true effect or relationship (false negative).
+:::
+:::
+
+## Assumptions of ANOVA
+
+What are the assumptions of ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Assumptions of ANOVA include: normal distribution of the dependent variable, homogeneity of variance, independence of observations, and categorical independent variables.
+:::
+:::
+
+## Visualizing Data Distribution
+
+How do boxplots help in visualizing data distribution?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Boxplots provide a graphical representation of the distribution of data, showing the median, quartiles, and outliers across different groups or categories.
+:::
+:::
+
+## Calculating Degrees of Freedom
+
+How are degrees of freedom calculated in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Degrees of freedom in ANOVA are calculated as the number of independent observations minus the number of parameters estimated from the sample.
+:::
+:::
+
+## Understanding the F Statistic
+
+What does the F statistic represent in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The F statistic in ANOVA measures the ratio of variance between groups to variance within groups, indicating whether there are significant differences among group means.
+:::
+:::
+
+## Post-hoc Analysis
+
+What is the purpose of post-hoc analysis in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Post-hoc analysis in ANOVA is performed after finding a significant F-statistic to identify which specific groups differ from each other.
+:::
+:::
+
+## Homogeneity of Variance
+
+Why is homogeneity of variance important in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Homogeneity of variance ensures that the variability within each group is approximately equal across all groups, which is an assumption for valid ANOVA results.
+:::
+:::
+
+## The F Distribution
+
+How is the p-value calculated from the F distribution?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The p-value in ANOVA is calculated based on the F statistic and the degrees of freedom, representing the probability of obtaining the observed results under the null hypothesis.
+:::
+:::
+
+## Sum of Squares
+
+What are Sum of Squares Between (SSB) and Sum of Squares Within (SSW) in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+SSB represents the variation between groups' means, while SSW represents the variation within each group.
+:::
+:::
+
+## ANOVA Hypotheses
+
+What are the null and alternative hypotheses in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The null hypothesis (H₀) states that all group means are equal, while the alternative hypothesis (H₁) states that at least one group mean is different.
+:::
+:::
+
+## ANOVA Assumptions
+
+What assumptions should be checked before performing ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Before performing ANOVA, it is essential to check assumptions such as normality of residuals, homogeneity of variance, independence of observations, and linearity of relationships.
+:::
+:::
+
+## Comparing ANOVA and t-tests
+
+What is the difference between ANOVA and t-tests?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+While t-tests are used to compare means between two groups, ANOVA is used to compare means across multiple groups simultaneously.
+:::
+:::
+
+## Understanding Degrees of Freedom
+
+Why are degrees of freedom important in statistical analysis?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Degrees of freedom represent the number of independent pieces of information available for estimating statistical parameters, influencing the precision and reliability of statistical tests.
+:::
+:::
+
+## Visualizing ANOVA Results
+
+How can ANOVA results be visually represented?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+ANOVA results can be visually represented using bar charts, boxplots, or interaction plots to illustrate group differences and statistical significance.
+:::
+:::
+
+## Understanding Post-hoc Tests
+
+When should post-hoc tests be conducted in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Post-hoc tests should be conducted after obtaining a significant ANOVA result to determine which specific group differences contribute to the overall significance.
+:::
+:::
+
+## Statistical Power in ANOVA
+
+What is statistical power in ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Statistical power in ANOVA represents the probability of detecting a true effect or relationship when it exists, minimizing the risk of Type 2 Error.
+:::
+:::
+
+```{=html}
+<script>
+function revealAnswer(card) {
+  var question = card.querySelector('.question');
+  var answer = card.querySelector('.answer');
+  question.style.display = 'none';
+  answer.style.display = 'block';
+}
+</script>
+```
+```{=html}
+<style>
+.flashcard {
+  width: 300px;
+  height: auto;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.flashcard .question,
+.flashcard .answer {
+  padding: 10px;
+  text-align: center;
+}
+
+.flashcard .question {
+  cursor: pointer;
+}
+
+.flashcard .answer {
+  display: none;
+}
+</style>
+```

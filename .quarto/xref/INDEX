@@ -1,0 +1,119 @@
+{
+  "index.qmd": {
+    "index.html": "bb1c7892"
+  },
+  "about.qmd": {
+    "about.html": "068ccad8"
+  },
+  "preliminaries.qmd": {
+    "preliminaries.html": "8f65db61"
+  },
+  "graphing-your-data.qmd": {
+    "graphing-your-data.html": "f8a8b91a"
+  },
+  "introduction-to-anova.qmd": {
+    "introduction-to-anova.html": "8c68022e"
+  },
+  "introduction-to-ancova.qmd": {
+    "introduction-to-ancova.html": "45d9abed"
+  },
+  "aboutDrL.qmd": {
+    "aboutDrL.html": "b41e4478"
+  },
+  "flashcards.qmd": {
+    "flashcards.html": "db9e9246"
+  },
+  "flashcards_anova.qmd": {
+    "flashcards_anova.html": "2e1ec0dd"
+  },
+  "introduction-to-two-way-anova.qmd": {
+    "introduction-to-two-way-anova.html": "32f2189c"
+  },
+  "flashcards_2wanova.qmd": {
+    "flashcards_2wanova.html": "3ae5b1a4"
+  },
+  "syl.qmd": {
+    "syl.html": "3a4d8e73"
+  },
+  "introduction-to-repeated-measures-anova.qmd": {
+    "introduction-to-repeated-measures-anova.html": "d69f7b84"
+  },
+  "introduction-to-simple-linear-regression.qmd": {
+    "introduction-to-simple-linear-regression.html": "4c2f83bc"
+  },
+  "introduction-to-multiple-linear-regression.qmd": {
+    "introduction-to-multiple-linear-regression.html": "db0c7d5a"
+  },
+  "introduction-to-logistic-regression.qmd": {
+    "introduction-to-logistic-regression.html": "14c1914e"
+  },
+  "Flashcards/flashcards_2wanova.qmd": {
+    "flashcards_2wanova.html": "ca2e0c8e"
+  },
+  "Flashcards/flashcards_anova.qmd": {
+    "flashcards_anova.html": "b83c431e"
+  },
+  "Other/syl.qmd": {
+    "syl.html": "52fcd365"
+  },
+  "Other/aboutDrL.qmd": {
+    "aboutDrL.html": "3628110f"
+  },
+  "Lectures/introduction-to-multiple-linear-regression.qmd": {
+    "introduction-to-multiple-linear-regression.html": "36ed7f7d"
+  },
+  "Lectures/preliminaries.qmd": {
+    "preliminaries.html": "99a6bf93"
+  },
+  "Lectures/introduction-to-logistic-regression.qmd": {
+    "introduction-to-logistic-regression.html": "14e4cf35"
+  },
+  "Lectures/introduction-to-ancova.qmd": {
+    "introduction-to-ancova.html": "f3ceeea5"
+  },
+  "Lectures/graphing-your-data.qmd": {
+    "graphing-your-data.html": "37de554a"
+  },
+  "Lectures/introduction-to-anova.qmd": {
+    "introduction-to-anova.html": "7f9c6074"
+  },
+  "Lectures/introduction-to-two-way-anova.qmd": {
+    "introduction-to-two-way-anova.html": "972028b9"
+  },
+  "Lectures/introduction-to-repeated-measures-anova.qmd": {
+    "introduction-to-repeated-measures-anova.html": "d43a9053"
+  },
+  "Lectures/introduction-to-simple-linear-regression.qmd": {
+    "introduction-to-simple-linear-regression.html": "9f962f8a"
+  },
+  "Assignments/hw1.qmd": {
+    "hw1.html": "c8863d7b"
+  },
+  "Assignments/HW4.qmd": {
+    "HW4.html": "9d4ee9cd"
+  },
+  "Assignments/HW5.qmd": {
+    "HW5.html": "de868a7d"
+  },
+  "Assignments/HW6.qmd": {
+    "HW6.html": "8dcc0cbb"
+  },
+  "Assignments/HW 2 Data Table.qmd": {
+    "HW 2 Data Table.html": "43b283d7"
+  },
+  "Assignments/HW2.qmd": {
+    "HW2.html": "955536b8"
+  },
+  "Assignments/HW3.qmd": {
+    "HW3.html": "06476dad"
+  },
+  "Assignments/hw1-copy.qmd": {
+    "hw1-copy.html": "aee9b788"
+  },
+  "HW3.qmd": {
+    "HW3.html": "1cbe06ed"
+  },
+  "Lectures/QI_and_EBP.qmd": {
+    "QI_and_EBP.html": "aeeb9a9c"
+  }
+}

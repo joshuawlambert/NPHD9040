@@ -1,0 +1,49 @@
+---
+title: "About Dr. Joshua Lambert"
+author: ""
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Topics"
+    css: styles.css
+---
+
+## Education and Academic Positions
+
+-   Dr. Joshua Lambert holds a Ph.D. in Biostatistics and Epidemiology from the University of Kentucky (2017).
+-   He has also earned master's degrees in Statistics and Mathematics from University of Kentucky and Murray State University.
+-   Currently, Dr. Lambert serves as an Associate Professor at the College of Nursing, University of Cincinnati.
+
+## Research Support and Grants
+
+-   Dr. Lambert's research endeavors have been supported by various grants, including prestigious federal and private funding agencies.
+-   Notably, he serves as Principal Investigator (PI) on projects funded by the National Library of Medicine and Co-Investigator (Co-I) on grants from the National Institute of Diabetes and Digestive and Kidney Diseases, among others.
+-   His research spans diverse topics, from identifying clinically protective effects of existing drugs against COVID-19 to exploring outcomes in patients with acute kidney injury.
+-   Methodologically he works on subset selection for regression models, interaction identification when exhuastive search is not possible, and Pareto Frontier based solutions in Machine Learning and Statistics.
+
+## Publications and Presentations
+
+-   Dr. Lambert has authored numerous peer-reviewed publications covering a wide range of topics in healthcare statistics including predictive modeling, opioid exposure, and acute kidney injury.
+
+-   His scholarly work extends beyond publications to include invited presentations at esteemed conferences and institutions and showcasing his expertise and leadership in the field.
+
+-   Additionally, he has contributed technical reports addressing critical public health issues such as drug overdose deaths and suicide attempts in Kentucky.
+
+-   [ResearchGate](https://www.researchgate.net/profile/Joshua-Lambert-11)
+
+-   [Google Scholar](https://scholar.google.com/citations?user=2qFJqYEAAAAJ&hl=en)
+
+-   [ORCiD](https://orcid.org/my-orcid?orcid=0000-0002-4513-8156)
+
+## Teaching and Academic Engagement
+
+-   In addition to his research pursuits, Dr. Lambert is actively involved in teaching and mentoring future healthcare professionals.
+-   He has held positions as a lecturer in Mathematics and Statistics at various universities, fostering a passion for statistical literacy among students.
+-   Dr. Lambert's commitment to education is further evidenced by his presentations on statistical methodologies at academic conferences and workshops.
+-   Dr. Lambert teaches NPHD9040 (Multivariate Analysis) and NPHD9042 (Multivariate Analysis) for the PhD program in the College of Nursing at the University of Cincinnati.
+
+## Contact Information
+
+-   Dr. Joshua Lambert can be reached at his academic office in Procter Hall.
+-   **Email:** [joshua.lambert\@uc.edu](mailto:joshua.lambert@uc.edu)

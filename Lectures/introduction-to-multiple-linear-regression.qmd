@@ -1,0 +1,488 @@
+---
+title: "Introduction to Multiple Linear Regression"
+author: "Dr. Joshua Lambert"
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: true
+    code-tools: true
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction to Multiple Linear Regression
+
+## Objectives
+
+-   Understand the fundamentals of Multiple Linear Regression
+-   Learn the definition and purpose of Multiple Linear Regression
+-   Identify key concepts and assumptions
+-   Formulate the regression equation
+-   Estimate the regression coefficients
+-   Test the significance of the regression coefficients
+-   Calculate confidence intervals for the coefficients
+-   Understand the coefficient of determination (R-squared)
+-   Adjust R-squared and interpret the F-statistic
+-   Interpret the regression results
+-   Identify and handle multicollinearity
+-   Explore variable selection techniques
+-   Check assumptions and perform diagnostics
+-   Explore examples of Multiple Linear Regression in nursing research
+
+## Definition and Purpose of Multiple Linear Regression
+
+Multiple Linear Regression (MLR) is a statistical technique that models
+the relationship between two or more independent variables (predictors)
+and a continuous dependent variable (outcome). It is used to predict the
+outcome variable based on the values of the independent variables and to
+understand the impact of each predictor on the outcome.
+
+### Key Concepts and Assumptions
+
+1.  **Linearity:** The relationship between the predictors and the
+    outcome is linear.
+2.  **Independence:** Observations are independent of each other.
+3.  **Homoscedasticity:** The variance of residuals (errors) is constant
+    across all levels of the independent variables.
+4.  **No multicollinearity:** Independent variables are not too highly
+    correlated.
+5.  **Normality:** Residuals should be normally distributed.
+
+## Formulating the Regression Equation
+
+The multiple linear regression equation is expressed as: $$
+y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_nx_n + \epsilon
+$$ where: - ( y ): Dependent variable - ( \beta\_0 ): Y-intercept - (
+\beta\_1, \beta\_2, \dots, \beta\_n ): Coefficients of predictors ( x_1,
+x_2, \dots, x_n ) - ( \epsilon ): Random error
+
+## Estimating the Regression Coefficients
+
+Regression coefficients are estimated using the method of least squares,
+which minimizes the sum of the squared differences between observed and
+predicted values.
+
+### Formula
+
+-   **Coefficient ((** \beta )): $$
+    \beta = (X^TX)^{-1}X^Ty
+    $$
+
+## Testing the Significance of the Regression Coefficients
+
+Statistical tests (typically t-tests) are used to determine whether each
+coefficient significantly differs from zero, indicating a significant
+relationship between the predictor and the outcome.
+
+### Formula
+
+$$
+t = \frac{\hat{\beta}}{SE(\hat{\beta})}
+$$
+
+## Confidence Intervals for the Coefficients
+
+Confidence intervals provide a range of values which are likely to
+contain the population coefficients.
+
+### Formula
+
+$$
+\hat{\beta} \pm t^* \cdot SE(\hat{\beta})
+$$
+
+## Coefficient of Determination (R-squared)
+
+R-squared measures the proportion of the variance in the dependent
+variable that is predictable from the independent variables.
+
+### Formula
+
+$$
+R^2 = \frac{\sum (\hat{y} - \bar{y})^2}{\sum (y_i - \bar{y})^2}
+$$
+
+## Adjusted R-squared and F-statistic
+
+-   **Adjusted R-squared:** Adjusts the R-squared value based on the
+    number of predictors and the sample size to penalize excessive use
+    of predictors. $$
+    \bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}
+    $$ where:
+
+-   ( n ): Sample size
+
+-   ( k ): Number of predictors
+
+-   **F-statistic:** Tests whether at least one predictor variable has a
+    non-zero coefficient. $$
+    F = \frac{\frac{SSR}{k}}{\frac{SSE}{n - k - 1}}
+    $$
+
+## Interpreting the Regression Results
+
+The coefficients tell you the expected change in the dependent variable
+for one unit of change in the predictor variable, holding all other
+predictors constant.
+
+## Identifying and Handling Multicollinearity
+
+### Variance Inflation Factor (VIF)
+
+Measures how much the variance of a regression coefficient is inflated
+due to multicollinearity.
+
+### Formula
+
+$$
+VIF = \frac{1}{1 - R_j^2}
+$$ where ( R_j\^2 ) is the R-squared value obtained by regressing the
+predictor ( j ) on all other predictors.
+
+### Handling Multicollinearity
+
+-   Remove highly correlated predictors
+-   Combine correlated predictors using techniques like PCA
+-   Regularization methods (e.g., Ridge Regression)
+
+## Variable Selection Techniques
+
+### Stepwise Regression
+
+A method to select significant predictors by iteratively adding or
+removing variables based on their statistical significance.
+
+## Checking Assumptions and Diagnostics
+
+### Residual Analysis
+
+-   **Residual vs. Fitted Plot:** Checks for homoscedasticity and
+    linearity.
+-   **Normal Q-Q Plot:** Checks for normality of residuals.
+-   **Residual vs. Leverage Plot:** Identifies influential observations.
+
+### Influence Measures
+
+-   **Cook's Distance:** Identifies influential data points that affect
+    the regression model.
+
+## Examples of Multiple Linear Regression in Nursing Research
+
+### Example 1: Impact of Various Factors on Patient Recovery Time
+
+-   **Predictors:** Age, Medication adherence, Physiotherapy sessions
+-   **Outcome:** Recovery time
+
+<a href="mlr_ex1.csv" download>download example data (CSV)</a>
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your continuous outcome variable and move it to the
+<code>Y</code> column.</li>
+
+<li>Add predictors to the model and configure interactions if
+necessary.</li>
+
+<li>Click <code>Run</code> to fit the model and interpret the
+results.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in R
+# Simulated data
+set.seed(456)
+data <- data.frame(
+  Age = rnorm(100, mean = 50, sd = 10),
+  Medication_Adherence = rnorm(100, mean = 75, sd = 10),
+  Physiotherapy_Sessions = rnorm(100, mean = 20, sd = 5),
+  Recovery_Time = rnorm(100, mean = 30, sd = 5)
+)
+
+# Multiple Linear Regression
+fit <- lm(Recovery_Time ~ Age + Medication_Adherence + Physiotherapy_Sessions, data = data)
+summary(fit)
+
+# Residual Plots
+par(mfrow = c(2, 2))
+plot(fit)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in Python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Simulated data
+np.random.seed(456)
+data = pd.DataFrame({
+  'Age': np.random.normal(50, 10, 100),
+  'Medication_Adherence': np.random.normal(75, 10, 100),
+  'Physiotherapy_Sessions': np.random.normal(20, 5, 100),
+  'Recovery_Time': np.random.normal(30, 5, 100)
+})
+
+# Multiple Linear Regression
+model = ols('Recovery_Time ~ Age + Medication_Adherence + Physiotherapy_Sessions', data=data).fit()
+print(model.summary())
+
+# Residual Plots
+import matplotlib.pyplot as plt
+fig = sm.graphics.plot_regress_exog(model, 'Age', fig=plt.figure(figsize=(12, 8)))
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Regression</code> \>
+<code>Linear</code>.</li>
+
+<li>Select your continuous outcome variable and move it to the
+<code>Dependent</code> box.</li>
+
+<li>Select your predictor variables and move them to the
+<code>Independent(s)</code> box.</li>
+
+<li>Click <code>Statistics</code> and check <code>Estimates</code>,
+<code>R squared change</code>, and <code>Durbin-Watson</code>.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+* Example in Stata
+clear
+set seed 456
+
+* Simulated data
+set obs 100
+gen Age = rnormal(50, 10)
+gen Medication_Adherence = rnormal(75, 10)
+gen Physiotherapy_Sessions = rnormal(20, 5)
+gen Recovery_Time = rnormal(30, 5)
+
+* Multiple Linear Regression
+regress Recovery_Time Age Medication_Adherence Physiotherapy_Sessions
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Example 2: Evaluating the Effects of Lifestyle Factors on Heart Health
+
+-   **Predictors:** Exercise frequency, Diet quality, Sleep duration
+-   **Outcome:** Heart Health Index
+
+<a href="mlr_ex2.csv" download>download example data (CSV)</a>
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your continuous outcome variable and move it to the
+<code>Y</code> column.</li>
+
+<li>Add predictors to the model and configure interactions if
+necessary.</li>
+
+<li>Click <code>Run</code> to fit the model and interpret the
+results.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in R
+# Simulated data
+set.seed(789)
+data2 <- data.frame(
+  Exercise_Frequency = rnorm(100, mean = 3, sd = 1),
+  Diet_Quality = rnorm(100, mean = 7, sd = 2),
+  Sleep_Duration = rnorm(100, mean = 8, sd = 1),
+  Heart_Health_Index = rnorm(100, mean = 75, sd = 10)
+)
+
+# Multiple Linear Regression
+fit2 <- lm(Heart_Health_Index ~ Exercise_Frequency + Diet_Quality + Sleep_Duration, data = data2)
+summary(fit2)
+
+# Residual Plots
+par(mfrow = c(2, 2))
+plot(fit2)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in Python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Simulated data
+np.random.seed(789)
+data2 = pd.DataFrame({
+  'Exercise_Frequency': np.random.normal(3, 1, 100),
+  'Diet_Quality': np.random.normal(7, 2, 100),
+  'Sleep_Duration': np.random.normal(8, 1, 100),
+  'Heart_Health_Index': np.random.normal(75, 10, 100)
+})
+
+# Multiple Linear Regression
+model2 = ols('Heart_Health_Index ~ Exercise_Frequency + Diet_Quality + Sleep_Duration', data=data2).fit()
+print(model2.summary())
+
+# Residual Plots
+import matplotlib.pyplot as plt
+fig = sm.graphics.plot_regress_exog(model2, 'Diet_Quality', fig=plt.figure(figsize=(12, 8)))
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Regression</code> \>
+<code>Linear</code>.</li>
+
+<li>Select your continuous outcome variable and move it to the
+<code>Dependent</code> box.</li>
+
+<li>Select your predictor variables and move them to the
+<code>Independent(s)</code> box。</li>
+
+<li>Click <code>Statistics</code> and check <code>Estimates</code>,
+<code>R squared change</code>, and <code>Durbin-Watson</code>.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+* Example in Stata
+clear
+set seed 789
+
+* Simulated data
+set obs 100
+gen Exercise_Frequency = rnormal(3, 1)
+gen Diet_Quality = rnormal(7, 2)
+gen Sleep_Duration = rnormal(8, 1)
+gen Heart_Health_Index = rnormal(75, 10)
+
+* Multiple Linear Regression
+regress Heart_Health_Index Exercise_Frequency Diet_Quality Sleep_Duration
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>

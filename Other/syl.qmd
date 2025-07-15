@@ -1,0 +1,207 @@
+---
+title: "NPHD9040 - Syllabus"
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: true
+    code-tools: true
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# NPHD9040 - Applied Multivariable Analysis
+
+### Class Information
+
+-   **Class Meeting Time and Location:**
+    -   Tuesdays 9:00 AM - 11:50 AM
+    -   Procter Hall 287 or Online via Microsoft Teams
+-   **Credit Hours/Contact Hours:**
+    -   3 graduate credit hours / 45 contact hours
+
+### Faculty Information
+
+-   **Faculty Name:**
+    -   Joshua W Lambert, PhD, MS, MS
+-   **Email:**
+    -   [Joshua.lambert\@uc.edu](mailto:Joshua.lambert@uc.edu)
+-   **Student First Office Hours:**
+    -   By appointment (please email) in person or online via Teams
+
+### Course Pre/Co-Requisites
+
+To take this course, you must: - Have taken the following course:
+NPHD9000 (minimum grade C/Pass)
+
+### Course Description
+
+This course is the first of two that introduce advanced statistical
+methods used in doctoral-level nursing research. Method selection,
+application, results interpretation, and presentation are stressed in a
+flipped-classroom/workshop format. Methods introduced include partial
+correlation, multi-way ANOVA, ANCOVA, multiple regression, logistic
+regression, and multilevel models. An introduction to power and sample
+size calculation by method is also covered.
+
+### Student Learning Outcomes
+
+Upon completion of the course, students will be able to: 1. Select the
+appropriate multivariate analysis method based on research objectives
+and types of variables to be analyzed. 2. Generate required sample size
+and power for prototypical analyses by multivariate method, concurrently
+addressing inclusion of under-represented groups in research. 3. Display
+an introductory level ability to manage data and conduct preliminary
+analyses to assess and address data quality and potential violations of
+statistical assumptions by multivariate method. 4. Demonstrate an
+introductory level ability to generate results, using selected
+statistical analysis software (e.g., JMP, SPSS, SAS or R), and interpret
+relevant results generated for each method.
+
+### Teaching Strategies
+
+-   Weekly Lectures
+-   Academic Methodology Journal Articles
+-   Statistical Software Workshops
+-   Quizzes
+-   Group Project Proposals
+-   Group Presentations
+-   Group Papers
+-   Class Peer Review
+
+Active learning strategies will be used throughout the semester.
+Examples include faculty and student-led discussions, short paper
+reviews, creating professional academic documents, and presentations.
+
+The textbook readings and additional resources posted in the modules
+provide background information so you can explore, learn about, discuss,
+and debate the use of statistical analysis in research.
+
+Grammar, spelling, and correct statistical formatting are critical
+components of scholarly written communication and all professional
+communication. Please include references when referring to the work of
+others.
+
+### Course Activities
+
+Course activities will be conducted within the Canvas course management
+system. All communication should take place through Canvas, email
+([joshua.lambert\@uc.edu](mailto:joshua.lambert@uc.edu)), or the Teams
+page.
+
+### Course Format
+
+-   Flipped-classroom/workshop format
+-   Combination of lectures, discussions, and practical exercises
+
+### Electronic Communication Policy
+
+-   All students are required to register for Canvas for this course.
+    Please check that your correct email address is listed.
+-   Check the course site regularly (at least 3 times per week).
+-   Access to Microsoft Office files (Word, Excel, Teams) is required.
+-   You must check your UC email account regularly, as faculty will use
+    this for communication.
+
+### Course Materials
+
+#### Resources
+
+The main portion of the course content will be through Dr. Lambert's
+weekly lecture notes on Canvas. The books listed below are recommended
+if your preferred learning modality is reading. Lectures will be
+recorded and posted on Canvas for review.
+
+#### Books (Optional)
+
+-   **Discovering Statistics Using IBM SPSS Statistics**
+    -   4th Edition (Paper) approximately \$35 on Amazon
+    -   5th Edition (Paper) approximately \$65 on Amazon
+-   **Nursing Research: Generating and Assessing Evidence for Nursing
+    Practice**
+    -   Tenth, North American Edition (Paper) approximately \$60 on
+        Amazon
+
+#### Additional Resources
+
+Contact Dr. Lambert if additional resources are needed.
+
+#### Web-Based Resources
+
+-   Websites and videos will be provided as the course progresses
+
+#### Required Technology
+
+-   Microsoft Office (Word, Excel, Teams)
+-   JMP (Free to UC College of Nursing students)
+    -   See Canvas page for download and installation instructions
+-   Internet access
+
+### Classroom Procedures/Policies
+
+#### Academic Integrity
+
+The University Rules, including the Student Code of Conduct, and other
+documented policies of the department, college, and university related
+to academic integrity will be enforced. Any violation, including
+plagiarism or cheating, will be dealt with individually based on
+severity.
+
+-   [Academic
+    Integrity](http://www.uc.edu/conduct/Academic_Integrity.html)
+-   [Code of Conduct](http://www.uc.edu/conduct/Code_of_Conduct.html)
+
+#### Special Needs and Accommodations Policy
+
+If you have special needs related to your participation in the course,
+meet with the Disability Services Office to arrange reasonable
+accommodations. Contact them at 513-556-6823 or 210 University Pavilion
+(main campus).
+
+-   [Disability Services](http://www.uc.edu/aess/disability.html)
+
+#### Attendance Policy
+
+Active participation in classroom and online discussions and activities
+is vital. Plan to spend at least 8-10 hours per week preparing for
+course activities and completing assignments.
+
+-   [Religious Observances
+    Statement](http://www.uc.edu/registrar/policies_and_procedures/religious_observances_statement.html)
+
+If you will be absent, email Dr. Lambert ahead of time.
+
+#### Late Work Policy
+
+Assignments are due by midnight on the date indicated unless otherwise
+stated. If you anticipate a conflict with due dates, email Dr. Lambert.
+Late assignments without prior approval may receive a score as low as
+0%.
+
+#### Grade Dispute
+
+For grade disputes, first appeal in writing to Dr. Lambert. If not
+resolved, escalate to the program director, following the university's
+grade dispute policy.
+
+#### Netiquette
+
+Maintain respectful and efficient communication using web-based tools.
+
+#### Changes in Course Syllabus
+
+This syllabus is an expected projection of course progress. It may be
+revised due to circumstances, and changes will be communicated promptly.
+
+### Grading Policy
+
+The following scale will be used for grading all course graded
+activities and deriving the final course grade: - A+: 97-100% - A:
+93-96.99% - A-: 90-92.99% - B+: 87-89.99% - B: 83-86.99% - B-:
+80-82.99% - C+: 77-79.99% - C: 73-76.99% - C-: 70-72.99% - D+:
+67-69.99% - D: 63-66.99% - D-: 60-62.99% - F: Below 60%
+
+**Additional Notes:** - Dr. Lambert may provide additional grading notes
+during the course.

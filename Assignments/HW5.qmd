@@ -1,0 +1,26 @@
+---
+title: "NPHD9040:Homework 5"
+author: "Dr. Joshua Lambert"
+output:
+  html_document:
+    toc: true
+    toc-title: "Assignments"
+    code_folding: hide
+    code_highlight: true
+---
+
+Name:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Over 7,000 participants were surveyed during the 2015-2016 National Health and Nutrition Examination Survey (NHANES) survey collection.  NHANES is a "program of studies designed to assess the health and nutritional status of adults and children in the United States. The survey is unique in that it combines interviews and physical examinations."  A researcher is interested in understanding how demographic information (such as Sex, Age, Race), and Socio-Economic Status impact blood pressure (systolic, and diastolic) as well as pulse. After exclusion criteria were considered, and missing data removed, a final sample of 6,436 subjects remained in the dataset. You were assigned to help this research explore these relationships. Complete the following steps as well as other plots, tables, or analysis you believe to be necessary. 
+
+<small>Variables: SEQN (unique subject identifier), Sex (Male, or Female), Age (range from 8 to 80), SES (LT1= Below poverty line, GT1= Above poverty line), pulse (range from 36 to 142), systolic blood pressure (ranges from 72 to 236), and diastolic pressure (ranges 0 to 120).</small>
+
+1.  What the dependent variables? What types of variables are they?
+
+2.  What are the independent variables? What types of variables are they?
+
+3.  Using a statistical software and your knowledge of regression, estimate the effect of age on systolic blood pressure. Interpret the parameter estimate from the regression. What does the residual plot look like? Does the residual plot indicate a good model fit?
+
+4.  Using a statistical software and your knowledge of regression, estimate the effect of age on systolic blood pressure while controlling for sex, race, SES, and Pulse. Interpret the parameter estimate for age from the regression. What does the residual plot look like? Does the residual plot indicate a good model fit?
+
+5.  How did the parameter estimate for age change from question 3 to 4? Which estimate do you think is more accurate and why? What other considerations did you think of why completing this assignment that might impact the results?

@@ -1,0 +1,1632 @@
+---
+title: "Graphing Your Data"
+author: "Dr. Joshua Lambert"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: true
+    code-tools: true 
+---
+
+# Graphing Your Data
+
+## Identifying Differences in Types of Data and How to Graph
+
+### Why Graph Data? Benefits
+
+Graphs are crucial in data analysis and presentation because they help:
+
+-   **Quick Interpretation:** Graphs provide a quick overview of data trends, making them easier to interpret than tables.
+
+-   **Pattern Identification:** They help identify patterns, relationships, and outliers.
+
+-   **Hypothesis Generation:** Aids in forming research hypotheses.
+
+-   **Audience Engagement:** Captures and maintains the audience's attention.
+
+-   **Decision Support:** Facilitates evidence-based decision-making.
+
+### Data Types
+
+1.  **Categorical Data:**
+
+    -   **Nominal:** No inherent order or ranking (e.g., coffee, tea, water).\
+    -   **Ordinal:** Has a meaningful order or ranking (e.g., small, medium, large).
+
+    **Pros:** Easy to categorize and analyze.\
+    **Cons:** Limited statistical techniques apply, and numerical differences are not meaningful.
+
+2.  **Continuous Data:**
+
+    -   **Interval:** Has equal intervals between values but no true zero (e.g., temperature, dates).\
+    -   **Ratio:** Has a meaningful zero point and equal intervals (e.g., weight, strength, pressure).
+
+    **Pros:** Wide range of statistical techniques available.\
+    **Cons:** Requires more complex handling due to scale.
+
+### Types of Graphs
+
+1.  **Univariate Graphs:**
+
+    -   **Definition:** Focuses on a single variable.
+    -   **Examples:** Histograms, Box plots.
+
+    **Pros:**
+
+    -   Simple and intuitive.
+    -   Provides distributional insights.
+
+    **Cons:**
+
+    -   Limited to understanding one variable.
+
+2.  **Bivariate Graphs:**
+
+    -   **Definition:** Displays the relationship between two variables.
+    -   **Examples:** Scatter plots, Box plots.
+
+    **Pros:**
+
+    -   Useful for studying relationships and trends.
+
+    **Cons:**
+
+    -   Might not reveal hidden multivariate trends.
+
+3.  **Multivariate Graphs:**
+
+    -   **Definition:** Involves multiple variables.
+    -   **Examples:** Scatter plot matrices, Mosaic plots, Treemaps.
+
+    **Pros:**
+
+    -   Effective for uncovering complex relationships.
+
+    **Cons:**
+
+    -   Interpretation can be challenging without proper labels.
+
+## Stephen Few's Graphic Data Display Key Points
+
+-   **Know Your Audience:** Understand how your audience processes information to tailor your visualizations effectively.
+-   **Define Your Message:** Clearly convey your message simply and quickly.
+-   **Use Visual Elements Appropriately:** Combine words, numbers, and images meaningfully.
+-   **Principles of Excellence:** Based on Edward Tufte's principles of good graphical design:
+    -   **Enforce Visual Comparisons:** Allow comparisons between data points.
+    -   **Show Causality:** Highlight causal relationships if possible.
+    -   **Integrate All Visual Elements:** Include relevant text and numbers to provide context.
+    -   **Content-Driven Design:** Ensure design is driven by data quality, relevance, and integrity.
+
+## Principles of Good and Bad Graphical Design
+
+### Tips and Tricks
+
+-   **Graphical Excellence:**
+    -   **Show Multivariate Data:** Present data across multiple dimensions.
+    -   **Integrate All Visual Elements:** Include text, numbers, and images cohesively.
+    -   **Use Quality, Relevant, and Honest Data:** Ensure data integrity and honesty.
+-   **Common Mistakes:**
+    -   **Distorting Data Meaning:** Misleading visuals distort interpretation.
+    -   **Incorrect Scaling:** Scaling errors can misrepresent data trends.
+    -   **Poor Data-to-Ink Ratio:** Avoid excessive chart junk that doesn't add value.
+
+[The 27 Worst Charts Of All Time](https://www.businessinsider.com/the-27-worst-charts-of-all-time-2013-6#unordered-perplexingly-circular-and-difficult-to-ascertain-any-information-from-this-globe-and-mail-chart-they-went-out-of-their-way-to-make-this-flashy-but-difficult-to-actually-read-we-get-what-they-were-going-for-but-this-chart-is-precisely-why-humanity-invented-tables-6)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FcllfpC7kAY" frameborder="0" allowfullscreen>
+
+</iframe>
+
+## Graph Types and How to Use Them
+
+### Histogram
+
+```{r, echo=FALSE, message=FALSE}
+  # Create a histogram in R
+        data <- rnorm(100)
+        hist(data, main = "Histogram of Data", xlab = "Values", col = "blue", border = "black")
+```
+
+-   **Definition:** Graphical representation of data distribution using bins of equal length to count frequencies.
+-   **Pros:**
+    -   Helps visualize the distribution shape.
+    -   Easy to compare different distributions.
+    -   Identifies outliers and skewness.
+-   **Cons:**
+    -   Bin size selection can lead to over or under-smoothing.
+    -   Not suitable for small data sets.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Distribution</code>.</li>
+
+<li>Select your continuous variable and move it to the <code>Y</code> column.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a histogram in R
+        data <- rnorm(100)
+        hist(data, main = "Histogram of Data", xlab = "Values", col = "blue", border = "black")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = np.random.normal(50, 10, 1000)
+plt.hist(data, bins=15, color='blue')
+plt.title("Histogram Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        GRAPH
+          /HISTOGRAM=Age
+          /TITLE='Histogram Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 1000
+        generate age = rnormal(50, 10)
+        hist age, bin(15) color(blue)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Box Plot
+
+```{r, echo=FALSE, message=FALSE}
+ # Create a box plot in R
+        data <- rnorm(100)
+        boxplot(data, main = "Box Plot Example")
+```
+
+-   **Definition:** Graphically represents data distribution based on quartiles, highlighting outliers, median, and spread.
+-   **Pros:**
+    -   Effective for identifying outliers.
+    -   Compares multiple groups easily.
+    -   Robust to non-normal data.
+-   **Cons:**
+    -   Less informative for small data sets.
+    -   Not ideal for displaying multimodal distributions.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
+
+<li>Drag your continuous variable to the <code>Y</code> axis.</li>
+
+<li>Drag your categorical variable to the <code>X</code> axis.</li>
+
+<li>Select <code>Box Plot</code> from the options.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a box plot in R
+        data <- rnorm(100)
+        boxplot(data, main = "Box Plot Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = np.random.normal(50, 10, 100)
+plt.boxplot(data)
+plt.title("Box Plot Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        GRAPH
+          /BOXPLOT=VARIABLES(Age)
+          /TITLE='Box Plot Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 100
+        generate age = rnormal(50, 10)
+        graph box age, title("Box Plot Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Pie Chart
+
+```{r, echo=FALSE, message=FALSE}
+ # Create a pie chart in R
+        values <- c(10, 20, 30, 40)
+        labels <- c("A", "B", "C", "D")
+        pie(values, labels = labels, main = "Pie Chart Example")
+```
+
+-   **Definition:** Displays relative proportions in part-to-whole relationships using slices of a circle.
+-   **Pros:**
+    -   Visually intuitive.
+    -   Effective for simple categorical data.
+-   **Cons:**
+    -   Difficult to compare proportions across different charts.
+    -   Not suitable for large numbers of categories.
+    -   Can distort differences due to angle perception issues.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
+
+<li>Drag your categorical variable to the <code>X</code> axis.</li>
+
+<li>Select <code>Pie Chart</code> from the options.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a pie chart in R
+        values <- c(10, 20, 30, 40)
+        labels <- c("A", "B", "C", "D")
+        pie(values, labels = labels, main = "Pie Chart Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import matplotlib.pyplot as plt
+
+values = [10, 20, 30, 40]
+labels = ["A", "B", "C", "D"]
+plt.pie(values, labels=labels)
+plt.title("Pie Chart Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        GRAPH
+          EXAMINE VARIABLES=age
+          /COMPARE
+          /PLOT=BOXPLOT
+          /STATISTICS=NONE
+          /NOTOTAL
+          /TITLE='Pie Chart Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 4
+        generate group = _n
+        generate value = 10 * group
+        graph pie value, over(group) title("Pie Chart Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Scatter Plot
+
+```{r, echo=FALSE, message=FALSE}
+# Create a scatter plot in R
+        x <- rnorm(100)
+        y <- rnorm(100)
+        plot(x, y, main = "Scatter Plot Example", xlab = "X-axis", ylab = "Y-axis")
+```
+
+-   **Definition:** Shows the relationship between two continuous variables.
+-   **Pros:**
+    -   Identifies correlations and relationships between variables.
+    -   Highlights clusters and patterns.
+    -   Detects outliers effectively.
+-   **Cons:**
+    -   Can suffer from overplotting with large data sets.
+    -   Requires understanding of correlation interpretation.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
+
+<li>Drag your first continuous variable to the <code>X</code> axis.</li>
+
+<li>Drag your second continuous variable to the <code>Y</code> axis.</li>
+
+<li>Select <code>Scatter Plot</code> from the options.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a scatter plot in R
+        x <- rnorm(100)
+        y <- rnorm(100)
+        plot(x, y, main = "Scatter Plot Example", xlab = "X-axis", ylab = "Y-axis")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.normal(50, 10, 100)
+y = np.random.normal(50, 10, 100)
+plt.scatter(x, y)
+plt.title("Scatter Plot Example")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        GRAPH
+          /SCATTERPLOT(BIVAR)=income WITH age
+          /MISSING=LISTWISE.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 100
+        generate age = rnormal(50, 10)
+        generate income = rnormal(50, 10)
+        scatter age income, title("Scatter Plot Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Mosaic Plot
+
+```{r, echo=FALSE, message=FALSE}
+# Load the Titanic dataset
+data(Titanic)
+
+mosaicplot(~ Sex +Survived, data = Titanic, color = TRUE)
+
+```
+
+-   **Definition:** Displays the relationships between two or more categorical variables using a stacked rectangle visualization.
+-   **Pros:**
+    -   Effective for identifying associations in contingency tables.
+    -   Highlights interactions between variables.
+-   **Cons:**
+    -   Interpretation can be challenging for complex relationships.
+    -   Less intuitive than simpler visualizations.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Y by X</code>.</li>
+
+<li>Select your response variable and move it to the <code>Y</code> column.</li>
+
+<li>Select your explanatory variable and move it to the <code>X</code> column.</li>
+
+<li>Click <code>OK</code>.</li>
+
+<li>Click the red triangle and select <code>Mosaic Plot</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a mosaic plot in R
+        library(vcd)
+        data(Titanic)
+        mosaic(Titanic, shade = TRUE, legend = TRUE)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        import matplotlib.pyplot as plt
+        from statsmodels.graphics.mosaicplot import mosaic
+
+        data = {'Class A': 40, 'Class B': 30, 'Class C': 20, 'Class D': 10}
+        mosaic(data, title='Mosaic Plot Example')
+        plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        GRAPH
+          /MOSAICPLOT=VARIABLES(Class, Survival)
+          /TITLE='Mosaic Plot Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 4
+        generate class = _n
+        generate survival = 10 * class
+        graph mosaic class survival, title("Mosaic Plot Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Bar/Column Chart
+
+```{r, echo=FALSE, message=FALSE}
+# Create a bar chart in R
+        categories <- c("A", "B", "C", "D")
+        values <- c(10, 20, 30, 40)
+        barplot(values, names.arg = categories, main = "Bar Chart Example", col = "blue")
+```
+
+-   **Definition:** A bar or column chart compares data across categories using rectangular bars, where each bar's length represents the value or frequency of a category. The bars can be vertical (column chart) or horizontal (bar chart).
+
+-   **Pros:**
+
+    -   **Easily Compares Data:**
+        -   Makes it simple to compare data across different categories.
+        -   Highlights significant differences between groups.
+    -   **Quick Insight:**
+        -   Provides immediate visual insights into category differences.
+        -   Suitable for presenting data to non-technical audiences.
+    -   **Intuitive Interpretation:**
+        -   Clear and straightforward representation.
+        -   Suitable for a wide range of audiences due to its intuitive nature.
+    -   **Flexibility:**
+        -   Can represent both frequency (count data) and summary statistics (e.g., means, medians).
+        -   Can be customized with different bar colors, stacking, grouping, etc.
+
+-   **Cons:**
+
+    -   **Misleading Scaling:**
+        -   Can mislead if bar lengths, axis scales, or data representations are inconsistent.
+        -   Improper axis truncation may exaggerate or minimize differences.
+    -   **Overloading with Categories:**
+        -   Too many categories can clutter the chart, making it hard to interpret.
+        -   Limited space can lead to overlapping labels, hindering readability.
+    -   **Not Ideal for Continuous Data:**
+        -   Works best with categorical data but not suitable for continuous variables.
+        -   Summarizing continuous data into categories can lead to loss of detail or oversimplification.
+    -   **Chart Junk:**
+        -   Excessive use of gridlines, 3D effects, or non-data elements can lead to "chart junk," distracting from the data itself.
+    -   **Data-to-Ink Ratio:**
+        -   Low data-to-ink ratio due to large bars relative to the actual information conveyed.
+
+**Summary:**\
+Bar/column charts are highly effective for comparing categorical data and highlighting category differences. However, careful attention to scaling and data representation is crucial to ensure accurate and clear visualization.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
+
+<li>Drag your categorical variable to the <code>X</code> axis.</li>
+
+<li>Drag your continuous variable to the <code>Y</code> axis.</li>
+
+<li>Select <code>Bar Chart</code> from the options.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a bar chart in R
+        categories <- c("A", "B", "C", "D")
+        values <- c(10, 20, 30, 40)
+        barplot(values, names.arg = categories, main = "Bar Chart Example", col = "blue")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import matplotlib.pyplot as plt
+
+categories = ["A", "B", "C", "D"]
+values = [10, 20, 30, 40]
+plt.bar(categories, values, color='blue')
+plt.title("Bar Chart Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        GRAPH
+          /BAR(GROUPED)=VALUE BY CATEGORY
+          /TITLE='Bar Chart Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 4
+        generate category = _n
+        generate value = 10 * category
+        graph bar value, over(category) title("Bar Chart Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Quantile Plot
+
+```{r, echo=FALSE, message=FALSE}
+ # Create a quantile plot in R
+        data <- rnorm(100)
+        qqnorm(data)
+        qqline(data, col = "blue")
+```
+
+-   **Definition:** Displays cumulative quantiles of a distribution versus expected quantiles (e.g., normal distribution).
+
+-   **Pros:**
+
+    -   **Identifies Distribution Deviations:**
+        -   Clearly shows deviations of data distribution from a theoretical distribution.
+    -   **Efficient Distribution Fit Determination:**
+        -   Quickly determines whether the data fits a specific distribution.
+
+-   **Cons:**
+
+    -   **Requires Statistical Knowledge:**
+        -   Accurate interpretation requires understanding quantile statistics.
+    -   **Less Intuitive:**
+        -   Less intuitive than histograms or box plots for non-technical audiences.
+
+**Summary:**\
+Quantile plots are ideal for identifying distribution deviations from theoretical distributions. However, they require statistical knowledge for accurate interpretation and might be less intuitive than other visualization techniques.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Distribution</code>.</li>
+
+<li>Select your continuous variable and move it to the <code>Y</code> column.</li>
+
+<li>Click <code>OK</code>.</li>
+
+<li>Click the red triangle and select <code>Normal Quantile Plot</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a quantile plot in R
+        data <- rnorm(100)
+        qqnorm(data)
+        qqline(data, col = "blue")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+data = np.random.normal(50, 10, 100)
+stats.probplot(data, dist="norm", plot=plt)
+plt.title("Quantile Plot Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        Q-QPLOT VARIABLES=Age
+          /DISTRIBUTION=NORMAL.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 100
+        generate age = rnormal(50, 10)
+        qnorm age, title("Quantile Plot Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Treemap
+
+```{r, echo=FALSE, message=FALSE}
+# Create a treemap in R
+        library(treemap)
+        
+        data <- data.frame(
+          category = c("A", "B", "C", "D"),
+          subcategory = c("A1", "B1", "C1", "D1"),
+          value = c(10, 20, 30, 40)
+        )
+        
+        treemap(
+          data,
+          index = c("category", "subcategory"),
+          vSize = "value",
+          title = "Treemap Example"
+        )
+```
+
+-   **Definition:** Visualizes hierarchical data using nested rectangles.
+
+-   **Pros:**
+
+    -   **Displays Large Amounts of Data Efficiently:**
+        -   Suitable for representing large hierarchical data sets.
+    -   **Intuitive for Showing Hierarchical Relationships:**
+        -   Clearly shows hierarchical relationships in a visual format.
+    -   **Highlights Patterns and Clusters Visually:**
+        -   Highlights patterns, clusters, and outliers effectively.
+
+-   **Cons:**
+
+    -   **Distorts Proportions if Sizes are Too Small:**
+        -   Smaller rectangles can become unreadable and distort proportions.
+    -   **Challenging to Interpret for High-Depth Hierarchies:**
+        -   Deep hierarchies can make interpretation challenging and confusing.
+
+**Summary:**\
+Treemaps are excellent for visualizing hierarchical data efficiently and intuitively. However, careful design is crucial to avoid distortions and ensure interpretability, especially with deep hierarchies.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
+
+<li>Drag your categorical variable to the <code>X</code> axis.</li>
+
+<li>Drag your continuous variable to the <code>Y</code> axis.</li>
+
+<li>Select <code>Treemap</code> from the options.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a treemap in R
+        library(treemap)
+        
+        data <- data.frame(
+          category = c("A", "B", "C", "D"),
+          subcategory = c("A1", "B1", "C1", "D1"),
+          value = c(10, 20, 30, 40)
+        )
+        
+        treemap(
+          data,
+          index = c("category", "subcategory"),
+          vSize = "value",
+          title = "Treemap Example"
+        )
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import matplotlib.pyplot as plt
+import squarify
+
+labels = ["A", "B", "C", "D"]
+sizes = [10, 20, 30, 40]
+squarify.plot(sizes=sizes, label=labels, color=["blue", "green", "red", "purple"], alpha=.7)
+plt.title("Treemap Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        GRAPH
+          /TREEMAP=VARIABLES(Category, Subcategory)
+          /VALUE=Value
+          /TITLE='Treemap Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        ssc install treemap
+        clear
+        set obs 4
+        generate category = _n
+        generate subcategory = category
+        generate value = 10 * category
+        treemap value, by(category subcategory) title("Treemap Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+## Advanced Graphs
+
+### Time Series Plots
+
+```{r, echo=FALSE, message=FALSE}
+       # Create a time series plot in R
+        time <- seq(from = as.Date("2022-01-01"), by = "month", length.out = 12)
+        values <- rnorm(12, mean = 50, sd = 10)
+        plot(time, values, type = "l", main = "Time Series Plot Example")
+```
+
+-   **Definition:** Displays data trends over time.
+-   **Pros:**
+    -   Ideal for identifying trends, cycles, and seasonal patterns.
+    -   Supports multiple time series on the same graph.
+    -   Facilitates forecasting and future planning.
+-   **Cons:**
+    -   Less effective for non-temporal data.
+    -   Can suffer from overplotting with too many series.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code> Specialized Modeling<code> \> <code>Time Series</code>.</li>
+
+<li>Select your time variable and move it to the <code>X, Time ID</code> column.</li>
+
+<li>Select your response variable and move it to the <code>Y, Time Series </code> column.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a time series plot in R
+        time <- seq(from = as.Date("2022-01-01"), by = "month", length.out = 12)
+        values <- rnorm(12, mean = 50, sd = 10)
+        plot(time, values, type = "l", main = "Time Series Plot Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+time = pd.date_range('2022-01-01', periods=12, freq='M')
+values = np.random.normal(50, 10, 12)
+plt.plot(time, values)
+plt.title("Time Series Plot Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        TSPLOT
+          /TIME=Date
+          /SERIES=Value
+          /TITLE='Time Series Plot Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 12
+        generate time = tq(2022q1)
+        generate value = rnormal(50, 10)
+        tsset time
+        tsline value, title("Time Series Plot Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Maps
+
+```{r, echo=FALSE, message=FALSE}
+# Create a map in R
+        library(ggplot2)
+        library(maps)
+
+        world_map <- map_data("world")
+        ggplot(world_map, aes(x = long, y = lat, group = group)) +
+          geom_polygon(fill = "lightblue", color = "white") +
+          ggtitle("World Map Example")
+```
+
+-   **Definition:** Visualizes geographic data by plotting locations on maps.
+-   **Pros:**
+    -   Provides spatial context to data.
+    -   Effective for highlighting geographic patterns.
+    -   Supports data aggregation at regional levels.
+-   **Cons:**
+    -   Interpretation can be misleading without proper scaling.
+    -   Requires geographic knowledge for accurate interpretation.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
+
+<li>Drag your longitude and latitude variables to the <code>X</code> and <code>Y</code> axes, respectively.</li>
+
+<li>Select <code>Map</code> from the options.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Create a map in R
+        library(ggplot2)
+        library(maps)
+
+        world_map <- map_data("world")
+        ggplot(world_map, aes(x = long, y = lat, group = group)) +
+          geom_polygon(fill = "lightblue", color = "white") +
+          ggtitle("World Map Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+import geopandas as gpd
+import matplotlib.pyplot as plt
+
+world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+world.plot()
+plt.title("World Map Example")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        MAP
+          /MAPTYPE=world
+          /TITLE='World Map Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        ssc install spmap
+        clear
+        sysuse world
+        spmap using world_coordinates, title("World Map Example")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Unstructured Text
+
+#### Word Cloud Example
+
+<!-- ```{r, echo=FALSE, message=FALSE} -->
+
+<!-- # Summarize unstructured text in R -->
+
+<!--         library(tm) -->
+
+<!--         library(wordcloud) -->
+
+<!--         text <- c("sepsis", "infection", "fever", "hospital", "antibiotics",  -->
+
+<!--           "bacteria", "blood", "severe", "septic shock", "intensive care") -->
+
+<!--         # Repeat each word a random number of times -->
+
+<!--         text_repeated <- unlist(lapply(text, function(word) rep(word, sample(5:15, 1)))) -->
+
+<!--         corpus <- Corpus(VectorSource(text_repeated)) -->
+
+<!--         tdm <- TermDocumentMatrix(corpus) -->
+
+<!--         word_freq <- sort(rowSums(as.matrix(tdm)), decreasing = TRUE) -->
+
+<!--         wordcloud(names(word_freq), word_freq, scale = c(3, 0.5), colors = brewer.pal(8, "Dark2")) -->
+
+<!-- ``` -->
+
+-   **Definition:** Summarizes text data numerically to gain insights.
+-   **Pros:**
+    -   Extracts useful information from textual data.
+    -   Identifies patterns and trends in large text corpora.
+    -   Supports topic modeling and sentiment analysis.
+-   **Cons:**
+    -   Requires preprocessing to handle noise and inconsistencies.
+    -   Interpretation challenges due to language ambiguities.
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Text Explorer</code>.</li>
+
+<li>Select your text variable and move it to the <code>Text</code> column.</li>
+
+<li>Click <code>OK</code>.</li>
+
+<li>Click the red triangle and select <code> Display Options <code> \> <code> Show Word Cloud.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Summarize unstructured text in R
+        library(tm)
+        library(wordcloud)
+
+        text <- c("word1", "word2", "word3", "word1", "word2")
+        corpus <- Corpus(VectorSource(text))
+        tdm <- TermDocumentMatrix(corpus)
+        word_freq <- sort(rowSums(as.matrix(tdm)), decreasing = TRUE)
+        wordcloud(names(word_freq), word_freq, scale = c(3, 0.5), colors = brewer.pal(8, "Dark2"))
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+text = "word1 word2 word3 word1 word2"
+wordcloud = WordCloud(scale=3, max_words=50, background_color='white').generate(text)
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        TEXTANALYSIS
+          /TEXT=Comments
+          /TITLE='Unstructured Text Analysis Example'.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>STATA Instructions:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        clear
+        set obs 5
+        generate comments = "word1 word2 word3 word1 word2"
+        wordcloud comments, maxwords(50)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### References
+
+1.  Tufte, Edward R. *The Visual Display of Quantitative Information*. Graphics Press, 2001.
+2.  Few, Stephen. *Now You See It: Simple Visualization Techniques for Quantitative Analysis*. Analytics Press, 2009.

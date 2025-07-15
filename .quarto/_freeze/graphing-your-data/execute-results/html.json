@@ -1,0 +1,11 @@
+{
+  "hash": "f54cc805a5f0dfa124a5337d2526f188",
+  "result": {
+    "markdown": "---\ntitle: \"Graphing Your Data\"\nauthor: \"Dr. Joshua Lambert\"\noutput: html\nformat:\n  html:\n    toc: true\n    toc-title: \"Graphing Topics\"\n    css: styles.css\n---\n\n# Graphing Your Data\n\n## Identify Differences in Types of Data and How to Graph\n- **Categorical Data:** Limited set of values (e.g., sex, treatment status)\n  - **Nominal:** Unordered categories (e.g., male, female)\n  - **Ordinal:** Ordered categories (e.g., pain rating - low, medium, high)\n- **Continuous Data:** Unlimited set of values (e.g., age, weight)\n\n### Graph Types:\n- **Univariate:** Single variable\n- **Bivariate:** Two variables (e.g., one predictor and one response)\n- **Multivariate:** Multiple variables\n\n## Why Graph Data? Benefits\n- Graphs quickly convey meaningful relationships that tell a story and point to solving problems.\n- **Benefits:**\n  - Simplifies data interpretation\n  - Highlights trends, patterns, and anomalies\n  - Communicates findings to different audiences\n\n## Stephen Few's Key Points on Graphical Data Display\n- Use data to tell a statistical story.\n- Know your audience and the information you want to convey.\n- Quality, relevance, and integrity are crucial.\n- Integrate all visual elements (words, numbers, and images) for clarity.\n  \n## Principles of Good and Bad Graphical Design\n### Good Design:\n- Enforce visual comparisons.\n- Show causality, multivariate data, and content-driven design.\n- Minimize the ink-to-data ratio.\n\n### Bad Design:\n- Incorrect scaling (e.g., starting bars from non-zero)\n- Too much chart junk (ornaments, 3D effects)\n- Unclear labels or legends\n\n## Graph Types and Usage\n### Histogram\nA histogram is a graphical representation of the distribution of data.\n- **JMP Instructions:** {toggle}\n\n    ```{yaml}\n    <details>\n      <summary>Click to Expand</summary>\n\n      1. Go to `Analyze` > `Distribution`.\n      2. Select your continuous variable and move it to the `Y` column.\n      3. Click `OK`.\n    </details>\n    ```\n\n",
+    "supporting": [
+      "graphing-your-data_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

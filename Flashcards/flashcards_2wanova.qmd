@@ -1,0 +1,302 @@
+---
+title: "Flashcards: Two-Way ANOVA"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    css: styles.css
+---
+
+### What is the purpose of Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Two-Way ANOVA evaluates the effects of two independent variables on a continuous dependent variable, including their interaction.
+:::
+:::
+
+### What is a main effect in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+A main effect is the impact of one independent variable on the dependent variable, ignoring the levels of the other independent variable.
+:::
+:::
+
+### What is an interaction effect in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+An interaction effect occurs when the combined effect of two independent variables on the dependent variable is different from the sum of their individual effects.
+:::
+:::
+
+### How many main effects and interaction effects can be analyzed in a Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Two-Way ANOVA can analyze two main effects (one for each factor) and one interaction effect between them.
+:::
+:::
+
+### What is the null hypothesis for the main effect of Factor A in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The null hypothesis ((H_0)) for the main effect of Factor A states that all levels of Factor A have the same mean.
+:::
+:::
+
+### What is the alternative hypothesis for the main effect of Factor B in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The alternative hypothesis ((H_1)) for the main effect of Factor B states that at least one level of Factor B has a different mean.
+:::
+:::
+
+### What is the null hypothesis for the interaction effect in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The null hypothesis ((H_0)) for the interaction effect states that there is no interaction between Factors A and B.
+:::
+:::
+
+### What are the assumptions of Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+```         
+<ul>
+  <li>Normality of residuals</li>
+  <li>Homogeneity of variances</li>
+  <li>Continuous dependent variable</li>
+  <li>Categorical independent variables</li>
+  <li>Random sampling</li>
+</ul>
+```
+:::
+:::
+
+### What is the Sum of Squares for Factor A (SSA)?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+$$
+SSA = \sum_{j=1}^{a} n_{j} (\bar{Y}_{j\cdot} - \bar{Y})^2
+$$
+:::
+:::
+
+### How do you calculate the Mean Square for Factor B (MSB)?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+$$
+MSB = \frac{SSB}{b - 1}
+$$
+:::
+:::
+
+### What is the formula for the F-Ratio of the main effect for Factor A?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+$$
+F_A = \frac{MSA}{MSE}
+$$
+:::
+:::
+
+### What does a significant interaction effect imply in a Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+A significant interaction effect indicates that the impact of one factor on the dependent variable differs depending on the levels of the other factor.
+:::
+:::
+
+### What is eta squared (( \eta\^2 )) in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Eta squared (( \eta\^2 )) is a measure of the proportion of the total variance explained by a factor or interaction effect.
+:::
+:::
+
+### What post-hoc test is commonly used in Two-Way ANOVA to compare specific group means?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Tukey's Honestly Significant Difference (HSD) test.
+:::
+:::
+
+### How do you interpret a significant main effect in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+A significant main effect indicates that the means of different levels of one factor are not equal.
+:::
+:::
+
+### What graphical method can help identify the presence of interaction effects in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Interaction plots can help identify the presence of interaction effects by plotting the means of different groups.
+:::
+:::
+
+### What does the F-statistic represent in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+The F-statistic represents the ratio of the variance between groups to the variance within groups.
+:::
+:::
+
+### What are the degrees of freedom for the interaction effect in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+$$
+df_{AB} = (a - 1)(b - 1)
+$$
+:::
+:::
+
+### What is the purpose of a residual plot in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+A residual plot helps check for homoscedasticity and outliers by plotting the residuals against fitted values.
+:::
+:::
+
+### Why is it important to check for influential observations in Two-Way ANOVA?
+
+::: {.flashcard onclick="revealAnswer(this)"}
+::: question
+Click to reveal answer
+:::
+
+::: {.answer style="display: none;"}
+Influential observations can unduly affect the results of Two-Way ANOVA, leading to biased or incorrect conclusions.
+:::
+:::
+
+```{=html}
+<script>
+function revealAnswer(card) {
+  var question = card.querySelector('.question');
+  var answer = card.querySelector('.answer');
+  question.style.display = 'none';
+  answer.style.display = 'block';
+}
+</script>
+```
+```{=html}
+<style>
+.flashcard {
+  width: 300px;
+  height: auto;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.flashcard .question,
+.flashcard .answer {
+  padding: 10px;
+  text-align: center;
+}
+
+.flashcard .question {
+  cursor: pointer;
+}
+
+.flashcard .answer {
+  display: none;
+}
+</style>
+```

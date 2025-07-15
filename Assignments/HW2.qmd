@@ -1,0 +1,51 @@
+---
+title: "Homework 2"
+author: "Dr. Joshua Lambert"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Assignments"
+    code-fold: true
+    code-tools: true
+---
+
+## 1. What statistical procedure is most appropriate for the following scenario?
+
+### a. Independent variable: Mediterranean diet versus regular (no special) diet; dependent variable: total cholesterol; covariate: body mass index at baseline.
+
+\`\`\` \[Your answer here\] \`\`\`
+
+### b. Independent variable: Presence vs. absence of boomerang pillows; dependent variable: respiratory capacity before treatment and 1 and 2 days after treatment.
+
+\`\`\` \[Your answer here\] \`\`\`
+
+## 2. Suppose you were interested in studying the effect of a person's early retirement (at or below age 62 versus at age 65 or later) on indicators of physical and emotional health. What variables would you suggest using as covariates to enhance the comparability of the groups?
+
+\`\`\` \[Your answer here\] \`\`\`
+
+## 3. Below are some means from a randomized controlled trial. Indicate at least two ways to analyze the data to test for treatment effects.
+
+|                             | **Experimental Group** | **Control Group** |
+|-----------------------------|:-----------------------|:------------------|
+| **Baseline Data**           | 53.88                  | 52.99             |
+| **Post-Intervention Score** | 65.23                  | 57.47             |
+
+\`\`\` \[Your answer here\] \`\`\`
+
+------------------------------------------------------------------------
+
+## 4. A covariate in ANCOVA is:
+
+-   [ ] a. Always a pretest measure of the outcome variable
+-   [ ] b. A second dependent variable
+-   [ ] c. An interaction term
+-   [ ] d. A variable the researcher wants to statistically control
+
+\`\`\` \[Your answer here\] \`\`\`
+
+## 5. Suppose we tested this belief by taking three groups of participants and administering one group with a placebo (such as a sugar pill), one group with a low dose of Viagra and one with a high dose. The dependent variable was an objective measure of libido. Also included in the file is the partners libido. Use the partners libido as a covariate and conduct an ANCOVA on whether there is a group effect on subjects measured libido. The data can be found in the file ViagraCovariate.sav. Please begin by checking the assumptions with graphs/tables. Report those here. Then complete the analysis, and follow up with post-hoc test when appropriate. Interpret any significant finds in words and with figures (box-plots) and tables.
+
+\`\`\` \[Your analysis here\] \`\`\`
+
+------------------------------------------------------------------------

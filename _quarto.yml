@@ -1,0 +1,58 @@
+# _quarto.yml
+
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "NPHD 9040 -- Applied Multivariable Analysis"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Syllabus"
+        href: Other/syl.qmd
+      - text: "Lectures"
+        menu:
+          - text: "Preliminaries"
+            href: Lectures/preliminaries.qmd
+          - text: "Graphing Your Data"
+            href: Lectures/graphing-your-data.qmd
+          - text: "Introduction to ANOVA"
+            href: Lectures/introduction-to-anova.qmd
+          - text: "Introduction to ANCOVA"
+            href: Lectures/introduction-to-ancova.qmd
+          - text: "Introduction to Two-Way ANOVA"
+            href: Lectures/introduction-to-two-way-anova.qmd
+          - text: "Introduction to Repeated Measures ANOVA"
+            href: Lectures/introduction-to-repeated-measures-anova.qmd
+          - text: "Introduction to Simple Linear Regression"
+            href: Lectures/introduction-to-simple-linear-regression.qmd
+          - text: "Introduction to Multiple Linear Regression"
+            href: Lectures/introduction-to-multiple-linear-regression.qmd
+          - text: "Introduction to Logistic Regression"
+            href: Lectures/introduction-to-logistic-regression.qmd
+          - text: "Q&A for EBP and QI Projects"
+            href: Lectures/QI_and_EBP.qmd
+      - text: "Flashcards"
+        menu:
+          - text: "ANOVA"
+            href: Flashcards/flashcards_anova.qmd
+          - text: "2-Way ANOVA"
+            href: Flashcards/flashcards_2wanova.qmd
+      - text: "Assignments"
+        href: Assignments/assign_list.qmd
+      - text: "About Dr. L"
+        href: Other/aboutDrL.qmd
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: journal
+    columns: 12
+    css: styles.css
+
+
+
+

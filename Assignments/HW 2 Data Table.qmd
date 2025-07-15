@@ -1,0 +1,9 @@
+---
+title: "HW 2 Data Table"
+editor: visual
+---
+
+|                         | Experimental Group | Control Group |
+|-------------------------|:-------------------|:--------------|
+| Baseline Data           | 53.88              | 52.99         |
+| Post-Intervention Score | 65.23              | 57.47         |

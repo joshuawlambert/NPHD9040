@@ -1,0 +1,391 @@
+---
+title: "Introduction to Simple Linear Regression"
+author: "Dr. Joshua Lambert"
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: true
+    code-tools: true
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction to Simple Linear Regression
+
+## Objectives
+
+-   Understand the fundamentals of Simple Linear Regression
+-   Learn the definition and purpose of Simple Linear Regression
+-   Identify key concepts and assumptions of Simple Linear Regression
+-   Visualize the relationship between variables
+-   Calculate and interpret correlation coefficients
+-   Formulate the regression equation
+-   Estimate the regression coefficients
+-   Test the significance of the regression coefficients
+-   Calculate confidence intervals for the coefficients
+-   Understand the coefficient of determination (R-squared)
+-   Perform residual analysis and diagnostic plots
+-   Interpret regression coefficients
+-   Check assumptions
+-   Explore examples of Simple Linear Regression in nursing research
+
+## Definition and Purpose of Simple Linear Regression
+
+Simple Linear Regression is a statistical method used to model the
+relationship between a single independent variable (predictor) and a
+continuous dependent variable (outcome). It aims to predict the
+dependent variable based on the values of the independent variable.
+
+### Key Concepts and Assumptions of Simple Linear Regression
+
+1.  **Linearity:** The relationship between the predictor and outcome is
+    linear.
+2.  **Independence:** Observations are independent.
+3.  **Homoscedasticity:** The variance of residuals is constant.
+4.  **Normality:** Residuals are normally distributed.
+
+## Visualizing the Relationship Between Variables
+
+Use scatter plots to visualize the relationship between the predictor
+and outcome variables.
+
+### Example Visualization in R
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Scatter plot in R
+set.seed(123)
+x <- rnorm(100)
+y <- 3 * x + rnorm(100)
+
+plot(x, y, main = "Scatter Plot of Predictor vs. Outcome", xlab = "Predictor (x)", ylab = "Outcome (y)", col = "blue")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+## Calculating and Interpreting Correlation Coefficients
+
+### Pearson Correlation Coefficient (( r ))
+
+Measures the strength and direction of the linear relationship between
+two continuous variables.
+
+### Formula
+
+$$
+r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}
+$$
+
+### Interpretation
+
+-   **( r = +1 ):** Perfect positive correlation
+-   **( r = -1 ):** Perfect negative correlation
+-   **( r = 0 ):** No correlation
+
+## Formulating the Regression Equation
+
+The regression equation represents the linear relationship between the
+predictor (( x )) and outcome (( y )).
+
+### Equation
+
+$$
+y = \beta_0 + \beta_1 x
+$$ where: - ( \beta\_0 ): Intercept (constant) - ( \beta\_1 ): Slope
+(coefficient)
+
+## Estimating the Regression Coefficients
+
+The coefficients are estimated using the method of least squares, which
+minimizes the sum of squared residuals.
+
+### Formula
+
+-   **Slope (Coefficient):** $$
+    \beta_1 = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sum (x_i - \bar{x})^2}
+    $$
+
+-   **Intercept (Constant):** $$
+    \beta_0 = \bar{y} - \beta_1 \bar{x}
+    $$
+
+## Testing the Significance of the Regression Coefficients
+
+### Hypothesis Testing
+
+-   **Null Hypothesis (( H_0 )):** The coefficient is not significantly
+    different from zero (( \beta\_1 = 0 )).
+-   **Alternative Hypothesis (( H_1 )):** The coefficient is
+    significantly different from zero (( \beta\_1 \neq 0 )).
+
+### t-Test
+
+The significance of the coefficients is tested using a t-test.
+
+### Formula
+
+$$
+t = \frac{\hat{\beta}}{SE(\hat{\beta})}
+$$ where: - ( \hat{\beta} ): Estimated coefficient - ( SE(\hat{\beta})
+): Standard error of the coefficient
+
+## Confidence Intervals for the Coefficients
+
+A confidence interval provides a range within which the true coefficient
+is likely to fall.
+
+### Formula
+
+$$
+\hat{\beta} \pm t^* \cdot SE(\hat{\beta})
+$$ where: - ( t\^\* ): Critical value from the t-distribution
+
+## Coefficient of Determination (R-squared)
+
+Measures the proportion of the variance in the outcome variable
+explained by the predictor.
+
+### Formula
+
+$$
+R^2 = \frac{\sum (\hat{y} - \bar{y})^2}{\sum (y_i - \bar{y})^2}
+$$
+
+## Residual Analysis and Diagnostic Plots
+
+### Residual Plots
+
+Plot residuals against the predicted values to check for
+homoscedasticity and non-linearity.
+
+### Q-Q Plot
+
+Check the normality of residuals by plotting them against a normal
+distribution.
+
+### Example in R
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Residual plots and Q-Q plot in R
+fit <- lm(y ~ x)
+
+# Residual vs. Fitted plot
+plot(fit, which = 1, main = "Residuals vs. Fitted")
+
+# Q-Q plot
+plot(fit, which = 2, main = "Q-Q Plot")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+## Interpretation of Regression Coefficients
+
+-   \*\*Intercept (( \beta\_0 )):\*\* The expected value of the outcome
+    when the predictor is zero.
+-   \*\*Slope (( \beta\_1 )):\*\* The expected change in the outcome for
+    a one-unit increase in the predictor.
+
+## Checking Assumptions
+
+-   **Linearity:** Residual vs. Fitted plot should show a random
+    pattern.
+-   **Independence:** Observations should be independent.
+-   **Homoscedasticity:** Residual vs. Fitted plot should show constant
+    variance.
+-   **Normality:** Q-Q plot should show residuals roughly following a
+    straight line.
+
+## Examples of Simple Linear Regression in Nursing Research
+
+### Example 1: Evaluating the Relationship Between BMI and Blood Pressure
+
+-   **Research Question:** How does BMI affect blood pressure in adults?
+-   **Predictor (x):** BMI
+-   **Outcome (y):** Blood Pressure
+
+<a href="slr_ex1.csv" download>download example data (CSV)</a>
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your continuous response variable and move it to the
+<code>Y</code> column.</li>
+
+<li>Select your predictor variable and move it to the <code>Construct
+Model Effects </code> column.</li>
+
+<li>Click <code>Run</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in R
+# Simulated data
+set.seed(123)
+BMI <- rnorm(100, mean = 25, sd = 3)
+BP <- 2 * BMI + rnorm(100, sd = 5)
+
+# Simple Linear Regression
+fit1 <- lm(BP ~ BMI)
+summary(fit1)
+
+# Plot
+plot(BMI, BP, main = "BMI vs. Blood Pressure", xlab = "BMI", ylab = "Blood Pressure")
+abline(fit1, col = "red")
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in Python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Simulated data
+np.random.seed(123)
+data = pd.DataFrame({
+  'BMI': np.random.normal(25, 3, 100),
+  'BP': 2 * np.random.normal(25, 3, 100) + np.random.normal(0, 5, 100)
+})
+
+# Simple Linear Regression
+model1 = ols('BP ~ BMI', data=data).fit()
+print(model1.summary())
+
+# Plot
+import matplotlib.pyplot as plt
+plt.scatter(data['BMI'], data['BP'])
+plt.plot(data['BMI'], model1.predict(data), color='red')
+plt.xlabel('BMI')
+plt.ylabel('Blood Pressure')
+plt.title('BMI vs. Blood Pressure')
+plt.show()
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Regression</code> \>
+<code>Linear</code>.</li>
+
+<li>Select your continuous response variable and move it to the
+<code>Dependent</code> box.</li>
+
+<li>Select your predictor variable and move it to the <code>Block 1 of
+1</code> box.</li>
+
+<li>Click <code>Statistics</code> and check <code>Estimates</code>,
+<code>R squared change</code>, and <code>Durbin-Watson</code>.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+* Example in Stata
+clear
+set seed 123
+
+* Simulated data
+set obs 100
+gen BMI = rnormal(25, 3)
+gen BP = 2 * BMI + rnormal(0, 5)
+
+* Simple Linear Regression
+regress BP BMI
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+```{=html}
+<script>
+function revealAnswer(card) {
+  var question = card.querySelector('.question');
+  var answer = card.querySelector('.answer');
+  question.style.display = 'none';
+  answer.style.display = 'block';
+}
+</script>
+```

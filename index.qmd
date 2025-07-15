@@ -1,0 +1,73 @@
+---
+title: "Welcome to NPHD9040"
+author: "Dr. Joshua Lambert"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Topics"
+    css: styles.css
+---
+
+# Welcome to NPHD9040 - Applied Multivariable Analysis
+
+Hello and welcome to NPHD9040 - Applied Multivariable Analysis!
+
+I'm Dr. Joshua Lambert, and I'll be your instructor for this course. I'm excited to guide you through this journey as we explore the fascinating world of advanced statistical methods and their application in nursing and healthcare research.
+
+## How to Reach Me
+
+-   **Email:** [joshua.lambert\@uc.edu](mailto:joshua.lambert@uc.edu)
+
+Feel free to reach out to me with any questions or concerns. I'm here to help you succeed in this course and deepen your understanding of the topics we will cover.
+
+## Overview of NPHD9040
+
+NPHD9040 is designed to provide an in-depth exploration of advanced statistical methods relevant to healthcare research. The course emphasizes practical applications using statistical software such as JMP and R. Topics include:
+
+### [Preliminaries](Lectures/preliminaries.qmd)
+
+-   Research design and hypothesis formulation
+-   Types of statistical inference
+-   Understanding variables, sampling, and power calculations
+
+### [Graphing Your Data](Lectures/graphing-your-data.qmd)
+
+-   Principles of graphical excellence
+-   Univariate and bivariate graph types
+-   Best practices for data visualization
+
+### [Introduction to ANOVA](Lectures/introduction-to-anova.qmd)
+
+-   One-way ANOVA
+-   Assumptions, hypothesis testing, and interpretation
+
+### [Introduction to ANCOVA](Lectures/introduction-to-ancova.qmd)
+
+-   Analysis of Covariance
+-   Controlling for covariates and interpreting results
+
+### [Introduction to Two-Way ANOVA](Lectures/introduction-to-two-way-anova.qmd)
+
+-   Two-way ANOVA concepts
+-   Interactions and interpretation
+
+### [Introduction to Repeated Measures ANOVA](Lectures/introduction-to-repeated-measures-anova.qmd)
+
+-   Analyzing repeated measures data
+-   Assumptions and appropriate tests
+
+### [Introduction to Simple Linear Regression](Lectures/introduction-to-simple-linear-regression.qmd)
+
+-   Basics of linear regression
+-   Assumptions and model evaluation
+
+### [Introduction to Multiple Linear Regression](Lectures/introduction-to-multiple-linear-regression.qmd)
+
+-   Expanding linear models to multiple predictors
+-   Interpretation and model assumptions
+
+### [Introduction to Logistic Regression](Lectures/introduction-to-logistic-regression.qmd)
+
+-   Understanding logistic regression models
+-   Interpreting odds ratios and diagnostic statistics

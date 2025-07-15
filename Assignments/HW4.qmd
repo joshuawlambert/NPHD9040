@@ -1,0 +1,72 @@
+---
+title: "Homework 4"
+author: "Dr. JL"
+output:
+  html_document:
+    toc: true
+    toc-title: "Assignments"
+    code_folding: hide
+    code_highlight: true
+---
+
+Name:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+1.  R Squared is known as the:
+
+```{=html}
+<!-- -->
+```
+a.  Coefficient of determination.
+b.  Multiple correlation coefficient.
+c.  Partial correlation coefficient.
+d.  Semi-partial correlation coefficient.
+
+```{=html}
+<!-- -->
+```
+2.  What is b0 in SLR?
+
+```{=html}
+<!-- -->
+```
+a.  The value of the outcome when the independent variable is 0.
+b.  The relationship between an independent variable and the outcome variable.
+c.  The value of the independent variable when the outcome is zero.
+d.  The gradient of the regression line.
+
+```{=html}
+<!-- -->
+```
+3.  \_\_\_\_\_ method is used to find the line of best fit.
+
+```{=html}
+<!-- -->
+```
+a.  Fisher's
+b.  Most minimum R Squared
+c.  Ordinary Least Squares
+d.  Moderates
+
+```{=html}
+<!-- -->
+```
+4.  Input the following data into Excel and import into your favorite statistical software. Conduct a simple linear regression where the response is SBP and the Independent variable is Age. What are the regression coefficients? What is the R Squared for the model?  What is the Null and Alternative Hypothesis for effect of Age? Is age significant? Interpret the effect of age regardless if it is significant.  
+
+```{r, echo=FALSE,include=FALSE}
+library(knitr) 
+library(kableExtra) 
+data <- data.frame( "Subject ID" = c(1, 2, 3, 4, 5, 6, 7), "Age" = c(20, 21, 24, 25, 26, 30, 24), "Systolic Blood Pressure" = c(100, 110, 140, 140, 125, 135, 115) )  
+kable(data, format = "html", caption = "Data for Simple Linear Regression") %>%  
+  kable_styling(full_width = FALSE, position = "left", bootstrap_options = c("striped", "responsive")) %>%   
+  row_spec(0, align = "c")  # Center-align all rows
+```
+
+| Subject ID | Age | Systolic.Blood.Pressure |
+|-----------:|:---:|:-----------------------:|
+|          1 | 20  |           100           |
+|          2 | 21  |           110           |
+|          3 | 24  |           140           |
+|          4 | 25  |           140           |
+|          5 | 26  |           125           |
+|          6 | 30  |           135           |
+|          7 | 24  |           115           |

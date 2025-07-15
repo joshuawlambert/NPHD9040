@@ -1,0 +1,116 @@
+---
+title: "Homework 3"
+author: "NPHD9040"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Assignments"
+    code-fold: true
+    code-tools: true
+---
+
+## 1. Use the “co8ee.jmp” file to complete a 2-Way ANOVA. The dependent variable will be the strength of the co8ee, independent variable 1 is the Grind of the co8ee, and independent variable 2 is the time the co8ee is brewed. Here are the descriptions of the variables:
+
+- **Grind**: Coarseness of the ground beans
+- **Temperature**: Temperature of the water used to brew the co8ee (in degrees Fahrenheit)
+- **Time**: Brewing time in minutes
+- **Charge**: Grams of co8ee beans per ounce of water
+- **Station**: Table at which the co8ee was brewed
+- **Strength**: Number of dissolved solids in the co8ee as measured by a refractometer
+
+### a. Please first plot the relationship using a method we discussed.
+
+\`\`\`
+[Your plot here]
+\`\`\`
+
+### b. Conduct the two-way ANOVA. What is the conclusion about the interaction between the two independent variables?
+
+\`\`\`
+[Your ANOVA results and conclusion here]
+\`\`\`
+
+### c. If the interaction was significant, complete a Tukey’s post-hoc test, if not, complete a Tukey’s post-hoc test on the lower order terms that were significant (p-value<0.05).
+
+\`\`\`
+[Your post-hoc test results here]
+\`\`\`
+
+### d. Report the conclusion in words that are understandable to a lay person, as well as to someone who is in 9040, and me! Let me know if you have any questions.
+
+\`\`\`
+[Your conclusion here]
+\`\`\`
+
+---
+
+## Multiple Choice
+
+### 2. What is a 2-way ANOVA primarily test for?
+
+- [ ] A. The effect of one independent variable on a dependent variable.
+- [ ] B. The effect of two independent variables on a dependent variable and their interaction.
+- [ ] C. The relationship between two dependent variables.
+- [ ] D. The effect of a dependent variable on two independent variables.
+
+\`\`\`
+[Your answer here]
+\`\`\`
+
+### 3. Which assumption is unique to repeated measures ANOVA compared to a standard ANOVA?
+
+- [ ] A. Homogeneity of variances.
+- [ ] B. Normality.
+- [ ] C. Sphericity.
+- [ ] D. Independence of observations.
+
+\`\`\`
+[Your answer here]
+\`\`\`
+
+### 4. In a 2-way ANOVA, what does an interaction effect indicate?
+
+- [ ] A. The effect of each independent variable is additive.
+- [ ] B. The effect of one independent variable depends on the level of the other variable.
+- [ ] C. Both independent variables have no effect on the dependent variable.
+- [ ] D. The independent variables are correlated with each other.
+
+\`\`\`
+[Your answer here]
+\`\`\`
+
+### 5. What is a potential disadvantage of using repeated measures in an ANOVA?
+
+- [ ] A. Increased risk of Type II errors.
+- [ ] B. Decreased statistical power.
+- [ ] C. Carryover effects.
+- [ ] D. Increased risk of violating the assumption of independence.
+
+\`\`\`
+[Your answer here]
+\`\`\`
+
+### 6. In the context of 2-way ANOVA, what does the term 'main effect' refer to?
+
+- [ ] A. The combined effect of the two independent variables.
+- [ ] B. The effect of each independent variable considered separately.
+- [ ] C. The effect that is common to both independent variables.
+- [ ] D. The effect that is not accounted for by the independent variables.
+
+\`\`\`
+[Your answer here]
+\`\`\`
+
+### 7. Which of the following is a correct interpretation of a significant interaction in a 2-way ANOVA?
+
+- [ ] A. The independent variables independently influence the dependent variable.
+- [ ] B. The effect of one independent variable on the dependent variable changes across levels of the other variable.
+- [ ] C. The dependent variable is not affected by either of the independent variables.
+- [ ] D. The interaction is an artifact of measurement error.
+
+\`\`\`
+[Your answer here]
+\`\`\`
+
+---

@@ -1,0 +1,74 @@
+---
+title: "Preliminaries"
+author: "Dr. Joshua Lambert"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Preliminary Steps"
+    css: styles.css
+---
+
+# Preliminaries
+
+## Preliminary Steps for Data Analysis
+
+Before conducting statistical analyses or using software, it's crucial to follow these steps:
+
+### Define Your Research Question and Hypothesis
+
+-   **Research Question:** Start with a clear, concise research question relevant to your primary interest.
+-   **Hypothesis:** Formulate a testable statement that answers your research question.
+    -   **Null Hypothesis (H0):** Represents no effect or difference.
+    -   **Alternative Hypothesis (HA):** Represents an effect or difference.
+
+### Pick Appropriate Variables and Measures
+
+-   Identify key variables relevant to your research question.
+-   Choose between continuous or categorical variables based on the type of data available.
+    -   **Continuous Variables:** Unlimited set of values (e.g., weight, age).
+    -   **Categorical Variables:** Limited set of values (e.g., treatment status).
+        -   **Ordinal:** Ordered categories (e.g., pain rating - low, medium, high).
+        -   **Nominal:** Unordered categories (e.g., sex - male, female).
+        -   **Dichotomous:** Only two levels.
+
+### Understand the P-Value: Pros and Cons
+
+-   The p-value is a statistical measure that helps assess evidence against the null hypothesis.
+-   **Pros:**
+    -   Easy to interpret.
+    -   Helps determine statistical significance.
+-   **Cons:**
+    -   Often misinterpreted (e.g., "significant" does not always imply clinical relevance).
+    -   Can be misleading in the presence of small sample sizes.
+
+### Determine Sample Size and Power
+
+-   **Sample Size:** Ensure that the proposed sample is large enough to answer your research question confidently.
+-   **Power Analysis:** Conduct a power analysis to determine the minimum sample size required.
+    -   **Power:** Probability of rejecting a false null hypothesis.
+    -   **Type I Error (α):** Probability of a false positive (usually 0.05).
+    -   **Type II Error (β):** Probability of a false negative.
+-   **Factors Influencing Power:**
+    -   Effect size
+    -   Significance level
+    -   Sample size
+
+### Taking Your Data on a Date
+
+-   **Collect Consistent and High-Quality Data:**
+    -   Use secure electronic records whenever possible (e.g., REDCap).
+    -   Consult the Institutional Review Board (IRB) before beginning data collection.
+    -   Take note of possible biases or skewed observations that may affect results.
+-   **Transform and Organize Data:**
+    -   **Raw Data:** Direct data collected from your research.
+    -   **Tidy Data:** Organized and transformed version of raw data.
+    -   Apply necessary transformations (e.g., standardization) to clean your data.
+-   **Conduct Exploratory Data Analysis:**
+    -   Summarize your data using basic descriptive statistics.
+    -   Visualize your data through various graphs (e.g., histograms, box plots).
+    -   Identify potential differences and insights within or between groups.
+
+### Conclusion
+
+Following these preliminary steps will ensure a solid foundation for statistical analysis. Carefully consider each step, from hypothesis formulation to data collection and exploration. Being thorough in the preliminaries will enhance the validity and reliability of your findings.

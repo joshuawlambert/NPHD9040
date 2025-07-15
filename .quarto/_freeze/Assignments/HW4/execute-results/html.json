@@ -1,0 +1,18 @@
+{
+  "hash": "525da3df63ecc2a86152d5c8f0bb2915",
+  "result": {
+    "markdown": "---\ntitle: \"Homework 4\"\nauthor: \"Dr. JL\"\noutput:\n  html_document:\n    toc: true\n    toc-title: \"Assignments\"\n    code_folding: hide\n    code_highlight: true\n---\n\n\nName:\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\n\n1.  R Squared is known as the:\n\n\n```{=html}\n<!-- -->\n```\n\na.  Coefficient of determination.\nb.  Multiple correlation coefficient.\nc.  Partial correlation coefficient.\nd.  Semi-partial correlation coefficient.\n\n\n```{=html}\n<!-- -->\n```\n\n2.  What is b0 in SLR?\n\n\n```{=html}\n<!-- -->\n```\n\na.  The value of the outcome when the independent variable is 0.\nb.  The relationship between an independent variable and the outcome variable.\nc.  The value of the independent variable when the outcome is zero.\nd.  The gradient of the regression line.\n\n\n```{=html}\n<!-- -->\n```\n\n3.  \\_\\_\\_\\_\\_ method is used to find the line of best fit.\n\n\n```{=html}\n<!-- -->\n```\n\na.  Fisher's\nb.  Most minimum R Squared\nc.  Ordinary Least Squares\nd.  Moderates\n\n\n```{=html}\n<!-- -->\n```\n\n4.  Input the following data into Excel and import into your favorite statistical software. Conduct a simple linear regression where the response is SBP and the Independent variable is Age. What are the regression coefficients? What is the R Squared for the model?  What is the Null and Alternative Hypothesis for effect of Age? Is age significant? Interpret the effect of age regardless if it is significant.  \n\n\n\n\n\n| Subject ID | Age | Systolic.Blood.Pressure |\n|-----------:|:---:|:-----------------------:|\n|          1 | 20  |           100           |\n|          2 | 21  |           110           |\n|          3 | 24  |           140           |\n|          4 | 25  |           140           |\n|          5 | 26  |           125           |\n|          6 | 30  |           135           |\n|          7 | 24  |           115           |\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"../site_libs/kePrint-0.0.1/kePrint.js\"></script>\n<link href=\"../site_libs/lightable-0.0.1/lightable.css\" rel=\"stylesheet\" />\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

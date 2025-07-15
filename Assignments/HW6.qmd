@@ -1,0 +1,34 @@
+---
+title: "NPHD9040:Homework 6"
+author: "Dr. Joshua Lambert"
+output:
+  html_document:
+    toc: true
+    toc-title: "Assignments"
+    code_folding: hide
+    code_highlight: true
+---
+
+Name:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+Over 7,000 participants were surveyed during the 2015-2016 National Health and Nutrition Examination Survey (NHANES) survey collection.  NHANES is a "program of studies designed to assess the health and nutritional status of adults and children in the United States. The survey is unique in that it combines interviews and physical examinations." 
+
+A researcher, who just completed Dr. Lambert's NPHD9040 HW 5 was interested in what factors contribute to health status in general. The researcher knew, that the Dataset used for HW1 had four health status variables. (ph, mh, cc, flu). They wondered what factors would be associated if they combined them into one variable, labeled AnyHealthIssue and used that as the outcome variable. This variable would be a 1 if the subject had any of the four health issues in the last 30 days, and 0 if they hadn't had any of them. With this new categorical dichotomous outcome variable in hand the knew they would need to do logistic regression. Using this dataset, investigate the relationships between the possible independent variables and the outcome AnyHealthIssue using logistic regression and multiple logistic regression.  Complete (atleast) the following items for your investigation:
+
+1.  Draw a conceptual framework figure on how you think the available variables connect with each other and the outcome.
+
+2.  Make graphs to investigate the associations.
+
+3.  Then use logistic regression with each variable separately. Report estimates in table 1 below.
+
+4.  Then, make a multiple logistic regression mode with the significant variables.  Report estimates in table 2 below.
+
+5.  How well did these models fit?
+
+6.  Report your findings in words as well as other interesting tidbits you found along the way.
+
+7.  What is your statistical conclusion from the multiple logistic regression model about the effect of Diabetes on AnyHealthIssue?
+
+8.  What remained significant from the Table 1 to Table 2?
+
+<small>Variables: ID (unique subject identifier), AnyHealthIssue (Did the subject report one or more of: Physical Health Days in last 30 days, Mental Health Days in last 30 days, Common Cold in the last 30 days, or Flu in last 30 days; 1 for yes to any of them, or 0 for no for all of them), Age (Age of subject, continuous), BMI (Body Mass Index of subject, continuous), IsDiab (Did subject identify as diabetic; 1 for yes, 0 for no), IsMale (Did subject identify as Male; 1 for yes, 0 for no), IsBlack (Did subject identify as black; 1 for yes, 0 for no), ISMAOH (Did subject identify as Mexican American or Other Race; 1 for yes, 0 for no), IsLTHS (Did subject say that they had less than a high school education; 1 for yes, 0 for no), ISBelow1SES (Did subject report a family household income below the poverty line; 1 for yes, 0 for no).</small>

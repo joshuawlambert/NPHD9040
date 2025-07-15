@@ -1,0 +1,481 @@
+---
+title: "Introduction to Repeated Measures ANOVA"
+author: "Dr. Joshua Lambert"
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: true
+    code-tools: true
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction to Repeated Measures ANOVA
+
+## Objectives
+
+-   Understand the fundamentals of Repeated Measures ANOVA
+-   Learn the definition and purpose of Repeated Measures ANOVA
+-   Identify the key differences between Repeated Measures ANOVA and
+    One-Way ANOVA
+-   Understand the structure of a Repeated Measures design
+-   Recognize within-subjects factors and levels
+-   Comprehend the sphericity assumption
+-   Understand the Greenhouse-Geisser correction
+-   Calculate Sum of Squares (SS) and Mean Squares (MS)
+-   Conduct hypothesis testing for main effects and interaction
+-   Measure effect sizes and significance
+-   Interpret main effects and interaction
+-   Apply the Bonferroni correction
+-   Check the assumptions of Repeated Measures ANOVA
+-   Explore examples of Repeated Measures ANOVA in nursing research
+
+## Definition and Purpose of Repeated Measures ANOVA
+
+Repeated Measures ANOVA is a statistical test used to examine the
+changes in a continuous dependent variable across multiple measurements
+over time or under different conditions. It is an extension of One-Way
+ANOVA but accounts for the correlation between repeated measures on the
+same subjects.
+
+### Key Differences Between Repeated Measures ANOVA and One-Way ANOVA
+
+-   **One-Way ANOVA:** Evaluates the effect of a single independent
+    variable on a continuous outcome.
+-   **Repeated Measures ANOVA:** Evaluates the effect of a single or
+    multiple within-subject factors over time, accounting for the
+    correlation between repeated measurements.
+
+## Understanding the Structure of a Repeated Measures Design
+
+In a Repeated Measures design, each participant is measured multiple
+times under different conditions or over time. The design includes: -
+**Within-Subjects Factors:** Variables measured repeatedly on the same
+subjects. - **Levels:** The different conditions or time points for each
+within-subjects factor.
+
+### Example Structure
+
+-   **Within-Subjects Factor:** Time
+-   **Levels:** Baseline, Week 1, Week 2, Week 3
+
+## Sphericity Assumption
+
+Sphericity refers to the assumption that the variances of the
+differences between all combinations of related groups are equal. If
+violated, it can lead to biased F-statistics and increased Type I
+errors.
+
+### Greenhouse-Geisser Correction
+
+The Greenhouse-Geisser correction adjusts the degrees of freedom to
+correct for violations of sphericity, providing a more conservative
+estimate.
+
+## Calculation of SS (Sum of Squares) and MS (Mean Squares)
+
+### Sum of Squares
+
+-   **Total Sum of Squares (SST):** $$
+    SST = \sum_{i=1}^{n} \sum_{j=1}^{t} (Y_{ij} - \bar{Y})^2
+    $$ where ( Y\_{ij} ) is each individual observation, and ( \bar{Y} )
+    is the overall mean.
+
+-   **Sum of Squares Within (SSW):** $$
+    SSW = \sum_{i=1}^{n} \sum_{j=1}^{t} (Y_{ij} - \bar{Y}_{i\cdot})^2
+    $$ where ( \bar{Y}\_{i\cdot} ) is the mean of all measurements for
+    subject ( i ).
+
+-   **Sum of Squares Between (SSB):** $$
+    SSB = \sum_{j=1}^{t} n_j (\bar{Y}_{\cdot j} - \bar{Y})^2
+    $$ where ( \bar{Y}\_{\cdot j} ) is the mean for level ( j ), and (
+    n_j ) is the number of observations at level ( j ).
+
+### Mean Squares
+
+-   **Mean Square Within (MSW):** $$
+    MSW = \frac{SSW}{(n - 1)(t - 1)}
+    $$
+
+-   **Mean Square Between (MSB):** $$
+    MSB = \frac{SSB}{t - 1}
+    $$
+
+## Hypothesis Testing for Main Effects and Interaction
+
+### Hypotheses
+
+-   **Main Effect of Within-Subjects Factor:**
+    -   Null Hypothesis (( H_0 )): No difference in the means across
+        levels.
+    -   Alternative Hypothesis (( H_1 )): At least one level has a
+        different mean.
+-   **Interaction Effect:**
+    -   Null Hypothesis (( H_0 )): No interaction between
+        within-subjects factors.
+    -   Alternative Hypothesis (( H_1 )): An interaction exists between
+        factors.
+
+### F-Ratio Calculations
+
+-   **Main Effect of Within-Subjects Factor:** $$
+    F = \frac{MSB}{MSW}
+    $$
+
+### Interpretation
+
+-   Compare the F-ratio to the critical value from the F-distribution.
+-   If the calculated F-ratio is greater than the critical value, reject
+    the null hypothesis.
+
+## Effect Sizes and Significance
+
+### Eta Squared (( \eta\^2 ))
+
+Represents the proportion of the total variance explained by the
+within-subjects factor.
+
+-   **Within-Subjects Factor:** $$
+    \eta^2 = \frac{SSB}{SST}
+    $$
+
+## Bonferroni Correction
+
+A post-hoc correction used to reduce Type I errors when multiple
+comparisons are made.
+
+### Formula
+
+$$
+\alpha_{\text{corrected}} = \frac{\alpha}{m}
+$$ where ( m ) is the number of comparisons.
+
+## Checking Assumptions of Repeated Measures ANOVA
+
+### Sphericity
+
+-   Use Mauchly's test to check the assumption of sphericity.
+
+### Normality
+
+-   Use Q-Q plots to check the normality of residuals.
+
+### Homogeneity of Variances
+
+-   Ensure variances are approximately equal across conditions.
+
+## Examples of Repeated Measures ANOVA in Nursing Research
+
+### Example 1: Evaluating Blood Pressure Changes Over Time
+
+-   **Research Question:** How does blood pressure change over a 3-week
+    intervention period?
+-   **Within-Subjects Factor:** Time
+-   **Levels:** Baseline, Week 1, Week 3
+-   **Response Variable:** Blood Pressure
+
+<a href="rm_ex.csv" download>download example data (CSV)</a>
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your continuous response variable and move it to the
+<code>Y</code> column.</li>
+
+<li>For <code>Repeated Structure</code>, select <code>Time</code> as the
+repeated factor.</li>
+
+<li>Click <code>Run</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in R
+# Simulated data
+set.seed(123)
+data <- data.frame(
+  Subject = rep(1:20, each = 3),
+  Time = factor(rep(c("Baseline", "Week1", "Week3"), times = 20)),
+  BP = rnorm(60, mean = rep(c(120, 115, 110), each = 20), sd = 10)
+)
+
+# Repeated Measures ANOVA
+install.packages("ez")
+library(ez)
+anova_results <- ezANOVA(
+  data = data,
+  dv = BP,
+  wid = Subject,
+  within = Time
+)
+print(anova_results)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in Python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Simulated data
+np.random.seed(123)
+data = pd.DataFrame({
+  'Subject': pd.Categorical([str(i) for i in range(20)] * 3),
+  'Time': pd.Categorical(['Baseline', 'Week1', 'Week3'] * 20),
+  'BP': np.random.normal(loc=115, scale=10, size=60)
+})
+
+# Repeated Measures ANOVA
+model = ols('BP ~ C(Time) + C(Subject)', data=data).fit()
+anova_table = sm.stats.anova_lm(model, typ=2)
+print(anova_table)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
+<code>Repeated Measures</code>.</li>
+
+<li>Define your within-subjects factor (e.g., <code>Time</code>) and
+specify the number of levels.</li>
+
+<li>Select your continuous dependent variable.</li>
+
+<li>Click <code>Options</code> and specify <code>Descriptive
+Statistics</code>.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+* Example in Stata
+clear
+set seed 123
+
+* Simulated data
+set obs 60
+gen Subject = cond(mod(_n, 3) == 1, "1", cond(mod
+
+(_n, 3) == 2, "2", "3"))
+gen Time = cond(mod(_n, 3) == 1, "Baseline", cond(mod(_n, 3) == 2, "Week1", "Week3"))
+gen BP = rnormal(cond(mod(_n, 3) == 1, 120, cond(mod(_n, 3) == 2, 115, 110)), 10)
+
+* Repeated Measures ANOVA
+anova BP Time|Subject
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Example 2: Evaluating Cognitive Function Changes Over Multiple Sessions
+
+-   **Research Question:** How does cognitive function change across
+    four training sessions?
+-   **Within-Subjects Factor:** Session
+-   **Levels:** Session 1, Session 2, Session 3, Session 4
+-   **Response Variable:** Cognitive Function Score
+
+<a href="rm_ex2.csv" download>download example 2 data (CSV)</a>
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your continuous response variable and move it to the
+<code>Y</code> column.</li>
+
+<li>For <code>Repeated Structure</code>, select <code>Session</code> as
+the repeated factor.</li>
+
+<li>Click <code>Run</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in R
+# Simulated data
+set.seed(456)
+data2 <- data.frame(
+  Subject = rep(1:15, each = 4),
+  Session = factor(rep(c("Session1", "Session2", "Session3", "Session4"), times = 15)),
+  Score = rnorm(60, mean = rep(c(80, 85, 90, 95), each = 15), sd = 5)
+)
+
+# Repeated Measures ANOVA
+library(ez)
+anova_results2 <- ezANOVA(
+  data = data2,
+  dv = Score,
+  wid = Subject,
+  within = Session
+)
+print(anova_results2)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in Python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Simulated data
+np.random.seed(456)
+data2 = pd.DataFrame({
+  'Subject': pd.Categorical([str(i) for i in range(15)] * 4),
+  'Session': pd.Categorical(['Session1', 'Session2', 'Session3', 'Session4'] * 15),
+  'Score': np.random.normal(loc=[80, 85, 90, 95], scale=5, size=60)
+})
+
+# Repeated Measures ANOVA
+model2 = ols('Score ~ C(Session) + C(Subject)', data=data2).fit()
+anova_table2 = sm.stats.anova_lm(model2, typ=2)
+print(anova_table2)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
+<code>Repeated Measures</code>.</li>
+
+<li>Define your within-subjects factor (e.g., <code>Session</code>) and
+specify the number of levels.</li>
+
+<li>Select your continuous dependent variable.</li>
+
+<li>Click <code>Options</code> and specify <code>Descriptive
+Statistics</code>.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+* Example in Stata
+clear
+set seed 456
+
+* Simulated data
+set obs 60
+gen Subject = cond(mod(_n, 4) == 1, "1", cond(mod(_n, 4) == 2, "2", cond(mod(_n, 4) == 3, "3", "4")))
+gen Session = cond(mod(_n, 4) == 1, "Session1", cond(mod(_n, 4) == 2, "Session2", cond(mod(_n, 4) == 3, "Session3", "Session4")))
+gen Score = rnormal(cond(mod(_n, 4) == 1, 80, cond(mod(_n, 4) == 2, 85, cond(mod(_n, 4) == 3, 90, 95))), 5)
+
+* Repeated Measures ANOVA
+anova Score Session|Subject
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>

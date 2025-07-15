@@ -1,0 +1,515 @@
+---
+title: "Introduction to Two-Way ANOVA"
+author: "Dr. Joshua Lambert"
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: true
+    code-tools: true
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction to Two-Way ANOVA
+
+## Objectives
+
+-   Understand the fundamentals of Two-Way ANOVA
+-   Learn the definition and purpose of Two-Way ANOVA
+-   Identify the key differences between One-Way ANOVA and Two-Way ANOVA
+-   Understand the structure of a Two-Way ANOVA design
+-   Recognize main effects and interaction
+-   Comprehend the assumptions of Two-Way ANOVA
+-   Calculate Sum of Squares (SS) and Mean Squares (MS)
+-   Conduct hypothesis testing for main effects and interaction
+-   Measure effect sizes and significance
+-   Interpret main effects and interaction
+-   Conduct post-hoc analysis
+-   Identify outliers and influential observations, normality, and
+    homogeneity
+-   Explore examples of Two-Way ANOVA in nursing research
+
+## Definition and Purpose of Two-Way ANOVA
+
+Two-Way ANOVA is a statistical test used to examine the impact of two
+independent variables on a continuous dependent variable. It is an
+extension of One-Way ANOVA but allows for the simultaneous evaluation of
+two factors, making it suitable for analyzing more complex experimental
+designs.
+
+### Key Differences Between One-Way and Two-Way ANOVA
+
+-   **One-Way ANOVA:** Evaluates the effect of a single independent
+    variable on a continuous outcome.
+-   **Two-Way ANOVA:** Evaluates the effects of two independent
+    variables (factors), including any interaction between them.
+
+## Understanding the Structure of a Two-Way ANOVA Design
+
+In a Two-Way ANOVA, each factor (independent variable) can have multiple
+levels. For example, in a clinical trial examining the effects of drug
+dosage (Factor 1) and diet (Factor 2), the design might include: -
+**Factor 1 (Dosage):** Low, Medium, High - **Factor 2 (Diet):** Control,
+Low-Fat, High-Fat
+
+### Main Effects and Interaction
+
+-   **Main Effect:** The impact of one factor on the dependent variable,
+    ignoring the levels of the other factor.
+-   **Interaction Effect:** The combined effect of both factors on the
+    dependent variable that is different from the sum of their
+    individual effects.
+
+## Assumptions of Two-Way ANOVA
+
+### Normality of Residuals
+
+Residuals (errors) should be normally distributed.
+
+### Homogeneity of Variances
+
+Variances should be approximately equal across all levels of the
+factors.
+
+## Calculation of SS (Sum of Squares) and MS (Mean Squares)
+
+### Sum of Squares
+
+-   **Total Sum of Squares (SST):** $$
+    SST = \sum_{i=1}^{n} (Y_i - \bar{Y})^2
+    $$ where ( Y_i ) is each individual observation, and ( \bar{Y} ) is
+    the overall mean.
+
+-   **Sum of Squares for Factor A (SSA):** $$
+    SSA = \sum_{j=1}^{a} n_{j} (\bar{Y}_{j\cdot} - \bar{Y})^2
+    $$ where ( n\_{j} ) is the number of observations in each level of
+    Factor A, ( \bar{Y}\_{j\cdot} ) is the mean for each level of Factor
+
+    A.  
+
+-   **Sum of Squares for Factor B (SSB):** $$
+    SSB = \sum_{k=1}^{b} n_{k} (\bar{Y}_{\cdot k} - \bar{Y})^2
+    $$ where ( n\_{k} ) is the number of observations in each level of
+    Factor B, ( \bar{Y}\_{\cdot k} ) is the mean for each level of
+    Factor B.
+
+-   **Sum of Squares for Interaction (SSAB):** $$
+    SSAB = \sum_{j=1}^{a} \sum_{k=1}^{b} n_{jk} (\bar{Y}_{jk} - \bar{Y}_{j\cdot} - \bar{Y}_{\cdot k} + \bar{Y})^2
+    $$ where ( \bar{Y}\_{jk} ) is the mean of each combination of levels
+    in Factors A and B.
+
+-   **Sum of Squares for Error (SSE):** $$
+    SSE = \sum_{j=1}^{a} \sum_{k=1}^{b} \sum_{i=1}^{n_{jk}} (Y_{ijk} - \bar{Y}_{jk})^2
+    $$
+
+### Mean Squares
+
+Mean Squares are obtained by dividing each Sum of Squares by the
+corresponding degrees of freedom.
+
+-   **Mean Square for Factor A (MSA):** $$
+    MSA = \frac{SSA}{a - 1}
+    $$
+
+-   **Mean Square for Factor B (MSB):** $$
+    MSB = \frac{SSB}{b - 1}
+    $$
+
+-   **Mean Square for Interaction (MSAB):** $$
+    MSAB = \frac{SSAB}{(a - 1)(b - 1)}
+    $$
+
+-   **Mean Square for Error (MSE):** $$
+    MSE = \frac{SSE}{ab(n - 1)}
+    $$
+
+## Hypothesis Testing for Main Effects and Interaction
+
+### Hypotheses
+
+-   **Factor A (Main Effect):**
+    -   Null Hypothesis (( H_0 )): All levels of Factor A have the same
+        mean.
+    -   Alternative Hypothesis (( H_1 )): At least one level of Factor A
+        has a different mean.
+-   **Factor B (Main Effect):**
+    -   Null Hypothesis (( H_0 )): All levels of Factor B have the same
+        mean.
+    -   Alternative Hypothesis (( H_1 )): At least one level of Factor B
+        has a different mean.
+-   **Interaction Effect:**
+    -   Null Hypothesis (( H_0 )): No interaction between Factors A and
+        B.  
+    -   Alternative Hypothesis (( H_1 )): Interaction exists between
+        Factors A and B.
+
+### F-Ratio Calculations
+
+-   **Factor A:** $$
+    F_A = \frac{MSA}{MSE}
+    $$
+
+-   **Factor B:** $$
+    F_B = \frac{MSB}{MSE}
+    $$
+
+-   **Interaction (A x B):** $$
+    F_{AB} = \frac{MSAB}{MSE}
+    $$
+
+### Interpretation
+
+-   Compare the F-ratios to the critical values from the F-distribution.
+-   If the calculated F-ratio is greater than the critical value, reject
+    the null hypothesis.
+
+<iframe src="http://modeling.nursing.uc.edu/anova_2w_app_1/" width="100%" height="1000px">
+
+</iframe>
+
+## Effect Sizes and Significance
+
+### Eta Squared (( \eta\^2 ))
+
+Represents the proportion of the total variance explained by each
+factor.
+
+-   **Factor A:** $$
+    \eta^2_A = \frac{SSA}{SST}
+    $$
+
+-   **Factor B:** $$
+    \eta^2_B = \frac{SSB}{SST}
+    $$
+
+-   **Interaction (A x B):** $$
+    \eta^2_{AB} = \frac{SSAB}{SST}
+    $$
+
+## Post-Hoc Analysis
+
+If significant main or interaction effects are found, post-hoc tests
+(e.g., Tukey's HSD) can identify which specific groups differ.
+
+### Tukey's HSD
+
+$$
+HSD = q \sqrt{\frac{MSE}{n}}
+$$ where ( q ) is the studentized range statistic, and ( n ) is the
+sample size per group.
+
+## Identifying Outliers and Influential Observations
+
+### Normality
+
+-   Use Q-Q plots to check the normality of residuals.
+
+### Homogeneity of Variances
+
+-   Use Levene's test or Bartlett's test.
+
+### Outliers
+
+-   Use residual plots or Cook's distance to identify influential
+    points.
+
+## Examples of Two-Way ANOVA in Nursing Research
+
+### Example 1: Evaluating Drug Dosage and Diet Effects
+
+-   **Research Question:** How do drug dosage and diet affect blood
+    pressure levels in patients?
+-   **Factors:**
+    -   Dosage (Low, Medium, High)
+    -   Diet (Control, Low-Fat, High-Fat)
+-   **Response Variable:** Blood Pressure Levels
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your continuous response variable and move it to the
+<code>Y</code> column.</li>
+
+<li>For Construct Model Effects, add both factors and their
+interaction.</li>
+
+<li>Click <code>Run</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in R
+# Simulated data
+set.seed(123)
+data <- data.frame(
+  Dosage = factor(rep(c("Low", "Medium", "High"), each = 30)),
+  Diet = factor(rep(c("Control", "Low-Fat", "High-Fat"), times = 30)),
+  BP = rnorm(90, mean = rep(c(120, 115, 130), each = 30), sd = 10)
+)
+
+# Two-Way ANOVA
+model <- aov(BP ~ Dosage * Diet, data = data)
+summary(model)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in Python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Simulated data
+np.random.seed(123)
+data = pd.DataFrame({
+  'Dosage': pd.Categorical(['Low'] * 30 + ['Medium'] * 30 + ['High'] * 30),
+  'Diet': pd.Categorical(['Control', 'Low-Fat', 'High-Fat'] * 30),
+  'BP': np.random.normal(loc=[120, 115, 130], scale=10, size=90)
+})
+
+# Two-Way ANOVA
+model = ols('BP ~ Dosage * Diet', data=data).fit()
+anova_table = sm.stats.anova_lm(model, typ=2)
+print(anova_table)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
+<code>Univariate</code>.</li>
+
+<li>Select your continuous dependent variable and move it to the
+<code>Dependent Variable</code> box.</li>
+
+<li>Select both factors and move them to the <code>Fixed Factors</code>
+box.</li>
+
+<li>Click <code>Model</code> and specify the interaction between the two
+factors.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+* Example in Stata
+clear
+set seed 123
+
+* Simulated data
+set obs 90
+gen Dosage = cond(mod(_n, 3) == 1, "Low", cond(mod(_n, 3) == 2, "Medium", "High"))
+gen Diet = cond(_n <= 30, "Control", cond(_n <= 60, "Low-Fat", "High-Fat"))
+gen BP = rnormal(cond(mod(_n, 3) == 1, 120, cond(mod(_n, 3) == 2, 115, 130)), 10)
+
+* Two-Way ANOVA
+anova BP Dosage##Diet
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+### Example 2: Nursing Intervention and Patient Demographics
+
+-   **Research Question:** How do a nursing intervention and patient
+    demographics affect recovery time?
+-   **Factors:**
+    -   Intervention (Control, Intensive)
+    -   Gender (Male, Female)
+-   **Response Variable:** Recovery Time
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your continuous response variable and move it to the
+<code>Y</code> column.</li>
+
+<li>For Construct Model Effects, add both factors and their
+interaction.</li>
+
+<li>Click <code>Run</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in R
+# Simulated data
+set.seed(456)
+data2 <- data.frame(
+  Intervention = factor(rep(c("Control", "Intensive"), each = 50)),
+  Gender = factor(rep(c("Male", "Female"), times = 50)),
+  RecoveryTime = rnorm(100, mean = rep(c(14, 12), each = 50), sd = 3)
+)
+
+# Two-Way ANOVA
+model2 <- aov(RecoveryTime ~ Intervention * Gender, data = data2)
+summary(model2)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+# Example in Python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# Simulated data
+np.random.seed(456)
+data2 = pd.DataFrame({
+  'Intervention': pd.Categorical(['Control'] * 50 + ['Intensive'] * 50),
+  'Gender': pd.Categorical(['Male', 'Female'] * 50),
+  'RecoveryTime': np.random.normal(loc=[14, 12], scale=3, size=100)
+})
+
+# Two-Way ANOVA
+model2 = ols('RecoveryTime ~ Intervention * Gender', data=data2).fit()
+anova_table2 = sm.stats.anova_lm(model2, typ=2)
+print(anova_table2)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
+<code>Univariate</code>.</li>
+
+<li>Select your continuous dependent variable and move it to the
+<code>Dependent Variable</code> box.</li>
+
+<li>Select both factors and move them to the <code>Fixed Factors</code>
+box.</li>
+
+<li>Click <code>Model</code> and specify the interaction between the two
+factors.</li>
+
+<li>Click <code>OK</code>.</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+* Example in Stata
+clear
+set seed 456
+
+* Simulated data
+set obs 100
+gen Intervention = cond(_n <= 50, "Control", "Intensive")
+gen Gender = cond(mod(_n, 2) == 0, "Female", "Male")
+gen RecoveryTime = rnormal(cond(_n <= 50, 14, 12), 3)
+
+* Two-Way ANOVA
+anova RecoveryTime Intervention##Gender
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
