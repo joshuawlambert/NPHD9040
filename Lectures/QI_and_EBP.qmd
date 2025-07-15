@@ -8,7 +8,7 @@ format:
     css: styles.css
 ---
 
-This page presents frequently asked statistics questions by students related to QI and EBP final projects. Llinks for the [t-test](https://modeling.nursing.uc.edu/statspicker/ttest.Rmd) or [chi-square](https://modeling.nursing.uc.edu/statspicker/chimc.Rmd). Please email [joshua.lambert@uc.edu](mailto:joshua.lambert@uc.edu) with more questions.
+This page presents frequently asked statistics questions by students related to QI and EBP final projects. Llinks for the [t-test](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd) or [chi-square](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd). Please email [joshua.lambert@uc.edu](mailto:joshua.lambert@uc.edu) with more questions.
 
 ---
 
@@ -18,7 +18,7 @@ This page presents frequently asked statistics questions by students related to 
 
 A1: Yes, Chi-square is appropriate. You're comparing two categorical variables (autonomy level: supervised vs. collaborative, and county type: urban vs. rural), so Chi-square is the best fit.
 
-Use this tool: [Chi-square Calculator](http://modeling.nursing.uc.edu/statspicker/chimc.Rmd)
+Use this tool: [Chi-square Calculator](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd)
 
 ---
 
@@ -91,8 +91,8 @@ A10: Try:
 - Leila Gharani (excellent Excel tutorials)
 - StatQuest with Josh Starmer (stats made simple)
 - University of Cincinnati's own tools:
-    - [T-test Tool](http://modeling.nursing.uc.edu/statspicker/ttest.Rmd)
-    - [Chi-square Tool](http://modeling.nursing.uc.edu/statspicker/chimc.Rmd)
+    - [T-test Tool](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd)
+    - [Chi-square Tool](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd)
 
 ---
 
@@ -300,8 +300,8 @@ A32: Please either reach out to me directly: [Joshua.lambert@uc.edu](mailto:Josh
 
 A33: Yes, they are on the DNP community page and they can be found here:
 
-- [T-test Tool](http://modeling.nursing.uc.edu/statspicker/ttest.Rmd)
-- [Chi-square Tool](http://modeling.nursing.uc.edu/statspicker/chimc.Rmd)
+- [T-test Tool](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd)
+- [Chi-square Tool](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd)
 
 ---
 
@@ -344,7 +344,7 @@ A37: 5–10 solid, well-designed questions are better than 20 unclear ones. Focu
 
 A38:
 - Excel’s Analysis Toolpak is more manual but lets you keep data in one place
-    - The [T-test Tool](http://modeling.nursing.uc.edu/statspicker/ttest.Rmd) is faster and gives a summary statement
+    - The [T-test Tool](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd) is faster and gives a summary statement
 
 Use the calculator if you're unsure how to run stats in Excel.
 
