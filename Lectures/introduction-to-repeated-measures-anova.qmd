@@ -5,9 +5,9 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true
-    css: styles.css
+    css: ../styles.css
 editor: 
   markdown: 
     wrap: 72
@@ -37,8 +37,8 @@ editor:
 
 Repeated Measures ANOVA is a statistical test used to examine the
 changes in a continuous dependent variable across multiple measurements
-over time or under different conditions. It is an extension of One-Way
-ANOVA but accounts for the correlation between repeated measures on the
+over time or under different conditions. It is an extension of [One-Way
+ANOVA](introduction-to-anova.qmd) but accounts for the correlation between repeated measures on the
 same subjects.
 
 ### Key Differences Between Repeated Measures ANOVA and One-Way ANOVA
@@ -145,7 +145,7 @@ within-subjects factor.
 ## Bonferroni Correction
 
 A post-hoc correction used to reduce Type I errors when multiple
-comparisons are made.
+comparisons are made. When conducting multiple tests, the risk of a false positive (Type I error) increases significantly. For a detailed explanation of why this happens, see the section on [The Problem of Multiple Comparisons](introduction-to-anova.qmd#the-problem-of-multiple-comparisons) in the ANOVA lecture.
 
 ### Formula
 
@@ -179,36 +179,7 @@ $$ where ( m ) is the number of comparisons.
 
 <a href="rm_ex.csv" download>download example data (CSV)</a>
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your continuous response variable and move it to the
-<code>Y</code> column.</li>
-
-<li>For <code>Repeated Structure</code>, select <code>Time</code> as the
-repeated factor.</li>
-
-<li>Click <code>Run</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Example in R
 # Simulated data
 set.seed(123)
@@ -228,103 +199,7 @@ anova_results <- ezANOVA(
   within = Time
 )
 print(anova_results)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example in Python
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Simulated data
-np.random.seed(123)
-data = pd.DataFrame({
-  'Subject': pd.Categorical([str(i) for i in range(20)] * 3),
-  'Time': pd.Categorical(['Baseline', 'Week1', 'Week3'] * 20),
-  'BP': np.random.normal(loc=115, scale=10, size=60)
-})
-
-# Repeated Measures ANOVA
-model = ols('BP ~ C(Time) + C(Subject)', data=data).fit()
-anova_table = sm.stats.anova_lm(model, typ=2)
-print(anova_table)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
-<code>Repeated Measures</code>.</li>
-
-<li>Define your within-subjects factor (e.g., <code>Time</code>) and
-specify the number of levels.</li>
-
-<li>Select your continuous dependent variable.</li>
-
-<li>Click <code>Options</code> and specify <code>Descriptive
-Statistics</code>.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-* Example in Stata
-clear
-set seed 123
-
-* Simulated data
-set obs 60
-gen Subject = cond(mod(_n, 3) == 1, "1", cond(mod
-
-(_n, 3) == 2, "2", "3"))
-gen Time = cond(mod(_n, 3) == 1, "Baseline", cond(mod(_n, 3) == 2, "Week1", "Week3"))
-gen BP = rnormal(cond(mod(_n, 3) == 1, 120, cond(mod(_n, 3) == 2, 115, 110)), 10)
-
-* Repeated Measures ANOVA
-anova BP Time|Subject
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Example 2: Evaluating Cognitive Function Changes Over Multiple Sessions
 
@@ -336,36 +211,7 @@ anova BP Time|Subject
 
 <a href="rm_ex2.csv" download>download example 2 data (CSV)</a>
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your continuous response variable and move it to the
-<code>Y</code> column.</li>
-
-<li>For <code>Repeated Structure</code>, select <code>Session</code> as
-the repeated factor.</li>
-
-<li>Click <code>Run</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Example in R
 # Simulated data
 set.seed(456)
@@ -384,98 +230,5 @@ anova_results2 <- ezANOVA(
   within = Session
 )
 print(anova_results2)
-      </pre>
 ```
-</li>
 
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example in Python
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Simulated data
-np.random.seed(456)
-data2 = pd.DataFrame({
-  'Subject': pd.Categorical([str(i) for i in range(15)] * 4),
-  'Session': pd.Categorical(['Session1', 'Session2', 'Session3', 'Session4'] * 15),
-  'Score': np.random.normal(loc=[80, 85, 90, 95], scale=5, size=60)
-})
-
-# Repeated Measures ANOVA
-model2 = ols('Score ~ C(Session) + C(Subject)', data=data2).fit()
-anova_table2 = sm.stats.anova_lm(model2, typ=2)
-print(anova_table2)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
-<code>Repeated Measures</code>.</li>
-
-<li>Define your within-subjects factor (e.g., <code>Session</code>) and
-specify the number of levels.</li>
-
-<li>Select your continuous dependent variable.</li>
-
-<li>Click <code>Options</code> and specify <code>Descriptive
-Statistics</code>.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-* Example in Stata
-clear
-set seed 456
-
-* Simulated data
-set obs 60
-gen Subject = cond(mod(_n, 4) == 1, "1", cond(mod(_n, 4) == 2, "2", cond(mod(_n, 4) == 3, "3", "4")))
-gen Session = cond(mod(_n, 4) == 1, "Session1", cond(mod(_n, 4) == 2, "Session2", cond(mod(_n, 4) == 3, "Session3", "Session4")))
-gen Score = rnormal(cond(mod(_n, 4) == 1, 80, cond(mod(_n, 4) == 2, 85, cond(mod(_n, 4) == 3, 90, 95))), 5)
-
-* Repeated Measures ANOVA
-anova Score Session|Subject
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>

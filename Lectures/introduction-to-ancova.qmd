@@ -6,7 +6,7 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true
 ---
 
@@ -14,7 +14,7 @@ format:
 
 ### Definition and Purpose of ANCOVA
 
-Analysis of Covariance (ANCOVA) is a statistical method that combines ANOVA and regression. It assesses the main and interaction effects of categorical variables on a continuous outcome while controlling for the influence of one or more continuous covariates.
+Analysis of Covariance (ANCOVA) is a statistical method that combines [ANOVA](introduction-to-anova.qmd) and regression. It assesses the main and interaction effects of categorical variables on a continuous outcome while controlling for the influence of one or more continuous covariates.
 
 ### Key Differences Between ANCOVA and ANOVA
 
@@ -38,7 +38,8 @@ Analysis of Covariance (ANCOVA) is a statistical method that combines ANOVA and 
 
 ### Visualizing ANCOVA
 
-Visualizing ANCOVA often involves making line plots to show the trajectory of the independent variable (x-axis) and dependent variable (y-axis) by group (color). One of the assumptions of an ANCOVA is "Homogeneity of regression slopes between groups". As we can see in this graph, there doesn't seem to be graphical evidence for that.
+Visualizing ANCOVA often involves making line plots to show the trajectory of the independent variable (x-axis) and dependent variable (y-axis) by group (color). One of the assumptions of an ANCOVA is "Homogeneity of regression slopes between groups". As we can see in this graph, there doesn't seem to be graphical evidence for that. Use scatter plots to visualize the relationship between the predictor
+and outcome variables. For more on creating these visualizations in R, see the [Graphing Your Data](graphing-your-data.qmd) lecture.
 
 ```{r, echo=FALSE, message=FALSE}
     # Example visualization in R
@@ -90,35 +91,8 @@ ggplot(data, aes(x = pre_stress, y = post_stress, color = group)) +
 
 ```
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your categorical variable as the Model Effects and covariate as Continuous.</li>
-
-<li>Click <code>RUN</code>.</li>
-
-<li>Click the red triangle and choose <code>Least Squares Fit</code> to visualize.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Example visualization in R
+```{r, eval=FALSE}
+# Example visualization in R
         library(ggplot2)
 
         data <- data.frame(
@@ -132,207 +106,20 @@ ggplot(data, aes(x = pre_stress, y = post_stress, color = group)) +
           geom_point() +
           geom_smooth(method = "lm", se = FALSE) +
           labs(title = "Interaction Plot", x = "Pre-Stress Score", y = "Post-Stress Score")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example visualization in Python
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
-import numpy as np
-
-# Generate data
-data = pd.DataFrame({
-"group": np.repeat(["Placebo", "Behavioral", "Drug"], 10),
-"pre_stress": np.random.normal(5, 1, 30),
-"post_stress": np.concatenate([np.random.normal(5, 1, 10),
-np.random.normal(7, 1, 10),
-np.random.normal(6, 1, 10)])
-        })
-
-# Interaction plot
-sns.lmplot(x="pre_stress", y="post_stress", hue="group", data=data, ci=None)
-plt.title("Interaction Plot")
-plt.xlabel("Pre-Stress Score")
-plt.ylabel("Post-Stress Score")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \> <code>Univariate</code>.</li>
-
-<li>Select your categorical variable as the Fixed Factor and the covariate as Covariate.</li>
-
-<li>Click <code>Plots</code> to visualize the interaction.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Example visualization in Stata
-        sysuse auto, clear
-        scatter mpg weight, by(foreign)
-        twoway lfitci mpg weight if foreign == 0, addplot(lfitci mpg weight if foreign == 1)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Calculation of Adjusted Means
 
 Adjusted means, or least-squares means, are averages that account for the influence of covariates. They are particularly useful in analyses like ANCOVA to provide unbiased comparisons across groups by removing the effects of nuisance variables. This adjustment ensures that the differences between groups reflect the effect of the primary variables of interest, not the covariates. Thus, adjusted means enable a fair comparison of group differences after controlling for external influences.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your categorical variable as the Model Effects and covariate as Continuous.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle on right side and choose <code>LSMeans Plot</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Adjusted means in R
+```{r, eval=FALSE}
+# Adjusted means in R
         library(car)
         model <- lm(post_stress ~ group + pre_stress, data = data)
         Anova(model, type = 3)
         lsmeans <- emmeans::emmeans(model, "group")
         print(lsmeans)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Adjusted means in Python
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-import statsmodels.stats.anova as anova
-
-# ANCOVA model
-model = ols('post_stress ~ group + pre_stress', data=data).fit()
-print(anova.anova_lm(model, typ=3))
-
-# Adjusted means
-import statsmodels.stats.multicomp as mc
-means = mc.pairwise_tukeyhsd(model.predict(), data['group'])
-print(means)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \> <code>Univariate</code>.</li>
-
-<li>Select your categorical variable as the Fixed Factor and the covariate as Covariate.</li>
-
-<li>Click <code>EMMeans</code> and select your categorical variable.</li>
-
-<li>Click <code>Continue</code> and <code>OK</code> to generate adjusted means.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Adjusted means in Stata
-        sysuse auto, clear
-        anova mpg foreign weight
-        margins foreign, at(weight=(2000 3000 4000))
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Testing Main Effects and Investigating the Interaction
 
@@ -341,104 +128,11 @@ Testing main effects reveals the individual impact of each independent and covar
 1.  **Main Effects:** The impact of each independent and covariate variable on the outcome.
 2.  **Interaction Effects:** How combinations of independent and covariate variables influence the outcome.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your categorical variable as the Model Effects and covariate as Continuous.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle and choose <code>LSMeans Plot</code> and <code>Interaction Plot</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Testing main effects and interaction in R
+```{r, eval=FALSE}
+# Testing main effects and interaction in R
         model <- lm(post_stress ~ group * pre_stress, data = data)
         Anova(model, type = 3)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Testing main effects and interaction in Python
-        model = ols('post_stress ~ group * pre_stress', data=data).fit()
-        print(anova.anova_lm(model, typ=3))
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \> <code>Univariate</code>.</li>
-
-<li>Select your categorical variable as the Fixed Factor and the covariate as Covariate.</li>
-
-<li>Click <code>Plots</code> to generate an Interaction Plot.</li>
-
-<li>Click <code>OK</code> to view the results.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Testing main effects and interaction in Stata
-        sysuse auto, clear
-        anova mpg foreign weight foreign#weight
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Effect Sizes and Significance, F Test, SSC, SSB, SSW, P-value
 
@@ -448,102 +142,11 @@ Testing main effects reveals the individual impact of each independent and covar
 -   **SSW (Sum of Squares Within):** Measures variation within groups.
 -   **P-value:** Indicates statistical significance.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your categorical variable as the Model Effects and covariate as Continuous.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle and choose <code>Effect Tests</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Effect sizes and significance in R
+```{r, eval=FALSE}
+# Effect sizes and significance in R
         model <- lm(post_stress ~ group + pre_stress, data = data)
         Anova(model, type = 3)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Effect sizes and significance in Python
-        model = ols('post_stress ~ group + pre_stress', data=data).fit()
-        print(anova.anova_lm(model, typ=3))
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \> <code>Univariate</code>.</li>
-
-<li>Select your categorical variable as the Fixed Factor and the covariate as Covariate.</li>
-
-<li>Click <code>OK</code> to view the results.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Effect sizes and significance in Stata
-        sysuse auto, clear
-        anova mpg foreign weight
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Examples of ANCOVA in Nursing Research
 
@@ -554,104 +157,10 @@ Testing main effects reveals the individual impact of each independent and covar
 
 <a href="ancova_ex1.csv" download>download ex. 1 data (CSV)</a>
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your categorical variable as the Model Effects and covariate as Continuous.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle and choose <code>Effect Tests</code> and <code>LSMeans Plot</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Example ANCOVA in R
+```{r, eval=FALSE}
+# Example ANCOVA in R
         model <- lm(post_stress ~ group + pre_stress, data = data)
         summary(model)
         Anova(model, type = 3)
-      </pre>
 ```
-</li>
 
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example ANCOVA in Python
-from statsmodels.formula.api import ols
-from statsmodels.stats.anova import anova_lm
-model = ols('post_stress ~ group + pre_stress', data=data).fit()
-print(model.summary())
-print(anova_lm(model, typ=3))
-        
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \> <code>Univariate</code>.</li>
-
-<li>Select your categorical variable as the Fixed Factor and the covariate as Covariate.</li>
-
-<li>Click <code>OK</code> to generate the ANCOVA results.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Example ANCOVA in Stata
-        sysuse auto, clear
-        anova mpg foreign weight
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>

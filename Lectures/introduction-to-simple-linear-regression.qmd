@@ -5,9 +5,9 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true
-    css: styles.css
+    css: ../styles.css
 editor: 
   markdown: 
     wrap: 72
@@ -50,33 +50,18 @@ dependent variable based on the values of the independent variable.
 ## Visualizing the Relationship Between Variables
 
 Use scatter plots to visualize the relationship between the predictor
-and outcome variables.
+and outcome variables. For more on creating these visualizations in R, see the [Graphing Your Data](graphing-your-data.qmd) lecture.
 
 ### Example Visualization in R
 
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Scatter plot in R
 set.seed(123)
 x <- rnorm(100)
 y <- 3 * x + rnorm(100)
 
 plot(x, y, main = "Scatter Plot of Predictor vs. Outcome", xlab = "Predictor (x)", ylab = "Outcome (y)", col = "blue")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
 
 ## Calculating and Interpreting Correlation Coefficients
 
@@ -180,16 +165,7 @@ distribution.
 
 ### Example in R
 
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Residual plots and Q-Q plot in R
 fit <- lm(y ~ x)
 
@@ -198,13 +174,7 @@ plot(fit, which = 1, main = "Residuals vs. Fitted")
 
 # Q-Q plot
 plot(fit, which = 2, main = "Q-Q Plot")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
 
 ## Interpretation of Regression Coefficients
 
@@ -233,36 +203,7 @@ plot(fit, which = 2, main = "Q-Q Plot")
 
 <a href="slr_ex1.csv" download>download example data (CSV)</a>
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your continuous response variable and move it to the
-<code>Y</code> column.</li>
-
-<li>Select your predictor variable and move it to the <code>Construct
-Model Effects </code> column.</li>
-
-<li>Click <code>Run</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Example in R
 # Simulated data
 set.seed(123)
@@ -276,108 +217,7 @@ summary(fit1)
 # Plot
 plot(BMI, BP, main = "BMI vs. Blood Pressure", xlab = "BMI", ylab = "Blood Pressure")
 abline(fit1, col = "red")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example in Python
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Simulated data
-np.random.seed(123)
-data = pd.DataFrame({
-  'BMI': np.random.normal(25, 3, 100),
-  'BP': 2 * np.random.normal(25, 3, 100) + np.random.normal(0, 5, 100)
-})
-
-# Simple Linear Regression
-model1 = ols('BP ~ BMI', data=data).fit()
-print(model1.summary())
-
-# Plot
-import matplotlib.pyplot as plt
-plt.scatter(data['BMI'], data['BP'])
-plt.plot(data['BMI'], model1.predict(data), color='red')
-plt.xlabel('BMI')
-plt.ylabel('Blood Pressure')
-plt.title('BMI vs. Blood Pressure')
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Regression</code> \>
-<code>Linear</code>.</li>
-
-<li>Select your continuous response variable and move it to the
-<code>Dependent</code> box.</li>
-
-<li>Select your predictor variable and move it to the <code>Block 1 of
-1</code> box.</li>
-
-<li>Click <code>Statistics</code> and check <code>Estimates</code>,
-<code>R squared change</code>, and <code>Durbin-Watson</code>.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-* Example in Stata
-clear
-set seed 123
-
-* Simulated data
-set obs 100
-gen BMI = rnormal(25, 3)
-gen BP = 2 * BMI + rnormal(0, 5)
-
-* Simple Linear Regression
-regress BP BMI
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ```{=html}
 <script>

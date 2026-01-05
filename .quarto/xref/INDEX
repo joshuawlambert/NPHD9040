@@ -115,5 +115,11 @@
   },
   "Lectures/QI_and_EBP.qmd": {
     "QI_and_EBP.html": "aeeb9a9c"
+  },
+  "Assignments/assign_list.qmd": {
+    "assign_list.html": "d477a177"
+  },
+  "Lectures/getting-started-with-r.qmd": {
+    "getting-started-with-r.html": "c8e83212"
   }
 }

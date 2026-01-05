@@ -5,9 +5,9 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true
-    css: styles.css
+    css: ../styles.css
 editor: 
   markdown: 
     wrap: 72
@@ -178,37 +178,7 @@ removing variables based on their statistical significance.
 
 <a href="mlr_ex1.csv" download>download example data (CSV)</a>
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your continuous outcome variable and move it to the
-<code>Y</code> column.</li>
-
-<li>Add predictors to the model and configure interactions if
-necessary.</li>
-
-<li>Click <code>Run</code> to fit the model and interpret the
-results.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Example in R
 # Simulated data
 set.seed(456)
@@ -226,108 +196,7 @@ summary(fit)
 # Residual Plots
 par(mfrow = c(2, 2))
 plot(fit)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example in Python
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Simulated data
-np.random.seed(456)
-data = pd.DataFrame({
-  'Age': np.random.normal(50, 10, 100),
-  'Medication_Adherence': np.random.normal(75, 10, 100),
-  'Physiotherapy_Sessions': np.random.normal(20, 5, 100),
-  'Recovery_Time': np.random.normal(30, 5, 100)
-})
-
-# Multiple Linear Regression
-model = ols('Recovery_Time ~ Age + Medication_Adherence + Physiotherapy_Sessions', data=data).fit()
-print(model.summary())
-
-# Residual Plots
-import matplotlib.pyplot as plt
-fig = sm.graphics.plot_regress_exog(model, 'Age', fig=plt.figure(figsize=(12, 8)))
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Regression</code> \>
-<code>Linear</code>.</li>
-
-<li>Select your continuous outcome variable and move it to the
-<code>Dependent</code> box.</li>
-
-<li>Select your predictor variables and move them to the
-<code>Independent(s)</code> box.</li>
-
-<li>Click <code>Statistics</code> and check <code>Estimates</code>,
-<code>R squared change</code>, and <code>Durbin-Watson</code>.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-* Example in Stata
-clear
-set seed 456
-
-* Simulated data
-set obs 100
-gen Age = rnormal(50, 10)
-gen Medication_Adherence = rnormal(75, 10)
-gen Physiotherapy_Sessions = rnormal(20, 5)
-gen Recovery_Time = rnormal(30, 5)
-
-* Multiple Linear Regression
-regress Recovery_Time Age Medication_Adherence Physiotherapy_Sessions
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Example 2: Evaluating the Effects of Lifestyle Factors on Heart Health
 
@@ -336,37 +205,7 @@ regress Recovery_Time Age Medication_Adherence Physiotherapy_Sessions
 
 <a href="mlr_ex2.csv" download>download example data (CSV)</a>
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your continuous outcome variable and move it to the
-<code>Y</code> column.</li>
-
-<li>Add predictors to the model and configure interactions if
-necessary.</li>
-
-<li>Click <code>Run</code> to fit the model and interpret the
-results.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Example in R
 # Simulated data
 set.seed(789)
@@ -384,105 +223,5 @@ summary(fit2)
 # Residual Plots
 par(mfrow = c(2, 2))
 plot(fit2)
-      </pre>
 ```
-</li>
 
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example in Python
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Simulated data
-np.random.seed(789)
-data2 = pd.DataFrame({
-  'Exercise_Frequency': np.random.normal(3, 1, 100),
-  'Diet_Quality': np.random.normal(7, 2, 100),
-  'Sleep_Duration': np.random.normal(8, 1, 100),
-  'Heart_Health_Index': np.random.normal(75, 10, 100)
-})
-
-# Multiple Linear Regression
-model2 = ols('Heart_Health_Index ~ Exercise_Frequency + Diet_Quality + Sleep_Duration', data=data2).fit()
-print(model2.summary())
-
-# Residual Plots
-import matplotlib.pyplot as plt
-fig = sm.graphics.plot_regress_exog(model2, 'Diet_Quality', fig=plt.figure(figsize=(12, 8)))
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Regression</code> \>
-<code>Linear</code>.</li>
-
-<li>Select your continuous outcome variable and move it to the
-<code>Dependent</code> box.</li>
-
-<li>Select your predictor variables and move them to the
-<code>Independent(s)</code> box。</li>
-
-<li>Click <code>Statistics</code> and check <code>Estimates</code>,
-<code>R squared change</code>, and <code>Durbin-Watson</code>.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-* Example in Stata
-clear
-set seed 789
-
-* Simulated data
-set obs 100
-gen Exercise_Frequency = rnormal(3, 1)
-gen Diet_Quality = rnormal(7, 2)
-gen Sleep_Duration = rnormal(8, 1)
-gen Heart_Health_Index = rnormal(75, 10)
-
-* Multiple Linear Regression
-regress Heart_Health_Index Exercise_Frequency Diet_Quality Sleep_Duration
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>

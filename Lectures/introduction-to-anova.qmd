@@ -5,15 +5,15 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true
-    css: styles.css
+    css: ../styles.css
     width: "99%"
 ---
 
 # Understanding Hypothesis Testing and ANOVA
 
-### Constructing a Written and Mathematical Hypothesis
+## Constructing a Written and Mathematical Hypothesis
 
 When constructing a hypothesis for ANOVA, it's important to formulate it both in a written and mathematical format.
 
@@ -24,21 +24,25 @@ When constructing a hypothesis for ANOVA, it's important to formulate it both in
 
 $$H_{1}: \mu_{placebo} \neq \mu_{behavior}$$
 
-### T-test vs. ANOVA
+> **💡 R Tip**: In R, we test these hypotheses using the `aov()` function (analysis of variance). The formula notation `outcome ~ group` means "outcome explained by group".
+
+## T-test vs. ANOVA
 
 When comparing means between two groups, the t-test and ANOVA will yield the same results. However, ANOVA extends to cases with more than two groups.
 
-### Writing ANOVA Hypothesis, Type 1 and 2 Errors
+> **💡 R Tip**: For two groups, you can use either `t.test()` or `aov()` in R. For three or more groups, you must use ANOVA.
+
+## Writing ANOVA Hypothesis, Type 1 and 2 Errors
 
 In ANOVA, the hypotheses are:
 
 -   Null Hypothesis (H₀): All group means are equal.
 -   Alternative Hypothesis (H₁): At least one group mean is different.
 
-Type 1 Error: Rejecting the null hypothesis when it is true (false positive).\
+Type 1 Error: Rejecting the null hypothesis when it is true (false positive).  
 Type 2 Error: Failing to reject the null hypothesis when it is false (false negative).
 
-### Assumptions of ANOVA
+## Assumptions of ANOVA
 
 1.  The dependent variable is measured on an interval or ratio scale.
 2.  The independent variable is categorical.
@@ -46,135 +50,47 @@ Type 2 Error: Failing to reject the null hypothesis when it is false (false nega
 4.  Normal distribution of the dependent variable.
 5.  Homogeneity of variance.
 
+> **💡 R Tip**: You can check ANOVA assumptions in R (for more detail on assumption checking, see the [Preliminaries](preliminaries.qmd#taking-your-data-on-a-date-exploratory-data-analysis) lecture):
+> - **Normality**: `shapiro.test()` on residuals or Q-Q plot
+> - **Homogeneity of variance**: `leveneTest()` from the car package
+> - **Visual checks**: Residual plots using `plot(model)`
+
 <iframe src="http://modeling.nursing.uc.edu/anova_app_2/" width="100%" height="1000px">
 
 </iframe>
 
-### Visualizing Using Boxplots
+## Visualizing Using Boxplots
 
 Boxplots are essential for visualizing data distribution across groups in ANOVA.
 
-<details>
+```{r, eval=FALSE}
+# Example boxplot in R
+data <- data.frame(
+  group = rep(c("Placebo", "Behavioral", "Drug"), each = 10),
+  stress = c(rnorm(10, 5, 1), rnorm(10, 7, 1), rnorm(10, 6, 1))
+)
 
-<summary>JMP Instructions:</summary>
+# Basic boxplot
+boxplot(stress ~ group, 
+        data = data, 
+        main = "Boxplot of Stress Scores",
+        xlab = "Group", 
+        ylab = "Stress Score",
+        col = c("lightblue", "lightgreen", "lightcoral"))
 
-<ul>
-
-<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
-
-<li>Select your categorical variable for the x-axis and your continuous variable for the y-axis.</li>
-
-<li>Click <code>Box Plot</code> in the ribbon to display.</li>
-
-<li>Click <code>Done</code> to finalize.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Example boxplot in R
-        data <- data.frame(
-          group = rep(c("Placebo", "Behavioral", "Drug"), each = 10),
-          stress = c(rnorm(10, 5, 1), rnorm(10, 7, 1), rnorm(10, 6, 1))
-        )
-        boxplot(stress ~ group, data = data, main = "Boxplot of Stress Scores",
-                xlab = "Group", ylab = "Stress Score")
-      </pre>
+# Add individual points
+stripchart(stress ~ group, 
+           data = data, 
+           vertical = TRUE, 
+           method = "jitter",
+           add = TRUE, 
+           pch = 19, 
+           col = "darkgray")
 ```
-</li>
 
-</ul>
+> **💡 R Tip**: The formula `stress ~ group` means "stress by group". The `~` symbol separates the dependent variable (left) from the independent variable (right).
 
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-  # Example boxplot in Python
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
-import numpy as np
-
-        # Generate data
-data = pd.DataFrame({
-"group": np.repeat(["Placebo", "Behavioral", "Drug"], 10),
-"stress": np.concatenate([np.random.normal(5, 1, 10),
-np.random.normal(7, 1, 10),
-np.random.normal(6, 1, 10)])
-        })
-
-        # Boxplot
-sns.boxplot(x="group", y="stress", data=data)
-plt.title("Boxplot of Stress Scores")
-plt.xlabel("Group")
-plt.ylabel("Stress Score")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Descriptive Statistics</code> \> <code>Explore</code>.</li>
-
-<li>Select your categorical variable as the factor and continuous variable as the dependent list.</li>
-
-<li>Click <code>Plots</code>, check <code>Boxplots</code>, and click <code>Continue</code>.</li>
-
-<li>Click <code>OK</code> to generate the boxplot.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Example boxplot in Stata
-        sysuse auto, clear
-        graph box price, over(foreign)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-### Calculating Variation and Degrees of Freedom
+## Calculating Variation and Degrees of Freedom
 
 1.  **Sum of Squares Between (SSB):** Variation between groups.
 2.  **Sum of Squares Within (SSW):** Variation within groups.
@@ -184,13 +100,16 @@ plt.show()
     -   $$df_{between} = k - 1$$ (where k is the number of groups)
     -   $$df_{within} = N - k$$ (where N is the total sample size)
 
-### The F Statistic and P-Value
+## The F Statistic and P-Value
 
 The F statistic is calculated using the ratio of mean squares:
 
 $$
 F = \frac{MSB}{MSW}
-$$ - MSB: Mean Square Between - MSW: Mean Square Within
+$$ 
+
+- MSB: Mean Square Between 
+- MSW: Mean Square Within
 
 The p-value is derived from the F distribution, given the degrees of freedom.
 
@@ -200,216 +119,271 @@ The F-distribution is a continuous probability distribution that arises frequent
 
 </iframe>
 
-### Hands-on Example: Interpreting Results
+## Conducting ANOVA in R
 
-<a href="anova_ex1.csv" download>download ex. 1 data (CSV)</a>
+### Basic ANOVA
 
-<details>
+```{r, eval=FALSE}
+# Fit ANOVA model
+model <- aov(stress ~ group, data = data)
 
-<summary>JMP Instructions:</summary>
+# View results
+summary(model)
 
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Y by X</code>.</li>
-
-<li>Select the categorical variable as the x-axis and continuous variable as the y-axis.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle and choose <code>Means/ANOVA</code> to view the results.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Example ANOVA in R
-        model <- aov(stress ~ group, data = data)
-        summary(model)
-      </pre>
+# The output shows:
+# - Df: Degrees of freedom
+# - Sum Sq: Sum of squares
+# - Mean Sq: Mean squares
+# - F value: F statistic
+# - Pr(>F): P-value
 ```
-</li>
 
-</ul>
+> **💡 R Tip**: The `summary()` function on an `aov` object gives you the ANOVA table. Look for the `Pr(>F)` column for the p-value.
 
-</details>
+### Extracting Specific Values
 
-<details>
+```{r, eval=FALSE}
+# Extract F-statistic
+f_stat <- summary(model)[[1]]$`F value`[1]
 
-<summary>Python Code Example:</summary>
+# Extract p-value
+p_value <- summary(model)[[1]]$`Pr(>F)`[1]
 
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Example ANOVA in Python
-        import statsmodels.api as sm
-        from statsmodels.formula.api import ols
-
-        # ANOVA model
-        model = ols('stress ~ group', data=data).fit()
-        anova_table = sm.stats.anova_lm(model, typ=2)
-        print(anova_table)
-      </pre>
+# Print results
+cat("F-statistic:", f_stat, "\n")
+cat("P-value:", p_value, "\n")
 ```
-</li>
 
-</ul>
+### Checking Assumptions
 
-</details>
+```{r, eval=FALSE}
+# Check normality of residuals
+shapiro.test(residuals(model))
 
-<details>
+# Q-Q plot for normality
+qqnorm(residuals(model))
+qqline(residuals(model), col = "red")
 
-<summary>SPSS Instructions:</summary>
+# Check homogeneity of variance (requires car package)
+library(car)
+leveneTest(stress ~ group, data = data)
 
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Compare Means</code> \> <code>One-Way ANOVA</code>.</li>
-
-<li>Select the categorical variable as the factor and continuous variable as the dependent list.</li>
-
-<li>Click <code>Post Hoc</code>, choose <code>Tukey</code>, and click <code>Continue</code>.</li>
-
-<li>Click <code>OK</code> to view the results.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Example ANOVA in Stata
-        oneway stress group, bonferroni
-      </pre>
+# Diagnostic plots
+par(mfrow = c(2, 2))
+plot(model)
+par(mfrow = c(1, 1))
 ```
-</li>
 
-</ul>
+## Post-hoc Analysis
 
-</details>
+Post-hoc analysis is essential in ANOVA to identify specific group differences following the detection of a significant F-statistic. This analysis involves comparing all possible pairs of group means to determine which differences are statistically significant.
 
-### Post-hoc Analysis
+### The Problem of Multiple Comparisons
 
-Post-hoc analysis is essential in ANOVA to identify specific group differences following the detection of a significant F-statistic. This analysis involves comparing all possible pairs of group means to determine which differences are statistically significant. Various post-hoc tests, such as Tukey's HSD or Bonferroni correction, are employed to control for multiple comparisons and mitigate the risk of Type I errors. Careful consideration of the study design and interpretation of post-hoc test results are crucial for drawing meaningful conclusions about group differences.
+When we conduct multiple statistical tests simultaneously, the probability of making at least one **Type I error** (a false positive) increases. This is known as **Alpha Inflation** or the **Family-Wise Error Rate (FWER)**.
 
-#### Tukey HSD vs Bonferroni
+If you conduct one test at $\alpha = 0.05$, there is a 5% chance of a false positive. However, if you compare 3 groups, you have 3 possible pairwise comparisons. The probability of making *at least one* error is:
+$$1 - (1 - 0.05)^3 \approx 0.14 \text{ or 14%}$$
 
-Tukey's Honestly Significant Difference (HSD) test and the Bonferroni correction are both methods used in multiple comparison procedures, particularly in analysis of variance (ANOVA). Tukey's HSD test compares all possible pairwise differences between group means while controlling the overall Type I error rate. It tends to be more powerful than Bonferroni but might be less conservative. The Bonferroni correction adjusts the significance level for each individual comparison to maintain a desired family-wise error rate, making it more conservative but simpler to apply. The choice between the two depends on factors like sample size, number of comparisons, and the balance between Type I and Type II error risks. Ultimately, researchers should consider the specific context and assumptions to determine the most appropriate method.
+To protect against this, we must use one of two strategies:
+
+1.  **Adjust the Alpha ($\alpha$):** Lower the threshold for significance for each individual test (e.g., the Bonferroni method uses $\alpha / \text{number of tests}$).
+2.  **Adjust the P-values:** Keep the $\alpha$ at 0.05 but "penalize" the p-values by making them larger based on the number of comparisons.
+
+### Tukey HSD vs Bonferroni
+
+Tukey's Honestly Significant Difference (HSD) test and the Bonferroni correction are both methods used to manage these multiple comparisons. 
+
+- **Tukey's HSD**: Specifically designed for pairwise comparisons of all group means. It adjusts the p-values and confidence intervals to maintain the family-wise error rate at exactly 0.05.
+- **Bonferroni Correction**: The most conservative method. It simply divides your overall alpha (0.05) by the number of comparisons. For 3 comparisons, you would only call a result significant if $p < 0.0167$.
 
 <iframe src="http://modeling.nursing.uc.edu/anova_app_3/" width="100%" height="850px">
 
 </iframe>
 
-<details>
+### Tukey HSD in R
 
-<summary>JMP Instructions:</summary>
+```{r, eval=FALSE}
+# Tukey HSD post-hoc test
+tukey_result <- TukeyHSD(model)
+print(tukey_result)
 
-<ul>
+# Plot the results
+plot(tukey_result)
 
-<li>Click the red triangle next to your ANOVA results.</li>
-
-<li>Select <code>Tukey HSD</code> under <code>Compare Means</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Tukey HSD in R
-        tukey <- TukeyHSD(model)
-        print(tukey)
-      </pre>
+# The output shows:
+# - diff: Difference in means
+# - lwr, upr: 95% confidence interval
+# - p adj: Adjusted p-value
 ```
-</li>
 
-</ul>
+> **💡 R Tip**: If the confidence interval for a pairwise comparison does not include 0, the difference is statistically significant at the 0.05 level.
 
-</details>
+### Pairwise t-tests with Bonferroni Correction
 
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Tukey HSD in Python
-        from statsmodels.stats.multicomp import pairwise_tukeyhsd
-
-        # Tukey HSD
-        tukey = pairwise_tukeyhsd(data['stress'], data['group'])
-        print(tukey)
-      </pre>
+```{r, eval=FALSE}
+# Pairwise t-tests with Bonferroni adjustment
+pairwise.t.test(data$stress, data$group, p.adjust.method = "bonferroni")
 ```
-</li>
 
-</ul>
+## Comprehensive Example: Complete ANOVA Workflow
 
-</details>
+Let's work through a complete ANOVA analysis from start to finish:
 
-<details>
+```{r}
+# ============================================
+# Complete ANOVA Example
+# Research Question: Does treatment type affect pain reduction?
+# ============================================
 
-<summary>SPSS Instructions:</summary>
+# Step 1: Load required packages
+library(car)  # For Levene's test
 
-<ul>
+# Step 2: Create or read data
+set.seed(456)
+pain_data <- data.frame(
+  patient_id = 1:60,
+  treatment = rep(c("Standard", "Physical Therapy", "Medication"), each = 20),
+  pain_reduction = c(
+    rnorm(20, mean = 2.5, sd = 1.2),  # Standard
+    rnorm(20, mean = 4.2, sd = 1.3),  # Physical Therapy
+    rnorm(20, mean = 3.8, sd = 1.1)   # Medication
+  )
+)
 
-<li>Go to <code>Analyze</code> \> <code>Compare Means</code> \> <code>One-Way ANOVA</code>.</li>
+# Convert treatment to factor
+pain_data$treatment <- factor(pain_data$treatment)
 
-<li>Click <code>Post Hoc</code>, choose <code>Tukey</code>, and click <code>Continue</code>.</li>
+# Step 3: Explore the data
+cat("=== Data Summary ===\n")
+summary(pain_data)
 
-<li>Click <code>OK</code> to view the results.</li>
+cat("\n=== Sample Sizes ===\n")
+table(pain_data$treatment)
 
-</ul>
+cat("\n=== Descriptive Statistics by Group ===\n")
+cat("Means:\n")
+tapply(pain_data$pain_reduction, pain_data$treatment, mean)
 
-</details>
+cat("\nStandard Deviations:\n")
+tapply(pain_data$pain_reduction, pain_data$treatment, sd)
 
-<details>
+# Step 4: Visualize the data
+par(mfrow = c(1, 2))
 
-<summary>Stata Code Example:</summary>
+# Boxplot
+boxplot(pain_reduction ~ treatment,
+        data = pain_data,
+        main = "Pain Reduction by Treatment",
+        xlab = "Treatment",
+        ylab = "Pain Reduction (points)",
+        col = c("lightblue", "lightgreen", "lightcoral"))
 
-<ul>
+# Add points
+stripchart(pain_reduction ~ treatment,
+           data = pain_data,
+           vertical = TRUE,
+           method = "jitter",
+           add = TRUE,
+           pch = 19,
+           col = "darkgray")
 
-<li>
+# Histogram of all data
+hist(pain_data$pain_reduction,
+     main = "Distribution of Pain Reduction",
+     xlab = "Pain Reduction (points)",
+     col = "lightblue",
+     border = "white")
 
-```{=html}
-<pre>
-        // Tukey HSD in Stata
-        oneway stress group, bonferroni
-      </pre>
+par(mfrow = c(1, 1))
+
+# Step 5: Check assumptions
+cat("\n=== Assumption Checks ===\n")
+
+# Normality (overall)
+cat("\nShapiro-Wilk Test for Normality:\n")
+shapiro_test <- shapiro.test(pain_data$pain_reduction)
+print(shapiro_test)
+
+# Homogeneity of variance
+cat("\nLevene's Test for Homogeneity of Variance:\n")
+levene_test <- leveneTest(pain_reduction ~ treatment, data = pain_data)
+print(levene_test)
+
+# Step 6: Conduct ANOVA
+cat("\n=== ANOVA Results ===\n")
+anova_model <- aov(pain_reduction ~ treatment, data = pain_data)
+anova_summary <- summary(anova_model)
+print(anova_summary)
+
+# Extract key values
+f_value <- anova_summary[[1]]$`F value`[1]
+p_value <- anova_summary[[1]]$`Pr(>F)`[1]
+
+cat("\nF-statistic:", round(f_value, 3), "\n")
+cat("P-value:", format.pval(p_value, digits = 3), "\n")
+
+# Step 7: Check model diagnostics
+cat("\n=== Model Diagnostics ===\n")
+par(mfrow = c(2, 2))
+plot(anova_model)
+par(mfrow = c(1, 1))
+
+# Step 8: Post-hoc tests (if ANOVA is significant)
+if (p_value < 0.05) {
+  cat("\n=== Post-hoc Analysis (Tukey HSD) ===\n")
+  tukey_results <- TukeyHSD(anova_model)
+  print(tukey_results)
+  
+  # Plot Tukey results
+  plot(tukey_results, las = 1)
+  
+  cat("\n=== Pairwise Comparisons (Bonferroni) ===\n")
+  pairwise_results <- pairwise.t.test(pain_data$pain_reduction, 
+                                       pain_data$treatment, 
+                                       p.adjust.method = "bonferroni")
+  print(pairwise_results)
+} else {
+  cat("\nANOVA not significant (p >= 0.05). Post-hoc tests not needed.\n")
+}
+
+# Step 9: Effect size (eta-squared)
+ss_between <- anova_summary[[1]]$`Sum Sq`[1]
+ss_total <- sum(anova_summary[[1]]$`Sum Sq`)
+eta_squared <- ss_between / ss_total
+
+cat("\n=== Effect Size ===\n")
+cat("Eta-squared:", round(eta_squared, 3), "\n")
+cat("Interpretation: ", 
+    ifelse(eta_squared < 0.01, "negligible",
+           ifelse(eta_squared < 0.06, "small",
+                  ifelse(eta_squared < 0.14, "medium", "large"))), "\n")
+
+# Step 10: Report results
+cat("\n=== Summary for Reporting ===\n")
+cat("A one-way ANOVA was conducted to compare pain reduction across three treatment groups.\n")
+cat("The ANOVA was", ifelse(p_value < 0.05, "significant", "not significant"), 
+    sprintf("F(%d, %d) = %.2f, p %s.\n",
+            anova_summary[[1]]$Df[1],
+            anova_summary[[1]]$Df[2],
+            f_value,
+            ifelse(p_value < 0.001, "< .001", paste("=", round(p_value, 3)))))
+
+if (p_value < 0.05) {
+  cat("Post-hoc comparisons using Tukey HSD indicated significant differences between groups.\n")
+}
+
+cat("\n=== Analysis Complete ===\n")
 ```
-</li>
 
-</ul>
+## Key Takeaways
 
-</details>
+✅ ANOVA tests if means differ across 3+ groups  
+✅ Check assumptions before running ANOVA (normality, homogeneity of variance)  
+✅ Use `aov()` function in R with formula notation `outcome ~ group`  
+✅ If significant, conduct post-hoc tests to identify which groups differ  
+✅ Tukey HSD controls for multiple comparisons  
+✅ Always visualize your data with boxplots before and after analysis  
+✅ Report F-statistic, degrees of freedom, and p-value  
+
+> **💡 R Tip**: Save your ANOVA model as an object (`model <- aov(...)`). You can then use this object for post-hoc tests, diagnostic plots, and extracting results without re-running the analysis!

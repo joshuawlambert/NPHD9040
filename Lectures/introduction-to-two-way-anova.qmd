@@ -5,9 +5,9 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true
-    css: styles.css
+    css: ../styles.css
 editor: 
   markdown: 
     wrap: 72
@@ -227,36 +227,7 @@ sample size per group.
     -   Diet (Control, Low-Fat, High-Fat)
 -   **Response Variable:** Blood Pressure Levels
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your continuous response variable and move it to the
-<code>Y</code> column.</li>
-
-<li>For Construct Model Effects, add both factors and their
-interaction.</li>
-
-<li>Click <code>Run</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Example in R
 # Simulated data
 set.seed(123)
@@ -269,102 +240,7 @@ data <- data.frame(
 # Two-Way ANOVA
 model <- aov(BP ~ Dosage * Diet, data = data)
 summary(model)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example in Python
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Simulated data
-np.random.seed(123)
-data = pd.DataFrame({
-  'Dosage': pd.Categorical(['Low'] * 30 + ['Medium'] * 30 + ['High'] * 30),
-  'Diet': pd.Categorical(['Control', 'Low-Fat', 'High-Fat'] * 30),
-  'BP': np.random.normal(loc=[120, 115, 130], scale=10, size=90)
-})
-
-# Two-Way ANOVA
-model = ols('BP ~ Dosage * Diet', data=data).fit()
-anova_table = sm.stats.anova_lm(model, typ=2)
-print(anova_table)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
-<code>Univariate</code>.</li>
-
-<li>Select your continuous dependent variable and move it to the
-<code>Dependent Variable</code> box.</li>
-
-<li>Select both factors and move them to the <code>Fixed Factors</code>
-box.</li>
-
-<li>Click <code>Model</code> and specify the interaction between the two
-factors.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-* Example in Stata
-clear
-set seed 123
-
-* Simulated data
-set obs 90
-gen Dosage = cond(mod(_n, 3) == 1, "Low", cond(mod(_n, 3) == 2, "Medium", "High"))
-gen Diet = cond(_n <= 30, "Control", cond(_n <= 60, "Low-Fat", "High-Fat"))
-gen BP = rnormal(cond(mod(_n, 3) == 1, 120, cond(mod(_n, 3) == 2, 115, 130)), 10)
-
-* Two-Way ANOVA
-anova BP Dosage##Diet
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Example 2: Nursing Intervention and Patient Demographics
 
@@ -375,36 +251,7 @@ anova BP Dosage##Diet
     -   Gender (Male, Female)
 -   **Response Variable:** Recovery Time
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your continuous response variable and move it to the
-<code>Y</code> column.</li>
-
-<li>For Construct Model Effects, add both factors and their
-interaction.</li>
-
-<li>Click <code>Run</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
+```{r, eval=FALSE}
 # Example in R
 # Simulated data
 set.seed(456)
@@ -417,99 +264,5 @@ data2 <- data.frame(
 # Two-Way ANOVA
 model2 <- aov(RecoveryTime ~ Intervention * Gender, data = data2)
 summary(model2)
-      </pre>
 ```
-</li>
 
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-# Example in Python
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.formula.api import ols
-
-# Simulated data
-np.random.seed(456)
-data2 = pd.DataFrame({
-  'Intervention': pd.Categorical(['Control'] * 50 + ['Intensive'] * 50),
-  'Gender': pd.Categorical(['Male', 'Female'] * 50),
-  'RecoveryTime': np.random.normal(loc=[14, 12], scale=3, size=100)
-})
-
-# Two-Way ANOVA
-model2 = ols('RecoveryTime ~ Intervention * Gender', data=data2).fit()
-anova_table2 = sm.stats.anova_lm(model2, typ=2)
-print(anova_table2)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>General Linear Model</code> \>
-<code>Univariate</code>.</li>
-
-<li>Select your continuous dependent variable and move it to the
-<code>Dependent Variable</code> box.</li>
-
-<li>Select both factors and move them to the <code>Fixed Factors</code>
-box.</li>
-
-<li>Click <code>Model</code> and specify the interaction between the two
-factors.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-* Example in Stata
-clear
-set seed 456
-
-* Simulated data
-set obs 100
-gen Intervention = cond(_n <= 50, "Control", "Intensive")
-gen Gender = cond(mod(_n, 2) == 0, "Female", "Male")
-gen RecoveryTime = rnormal(cond(_n <= 50, 14, 12), 3)
-
-* Two-Way ANOVA
-anova RecoveryTime Intervention##Gender
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>

@@ -6,9 +6,9 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true
-    css: styles.css
+    css: ../styles.css
 editor: 
   markdown: 
     wrap: 72
@@ -165,245 +165,21 @@ based on criteria like AIC, BIC, or p-values.
 
 ### Example 1: Predicting Diabetes
 
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Logistic Regression in R
+```{r, eval=FALSE}
+# Logistic Regression in R
         data <- read.csv("health_data.csv")
         model <- glm(Diabetes ~ Age + BMI, data = data, family = "binomial")
         summary(model)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Logistic Regression in Python
-        import pandas as pd
-        import statsmodels.api as sm
-
-        data = pd.read_csv("health_data.csv")
-        X = data[['Age', 'BMI']]
-        X = sm.add_constant(X)
-        y = data['Diabetes']
-
-        model = sm.Logit(y, X)
-        result = model.fit()
-        print(result.summary())
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Logistic Regression in Stata
-        import delimited health_data.csv
-        logit Diabetes Age BMI
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        * Logistic Regression in SPSS.
-        GET DATA /TYPE = TXT /FILE = 'health_data.csv' /DELCASE = LINE /DELIMITERS = ",".
-        LOGISTIC REGRESSION VARIABLES Diabetes
-        /METHOD = ENTER Age BMI.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your binary outcome variable (e.g., Diabetes) and move it to
-the <code>Y</code> column.</li>
-
-<li>Select your predictor variables (e.g., Age, BMI) and move them to
-the <code>Construct Model Effects</code> column.</li>
-
-<li>Choose <code>Generalized Linear Model</code> and set the
-Distribution to <code>Binomial</code> with a <code>Logit</code> link
-function.</li>
-
-<li>Click <code>Run</code>.</li>
-
-</ul>
-
-</details>
 
 ### Example 2: Predicting Heart Disease
 
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Logistic Regression in R
+```{r, eval=FALSE}
+# Logistic Regression in R
         data <- read.csv("heart_data.csv")
         model <- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = "binomial")
         summary(model)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Logistic Regression in Python
-        import pandas as pd
-        import statsmodels.api as sm
-
-        data = pd.read_csv("heart_data.csv")
-        X = data[['Age', 'Cholesterol', 'Smoking']]
-        X = sm.add_constant(X)
-        y = data['HeartDisease']
-
-        model = sm.Logit(y, X)
-        result = model.fit()
-        print(result.summary())
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Stata Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        // Logistic Regression in Stata
-        import delimited heart_data.csv
-        logit HeartDisease Age Cholesterol Smoking
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        * Logistic Regression in SPSS.
-        GET DATA /TYPE = TXT /FILE = 'heart_data.csv' /DELCASE = LINE /DELIMITERS = ",".
-        LOGISTIC REGRESSION VARIABLES HeartDisease
-        /METHOD = ENTER Age Cholesterol Smoking.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
-
-<li>Select your binary outcome variable (e.g., HeartDisease) and move it
-to the <code>Y</code> column.</li>
-
-<li>Select your predictor variables (e.g., Age, Cholesterol, Smoking)
-and move them to the <code>Construct Model Effects </code> column.</li>
-
-<li>Choose <code>Generalized Linear Model</code> and set the
-Distribution to <code>Binomial</code> with a <code>Logit</code> link
-function.</li>
-
-<li>Click <code>Run</code>.</li>
-
-</ul>
-
-</details>
 
 ## Conclusion
 

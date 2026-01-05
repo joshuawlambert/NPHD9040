@@ -23,7 +23,30 @@ Feel free to reach out to me with any questions or concerns. I'm here to help yo
 
 ## Overview of NPHD9040
 
-NPHD9040 is designed to provide an in-depth exploration of advanced statistical methods relevant to healthcare research. The course emphasizes practical applications using statistical software such as JMP and R. Topics include:
+NPHD9040 is designed to provide an in-depth exploration of advanced statistical methods relevant to healthcare research. **The course uses R statistical software** for all analyses, emphasizing practical applications and reproducible research. Topics include:
+
+## Getting Started with R
+
+**New to R?** Start here! We've created a comprehensive guide to help you get up and running with R and RStudio:
+
+### [📘 Getting Started with R](Lectures/getting-started-with-r.qmd)
+
+This module covers everything you need to know:
+- Installing R and RStudio
+- Navigating the RStudio interface  
+- R fundamentals (objects, data types, functions)
+- Importing and manipulating data
+- Using R packages
+- Getting help and troubleshooting
+
+### Download R and RStudio
+
+1. **Download R**: [https://cran.r-project.org/](https://cran.r-project.org/)
+2. **Download RStudio**: [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)
+
+> **💡 Tip**: Install R first, then RStudio. Both are completely free!
+
+## Course Topics
 
 ### [Preliminaries](Lectures/preliminaries.qmd)
 

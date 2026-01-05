@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr.&nbsp;Joshua Lambert">
+
+<title>Getting Started with R – NPHD 9040 – Applied Multivariable Analysis with R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-edea2f37dd155b60faf08ba51f9639de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">NPHD 9040 – Applied Multivariable Analysis with R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Other/syl.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="../Lectures/getting-started-with-r.html">
+ <span class="dropdown-text">Getting Started with R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/preliminaries.html">
+ <span class="dropdown-text">Preliminaries</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/graphing-your-data.html">
+ <span class="dropdown-text">Graphing Your Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/introduction-to-anova.html">
+ <span class="dropdown-text">Introduction to ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/introduction-to-ancova.html">
+ <span class="dropdown-text">Introduction to ANCOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/introduction-to-two-way-anova.html">
+ <span class="dropdown-text">Introduction to Two-Way ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/introduction-to-repeated-measures-anova.html">
+ <span class="dropdown-text">Introduction to Repeated Measures ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/introduction-to-simple-linear-regression.html">
+ <span class="dropdown-text">Introduction to Simple Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/introduction-to-multiple-linear-regression.html">
+ <span class="dropdown-text">Introduction to Multiple Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/introduction-to-logistic-regression.html">
+ <span class="dropdown-text">Introduction to Logistic Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Lectures/QI_and_EBP.html">
+ <span class="dropdown-text">Q&amp;A for EBP and QI Projects</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-flashcards" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Flashcards</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-flashcards">    
+        <li>
+    <a class="dropdown-item" href="../Flashcards/flashcards_anova.html">
+ <span class="dropdown-text">ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Flashcards/flashcards_2wanova.html">
+ <span class="dropdown-text">2-Way ANOVA</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../Assignments/assign_list.html"> 
+<span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Other/aboutDrL.html"> 
+<span class="menu-text">About Dr.&nbsp;L</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#getting-started-with-r" id="toc-getting-started-with-r" class="nav-link active" data-scroll-target="#getting-started-with-r">Getting Started with R</a>
+  <ul class="collapse">
+  <li><a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a></li>
+  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio" class="nav-link" data-scroll-target="#installing-r-and-rstudio">Installing R and RStudio</a>
+  <ul class="collapse">
+  <li><a href="#step-1-install-r" id="toc-step-1-install-r" class="nav-link" data-scroll-target="#step-1-install-r">Step 1: Install R</a></li>
+  <li><a href="#step-2-install-rstudio" id="toc-step-2-install-rstudio" class="nav-link" data-scroll-target="#step-2-install-rstudio">Step 2: Install RStudio</a></li>
+  </ul></li>
+  <li><a href="#understanding-the-rstudio-interface" id="toc-understanding-the-rstudio-interface" class="nav-link" data-scroll-target="#understanding-the-rstudio-interface">Understanding the RStudio Interface</a>
+  <ul class="collapse">
+  <li><a href="#script-editor-top-left" id="toc-script-editor-top-left" class="nav-link" data-scroll-target="#script-editor-top-left">1. Script Editor (Top Left)</a></li>
+  <li><a href="#console-bottom-left" id="toc-console-bottom-left" class="nav-link" data-scroll-target="#console-bottom-left">2. Console (Bottom Left)</a></li>
+  <li><a href="#environmenthistory-top-right" id="toc-environmenthistory-top-right" class="nav-link" data-scroll-target="#environmenthistory-top-right">3. Environment/History (Top Right)</a></li>
+  <li><a href="#filesplotspackageshelp-bottom-right" id="toc-filesplotspackageshelp-bottom-right" class="nav-link" data-scroll-target="#filesplotspackageshelp-bottom-right">4. Files/Plots/Packages/Help (Bottom Right)</a></li>
+  </ul></li>
+  <li><a href="#r-basics" id="toc-r-basics" class="nav-link" data-scroll-target="#r-basics">R Basics</a>
+  <ul class="collapse">
+  <li><a href="#the-assignment-operator" id="toc-the-assignment-operator" class="nav-link" data-scroll-target="#the-assignment-operator">The Assignment Operator</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data Frames</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  </ul></li>
+  <li><a href="#working-with-data" id="toc-working-with-data" class="nav-link" data-scroll-target="#working-with-data">Working with Data</a>
+  <ul class="collapse">
+  <li><a href="#setting-your-working-directory" id="toc-setting-your-working-directory" class="nav-link" data-scroll-target="#setting-your-working-directory">Setting Your Working Directory</a></li>
+  <li><a href="#reading-data-from-csv-files" id="toc-reading-data-from-csv-files" class="nav-link" data-scroll-target="#reading-data-from-csv-files">Reading Data from CSV Files</a></li>
+  <li><a href="#reading-data-from-excel-files" id="toc-reading-data-from-excel-files" class="nav-link" data-scroll-target="#reading-data-from-excel-files">Reading Data from Excel Files</a></li>
+  </ul></li>
+  <li><a href="#basic-data-manipulation" id="toc-basic-data-manipulation" class="nav-link" data-scroll-target="#basic-data-manipulation">Basic Data Manipulation</a>
+  <ul class="collapse">
+  <li><a href="#subsetting-data" id="toc-subsetting-data" class="nav-link" data-scroll-target="#subsetting-data">Subsetting Data</a></li>
+  <li><a href="#creating-new-variables" id="toc-creating-new-variables" class="nav-link" data-scroll-target="#creating-new-variables">Creating New Variables</a></li>
+  <li><a href="#basic-transformations" id="toc-basic-transformations" class="nav-link" data-scroll-target="#basic-transformations">Basic Transformations</a></li>
+  </ul></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">R Packages</a>
+  <ul class="collapse">
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing Packages</a></li>
+  <li><a href="#loading-packages" id="toc-loading-packages" class="nav-link" data-scroll-target="#loading-packages">Loading Packages</a></li>
+  <li><a href="#commonly-used-packages-in-this-course" id="toc-commonly-used-packages-in-this-course" class="nav-link" data-scroll-target="#commonly-used-packages-in-this-course">Commonly Used Packages in This Course</a></li>
+  </ul></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a>
+  <ul class="collapse">
+  <li><a href="#built-in-help" id="toc-built-in-help" class="nav-link" data-scroll-target="#built-in-help">Built-in Help</a></li>
+  <li><a href="#understanding-error-messages" id="toc-understanding-error-messages" class="nav-link" data-scroll-target="#understanding-error-messages">Understanding Error Messages</a></li>
+  <li><a href="#online-resources" id="toc-online-resources" class="nav-link" data-scroll-target="#online-resources">Online Resources</a></li>
+  </ul></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a>
+  <ul class="collapse">
+  <li><a href="#comment-your-code" id="toc-comment-your-code" class="nav-link" data-scroll-target="#comment-your-code">1. Comment Your Code</a></li>
+  <li><a href="#use-meaningful-names" id="toc-use-meaningful-names" class="nav-link" data-scroll-target="#use-meaningful-names">2. Use Meaningful Names</a></li>
+  <li><a href="#organize-your-scripts" id="toc-organize-your-scripts" class="nav-link" data-scroll-target="#organize-your-scripts">3. Organize Your Scripts</a></li>
+  <li><a href="#save-your-work" id="toc-save-your-work" class="nav-link" data-scroll-target="#save-your-work">4. Save Your Work</a></li>
+  </ul></li>
+  <li><a href="#comprehensive-example-complete-data-analysis-workflow" id="toc-comprehensive-example-complete-data-analysis-workflow" class="nav-link" data-scroll-target="#comprehensive-example-complete-data-analysis-workflow">Comprehensive Example: Complete Data Analysis Workflow</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next Steps</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Getting Started with R</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Joshua Lambert </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="getting-started-with-r" class="level1">
+<h1>Getting Started with R</h1>
+<p>Welcome to R! This guide will help you get started with R and RStudio, even if you have no prior programming experience. R is a powerful, free statistical software that is widely used in research, including nursing and healthcare.</p>
+<section id="why-r" class="level2">
+<h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
+<p>R offers several advantages for nursing research:</p>
+<ul>
+<li><strong>Free and Open Source</strong>: No licensing fees, available to everyone</li>
+<li><strong>Powerful</strong>: Can handle simple to complex statistical analyses</li>
+<li><strong>Reproducible</strong>: Your analysis is documented in code, making it easy to replicate</li>
+<li><strong>Widely Used</strong>: Large community of users and extensive online resources</li>
+<li><strong>Flexible</strong>: Can create publication-quality graphics and reports</li>
+</ul>
+</section>
+<section id="installing-r-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="installing-r-and-rstudio">Installing R and RStudio</h2>
+<p>You’ll need to install two programs: R (the statistical software) and RStudio (a user-friendly interface for R).</p>
+<section id="step-1-install-r" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-install-r">Step 1: Install R</h3>
+<ol type="1">
+<li>Go to <a href="https://cran.r-project.org/">https://cran.r-project.org/</a></li>
+<li>Click on the download link for your operating system:
+<ul>
+<li><strong>Windows</strong>: Click “Download R for Windows” → “base” → Download the latest version</li>
+<li><strong>Mac</strong>: Click “Download R for macOS” → Download the appropriate version for your Mac</li>
+</ul></li>
+<li>Run the installer and follow the default installation options</li>
+</ol>
+</section>
+<section id="step-2-install-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-rstudio">Step 2: Install RStudio</h3>
+<ol type="1">
+<li>Go to <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a></li>
+<li>Click “Download RStudio Desktop” (the free version)</li>
+<li>Run the installer and follow the default installation options</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: Always install R <em>before</em> RStudio. RStudio needs R to be installed first to work properly.</p>
+</blockquote>
+</section>
+</section>
+<section id="understanding-the-rstudio-interface" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-rstudio-interface">Understanding the RStudio Interface</h2>
+<p>When you open RStudio, you’ll see four main panes:</p>
+<section id="script-editor-top-left" class="level3">
+<h3 class="anchored" data-anchor-id="script-editor-top-left">1. Script Editor (Top Left)</h3>
+<ul>
+<li>Where you write and save your R code</li>
+<li>Create a new script: File → New File → R Script</li>
+<li>Save your work here for future use</li>
+</ul>
+</section>
+<section id="console-bottom-left" class="level3">
+<h3 class="anchored" data-anchor-id="console-bottom-left">2. Console (Bottom Left)</h3>
+<ul>
+<li>Where R executes commands and displays results</li>
+<li>You can type commands directly here, but they won’t be saved</li>
+<li>Output and messages appear here</li>
+</ul>
+</section>
+<section id="environmenthistory-top-right" class="level3">
+<h3 class="anchored" data-anchor-id="environmenthistory-top-right">3. Environment/History (Top Right)</h3>
+<ul>
+<li><strong>Environment</strong>: Shows all objects (data, variables) currently in memory</li>
+<li><strong>History</strong>: Shows all commands you’ve run</li>
+</ul>
+</section>
+<section id="filesplotspackageshelp-bottom-right" class="level3">
+<h3 class="anchored" data-anchor-id="filesplotspackageshelp-bottom-right">4. Files/Plots/Packages/Help (Bottom Right)</h3>
+<ul>
+<li><strong>Files</strong>: Browse files on your computer</li>
+<li><strong>Plots</strong>: View graphs and visualizations</li>
+<li><strong>Packages</strong>: Manage R packages (extensions)</li>
+<li><strong>Help</strong>: Access documentation</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: You can customize the pane layout in Tools → Global Options → Pane Layout.</p>
+</blockquote>
+</section>
+</section>
+<section id="r-basics" class="level2">
+<h2 class="anchored" data-anchor-id="r-basics">R Basics</h2>
+<section id="the-assignment-operator" class="level3">
+<h3 class="anchored" data-anchor-id="the-assignment-operator">The Assignment Operator</h3>
+<p>In R, we use <code>&lt;-</code> to assign values to objects (variables):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the value 5 to an object called 'x'</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the value of x</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also use = for assignment, but &lt;- is preferred in R</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: The keyboard shortcut for <code>&lt;-</code> is Alt + - (Windows) or Option + - (Mac).</p>
+</blockquote>
+</section>
+<section id="data-types" class="level3">
+<h3 class="anchored" data-anchor-id="data-types">Data Types</h3>
+<p>R has several basic data types:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric (numbers)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fl">68.5</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Character (text - always in quotes)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">"Patient A"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>diagnosis <span class="ot">&lt;-</span> <span class="st">"Hypertension"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical (TRUE or FALSE)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>is_smoker <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>has_diabetes <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the type of an object</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(is_smoker)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+</section>
+<section id="vectors" class="level3">
+<h3 class="anchored" data-anchor-id="vectors">Vectors</h3>
+<p>Vectors are collections of values of the same type. We create them using <code>c()</code> (combine):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric vector</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">34</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">67</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25 34 45 56 67</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Character vector</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>treatments <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>, <span class="st">"Drug B"</span>, <span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>treatments</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Placebo" "Drug A"  "Drug B"  "Placebo" "Drug A" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access individual elements using brackets []</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ages[<span class="dv">1</span>]  <span class="co"># First element</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ages[<span class="dv">3</span>]  <span class="co"># Third element</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 45</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access multiple elements</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ages[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]  <span class="co"># First, third, and fifth elements</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25 45 67</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: R uses 1-based indexing, meaning the first element is at position 1 (not 0 like some other languages).</p>
+</blockquote>
+</section>
+<section id="data-frames" class="level3">
+<h3 class="anchored" data-anchor-id="data-frames">Data Frames</h3>
+<p>Data frames are like spreadsheets - they have rows and columns. This is how we typically work with data in R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple data frame</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>patient_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">34</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">67</span>),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>, <span class="st">"Drug B"</span>, <span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">5.5</span>, <span class="fl">6.9</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>patient_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id age treatment outcome
+1          1  25   Placebo     5.2
+2          2  34    Drug A     6.8
+3          3  45    Drug B     7.1
+4          4  56   Placebo     5.5
+5          5  67    Drug A     6.9</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure of the data frame</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(patient_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   5 obs. of  4 variables:
+ $ patient_id: num  1 2 3 4 5
+ $ age       : num  25 34 45 56 67
+ $ treatment : chr  "Placebo" "Drug A" "Drug B" "Placebo" ...
+ $ outcome   : num  5.2 6.8 7.1 5.5 6.9</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first few rows</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(patient_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id age treatment outcome
+1          1  25   Placebo     5.2
+2          2  34    Drug A     6.8
+3          3  45    Drug B     7.1
+4          4  56   Placebo     5.5
+5          5  67    Drug A     6.9</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a column using $</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>age</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25 34 45 56 67</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a column using brackets</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>patient_data[, <span class="st">"treatment"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Placebo" "Drug A"  "Drug B"  "Placebo" "Drug A" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a specific cell [row, column]</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>patient_data[<span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Row 2, Column 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Drug A"</code></pre>
+</div>
+</div>
+</section>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">Functions</h3>
+<p>Functions perform operations. They have a name followed by parentheses containing arguments:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean (average)</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 45.4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard deviation</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.772</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 45</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   25.0    34.0    45.0    45.4    56.0    67.0 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count number of elements</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a table of frequencies</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(treatments)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>treatments
+ Drug A  Drug B Placebo 
+      2       1       2 </code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: To learn about any function, type <code>?function_name</code> in the console (e.g., <code>?mean</code>).</p>
+</blockquote>
+</section>
+</section>
+<section id="working-with-data" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-data">Working with Data</h2>
+<section id="setting-your-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="setting-your-working-directory">Setting Your Working Directory</h3>
+<p>The working directory is where R looks for files and saves output:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check current working directory</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set working directory (use your own path)</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Documents/R_Projects"</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use Session → Set Working Directory → Choose Directory in RStudio</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: Use forward slashes <code>/</code> in file paths, even on Windows. Or use double backslashes <code>\\</code>.</p>
+</blockquote>
+</section>
+<section id="reading-data-from-csv-files" class="level3">
+<h3 class="anchored" data-anchor-id="reading-data-from-csv-files">Reading Data from CSV Files</h3>
+<p>CSV (Comma-Separated Values) files are common for data storage. There are three main ways to read them:</p>
+<section id="direct-file-path" class="level4">
+<h4 class="anchored" data-anchor-id="direct-file-path">1. Direct File Path</h4>
+<p>Best for reproducibility (your script will always know where to look).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a CSV file by providing the path</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/patient_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="interactive-selection-file.choose" class="level4">
+<h4 class="anchored" data-anchor-id="interactive-selection-file.choose">2. Interactive Selection (file.choose)</h4>
+<p>Useful if you don’t know the exact path or want to “browse” for the file.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This will open a window for you to select the file manually</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.choose</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: <code>file.choose()</code> is great for beginners, but for formal research, typing the path (Method 1) is better because it makes your work “reproducible” - anyone can run your script without having to click through windows.</p>
+</blockquote>
+</section>
+<section id="rstudio-import-dataset-tool" class="level4">
+<h4 class="anchored" data-anchor-id="rstudio-import-dataset-tool">3. RStudio “Import Dataset” Tool</h4>
+<p>The easiest way for beginners. RStudio has a built-in “point-and-click” importer:</p>
+<ol type="1">
+<li>In the <strong>Environment</strong> pane (top right), click <strong>Import Dataset</strong>.</li>
+<li>Select <strong>From Text (base)…</strong> (for CSV) or <strong>From Excel…</strong>.</li>
+<li>Browse to your file.</li>
+<li>Preview the data and check the options (e.g., Heading, Separator).</li>
+<li>Click <strong>Import</strong>.</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: When you use the Import Tool, RStudio actually runs the <code>read.csv()</code> or <code>read_excel()</code> code in the console. You should copy that code and paste it into your script so you can re-run it later!</p>
+</blockquote>
+</section>
+<section id="examining-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="examining-the-data">Examining the Data</h4>
+<p>Once imported, always check your data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_data)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the structure (variable names and types)</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(my_data)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View the entire dataset in a spreadsheet-like viewer</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(my_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="reading-data-from-excel-files" class="level3">
+<h3 class="anchored" data-anchor-id="reading-data-from-excel-files">Reading Data from Excel Files</h3>
+<p>To read Excel files, you need the <code>readxl</code> package:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the package (only needed once)</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package (needed each session)</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read an Excel file</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data_file.xlsx"</span>)</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a specific sheet</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data_file.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Sheet1"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="basic-data-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="basic-data-manipulation">Basic Data Manipulation</h2>
+<section id="subsetting-data" class="level3">
+<h3 class="anchored" data-anchor-id="subsetting-data">Subsetting Data</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create example data</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>patient_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">34</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">67</span>, <span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">78</span>, <span class="dv">34</span>),</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>), <span class="dv">5</span>),</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">5.5</span>, <span class="fl">6.9</span>, <span class="fl">5.0</span>, <span class="fl">7.2</span>, <span class="fl">6.5</span>, <span class="fl">7.8</span>, <span class="fl">6.2</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Select specific columns</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>patient_data[, <span class="fu">c</span>(<span class="st">"patient_id"</span>, <span class="st">"age"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   patient_id age
+1           1  25
+2           2  34
+3           3  45
+4           4  56
+5           5  67
+6           6  23
+7           7  45
+8           8  56
+9           9  78
+10         10  34</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select rows where age &gt; 40</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>patient_data[patient_data<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">40</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id age treatment outcome
+3          3  45   Placebo     7.1
+4          4  56    Drug A     5.5
+5          5  67   Placebo     6.9
+7          7  45   Placebo     7.2
+8          8  56    Drug A     6.5
+9          9  78   Placebo     7.8</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using subset() function (easier to read)</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(patient_data, age <span class="sc">&gt;</span> <span class="dv">40</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id age treatment outcome
+3          3  45   Placebo     7.1
+4          4  56    Drug A     5.5
+5          5  67   Placebo     6.9
+7          7  45   Placebo     7.2
+8          8  56    Drug A     6.5
+9          9  78   Placebo     7.8</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select specific columns for subset</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(patient_data, age <span class="sc">&gt;</span> <span class="dv">40</span>, <span class="at">select =</span> <span class="fu">c</span>(patient_id, age, outcome))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id age outcome
+3          3  45     7.1
+4          4  56     5.5
+5          5  67     6.9
+7          7  45     7.2
+8          8  56     6.5
+9          9  78     7.8</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-new-variables" class="level3">
+<h3 class="anchored" data-anchor-id="creating-new-variables">Creating New Variables</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(patient_data<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">50</span>, <span class="st">"Older"</span>, <span class="st">"Younger"</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the updated data</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>patient_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   patient_id age treatment outcome age_group
+1           1  25   Placebo     5.2   Younger
+2           2  34    Drug A     6.8   Younger
+3           3  45   Placebo     7.1   Younger
+4           4  56    Drug A     5.5     Older
+5           5  67   Placebo     6.9     Older
+6           6  23    Drug A     5.0   Younger
+7           7  45   Placebo     7.2   Younger
+8           8  56    Drug A     6.5     Older
+9           9  78   Placebo     7.8     Older
+10         10  34    Drug A     6.2   Younger</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable based on calculations</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>outcome_doubled <span class="ot">&lt;-</span> patient_data<span class="sc">$</span>outcome <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>patient_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   patient_id age treatment outcome age_group outcome_doubled
+1           1  25   Placebo     5.2   Younger            10.4
+2           2  34    Drug A     6.8   Younger            13.6
+3           3  45   Placebo     7.1   Younger            14.2
+4           4  56    Drug A     5.5     Older            11.0
+5           5  67   Placebo     6.9     Older            13.8
+6           6  23    Drug A     5.0   Younger            10.0
+7           7  45   Placebo     7.2   Younger            14.4
+8           8  56    Drug A     6.5     Older            13.0
+9           9  78   Placebo     7.8     Older            15.6
+10         10  34    Drug A     6.2   Younger            12.4</code></pre>
+</div>
+</div>
+</section>
+<section id="basic-transformations" class="level3">
+<h3 class="anchored" data-anchor-id="basic-transformations">Basic Transformations</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Log transformation</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>log_outcome <span class="ot">&lt;-</span> <span class="fu">log</span>(patient_data<span class="sc">$</span>outcome)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardization (z-scores)</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>outcome_z <span class="ot">&lt;-</span> <span class="fu">scale</span>(patient_data<span class="sc">$</span>outcome)</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View results</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(patient_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id age treatment outcome age_group outcome_doubled log_outcome
+1          1  25   Placebo     5.2   Younger            10.4    1.648659
+2          2  34    Drug A     6.8   Younger            13.6    1.916923
+3          3  45   Placebo     7.1   Younger            14.2    1.960095
+4          4  56    Drug A     5.5     Older            11.0    1.704748
+5          5  67   Placebo     6.9     Older            13.8    1.931521
+6          6  23    Drug A     5.0   Younger            10.0    1.609438
+   outcome_z
+1 -1.3142022
+2  0.4093417
+3  0.7325061
+4 -0.9910377
+5  0.5170632
+6 -1.5296452</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages">R Packages</h2>
+<p>Packages are collections of functions that extend R’s capabilities. Think of them as apps for R.</p>
+<section id="installing-packages" class="level3">
+<h3 class="anchored" data-anchor-id="installing-packages">Installing Packages</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a package (only needed once)</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install multiple packages at once</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"ggplot2"</span>, <span class="st">"dplyr"</span>, <span class="st">"car"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="loading-packages" class="level3">
+<h3 class="anchored" data-anchor-id="loading-packages">Loading Packages</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a package (needed each time you start R)</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative way to load</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="commonly-used-packages-in-this-course" class="level3">
+<h3 class="anchored" data-anchor-id="commonly-used-packages-in-this-course">Commonly Used Packages in This Course</h3>
+<ul>
+<li><strong>ggplot2</strong>: Advanced data visualization</li>
+<li><strong>car</strong>: Companion to Applied Regression (for ANOVA/regression diagnostics)</li>
+<li><strong>ez</strong>: Easy analysis and visualization of factorial experiments</li>
+<li><strong>pwr</strong>: Power analysis</li>
+<li><strong>readxl</strong>: Reading Excel files</li>
+<li><strong>tidyr</strong>: Data reshaping and tidying</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: You only need to install a package once, but you need to load it with <code>library()</code> every time you start a new R session.</p>
+</blockquote>
+</section>
+</section>
+<section id="getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
+<section id="built-in-help" class="level3">
+<h3 class="anchored" data-anchor-id="built-in-help">Built-in Help</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get help on a function</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>?mean</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for help on a topic</span></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>??regression</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get examples of how to use a function</span></span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="understanding-error-messages" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-error-messages">Understanding Error Messages</h3>
+<p>Don’t panic when you see errors! They’re R’s way of telling you something needs fixing.</p>
+<p><strong>Common errors:</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: object not found</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_variable)</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix: Make sure you've created the object and spelled it correctly</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: could not find function</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunction</span>()</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix: Check spelling, or load the package that contains the function</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: unexpected symbol</span></span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">5</span>  <span class="co"># Space in assignment operator</span></span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix: Remove the space: x &lt;- 5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="online-resources" class="level3">
+<h3 class="anchored" data-anchor-id="online-resources">Online Resources</h3>
+<ul>
+<li><strong>RStudio Cheat Sheets</strong>: <a href="https://posit.co/resources/cheatsheets/">https://posit.co/resources/cheatsheets/</a></li>
+<li><strong>Stack Overflow</strong>: Search for R questions and answers</li>
+<li><strong>R Documentation</strong>: <a href="https://www.rdocumentation.org/">https://www.rdocumentation.org/</a></li>
+<li><strong>Quick-R</strong>: <a href="https://www.statmethods.net/">https://www.statmethods.net/</a></li>
+</ul>
+</section>
+</section>
+<section id="best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
+<section id="comment-your-code" class="level3">
+<h3 class="anchored" data-anchor-id="comment-your-code">1. Comment Your Code</h3>
+<p>Use <code>#</code> to add comments explaining what your code does:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean age of patients</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>mean_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(patient_data<span class="sc">$</span>age)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment - R ignores everything after #</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="use-meaningful-names" class="level3">
+<h3 class="anchored" data-anchor-id="use-meaningful-names">2. Use Meaningful Names</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>patient_age <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>treatment_group <span class="ot">&lt;-</span> <span class="st">"Drug A"</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Not as good</span></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>tg <span class="ot">&lt;-</span> <span class="st">"Drug A"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="organize-your-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="organize-your-scripts">3. Organize Your Scripts</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Project: Blood Pressure Study</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Your Name</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 2026-01-05</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data</span></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>bp_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"blood_pressure.csv"</span>)</span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Data cleaning</span></span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ... your code ...</span></span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis</span></span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ... your code ...</span></span>
+<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ... your code ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="save-your-work" class="level3">
+<h3 class="anchored" data-anchor-id="save-your-work">4. Save Your Work</h3>
+<ul>
+<li>Save your R scripts (File → Save) with a <code>.R</code> extension</li>
+<li>Save your data frames if needed:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save data frame as CSV</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(patient_data, <span class="st">"cleaned_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save R objects</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(patient_data, <span class="at">file =</span> <span class="st">"my_data.RData"</span>)</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load saved R objects</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"my_data.RData"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="comprehensive-example-complete-data-analysis-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="comprehensive-example-complete-data-analysis-workflow">Comprehensive Example: Complete Data Analysis Workflow</h2>
+<p>Let’s put it all together with a complete example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Analyzing Patient Recovery Times</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create sample data (normally you'd read this from a file)</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>recovery_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>,</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">38</span>, <span class="dv">61</span>, <span class="dv">49</span>, <span class="dv">55</span>, <span class="dv">42</span>, <span class="dv">58</span>, <span class="dv">47</span>, <span class="dv">53</span>,</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>          <span class="dv">39</span>, <span class="dv">44</span>, <span class="dv">56</span>, <span class="dv">50</span>, <span class="dv">43</span>, <span class="dv">59</span>, <span class="dv">48</span>, <span class="dv">51</span>, <span class="dv">46</span>, <span class="dv">54</span>,</span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>          <span class="dv">41</span>, <span class="dv">57</span>, <span class="dv">62</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">37</span>, <span class="dv">63</span>, <span class="dv">36</span>, <span class="dv">64</span>, <span class="dv">35</span>),</span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Enhanced"</span>, <span class="st">"Intensive"</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">recovery_days =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">11</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">15</span>,</span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">12</span>,</span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Examine the data</span></span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"First few rows:"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "First few rows:"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(recovery_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  patient_id age treatment recovery_days
+1          1  45  Standard            12
+2          2  52  Standard            15
+3          3  38  Standard            10
+4          4  61  Standard            18
+5          5  49  Standard            14
+6          6  55  Standard            16</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Data structure:"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "\nData structure:"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(recovery_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   30 obs. of  4 variables:
+ $ patient_id   : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ age          : num  45 52 38 61 49 55 42 58 47 53 ...
+ $ treatment    : chr  "Standard" "Standard" "Standard" "Standard" ...
+ $ recovery_days: num  12 15 10 18 14 16 11 17 13 15 ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Summary statistics:"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "\nSummary statistics:"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(recovery_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   patient_id         age         treatment         recovery_days  
+ Min.   : 1.00   Min.   :35.00   Length:30          Min.   : 6.00  
+ 1st Qu.: 8.25   1st Qu.:42.25   Class :character   1st Qu.: 8.00  
+ Median :15.50   Median :49.50   Mode  :character   Median :10.00  
+ Mean   :15.50   Mean   :49.50                      Mean   :10.70  
+ 3rd Qu.:22.75   3rd Qu.:56.75                      3rd Qu.:12.75  
+ Max.   :30.00   Max.   :64.00                      Max.   :18.00  </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Basic descriptive statistics by group</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Mean recovery days by treatment:"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "\nMean recovery days by treatment:"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(recovery_data<span class="sc">$</span>recovery_days, recovery_data<span class="sc">$</span>treatment, mean)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Enhanced Intensive  Standard 
+     10.5       7.5      14.1 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Standard deviation by treatment:"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "\nStandard deviation by treatment:"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(recovery_data<span class="sc">$</span>recovery_days, recovery_data<span class="sc">$</span>treatment, sd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Enhanced Intensive  Standard 
+ 1.581139  1.080123  2.601282 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Create a new variable (age group)</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>recovery_data<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(recovery_data<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">50</span>, <span class="st">"50+"</span>, <span class="st">"Under 50"</span>)</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Create a simple visualization</span></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(recovery_days <span class="sc">~</span> treatment, </span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> recovery_data,</span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Recovery Days by Treatment"</span>,</span>
+<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment Type"</span>,</span>
+<span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Recovery Days"</span>,</span>
+<span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="getting-started-with-r_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For more advanced visualizations, see the [Graphing Your Data](graphing-your-data.qmd) lecture.</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Basic statistical test (we'll learn more about this later)</span></span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA to test if recovery days differ by treatment</span></span>
+<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Learn more in the [Introduction to ANOVA](introduction-to-anova.qmd) lecture.</span></span>
+<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(recovery_days <span class="sc">~</span> treatment, <span class="at">data =</span> recovery_data)</span>
+<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">ANOVA Results:"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "\nANOVA Results:"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)    
+treatment    2  218.4  109.20    31.4  9e-08 ***
+Residuals   27   93.9    3.48                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Save the cleaned data (if this were a real analysis)</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(recovery_data, "recovery_data_cleaned.csv", row.names = FALSE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>You now know how to:</p>
+<p>✅ Install R and RStudio<br>
+✅ Navigate the RStudio interface<br>
+✅ Understand basic R syntax and data types<br>
+✅ Create and manipulate vectors and data frames<br>
+✅ Read data from CSV and Excel files<br>
+✅ Perform basic data manipulation<br>
+✅ Install and load packages<br>
+✅ Get help when you need it<br>
+✅ Follow best practices for reproducible research</p>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next Steps</h2>
+<p>Now that you’re familiar with R basics, you’re ready to move on to the statistical methods covered in this course. Each lecture will build on these foundations, showing you how to use R for specific analyses.</p>
+<blockquote class="blockquote">
+<p><strong>💡 R Tip</strong>: Don’t try to memorize everything! Keep this guide handy as a reference. The more you practice, the more natural R will become.</p>
+</blockquote>
+<p><strong>Happy coding! 🎉</strong></p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb98" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Getting Started with R"</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Dr. Joshua Lambert"</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-title: "Table of Contents"</span></span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
+<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="co">    css: ../styles.css</span></span>
+<span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Getting Started with R</span></span>
+<span id="cb98-14"><a href="#cb98-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-15"><a href="#cb98-15" aria-hidden="true" tabindex="-1"></a>Welcome to R! This guide will help you get started with R and RStudio, even if you have no prior programming experience. R is a powerful, free statistical software that is widely used in research, including nursing and healthcare.</span>
+<span id="cb98-16"><a href="#cb98-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-17"><a href="#cb98-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why R?</span></span>
+<span id="cb98-18"><a href="#cb98-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-19"><a href="#cb98-19" aria-hidden="true" tabindex="-1"></a>R offers several advantages for nursing research:</span>
+<span id="cb98-20"><a href="#cb98-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-21"><a href="#cb98-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Free and Open Source**: No licensing fees, available to everyone</span>
+<span id="cb98-22"><a href="#cb98-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Powerful**: Can handle simple to complex statistical analyses</span>
+<span id="cb98-23"><a href="#cb98-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Reproducible**: Your analysis is documented in code, making it easy to replicate</span>
+<span id="cb98-24"><a href="#cb98-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Widely Used**: Large community of users and extensive online resources</span>
+<span id="cb98-25"><a href="#cb98-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Flexible**: Can create publication-quality graphics and reports</span>
+<span id="cb98-26"><a href="#cb98-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-27"><a href="#cb98-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installing R and RStudio</span></span>
+<span id="cb98-28"><a href="#cb98-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-29"><a href="#cb98-29" aria-hidden="true" tabindex="-1"></a>You'll need to install two programs: R (the statistical software) and RStudio (a user-friendly interface for R).</span>
+<span id="cb98-30"><a href="#cb98-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-31"><a href="#cb98-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 1: Install R</span></span>
+<span id="cb98-32"><a href="#cb98-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-33"><a href="#cb98-33" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Go to <span class="co">[</span><span class="ot">https://cran.r-project.org/</span><span class="co">](https://cran.r-project.org/)</span></span>
+<span id="cb98-34"><a href="#cb98-34" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Click on the download link for your operating system:</span>
+<span id="cb98-35"><a href="#cb98-35" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Windows**: Click "Download R for Windows" → "base" → Download the latest version</span>
+<span id="cb98-36"><a href="#cb98-36" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>**Mac**: Click "Download R for macOS" → Download the appropriate version for your Mac</span>
+<span id="cb98-37"><a href="#cb98-37" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Run the installer and follow the default installation options</span>
+<span id="cb98-38"><a href="#cb98-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-39"><a href="#cb98-39" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 2: Install RStudio</span></span>
+<span id="cb98-40"><a href="#cb98-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-41"><a href="#cb98-41" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Go to <span class="co">[</span><span class="ot">https://posit.co/download/rstudio-desktop/</span><span class="co">](https://posit.co/download/rstudio-desktop/)</span></span>
+<span id="cb98-42"><a href="#cb98-42" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Click "Download RStudio Desktop" (the free version)</span>
+<span id="cb98-43"><a href="#cb98-43" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Run the installer and follow the default installation options</span>
+<span id="cb98-44"><a href="#cb98-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-45"><a href="#cb98-45" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Always install R *before* RStudio. RStudio needs R to be installed first to work properly.</span></span>
+<span id="cb98-46"><a href="#cb98-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-47"><a href="#cb98-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding the RStudio Interface</span></span>
+<span id="cb98-48"><a href="#cb98-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-49"><a href="#cb98-49" aria-hidden="true" tabindex="-1"></a>When you open RStudio, you'll see four main panes:</span>
+<span id="cb98-50"><a href="#cb98-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-51"><a href="#cb98-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Script Editor (Top Left)</span></span>
+<span id="cb98-52"><a href="#cb98-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Where you write and save your R code</span>
+<span id="cb98-53"><a href="#cb98-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a new script: File → New File → R Script</span>
+<span id="cb98-54"><a href="#cb98-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Save your work here for future use</span>
+<span id="cb98-55"><a href="#cb98-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-56"><a href="#cb98-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Console (Bottom Left)</span></span>
+<span id="cb98-57"><a href="#cb98-57" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Where R executes commands and displays results</span>
+<span id="cb98-58"><a href="#cb98-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>You can type commands directly here, but they won't be saved</span>
+<span id="cb98-59"><a href="#cb98-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Output and messages appear here</span>
+<span id="cb98-60"><a href="#cb98-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-61"><a href="#cb98-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Environment/History (Top Right)</span></span>
+<span id="cb98-62"><a href="#cb98-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Environment**: Shows all objects (data, variables) currently in memory</span>
+<span id="cb98-63"><a href="#cb98-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**History**: Shows all commands you've run</span>
+<span id="cb98-64"><a href="#cb98-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-65"><a href="#cb98-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Files/Plots/Packages/Help (Bottom Right)</span></span>
+<span id="cb98-66"><a href="#cb98-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Files**: Browse files on your computer</span>
+<span id="cb98-67"><a href="#cb98-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Plots**: View graphs and visualizations</span>
+<span id="cb98-68"><a href="#cb98-68" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Packages**: Manage R packages (extensions)</span>
+<span id="cb98-69"><a href="#cb98-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Help**: Access documentation</span>
+<span id="cb98-70"><a href="#cb98-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-71"><a href="#cb98-71" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: You can customize the pane layout in Tools → Global Options → Pane Layout.</span></span>
+<span id="cb98-72"><a href="#cb98-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-73"><a href="#cb98-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Basics</span></span>
+<span id="cb98-74"><a href="#cb98-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-75"><a href="#cb98-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Assignment Operator</span></span>
+<span id="cb98-76"><a href="#cb98-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-77"><a href="#cb98-77" aria-hidden="true" tabindex="-1"></a>In R, we use <span class="in">`&lt;-`</span> to assign values to objects (variables):</span>
+<span id="cb98-78"><a href="#cb98-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-81"><a href="#cb98-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-82"><a href="#cb98-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the value 5 to an object called 'x'</span></span>
+<span id="cb98-83"><a href="#cb98-83" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb98-84"><a href="#cb98-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-85"><a href="#cb98-85" aria-hidden="true" tabindex="-1"></a><span class="co"># View the value of x</span></span>
+<span id="cb98-86"><a href="#cb98-86" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-87"><a href="#cb98-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-88"><a href="#cb98-88" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also use = for assignment, but &lt;- is preferred in R</span></span>
+<span id="cb98-89"><a href="#cb98-89" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb98-90"><a href="#cb98-90" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb98-91"><a href="#cb98-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-92"><a href="#cb98-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-93"><a href="#cb98-93" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: The keyboard shortcut for </span><span class="in">`&lt;-`</span><span class="at"> is Alt + - (Windows) or Option + - (Mac).</span></span>
+<span id="cb98-94"><a href="#cb98-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-95"><a href="#cb98-95" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Types</span></span>
+<span id="cb98-96"><a href="#cb98-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-97"><a href="#cb98-97" aria-hidden="true" tabindex="-1"></a>R has several basic data types:</span>
+<span id="cb98-98"><a href="#cb98-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-101"><a href="#cb98-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-102"><a href="#cb98-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric (numbers)</span></span>
+<span id="cb98-103"><a href="#cb98-103" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb98-104"><a href="#cb98-104" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fl">68.5</span></span>
+<span id="cb98-105"><a href="#cb98-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-106"><a href="#cb98-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Character (text - always in quotes)</span></span>
+<span id="cb98-107"><a href="#cb98-107" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">"Patient A"</span></span>
+<span id="cb98-108"><a href="#cb98-108" aria-hidden="true" tabindex="-1"></a>diagnosis <span class="ot">&lt;-</span> <span class="st">"Hypertension"</span></span>
+<span id="cb98-109"><a href="#cb98-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-110"><a href="#cb98-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical (TRUE or FALSE)</span></span>
+<span id="cb98-111"><a href="#cb98-111" aria-hidden="true" tabindex="-1"></a>is_smoker <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb98-112"><a href="#cb98-112" aria-hidden="true" tabindex="-1"></a>has_diabetes <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb98-113"><a href="#cb98-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-114"><a href="#cb98-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the type of an object</span></span>
+<span id="cb98-115"><a href="#cb98-115" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)</span>
+<span id="cb98-116"><a href="#cb98-116" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(name)</span>
+<span id="cb98-117"><a href="#cb98-117" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(is_smoker)</span>
+<span id="cb98-118"><a href="#cb98-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-119"><a href="#cb98-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-120"><a href="#cb98-120" aria-hidden="true" tabindex="-1"></a><span class="fu">### Vectors</span></span>
+<span id="cb98-121"><a href="#cb98-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-122"><a href="#cb98-122" aria-hidden="true" tabindex="-1"></a>Vectors are collections of values of the same type. We create them using <span class="in">`c()`</span> (combine):</span>
+<span id="cb98-123"><a href="#cb98-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-126"><a href="#cb98-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-127"><a href="#cb98-127" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric vector</span></span>
+<span id="cb98-128"><a href="#cb98-128" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">34</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">67</span>)</span>
+<span id="cb98-129"><a href="#cb98-129" aria-hidden="true" tabindex="-1"></a>ages</span>
+<span id="cb98-130"><a href="#cb98-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-131"><a href="#cb98-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Character vector</span></span>
+<span id="cb98-132"><a href="#cb98-132" aria-hidden="true" tabindex="-1"></a>treatments <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>, <span class="st">"Drug B"</span>, <span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>)</span>
+<span id="cb98-133"><a href="#cb98-133" aria-hidden="true" tabindex="-1"></a>treatments</span>
+<span id="cb98-134"><a href="#cb98-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-135"><a href="#cb98-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Access individual elements using brackets []</span></span>
+<span id="cb98-136"><a href="#cb98-136" aria-hidden="true" tabindex="-1"></a>ages[<span class="dv">1</span>]  <span class="co"># First element</span></span>
+<span id="cb98-137"><a href="#cb98-137" aria-hidden="true" tabindex="-1"></a>ages[<span class="dv">3</span>]  <span class="co"># Third element</span></span>
+<span id="cb98-138"><a href="#cb98-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-139"><a href="#cb98-139" aria-hidden="true" tabindex="-1"></a><span class="co"># Access multiple elements</span></span>
+<span id="cb98-140"><a href="#cb98-140" aria-hidden="true" tabindex="-1"></a>ages[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]  <span class="co"># First, third, and fifth elements</span></span>
+<span id="cb98-141"><a href="#cb98-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-142"><a href="#cb98-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-143"><a href="#cb98-143" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: R uses 1-based indexing, meaning the first element is at position 1 (not 0 like some other languages).</span></span>
+<span id="cb98-144"><a href="#cb98-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-145"><a href="#cb98-145" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Frames</span></span>
+<span id="cb98-146"><a href="#cb98-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-147"><a href="#cb98-147" aria-hidden="true" tabindex="-1"></a>Data frames are like spreadsheets - they have rows and columns. This is how we typically work with data in R:</span>
+<span id="cb98-148"><a href="#cb98-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-151"><a href="#cb98-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-152"><a href="#cb98-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple data frame</span></span>
+<span id="cb98-153"><a href="#cb98-153" aria-hidden="true" tabindex="-1"></a>patient_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb98-154"><a href="#cb98-154" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb98-155"><a href="#cb98-155" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">34</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">67</span>),</span>
+<span id="cb98-156"><a href="#cb98-156" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>, <span class="st">"Drug B"</span>, <span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>),</span>
+<span id="cb98-157"><a href="#cb98-157" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">5.5</span>, <span class="fl">6.9</span>)</span>
+<span id="cb98-158"><a href="#cb98-158" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb98-159"><a href="#cb98-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-160"><a href="#cb98-160" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame</span></span>
+<span id="cb98-161"><a href="#cb98-161" aria-hidden="true" tabindex="-1"></a>patient_data</span>
+<span id="cb98-162"><a href="#cb98-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-163"><a href="#cb98-163" aria-hidden="true" tabindex="-1"></a><span class="co"># View structure of the data frame</span></span>
+<span id="cb98-164"><a href="#cb98-164" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(patient_data)</span>
+<span id="cb98-165"><a href="#cb98-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-166"><a href="#cb98-166" aria-hidden="true" tabindex="-1"></a><span class="co"># View first few rows</span></span>
+<span id="cb98-167"><a href="#cb98-167" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(patient_data)</span>
+<span id="cb98-168"><a href="#cb98-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-169"><a href="#cb98-169" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a column using $</span></span>
+<span id="cb98-170"><a href="#cb98-170" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>age</span>
+<span id="cb98-171"><a href="#cb98-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-172"><a href="#cb98-172" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a column using brackets</span></span>
+<span id="cb98-173"><a href="#cb98-173" aria-hidden="true" tabindex="-1"></a>patient_data[, <span class="st">"treatment"</span>]</span>
+<span id="cb98-174"><a href="#cb98-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-175"><a href="#cb98-175" aria-hidden="true" tabindex="-1"></a><span class="co"># Access a specific cell [row, column]</span></span>
+<span id="cb98-176"><a href="#cb98-176" aria-hidden="true" tabindex="-1"></a>patient_data[<span class="dv">2</span>, <span class="dv">3</span>]  <span class="co"># Row 2, Column 3</span></span>
+<span id="cb98-177"><a href="#cb98-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-178"><a href="#cb98-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-179"><a href="#cb98-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### Functions</span></span>
+<span id="cb98-180"><a href="#cb98-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-181"><a href="#cb98-181" aria-hidden="true" tabindex="-1"></a>Functions perform operations. They have a name followed by parentheses containing arguments:</span>
+<span id="cb98-182"><a href="#cb98-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-185"><a href="#cb98-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-186"><a href="#cb98-186" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean (average)</span></span>
+<span id="cb98-187"><a href="#cb98-187" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ages)</span>
+<span id="cb98-188"><a href="#cb98-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-189"><a href="#cb98-189" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard deviation</span></span>
+<span id="cb98-190"><a href="#cb98-190" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ages)</span>
+<span id="cb98-191"><a href="#cb98-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-192"><a href="#cb98-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median</span></span>
+<span id="cb98-193"><a href="#cb98-193" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ages)</span>
+<span id="cb98-194"><a href="#cb98-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-195"><a href="#cb98-195" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb98-196"><a href="#cb98-196" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ages)</span>
+<span id="cb98-197"><a href="#cb98-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-198"><a href="#cb98-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Count number of elements</span></span>
+<span id="cb98-199"><a href="#cb98-199" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(ages)</span>
+<span id="cb98-200"><a href="#cb98-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-201"><a href="#cb98-201" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a table of frequencies</span></span>
+<span id="cb98-202"><a href="#cb98-202" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(treatments)</span>
+<span id="cb98-203"><a href="#cb98-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-204"><a href="#cb98-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-205"><a href="#cb98-205" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: To learn about any function, type </span><span class="in">`?function_name`</span><span class="at"> in the console (e.g., </span><span class="in">`?mean`</span><span class="at">).</span></span>
+<span id="cb98-206"><a href="#cb98-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-207"><a href="#cb98-207" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with Data</span></span>
+<span id="cb98-208"><a href="#cb98-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-209"><a href="#cb98-209" aria-hidden="true" tabindex="-1"></a><span class="fu">### Setting Your Working Directory</span></span>
+<span id="cb98-210"><a href="#cb98-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-211"><a href="#cb98-211" aria-hidden="true" tabindex="-1"></a>The working directory is where R looks for files and saves output:</span>
+<span id="cb98-212"><a href="#cb98-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-213"><a href="#cb98-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-214"><a href="#cb98-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Check current working directory</span></span>
+<span id="cb98-215"><a href="#cb98-215" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb98-216"><a href="#cb98-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-217"><a href="#cb98-217" aria-hidden="true" tabindex="-1"></a><span class="co"># Set working directory (use your own path)</span></span>
+<span id="cb98-218"><a href="#cb98-218" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Documents/R_Projects"</span>)</span>
+<span id="cb98-219"><a href="#cb98-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-220"><a href="#cb98-220" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use Session → Set Working Directory → Choose Directory in RStudio</span></span>
+<span id="cb98-221"><a href="#cb98-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-222"><a href="#cb98-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-223"><a href="#cb98-223" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Use forward slashes </span><span class="in">`/`</span><span class="at"> in file paths, even on Windows. Or use double backslashes </span><span class="in">`\\`</span><span class="at">.</span></span>
+<span id="cb98-224"><a href="#cb98-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-225"><a href="#cb98-225" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reading Data from CSV Files</span></span>
+<span id="cb98-226"><a href="#cb98-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-227"><a href="#cb98-227" aria-hidden="true" tabindex="-1"></a>CSV (Comma-Separated Values) files are common for data storage. There are three main ways to read them:</span>
+<span id="cb98-228"><a href="#cb98-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-229"><a href="#cb98-229" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 1. Direct File Path</span></span>
+<span id="cb98-230"><a href="#cb98-230" aria-hidden="true" tabindex="-1"></a>Best for reproducibility (your script will always know where to look).</span>
+<span id="cb98-231"><a href="#cb98-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-232"><a href="#cb98-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-233"><a href="#cb98-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a CSV file by providing the path</span></span>
+<span id="cb98-234"><a href="#cb98-234" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/patient_data.csv"</span>)</span>
+<span id="cb98-235"><a href="#cb98-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-236"><a href="#cb98-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-237"><a href="#cb98-237" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 2. Interactive Selection (file.choose)</span></span>
+<span id="cb98-238"><a href="#cb98-238" aria-hidden="true" tabindex="-1"></a>Useful if you don't know the exact path or want to "browse" for the file.</span>
+<span id="cb98-239"><a href="#cb98-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-240"><a href="#cb98-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-241"><a href="#cb98-241" aria-hidden="true" tabindex="-1"></a><span class="co"># This will open a window for you to select the file manually</span></span>
+<span id="cb98-242"><a href="#cb98-242" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">file.choose</span>())</span>
+<span id="cb98-243"><a href="#cb98-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-244"><a href="#cb98-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-245"><a href="#cb98-245" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: </span><span class="in">`file.choose()`</span><span class="at"> is great for beginners, but for formal research, typing the path (Method 1) is better because it makes your work "reproducible" - anyone can run your script without having to click through windows.</span></span>
+<span id="cb98-246"><a href="#cb98-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-247"><a href="#cb98-247" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 3. RStudio "Import Dataset" Tool</span></span>
+<span id="cb98-248"><a href="#cb98-248" aria-hidden="true" tabindex="-1"></a>The easiest way for beginners. RStudio has a built-in "point-and-click" importer:</span>
+<span id="cb98-249"><a href="#cb98-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-250"><a href="#cb98-250" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>In the **Environment** pane (top right), click **Import Dataset**.</span>
+<span id="cb98-251"><a href="#cb98-251" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Select **From Text (base)...** (for CSV) or **From Excel...**.</span>
+<span id="cb98-252"><a href="#cb98-252" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Browse to your file.</span>
+<span id="cb98-253"><a href="#cb98-253" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Preview the data and check the options (e.g., Heading, Separator).</span>
+<span id="cb98-254"><a href="#cb98-254" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Click **Import**.</span>
+<span id="cb98-255"><a href="#cb98-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-256"><a href="#cb98-256" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: When you use the Import Tool, RStudio actually runs the </span><span class="in">`read.csv()`</span><span class="at"> or </span><span class="in">`read_excel()`</span><span class="at"> code in the console. You should copy that code and paste it into your script so you can re-run it later!</span></span>
+<span id="cb98-257"><a href="#cb98-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-258"><a href="#cb98-258" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Examining the Data</span></span>
+<span id="cb98-259"><a href="#cb98-259" aria-hidden="true" tabindex="-1"></a>Once imported, always check your data:</span>
+<span id="cb98-260"><a href="#cb98-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-261"><a href="#cb98-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-262"><a href="#cb98-262" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows</span></span>
+<span id="cb98-263"><a href="#cb98-263" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_data)</span>
+<span id="cb98-264"><a href="#cb98-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-265"><a href="#cb98-265" aria-hidden="true" tabindex="-1"></a><span class="co"># View the structure (variable names and types)</span></span>
+<span id="cb98-266"><a href="#cb98-266" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(my_data)</span>
+<span id="cb98-267"><a href="#cb98-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-268"><a href="#cb98-268" aria-hidden="true" tabindex="-1"></a><span class="co"># View the entire dataset in a spreadsheet-like viewer</span></span>
+<span id="cb98-269"><a href="#cb98-269" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(my_data)</span>
+<span id="cb98-270"><a href="#cb98-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-271"><a href="#cb98-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-272"><a href="#cb98-272" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reading Data from Excel Files</span></span>
+<span id="cb98-273"><a href="#cb98-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-274"><a href="#cb98-274" aria-hidden="true" tabindex="-1"></a>To read Excel files, you need the <span class="in">`readxl`</span> package:</span>
+<span id="cb98-275"><a href="#cb98-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-276"><a href="#cb98-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-277"><a href="#cb98-277" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the package (only needed once)</span></span>
+<span id="cb98-278"><a href="#cb98-278" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb98-279"><a href="#cb98-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-280"><a href="#cb98-280" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package (needed each session)</span></span>
+<span id="cb98-281"><a href="#cb98-281" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb98-282"><a href="#cb98-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-283"><a href="#cb98-283" aria-hidden="true" tabindex="-1"></a><span class="co"># Read an Excel file</span></span>
+<span id="cb98-284"><a href="#cb98-284" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data_file.xlsx"</span>)</span>
+<span id="cb98-285"><a href="#cb98-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-286"><a href="#cb98-286" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a specific sheet</span></span>
+<span id="cb98-287"><a href="#cb98-287" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data_file.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Sheet1"</span>)</span>
+<span id="cb98-288"><a href="#cb98-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-289"><a href="#cb98-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-290"><a href="#cb98-290" aria-hidden="true" tabindex="-1"></a><span class="fu">## Basic Data Manipulation</span></span>
+<span id="cb98-291"><a href="#cb98-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-292"><a href="#cb98-292" aria-hidden="true" tabindex="-1"></a><span class="fu">### Subsetting Data</span></span>
+<span id="cb98-293"><a href="#cb98-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-296"><a href="#cb98-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-297"><a href="#cb98-297" aria-hidden="true" tabindex="-1"></a><span class="co"># Create example data</span></span>
+<span id="cb98-298"><a href="#cb98-298" aria-hidden="true" tabindex="-1"></a>patient_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb98-299"><a href="#cb98-299" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb98-300"><a href="#cb98-300" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">34</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">67</span>, <span class="dv">23</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">78</span>, <span class="dv">34</span>),</span>
+<span id="cb98-301"><a href="#cb98-301" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Drug A"</span>), <span class="dv">5</span>),</span>
+<span id="cb98-302"><a href="#cb98-302" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="fu">c</span>(<span class="fl">5.2</span>, <span class="fl">6.8</span>, <span class="fl">7.1</span>, <span class="fl">5.5</span>, <span class="fl">6.9</span>, <span class="fl">5.0</span>, <span class="fl">7.2</span>, <span class="fl">6.5</span>, <span class="fl">7.8</span>, <span class="fl">6.2</span>)</span>
+<span id="cb98-303"><a href="#cb98-303" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb98-304"><a href="#cb98-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-305"><a href="#cb98-305" aria-hidden="true" tabindex="-1"></a><span class="co"># Select specific columns</span></span>
+<span id="cb98-306"><a href="#cb98-306" aria-hidden="true" tabindex="-1"></a>patient_data[, <span class="fu">c</span>(<span class="st">"patient_id"</span>, <span class="st">"age"</span>)]</span>
+<span id="cb98-307"><a href="#cb98-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-308"><a href="#cb98-308" aria-hidden="true" tabindex="-1"></a><span class="co"># Select rows where age &gt; 40</span></span>
+<span id="cb98-309"><a href="#cb98-309" aria-hidden="true" tabindex="-1"></a>patient_data[patient_data<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">40</span>, ]</span>
+<span id="cb98-310"><a href="#cb98-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-311"><a href="#cb98-311" aria-hidden="true" tabindex="-1"></a><span class="co"># Using subset() function (easier to read)</span></span>
+<span id="cb98-312"><a href="#cb98-312" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(patient_data, age <span class="sc">&gt;</span> <span class="dv">40</span>)</span>
+<span id="cb98-313"><a href="#cb98-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-314"><a href="#cb98-314" aria-hidden="true" tabindex="-1"></a><span class="co"># Select specific columns for subset</span></span>
+<span id="cb98-315"><a href="#cb98-315" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(patient_data, age <span class="sc">&gt;</span> <span class="dv">40</span>, <span class="at">select =</span> <span class="fu">c</span>(patient_id, age, outcome))</span>
+<span id="cb98-316"><a href="#cb98-316" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-317"><a href="#cb98-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-318"><a href="#cb98-318" aria-hidden="true" tabindex="-1"></a><span class="fu">### Creating New Variables</span></span>
+<span id="cb98-319"><a href="#cb98-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-322"><a href="#cb98-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-323"><a href="#cb98-323" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column</span></span>
+<span id="cb98-324"><a href="#cb98-324" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(patient_data<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">50</span>, <span class="st">"Older"</span>, <span class="st">"Younger"</span>)</span>
+<span id="cb98-325"><a href="#cb98-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-326"><a href="#cb98-326" aria-hidden="true" tabindex="-1"></a><span class="co"># View the updated data</span></span>
+<span id="cb98-327"><a href="#cb98-327" aria-hidden="true" tabindex="-1"></a>patient_data</span>
+<span id="cb98-328"><a href="#cb98-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-329"><a href="#cb98-329" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable based on calculations</span></span>
+<span id="cb98-330"><a href="#cb98-330" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>outcome_doubled <span class="ot">&lt;-</span> patient_data<span class="sc">$</span>outcome <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb98-331"><a href="#cb98-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-332"><a href="#cb98-332" aria-hidden="true" tabindex="-1"></a>patient_data</span>
+<span id="cb98-333"><a href="#cb98-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-334"><a href="#cb98-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-335"><a href="#cb98-335" aria-hidden="true" tabindex="-1"></a><span class="fu">### Basic Transformations</span></span>
+<span id="cb98-336"><a href="#cb98-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-339"><a href="#cb98-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-340"><a href="#cb98-340" aria-hidden="true" tabindex="-1"></a><span class="co"># Log transformation</span></span>
+<span id="cb98-341"><a href="#cb98-341" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>log_outcome <span class="ot">&lt;-</span> <span class="fu">log</span>(patient_data<span class="sc">$</span>outcome)</span>
+<span id="cb98-342"><a href="#cb98-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-343"><a href="#cb98-343" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardization (z-scores)</span></span>
+<span id="cb98-344"><a href="#cb98-344" aria-hidden="true" tabindex="-1"></a>patient_data<span class="sc">$</span>outcome_z <span class="ot">&lt;-</span> <span class="fu">scale</span>(patient_data<span class="sc">$</span>outcome)</span>
+<span id="cb98-345"><a href="#cb98-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-346"><a href="#cb98-346" aria-hidden="true" tabindex="-1"></a><span class="co"># View results</span></span>
+<span id="cb98-347"><a href="#cb98-347" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(patient_data)</span>
+<span id="cb98-348"><a href="#cb98-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-349"><a href="#cb98-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-350"><a href="#cb98-350" aria-hidden="true" tabindex="-1"></a><span class="fu">## R Packages</span></span>
+<span id="cb98-351"><a href="#cb98-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-352"><a href="#cb98-352" aria-hidden="true" tabindex="-1"></a>Packages are collections of functions that extend R's capabilities. Think of them as apps for R.</span>
+<span id="cb98-353"><a href="#cb98-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-354"><a href="#cb98-354" aria-hidden="true" tabindex="-1"></a><span class="fu">### Installing Packages</span></span>
+<span id="cb98-355"><a href="#cb98-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-356"><a href="#cb98-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-357"><a href="#cb98-357" aria-hidden="true" tabindex="-1"></a><span class="co"># Install a package (only needed once)</span></span>
+<span id="cb98-358"><a href="#cb98-358" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb98-359"><a href="#cb98-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-360"><a href="#cb98-360" aria-hidden="true" tabindex="-1"></a><span class="co"># Install multiple packages at once</span></span>
+<span id="cb98-361"><a href="#cb98-361" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"ggplot2"</span>, <span class="st">"dplyr"</span>, <span class="st">"car"</span>))</span>
+<span id="cb98-362"><a href="#cb98-362" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-363"><a href="#cb98-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-364"><a href="#cb98-364" aria-hidden="true" tabindex="-1"></a><span class="fu">### Loading Packages</span></span>
+<span id="cb98-365"><a href="#cb98-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-366"><a href="#cb98-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-367"><a href="#cb98-367" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a package (needed each time you start R)</span></span>
+<span id="cb98-368"><a href="#cb98-368" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb98-369"><a href="#cb98-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-370"><a href="#cb98-370" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative way to load</span></span>
+<span id="cb98-371"><a href="#cb98-371" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb98-372"><a href="#cb98-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-373"><a href="#cb98-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-374"><a href="#cb98-374" aria-hidden="true" tabindex="-1"></a><span class="fu">### Commonly Used Packages in This Course</span></span>
+<span id="cb98-375"><a href="#cb98-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-376"><a href="#cb98-376" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**ggplot2**: Advanced data visualization</span>
+<span id="cb98-377"><a href="#cb98-377" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**car**: Companion to Applied Regression (for ANOVA/regression diagnostics)</span>
+<span id="cb98-378"><a href="#cb98-378" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**ez**: Easy analysis and visualization of factorial experiments</span>
+<span id="cb98-379"><a href="#cb98-379" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**pwr**: Power analysis</span>
+<span id="cb98-380"><a href="#cb98-380" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**readxl**: Reading Excel files</span>
+<span id="cb98-381"><a href="#cb98-381" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**tidyr**: Data reshaping and tidying</span>
+<span id="cb98-382"><a href="#cb98-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-383"><a href="#cb98-383" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: You only need to install a package once, but you need to load it with </span><span class="in">`library()`</span><span class="at"> every time you start a new R session.</span></span>
+<span id="cb98-384"><a href="#cb98-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-385"><a href="#cb98-385" aria-hidden="true" tabindex="-1"></a><span class="fu">## Getting Help</span></span>
+<span id="cb98-386"><a href="#cb98-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-387"><a href="#cb98-387" aria-hidden="true" tabindex="-1"></a><span class="fu">### Built-in Help</span></span>
+<span id="cb98-388"><a href="#cb98-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-389"><a href="#cb98-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-390"><a href="#cb98-390" aria-hidden="true" tabindex="-1"></a><span class="co"># Get help on a function</span></span>
+<span id="cb98-391"><a href="#cb98-391" aria-hidden="true" tabindex="-1"></a>?mean</span>
+<span id="cb98-392"><a href="#cb98-392" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(mean)</span>
+<span id="cb98-393"><a href="#cb98-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-394"><a href="#cb98-394" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for help on a topic</span></span>
+<span id="cb98-395"><a href="#cb98-395" aria-hidden="true" tabindex="-1"></a>??regression</span>
+<span id="cb98-396"><a href="#cb98-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-397"><a href="#cb98-397" aria-hidden="true" tabindex="-1"></a><span class="co"># Get examples of how to use a function</span></span>
+<span id="cb98-398"><a href="#cb98-398" aria-hidden="true" tabindex="-1"></a><span class="fu">example</span>(mean)</span>
+<span id="cb98-399"><a href="#cb98-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-400"><a href="#cb98-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-401"><a href="#cb98-401" aria-hidden="true" tabindex="-1"></a><span class="fu">### Understanding Error Messages</span></span>
+<span id="cb98-402"><a href="#cb98-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-403"><a href="#cb98-403" aria-hidden="true" tabindex="-1"></a>Don't panic when you see errors! They're R's way of telling you something needs fixing.</span>
+<span id="cb98-404"><a href="#cb98-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-405"><a href="#cb98-405" aria-hidden="true" tabindex="-1"></a>**Common errors:**</span>
+<span id="cb98-406"><a href="#cb98-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-407"><a href="#cb98-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-408"><a href="#cb98-408" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: object not found</span></span>
+<span id="cb98-409"><a href="#cb98-409" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_variable)</span>
+<span id="cb98-410"><a href="#cb98-410" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix: Make sure you've created the object and spelled it correctly</span></span>
+<span id="cb98-411"><a href="#cb98-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-412"><a href="#cb98-412" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: could not find function</span></span>
+<span id="cb98-413"><a href="#cb98-413" aria-hidden="true" tabindex="-1"></a><span class="fu">myfunction</span>()</span>
+<span id="cb98-414"><a href="#cb98-414" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix: Check spelling, or load the package that contains the function</span></span>
+<span id="cb98-415"><a href="#cb98-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-416"><a href="#cb98-416" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: unexpected symbol</span></span>
+<span id="cb98-417"><a href="#cb98-417" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&lt;</span> <span class="sc">-</span> <span class="dv">5</span>  <span class="co"># Space in assignment operator</span></span>
+<span id="cb98-418"><a href="#cb98-418" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix: Remove the space: x &lt;- 5</span></span>
+<span id="cb98-419"><a href="#cb98-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-420"><a href="#cb98-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-421"><a href="#cb98-421" aria-hidden="true" tabindex="-1"></a><span class="fu">### Online Resources</span></span>
+<span id="cb98-422"><a href="#cb98-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-423"><a href="#cb98-423" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**RStudio Cheat Sheets**: <span class="co">[</span><span class="ot">https://posit.co/resources/cheatsheets/</span><span class="co">](https://posit.co/resources/cheatsheets/)</span></span>
+<span id="cb98-424"><a href="#cb98-424" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stack Overflow**: Search for R questions and answers</span>
+<span id="cb98-425"><a href="#cb98-425" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**R Documentation**: <span class="co">[</span><span class="ot">https://www.rdocumentation.org/</span><span class="co">](https://www.rdocumentation.org/)</span></span>
+<span id="cb98-426"><a href="#cb98-426" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Quick-R**: <span class="co">[</span><span class="ot">https://www.statmethods.net/</span><span class="co">](https://www.statmethods.net/)</span></span>
+<span id="cb98-427"><a href="#cb98-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-428"><a href="#cb98-428" aria-hidden="true" tabindex="-1"></a><span class="fu">## Best Practices</span></span>
+<span id="cb98-429"><a href="#cb98-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-430"><a href="#cb98-430" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Comment Your Code</span></span>
+<span id="cb98-431"><a href="#cb98-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-432"><a href="#cb98-432" aria-hidden="true" tabindex="-1"></a>Use <span class="in">`#`</span> to add comments explaining what your code does:</span>
+<span id="cb98-433"><a href="#cb98-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-436"><a href="#cb98-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-437"><a href="#cb98-437" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean age of patients</span></span>
+<span id="cb98-438"><a href="#cb98-438" aria-hidden="true" tabindex="-1"></a>mean_age <span class="ot">&lt;-</span> <span class="fu">mean</span>(patient_data<span class="sc">$</span>age)</span>
+<span id="cb98-439"><a href="#cb98-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-440"><a href="#cb98-440" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment - R ignores everything after #</span></span>
+<span id="cb98-441"><a href="#cb98-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-442"><a href="#cb98-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-443"><a href="#cb98-443" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Use Meaningful Names</span></span>
+<span id="cb98-444"><a href="#cb98-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-445"><a href="#cb98-445" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-446"><a href="#cb98-446" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb98-447"><a href="#cb98-447" aria-hidden="true" tabindex="-1"></a>patient_age <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb98-448"><a href="#cb98-448" aria-hidden="true" tabindex="-1"></a>treatment_group <span class="ot">&lt;-</span> <span class="st">"Drug A"</span></span>
+<span id="cb98-449"><a href="#cb98-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-450"><a href="#cb98-450" aria-hidden="true" tabindex="-1"></a><span class="co"># Not as good</span></span>
+<span id="cb98-451"><a href="#cb98-451" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">45</span></span>
+<span id="cb98-452"><a href="#cb98-452" aria-hidden="true" tabindex="-1"></a>tg <span class="ot">&lt;-</span> <span class="st">"Drug A"</span></span>
+<span id="cb98-453"><a href="#cb98-453" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-454"><a href="#cb98-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-455"><a href="#cb98-455" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Organize Your Scripts</span></span>
+<span id="cb98-456"><a href="#cb98-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-457"><a href="#cb98-457" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-458"><a href="#cb98-458" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb98-459"><a href="#cb98-459" aria-hidden="true" tabindex="-1"></a><span class="co"># Project: Blood Pressure Study</span></span>
+<span id="cb98-460"><a href="#cb98-460" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: Your Name</span></span>
+<span id="cb98-461"><a href="#cb98-461" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 2026-01-05</span></span>
+<span id="cb98-462"><a href="#cb98-462" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb98-463"><a href="#cb98-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-464"><a href="#cb98-464" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb98-465"><a href="#cb98-465" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb98-466"><a href="#cb98-466" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb98-467"><a href="#cb98-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-468"><a href="#cb98-468" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data</span></span>
+<span id="cb98-469"><a href="#cb98-469" aria-hidden="true" tabindex="-1"></a>bp_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"blood_pressure.csv"</span>)</span>
+<span id="cb98-470"><a href="#cb98-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-471"><a href="#cb98-471" aria-hidden="true" tabindex="-1"></a><span class="co"># Data cleaning</span></span>
+<span id="cb98-472"><a href="#cb98-472" aria-hidden="true" tabindex="-1"></a><span class="co"># ... your code ...</span></span>
+<span id="cb98-473"><a href="#cb98-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-474"><a href="#cb98-474" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis</span></span>
+<span id="cb98-475"><a href="#cb98-475" aria-hidden="true" tabindex="-1"></a><span class="co"># ... your code ...</span></span>
+<span id="cb98-476"><a href="#cb98-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-477"><a href="#cb98-477" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb98-478"><a href="#cb98-478" aria-hidden="true" tabindex="-1"></a><span class="co"># ... your code ...</span></span>
+<span id="cb98-479"><a href="#cb98-479" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-480"><a href="#cb98-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-481"><a href="#cb98-481" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Save Your Work</span></span>
+<span id="cb98-482"><a href="#cb98-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-483"><a href="#cb98-483" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Save your R scripts (File → Save) with a <span class="in">`.R`</span> extension</span>
+<span id="cb98-484"><a href="#cb98-484" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Save your data frames if needed:</span>
+<span id="cb98-485"><a href="#cb98-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-486"><a href="#cb98-486" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb98-487"><a href="#cb98-487" aria-hidden="true" tabindex="-1"></a><span class="co"># Save data frame as CSV</span></span>
+<span id="cb98-488"><a href="#cb98-488" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(patient_data, <span class="st">"cleaned_data.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb98-489"><a href="#cb98-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-490"><a href="#cb98-490" aria-hidden="true" tabindex="-1"></a><span class="co"># Save R objects</span></span>
+<span id="cb98-491"><a href="#cb98-491" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(patient_data, <span class="at">file =</span> <span class="st">"my_data.RData"</span>)</span>
+<span id="cb98-492"><a href="#cb98-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-493"><a href="#cb98-493" aria-hidden="true" tabindex="-1"></a><span class="co"># Load saved R objects</span></span>
+<span id="cb98-494"><a href="#cb98-494" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"my_data.RData"</span>)</span>
+<span id="cb98-495"><a href="#cb98-495" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-496"><a href="#cb98-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-497"><a href="#cb98-497" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comprehensive Example: Complete Data Analysis Workflow</span></span>
+<span id="cb98-498"><a href="#cb98-498" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-499"><a href="#cb98-499" aria-hidden="true" tabindex="-1"></a>Let's put it all together with a complete example:</span>
+<span id="cb98-500"><a href="#cb98-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-503"><a href="#cb98-503" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-504"><a href="#cb98-504" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb98-505"><a href="#cb98-505" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Analyzing Patient Recovery Times</span></span>
+<span id="cb98-506"><a href="#cb98-506" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb98-507"><a href="#cb98-507" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-508"><a href="#cb98-508" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create sample data (normally you'd read this from a file)</span></span>
+<span id="cb98-509"><a href="#cb98-509" aria-hidden="true" tabindex="-1"></a>recovery_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb98-510"><a href="#cb98-510" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>,</span>
+<span id="cb98-511"><a href="#cb98-511" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">38</span>, <span class="dv">61</span>, <span class="dv">49</span>, <span class="dv">55</span>, <span class="dv">42</span>, <span class="dv">58</span>, <span class="dv">47</span>, <span class="dv">53</span>,</span>
+<span id="cb98-512"><a href="#cb98-512" aria-hidden="true" tabindex="-1"></a>          <span class="dv">39</span>, <span class="dv">44</span>, <span class="dv">56</span>, <span class="dv">50</span>, <span class="dv">43</span>, <span class="dv">59</span>, <span class="dv">48</span>, <span class="dv">51</span>, <span class="dv">46</span>, <span class="dv">54</span>,</span>
+<span id="cb98-513"><a href="#cb98-513" aria-hidden="true" tabindex="-1"></a>          <span class="dv">41</span>, <span class="dv">57</span>, <span class="dv">62</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">37</span>, <span class="dv">63</span>, <span class="dv">36</span>, <span class="dv">64</span>, <span class="dv">35</span>),</span>
+<span id="cb98-514"><a href="#cb98-514" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Enhanced"</span>, <span class="st">"Intensive"</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb98-515"><a href="#cb98-515" aria-hidden="true" tabindex="-1"></a>  <span class="at">recovery_days =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">11</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">15</span>,</span>
+<span id="cb98-516"><a href="#cb98-516" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">12</span>,</span>
+<span id="cb98-517"><a href="#cb98-517" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">8</span>)</span>
+<span id="cb98-518"><a href="#cb98-518" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb98-519"><a href="#cb98-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-520"><a href="#cb98-520" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Examine the data</span></span>
+<span id="cb98-521"><a href="#cb98-521" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"First few rows:"</span>)</span>
+<span id="cb98-522"><a href="#cb98-522" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(recovery_data)</span>
+<span id="cb98-523"><a href="#cb98-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-524"><a href="#cb98-524" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Data structure:"</span>)</span>
+<span id="cb98-525"><a href="#cb98-525" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(recovery_data)</span>
+<span id="cb98-526"><a href="#cb98-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-527"><a href="#cb98-527" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Summary statistics:"</span>)</span>
+<span id="cb98-528"><a href="#cb98-528" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(recovery_data)</span>
+<span id="cb98-529"><a href="#cb98-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-530"><a href="#cb98-530" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Basic descriptive statistics by group</span></span>
+<span id="cb98-531"><a href="#cb98-531" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Mean recovery days by treatment:"</span>)</span>
+<span id="cb98-532"><a href="#cb98-532" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(recovery_data<span class="sc">$</span>recovery_days, recovery_data<span class="sc">$</span>treatment, mean)</span>
+<span id="cb98-533"><a href="#cb98-533" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-534"><a href="#cb98-534" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Standard deviation by treatment:"</span>)</span>
+<span id="cb98-535"><a href="#cb98-535" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(recovery_data<span class="sc">$</span>recovery_days, recovery_data<span class="sc">$</span>treatment, sd)</span>
+<span id="cb98-536"><a href="#cb98-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-537"><a href="#cb98-537" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Create a new variable (age group)</span></span>
+<span id="cb98-538"><a href="#cb98-538" aria-hidden="true" tabindex="-1"></a>recovery_data<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(recovery_data<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">50</span>, <span class="st">"50+"</span>, <span class="st">"Under 50"</span>)</span>
+<span id="cb98-539"><a href="#cb98-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-540"><a href="#cb98-540" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Create a simple visualization</span></span>
+<span id="cb98-541"><a href="#cb98-541" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(recovery_days <span class="sc">~</span> treatment, </span>
+<span id="cb98-542"><a href="#cb98-542" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> recovery_data,</span>
+<span id="cb98-543"><a href="#cb98-543" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Recovery Days by Treatment"</span>,</span>
+<span id="cb98-544"><a href="#cb98-544" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment Type"</span>,</span>
+<span id="cb98-545"><a href="#cb98-545" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Recovery Days"</span>,</span>
+<span id="cb98-546"><a href="#cb98-546" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>))</span>
+<span id="cb98-547"><a href="#cb98-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-548"><a href="#cb98-548" aria-hidden="true" tabindex="-1"></a><span class="co"># For more advanced visualizations, see the [Graphing Your Data](graphing-your-data.qmd) lecture.</span></span>
+<span id="cb98-549"><a href="#cb98-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-550"><a href="#cb98-550" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Basic statistical test (we'll learn more about this later)</span></span>
+<span id="cb98-551"><a href="#cb98-551" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA to test if recovery days differ by treatment</span></span>
+<span id="cb98-552"><a href="#cb98-552" aria-hidden="true" tabindex="-1"></a><span class="co"># Learn more in the [Introduction to ANOVA](introduction-to-anova.qmd) lecture.</span></span>
+<span id="cb98-553"><a href="#cb98-553" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(recovery_days <span class="sc">~</span> treatment, <span class="at">data =</span> recovery_data)</span>
+<span id="cb98-554"><a href="#cb98-554" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">ANOVA Results:"</span>)</span>
+<span id="cb98-555"><a href="#cb98-555" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span>
+<span id="cb98-556"><a href="#cb98-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-557"><a href="#cb98-557" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Save the cleaned data (if this were a real analysis)</span></span>
+<span id="cb98-558"><a href="#cb98-558" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(recovery_data, "recovery_data_cleaned.csv", row.names = FALSE)</span></span>
+<span id="cb98-559"><a href="#cb98-559" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-560"><a href="#cb98-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-561"><a href="#cb98-561" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb98-562"><a href="#cb98-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-563"><a href="#cb98-563" aria-hidden="true" tabindex="-1"></a>You now know how to:</span>
+<span id="cb98-564"><a href="#cb98-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-565"><a href="#cb98-565" aria-hidden="true" tabindex="-1"></a>✅ Install R and RStudio  </span>
+<span id="cb98-566"><a href="#cb98-566" aria-hidden="true" tabindex="-1"></a>✅ Navigate the RStudio interface  </span>
+<span id="cb98-567"><a href="#cb98-567" aria-hidden="true" tabindex="-1"></a>✅ Understand basic R syntax and data types  </span>
+<span id="cb98-568"><a href="#cb98-568" aria-hidden="true" tabindex="-1"></a>✅ Create and manipulate vectors and data frames  </span>
+<span id="cb98-569"><a href="#cb98-569" aria-hidden="true" tabindex="-1"></a>✅ Read data from CSV and Excel files  </span>
+<span id="cb98-570"><a href="#cb98-570" aria-hidden="true" tabindex="-1"></a>✅ Perform basic data manipulation  </span>
+<span id="cb98-571"><a href="#cb98-571" aria-hidden="true" tabindex="-1"></a>✅ Install and load packages  </span>
+<span id="cb98-572"><a href="#cb98-572" aria-hidden="true" tabindex="-1"></a>✅ Get help when you need it  </span>
+<span id="cb98-573"><a href="#cb98-573" aria-hidden="true" tabindex="-1"></a>✅ Follow best practices for reproducible research  </span>
+<span id="cb98-574"><a href="#cb98-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-575"><a href="#cb98-575" aria-hidden="true" tabindex="-1"></a><span class="fu">## Next Steps</span></span>
+<span id="cb98-576"><a href="#cb98-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-577"><a href="#cb98-577" aria-hidden="true" tabindex="-1"></a>Now that you're familiar with R basics, you're ready to move on to the statistical methods covered in this course. Each lecture will build on these foundations, showing you how to use R for specific analyses.</span>
+<span id="cb98-578"><a href="#cb98-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-579"><a href="#cb98-579" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Don't try to memorize everything! Keep this guide handy as a reference. The more you practice, the more natural R will become.</span></span>
+<span id="cb98-580"><a href="#cb98-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-581"><a href="#cb98-581" aria-hidden="true" tabindex="-1"></a>**Happy coding! 🎉**</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

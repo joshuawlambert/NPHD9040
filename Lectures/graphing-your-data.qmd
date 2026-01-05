@@ -6,7 +6,7 @@ format:
   html:
     toc: true
     toc-title: "Table of Contents"
-    code-fold: true
+    code-fold: false
     code-tools: true 
 ---
 
@@ -137,110 +137,11 @@ Graphs are crucial in data analysis and presentation because they help:
     -   Bin size selection can lead to over or under-smoothing.
     -   Not suitable for small data sets.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Distribution</code>.</li>
-
-<li>Select your continuous variable and move it to the <code>Y</code> column.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a histogram in R
+```{r, eval=FALSE}
+# Create a histogram in R
         data <- rnorm(100)
         hist(data, main = "Histogram of Data", xlab = "Values", col = "blue", border = "black")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import matplotlib.pyplot as plt
-import numpy as np
-
-data = np.random.normal(50, 10, 1000)
-plt.hist(data, bins=15, color='blue')
-plt.title("Histogram Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        GRAPH
-          /HISTOGRAM=Age
-          /TITLE='Histogram Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 1000
-        generate age = rnormal(50, 10)
-        hist age, bin(15) color(blue)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Box Plot
 
@@ -259,112 +160,11 @@ plt.show()
     -   Less informative for small data sets.
     -   Not ideal for displaying multimodal distributions.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
-
-<li>Drag your continuous variable to the <code>Y</code> axis.</li>
-
-<li>Drag your categorical variable to the <code>X</code> axis.</li>
-
-<li>Select <code>Box Plot</code> from the options.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a box plot in R
+```{r, eval=FALSE}
+# Create a box plot in R
         data <- rnorm(100)
         boxplot(data, main = "Box Plot Example")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import matplotlib.pyplot as plt
-import numpy as np
-
-data = np.random.normal(50, 10, 100)
-plt.boxplot(data)
-plt.title("Box Plot Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        GRAPH
-          /BOXPLOT=VARIABLES(Age)
-          /TITLE='Box Plot Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 100
-        generate age = rnormal(50, 10)
-        graph box age, title("Box Plot Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Pie Chart
 
@@ -384,116 +184,12 @@ plt.show()
     -   Not suitable for large numbers of categories.
     -   Can distort differences due to angle perception issues.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
-
-<li>Drag your categorical variable to the <code>X</code> axis.</li>
-
-<li>Select <code>Pie Chart</code> from the options.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a pie chart in R
+```{r, eval=FALSE}
+# Create a pie chart in R
         values <- c(10, 20, 30, 40)
         labels <- c("A", "B", "C", "D")
         pie(values, labels = labels, main = "Pie Chart Example")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import matplotlib.pyplot as plt
-
-values = [10, 20, 30, 40]
-labels = ["A", "B", "C", "D"]
-plt.pie(values, labels=labels)
-plt.title("Pie Chart Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        GRAPH
-          EXAMINE VARIABLES=age
-          /COMPARE
-          /PLOT=BOXPLOT
-          /STATISTICS=NONE
-          /NOTOTAL
-          /TITLE='Pie Chart Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 4
-        generate group = _n
-        generate value = 10 * group
-        graph pie value, over(group) title("Pie Chart Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Scatter Plot
 
@@ -513,117 +209,12 @@ plt.show()
     -   Can suffer from overplotting with large data sets.
     -   Requires understanding of correlation interpretation.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
-
-<li>Drag your first continuous variable to the <code>X</code> axis.</li>
-
-<li>Drag your second continuous variable to the <code>Y</code> axis.</li>
-
-<li>Select <code>Scatter Plot</code> from the options.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a scatter plot in R
+```{r, eval=FALSE}
+# Create a scatter plot in R
         x <- rnorm(100)
         y <- rnorm(100)
         plot(x, y, main = "Scatter Plot Example", xlab = "X-axis", ylab = "Y-axis")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.random.normal(50, 10, 100)
-y = np.random.normal(50, 10, 100)
-plt.scatter(x, y)
-plt.title("Scatter Plot Example")
-plt.xlabel("X-axis")
-plt.ylabel("Y-axis")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        GRAPH
-          /SCATTERPLOT(BIVAR)=income WITH age
-          /MISSING=LISTWISE.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 100
-        generate age = rnormal(50, 10)
-        generate income = rnormal(50, 10)
-        scatter age income, title("Scatter Plot Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Mosaic Plot
 
@@ -643,115 +234,12 @@ mosaicplot(~ Sex +Survived, data = Titanic, color = TRUE)
     -   Interpretation can be challenging for complex relationships.
     -   Less intuitive than simpler visualizations.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Fit Y by X</code>.</li>
-
-<li>Select your response variable and move it to the <code>Y</code> column.</li>
-
-<li>Select your explanatory variable and move it to the <code>X</code> column.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle and select <code>Mosaic Plot</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a mosaic plot in R
+```{r, eval=FALSE}
+# Create a mosaic plot in R
         library(vcd)
         data(Titanic)
         mosaic(Titanic, shade = TRUE, legend = TRUE)
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        import matplotlib.pyplot as plt
-        from statsmodels.graphics.mosaicplot import mosaic
-
-        data = {'Class A': 40, 'Class B': 30, 'Class C': 20, 'Class D': 10}
-        mosaic(data, title='Mosaic Plot Example')
-        plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        GRAPH
-          /MOSAICPLOT=VARIABLES(Class, Survival)
-          /TITLE='Mosaic Plot Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 4
-        generate class = _n
-        generate survival = 10 * class
-        graph mosaic class survival, title("Mosaic Plot Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Bar/Column Chart
 
@@ -798,114 +286,12 @@ mosaicplot(~ Sex +Survived, data = Titanic, color = TRUE)
 **Summary:**\
 Bar/column charts are highly effective for comparing categorical data and highlighting category differences. However, careful attention to scaling and data representation is crucial to ensure accurate and clear visualization.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
-
-<li>Drag your categorical variable to the <code>X</code> axis.</li>
-
-<li>Drag your continuous variable to the <code>Y</code> axis.</li>
-
-<li>Select <code>Bar Chart</code> from the options.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a bar chart in R
+```{r, eval=FALSE}
+# Create a bar chart in R
         categories <- c("A", "B", "C", "D")
         values <- c(10, 20, 30, 40)
         barplot(values, names.arg = categories, main = "Bar Chart Example", col = "blue")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import matplotlib.pyplot as plt
-
-categories = ["A", "B", "C", "D"]
-values = [10, 20, 30, 40]
-plt.bar(categories, values, color='blue')
-plt.title("Bar Chart Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        GRAPH
-          /BAR(GROUPED)=VALUE BY CATEGORY
-          /TITLE='Bar Chart Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 4
-        generate category = _n
-        generate value = 10 * category
-        graph bar value, over(category) title("Bar Chart Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Quantile Plot
 
@@ -935,113 +321,12 @@ plt.show()
 **Summary:**\
 Quantile plots are ideal for identifying distribution deviations from theoretical distributions. However, they require statistical knowledge for accurate interpretation and might be less intuitive than other visualization techniques.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Distribution</code>.</li>
-
-<li>Select your continuous variable and move it to the <code>Y</code> column.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle and select <code>Normal Quantile Plot</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a quantile plot in R
+```{r, eval=FALSE}
+# Create a quantile plot in R
         data <- rnorm(100)
         qqnorm(data)
         qqline(data, col = "blue")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy.stats as stats
-
-data = np.random.normal(50, 10, 100)
-stats.probplot(data, dist="norm", plot=plt)
-plt.title("Quantile Plot Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        Q-QPLOT VARIABLES=Age
-          /DISTRIBUTION=NORMAL.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 100
-        generate age = rnormal(50, 10)
-        qnorm age, title("Quantile Plot Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Treemap
 
@@ -1084,35 +369,8 @@ plt.show()
 **Summary:**\
 Treemaps are excellent for visualizing hierarchical data efficiently and intuitively. However, careful design is crucial to avoid distortions and ensure interpretability, especially with deep hierarchies.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
-
-<li>Drag your categorical variable to the <code>X</code> axis.</li>
-
-<li>Drag your continuous variable to the <code>Y</code> axis.</li>
-
-<li>Select <code>Treemap</code> from the options.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a treemap in R
+```{r, eval=FALSE}
+# Create a treemap in R
         library(treemap)
         
         data <- data.frame(
@@ -1127,86 +385,7 @@ Treemaps are excellent for visualizing hierarchical data efficiently and intuiti
           vSize = "value",
           title = "Treemap Example"
         )
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import matplotlib.pyplot as plt
-import squarify
-
-labels = ["A", "B", "C", "D"]
-sizes = [10, 20, 30, 40]
-squarify.plot(sizes=sizes, label=labels, color=["blue", "green", "red", "purple"], alpha=.7)
-plt.title("Treemap Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        GRAPH
-          /TREEMAP=VARIABLES(Category, Subcategory)
-          /VALUE=Value
-          /TITLE='Treemap Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        ssc install treemap
-        clear
-        set obs 4
-        generate category = _n
-        generate subcategory = category
-        generate value = 10 * category
-        treemap value, by(category subcategory) title("Treemap Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ## Advanced Graphs
 
@@ -1228,118 +407,12 @@ plt.show()
     -   Less effective for non-temporal data.
     -   Can suffer from overplotting with too many series.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code> Specialized Modeling<code> \> <code>Time Series</code>.</li>
-
-<li>Select your time variable and move it to the <code>X, Time ID</code> column.</li>
-
-<li>Select your response variable and move it to the <code>Y, Time Series </code> column.</li>
-
-<li>Click <code>OK</code>.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a time series plot in R
+```{r, eval=FALSE}
+# Create a time series plot in R
         time <- seq(from = as.Date("2022-01-01"), by = "month", length.out = 12)
         values <- rnorm(12, mean = 50, sd = 10)
         plot(time, values, type = "l", main = "Time Series Plot Example")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-
-time = pd.date_range('2022-01-01', periods=12, freq='M')
-values = np.random.normal(50, 10, 12)
-plt.plot(time, values)
-plt.title("Time Series Plot Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        TSPLOT
-          /TIME=Date
-          /SERIES=Value
-          /TITLE='Time Series Plot Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 12
-        generate time = tq(2022q1)
-        generate value = rnormal(50, 10)
-        tsset time
-        tsline value, title("Time Series Plot Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Maps
 
@@ -1363,33 +436,8 @@ plt.show()
     -   Interpretation can be misleading without proper scaling.
     -   Requires geographic knowledge for accurate interpretation.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Graph</code> \> <code>Graph Builder</code>.</li>
-
-<li>Drag your longitude and latitude variables to the <code>X</code> and <code>Y</code> axes, respectively.</li>
-
-<li>Select <code>Map</code> from the options.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Create a map in R
+```{r, eval=FALSE}
+# Create a map in R
         library(ggplot2)
         library(maps)
 
@@ -1397,81 +445,7 @@ plt.show()
         ggplot(world_map, aes(x = long, y = lat, group = group)) +
           geom_polygon(fill = "lightblue", color = "white") +
           ggtitle("World Map Example")
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-import geopandas as gpd
-import matplotlib.pyplot as plt
-
-world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-world.plot()
-plt.title("World Map Example")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        MAP
-          /MAPTYPE=world
-          /TITLE='World Map Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        ssc install spmap
-        clear
-        sysuse world
-        spmap using world_coordinates, title("World Map Example")
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### Unstructured Text
 
@@ -1512,35 +486,8 @@ plt.show()
     -   Requires preprocessing to handle noise and inconsistencies.
     -   Interpretation challenges due to language ambiguities.
 
-<details>
-
-<summary>JMP Instructions:</summary>
-
-<ul>
-
-<li>Go to <code>Analyze</code> \> <code>Text Explorer</code>.</li>
-
-<li>Select your text variable and move it to the <code>Text</code> column.</li>
-
-<li>Click <code>OK</code>.</li>
-
-<li>Click the red triangle and select <code> Display Options <code> \> <code> Show Word Cloud.</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>R Code Example:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        # Summarize unstructured text in R
+```{r, eval=FALSE}
+# Summarize unstructured text in R
         library(tm)
         library(wordcloud)
 
@@ -1549,82 +496,7 @@ plt.show()
         tdm <- TermDocumentMatrix(corpus)
         word_freq <- sort(rowSums(as.matrix(tdm)), decreasing = TRUE)
         wordcloud(names(word_freq), word_freq, scale = c(3, 0.5), colors = brewer.pal(8, "Dark2"))
-      </pre>
 ```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>Python Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-
-text = "word1 word2 word3 word1 word2"
-wordcloud = WordCloud(scale=3, max_words=50, background_color='white').generate(text)
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>SPSS Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        TEXTANALYSIS
-          /TEXT=Comments
-          /TITLE='Unstructured Text Analysis Example'.
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
-
-<details>
-
-<summary>STATA Instructions:</summary>
-
-<ul>
-
-<li>
-
-```{=html}
-<pre>
-        clear
-        set obs 5
-        generate comments = "word1 word2 word3 word1 word2"
-        wordcloud comments, maxwords(50)
-      </pre>
-```
-</li>
-
-</ul>
-
-</details>
 
 ### References
 

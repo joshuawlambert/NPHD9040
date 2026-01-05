@@ -1,0 +1,414 @@
+---
+title: "Introduction to Logistic Regression"
+author: "Dr. Joshua Lambert"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: true
+    code-tools: true
+    css: styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Introduction
+
+Logistic regression is a fundamental statistical method used to model
+the relationship between a dependent variable (often binary) and one or
+more independent variables. It is particularly useful in healthcare and
+nursing research to understand the influence of various factors on
+patient outcomes.
+
+## Objectives
+
+-   Understand the fundamentals of logistic regression.
+-   Learn the key differences between logistic and linear regression.
+-   Explore the logistic function and its interpretation.
+-   Calculate and interpret odds ratios.
+-   Formulate the logistic regression equation using maximum likelihood
+    estimation (MLE).
+-   Estimate and test the significance of the regression coefficients.
+-   Explore goodness-of-fit tests and the Hosmer-Lemeshow test.
+-   Learn about stepwise logistic regression.
+-   Check assumptions and assess multicollinearity.
+-   Provide examples in JMP, R, Python, SPSS, and Stata.
+
+## Definition and Purpose of Logistic Regression
+
+Logistic regression is used to predict the probability of a binary
+outcome (e.g., success/failure, disease/no disease) based on one or more
+predictor variables. It helps in answering questions like: - What are
+the chances that a patient has diabetes given their age, BMI, and family
+history? - How likely is a patient to respond to a specific treatment
+based on their health metrics?
+
+## Key Differences Between Logistic Regression and Linear Regression
+
+-   **Outcome Variable:** Logistic regression deals with binary
+    outcomes, while linear regression handles continuous outcomes.
+-   **Prediction Interpretation:** Logistic regression outputs
+    probabilities (between 0 and 1) instead of continuous values.
+-   **Model Fit Measure:** Logistic regression uses likelihood-based
+    measures like deviance, while linear regression relies on metrics
+    like R-squared.
+
+## Understanding the Logistic Function and Its Interpretation
+
+The logistic function transforms a linear combination of predictors into
+probabilities:
+
+$$ p = \frac{e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}} $$
+
+where ( p ) is the predicted probability, and ( \beta\_i ) are the
+regression coefficients.
+
+The log-odds (logit) transformation:
+
+$$ \log\left(\frac{p}{1 - p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k $$
+
+## Calculation and Interpretation of Odds Ratios
+
+An odds ratio (OR) is a measure of association between an exposure and
+an outcome. It is interpreted as the odds of the outcome occurring given
+the presence of a particular predictor.
+
+$$ \text{OR} = \exp(\beta_i) $$
+
+-   **OR \> 1:** Positive association between predictor and outcome.
+-   **OR \< 1:** Negative association between predictor and outcome.
+-   **OR = 1:** No association.
+
+## Formulating the Logistic Regression Equation; Maximum Likelihood Estimation (MLE)
+
+1.  **Model Specification:**
+    $$ \log\left(\frac{p}{1 - p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k $$
+
+2.  **Maximum Likelihood Estimation (MLE):** The logistic regression
+    coefficients are estimated by maximizing the likelihood function:
+    $$ L(\beta) = \prod_{i=1}^{n} p_i^{y_i} (1 - p_i)^{1 - y_i} $$ where
+    ( p_i ) is the predicted probability for the ( i )-th observation.
+
+## Estimating the Regression Coefficients
+
+The coefficients are estimated using MLE. Most statistical software
+provides direct estimation.
+
+## Testing the Significance of the Regression Coefficients
+
+-   **Wald Test:** Tests individual coefficients.
+-   **Likelihood Ratio Test:** Compares nested models.
+-   **Score Test:** Similar to the likelihood ratio test.
+
+## Confidence Intervals for the Coefficients
+
+Confidence intervals provide a range of plausible values for the
+coefficients.
+
+$$ CI = \hat{\beta_i} \pm z^* \cdot SE(\hat{\beta_i}) $$
+
+## Deviance and Goodness-of-Fit Tests
+
+-   **Deviance:** Measure of model fit, similar to residual sum of
+    squares.
+-   **Likelihood Ratio Test (Chi-Square):** Compares the deviance of
+    nested models.
+-   **Hosmer-Lemeshow Test:** Assesses model calibration.
+
+## Interpretation of Regression Coefficients; Understanding the Impact of Predictors on Odds
+
+### Example
+
+Assume a logistic regression model predicting diabetes (yes/no) based on
+age and BMI:
+
+$$ \log\left(\frac{p}{1 - p}\right) = -5 + 0.05 \cdot \text{Age} + 0.2 \cdot \text{BMI} $$
+
+Interpretation: - **Intercept (-5):** Baseline log-odds of diabetes for
+a patient with Age = 0 and BMI = 0. - **Age Coefficient (0.05):** For
+each one-year increase in age, the odds of diabetes increase by (
+e\^{0.05} \approx 1.05 ) times. - **BMI Coefficient (0.2):** For each
+unit increase in BMI, the odds of diabetes increase by ( e\^{0.2}
+\approx 1.22 ) times.
+
+## Stepwise Logistic Regression
+
+Stepwise logistic regression involves automatic selection of predictors
+based on criteria like AIC, BIC, or p-values.
+
+-   **Forward Selection:** Starts with no variables and adds one at a
+    time.
+-   **Backward Elimination:** Starts with all variables and removes one
+    at a time.
+-   **Bidirectional Elimination:** Combines forward and backward
+    methods.
+
+## Interpreting Odds Ratios for Categorical and Continuous Predictors
+
+-   **Categorical Predictors:** Interpret the OR relative to the
+    reference category.
+-   **Continuous Predictors:** Interpret the OR per unit increase in the
+    predictor.
+
+## Checking Assumptions of Logistic Regression
+
+1.  **Linearity in Logit:** Ensure continuous predictors are linearly
+    related to the logit.
+2.  **Absence of Multicollinearity:** Check variance inflation factors
+    (VIF).
+3.  **No Outliers/Influential Observations:** Use Cook's distance or
+    leverage plots.
+
+## Examples of Logistic Regression in Nursing Research
+
+### Example 1: Predicting Diabetes
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Logistic Regression in R
+        data <- read.csv("health_data.csv")
+        model <- glm(Diabetes ~ Age + BMI, data = data, family = "binomial")
+        summary(model)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Logistic Regression in Python
+        import pandas as pd
+        import statsmodels.api as sm
+
+        data = pd.read_csv("health_data.csv")
+        X = data[['Age', 'BMI']]
+        X = sm.add_constant(X)
+        y = data['Diabetes']
+
+        model = sm.Logit(y, X)
+        result = model.fit()
+        print(result.summary())
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        // Logistic Regression in Stata
+        import delimited health_data.csv
+        logit Diabetes Age BMI
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        * Logistic Regression in SPSS.
+        GET DATA /TYPE = TXT /FILE = 'health_data.csv' /DELCASE = LINE /DELIMITERS = ",".
+        LOGISTIC REGRESSION VARIABLES Diabetes
+        /METHOD = ENTER Age BMI.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your binary outcome variable (e.g., Diabetes) and move it to
+the <code>Y</code> column.</li>
+
+<li>Select your predictor variables (e.g., Age, BMI) and move them to
+the <code>Construct Model Effects</code> column.</li>
+
+<li>Choose <code>Generalized Linear Model</code> and set the
+Distribution to <code>Binomial</code> with a <code>Logit</code> link
+function.</li>
+
+<li>Click <code>Run</code>.</li>
+
+</ul>
+
+</details>
+
+### Example 2: Predicting Heart Disease
+
+<details>
+
+<summary>R Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Logistic Regression in R
+        data <- read.csv("heart_data.csv")
+        model <- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = "binomial")
+        summary(model)
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Python Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        # Logistic Regression in Python
+        import pandas as pd
+        import statsmodels.api as sm
+
+        data = pd.read_csv("heart_data.csv")
+        X = data[['Age', 'Cholesterol', 'Smoking']]
+        X = sm.add_constant(X)
+        y = data['HeartDisease']
+
+        model = sm.Logit(y, X)
+        result = model.fit()
+        print(result.summary())
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>Stata Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        // Logistic Regression in Stata
+        import delimited heart_data.csv
+        logit HeartDisease Age Cholesterol Smoking
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>SPSS Code Example:</summary>
+
+<ul>
+
+<li>
+
+```{=html}
+<pre>
+        * Logistic Regression in SPSS.
+        GET DATA /TYPE = TXT /FILE = 'heart_data.csv' /DELCASE = LINE /DELIMITERS = ",".
+        LOGISTIC REGRESSION VARIABLES HeartDisease
+        /METHOD = ENTER Age Cholesterol Smoking.
+      </pre>
+```
+</li>
+
+</ul>
+
+</details>
+
+<details>
+
+<summary>JMP Instructions:</summary>
+
+<ul>
+
+<li>Go to <code>Analyze</code> \> <code>Fit Model</code>.</li>
+
+<li>Select your binary outcome variable (e.g., HeartDisease) and move it
+to the <code>Y</code> column.</li>
+
+<li>Select your predictor variables (e.g., Age, Cholesterol, Smoking)
+and move them to the <code>Construct Model Effects </code> column.</li>
+
+<li>Choose <code>Generalized Linear Model</code> and set the
+Distribution to <code>Binomial</code> with a <code>Logit</code> link
+function.</li>
+
+<li>Click <code>Run</code>.</li>
+
+</ul>
+
+</details>
+
+## Conclusion
+
+Logistic regression is a crucial tool in healthcare research, providing
+insights into the relationship between various factors and patient
+outcomes. Understanding how to interpret coefficients and use different
+software to fit logistic regression models enables effective
+decision-making and research.
