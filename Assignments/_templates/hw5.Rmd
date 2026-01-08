@@ -1,0 +1,142 @@
+---
+title: "NPHD 9040 Homework 5"
+subtitle: "Linear and Multiple Linear Regression"
+author: "Your Name Here"
+date: "Due Date"
+format: 
+  html:
+    toc: true
+---
+
+# Instructions
+
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
+
+**Goal**: This assignment covers Simple Linear Regression (one predictor) and Multiple Linear Regression (multiple predictors).
+
+# Part 1: Simple Linear Regression
+
+## Question 1: Data and Relationship
+
+**Task**: Explore two variables.
+
+1.  Load `slr_ex1.csv`.
+2.  Create a scatterplot of `BP` (y) vs `BMI` (x).
+
+**Produce**:
+*   **Code**: Loading and plotting code.
+*   **Output**: Scatterplot.
+*   **Interpretation**: Describe the direction (positive/negative) and strength (strong/weak) of the relationship visible in the plot.
+
+::: {.callout-tip}
+## Hint
+Review [Visualizing the Relationship](../Lectures/introduction-to-simple-linear-regression.qmd#visualizing-the-relationship-between-variables) for visualizing the relationship.
+:::
+
+```{r}
+#| label: load-slr
+
+# Your code here
+```
+
+## Question 2: Model Fitting
+
+**Task**: Quantify the relationship.
+
+1.  Fit the linear model: `lm(BP ~ BMI)`.
+2.  View the summary.
+
+**Produce**:
+*   **Code**: `lm()` and `summary()` commands.
+*   **Output**: Model coefficients table.
+*   **Interpretation**:
+    *   Write the regression equation: $BP = \beta_0 + \beta_1(BMI)$
+    *   Interpret the *slope*: For every 1 unit increase in BMI, BP increases by...
+    *   State the statistical significance of the slope.
+
+::: {.callout-tip}
+## Hint
+See [Examples of Simple Linear Regression](../Lectures/introduction-to-simple-linear-regression.qmd#examples-of-simple-linear-regression-in-nursing-research) and [Interpretation of Regression Coefficients](../Lectures/introduction-to-simple-linear-regression.qmd#interpretation-of-regression-coefficients).
+:::
+
+```{r}
+#| label: fit-slr
+
+# Your code here
+```
+
+# Part 2: Multiple Linear Regression
+
+## Question 3: Data Import
+
+**Task**: Prepare for multiple predictors.
+
+1.  Load `mlr_ex1.csv`.
+2.  Use `cor()` to check correlations between `Recovery_Time` and potential predictors (`Age`, `Medication_Adherence`, `Physiotherapy_Sessions`).
+
+**Produce**:
+*   **Code**: Loading and correlation commands.
+*   **Output**: Correlation matrix or list of correlation values.
+*   **Interpretation**: Which predictor has the strongest individual correlation with Recovery Time?
+
+::: {.callout-tip}
+## Hint
+Check [Introduction to Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd).
+:::
+
+```{r}
+#| label: load-mlr
+
+# Your code here
+```
+
+## Question 4: Model Fitting
+
+**Task**: Fit the full model.
+
+1.  Fit the model: `lm(Recovery_Time ~ Age + Medication_Adherence + Physiotherapy_Sessions)`.
+2.  View the summary.
+
+**Produce**:
+*   **Code**: `lm()` and `summary()` commands.
+*   **Output**: Regression summary table.
+*   **Interpretation**: Interpret the coefficient for `Medication_Adherence`. (Hint: "Holding Age and Physio constant, a 1 unit increase in Adherence...")
+
+::: {.callout-tip}
+## Hint
+Follow the [Introduction to Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd) steps.
+:::
+
+```{r}
+#| label: fit-mlr
+
+# Your code here
+```
+
+## Question 5: Model Evaluation
+
+**Task**: Assess fit and assumptions.
+
+1.  Identify the **Adjusted R-squared**.
+2.  Produce diagnostic plots (`plot(model)`).
+
+**Produce**:
+*   **Code**: Diagnostic plot command.
+*   **Output**: Numeric R-squared value and the 4 diagnostic plots.
+*   **Interpretation**:
+    *   What percent of variance does the model explain (R-squared)?
+    *   Do the residuals look normally distributed (Q-Q plot) and homoscedastic (Residuals vs Fitted)?
+
+::: {.callout-tip}
+## Hint
+See [Introduction to Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd) for interpreting these plots.
+:::
+
+```{r}
+#| label: diagnostics-mlr
+
+# Your code here
+```

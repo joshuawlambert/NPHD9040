@@ -66,7 +66,7 @@ Click to reveal answer
 :::
 
 ::: {.answer style="display: none;"}
-Assumptions of ANOVA include: normal distribution of the dependent variable, homogeneity of variance, independence of observations, and categorical independent variables.
+Assumptions of ANOVA include: normal distribution of the residuals, homogeneity of variance, independence of observations, and categorical independent variables.
 :::
 :::
 

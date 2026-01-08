@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;Joshua Lambert">
 
-<title>Welcome to NPHD9040 – NPHD 9040 – Applied Multivariable Analysis with R</title>
+<title>NPHD 9040 Homework 1 – NPHD 9040</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -70,9 +104,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -83,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NPHD 9040 – Applied Multivariable Analysis with R</span>
+    <span class="navbar-title">NPHD 9040</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -166,10 +228,41 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../Assignments/assign_list.html"> 
-<span class="menu-text">Assignments</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw1.html">
+ <span class="dropdown-text">HW1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw2.html">
+ <span class="dropdown-text">HW2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw3.html">
+ <span class="dropdown-text">HW3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw4.html">
+ <span class="dropdown-text">HW4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw5.html">
+ <span class="dropdown-text">HW5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/midterm.html">
+ <span class="dropdown-text">Midterm Presentation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/final.html">
+ <span class="dropdown-text">Final Project</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../Other/aboutDrL.html"> 
 <span class="menu-text">About Dr.&nbsp;L</span></a>
@@ -187,10 +280,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Topics</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#situations-and-anova-appropriateness" id="toc-situations-and-anova-appropriateness" class="nav-link active" data-scroll-target="#situations-and-anova-appropriateness">Situations and ANOVA Appropriateness</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#question-1-r-setup" id="toc-question-1-r-setup" class="nav-link" data-scroll-target="#question-1-r-setup">Question 1: R Setup</a></li>
+  <li><a href="#question-2-vectors-and-manual-data-entry" id="toc-question-2-vectors-and-manual-data-entry" class="nav-link" data-scroll-target="#question-2-vectors-and-manual-data-entry">Question 2: Vectors and Manual Data Entry</a></li>
+  <li><a href="#question-3-calculations-and-dataframes" id="toc-question-3-calculations-and-dataframes" class="nav-link" data-scroll-target="#question-3-calculations-and-dataframes">Question 3: Calculations and Dataframes</a></li>
+  <li><a href="#question-4-basic-graphing" id="toc-question-4-basic-graphing" class="nav-link" data-scroll-target="#question-4-basic-graphing">Question 4: Basic Graphing</a></li>
+  <li><a href="#question-5-loading-external-data" id="toc-question-5-loading-external-data" class="nav-link" data-scroll-target="#question-5-loading-external-data">Question 5: Loading External Data</a></li>
+  <li><a href="#question-6-research-scenarios" id="toc-question-6-research-scenarios" class="nav-link" data-scroll-target="#question-6-research-scenarios">Question 6: Research Scenarios</a></li>
   </ul>
 </nav>
     </div>
@@ -199,19 +298,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to NPHD9040</h1>
+<h1 class="title">NPHD 9040 Homework 1</h1>
+<p class="subtitle lead">Getting Started with R &amp; Preliminaries</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;Joshua Lambert </p>
-          </div>
-  </div>
     
   
     
@@ -222,18 +316,204 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="situations-and-anova-appropriateness" class="level1">
-<h1>Situations and ANOVA Appropriateness</h1>
-<p>For each of the following situations, indicate whether ANOVA is appropriate or not appropriate. Please justify your answer with one to two sentences.</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>New to R Markdown?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../Other/working_with_rmd.html"><strong>Click here for a guide on Getting Started with R Markdown</strong></a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Downloads
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="_templates/hw1.Rmd" class="btn btn-primary"><strong>Download Assignment Template</strong></a></p>
+<p><a href="../course_data/Coffee Data.csv" class="btn btn-success"><strong>Download Data: Coffee Data.csv</strong></a></p>
+</div>
+</div>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
 <ol type="1">
-<li><p>The independent variable (IV) is age group–people in their 60s, 70s, and 80s; the dependent variable (DV) is health-related hardiness, as measured on a 20-item scale.</p></li>
-<li><p>The IVs are ethnicity (White, African American, Hispanic, and Asian) and birthweight status (&lt; 2500 grams vs.&nbsp;2500 grams); the DV is serum bilirubin levels.</p></li>
-<li><p>The IV is maternal breastfeeding status (breastfeeds vs.&nbsp;does not breastfeed); the DV is maternal bonding with infant, as measured on a 10-item self-report scale.</p></li>
-<li><p>Suppose we wanted to compare the somatic complaints (as measured on a scale known as the Physical Symptom Survey or PSS) of three groups of people: nonsmokers, smokers, and people who recently quit smoking. Using the following data for PSS scores, do a one-way ANOVA to test the hypothesis that the population means are equal:</p>
+<li><strong>Download</strong> the assignment template (right-click and “Save Link As…” on the button above).</li>
+<li><strong>Open</strong> the <code>.Rmd</code> file in RStudio.</li>
+<li><strong>Complete</strong> the assignment by adding your R code chunks and written answers where indicated.</li>
+<li><strong>Submission</strong>: Submit <strong>BOTH</strong> your completed R Markdown file (<code>.Rmd</code>) and the rendered output file (HTML, PDF, or Word) to Canvas.</li>
+</ol>
+<p><strong>Goal</strong>: This assignment is designed to ensure you are effectively set up with R and RStudio, to practice manual data entry and calculation with vectors, and to perform basic plotting.</p>
+</section>
+<section id="question-1-r-setup" class="level1">
+<h1>Question 1: R Setup</h1>
+<p><strong>Task</strong>: Demonstrate that your R environment is ready.</p>
+<ol type="1">
+<li>Open RStudio.</li>
+<li>In the Console pane, type <code>R.version.string</code> and press Enter.</li>
+<li>Take a screenshot of your full RStudio window showing this output.</li>
+</ol>
+<p><strong>Produce</strong>: * An image file (e.g., png or jpg) embedded below.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unsure where to find the console? Check the <a href="../Lectures/getting-started-with-r.html#understanding-the-rstudio-interface">interface overview</a>.</p>
+</div>
+</div>
+<p><em>Replace this text with your screenshot: <code>![My RStudio](path/to/image.png)</code> or simply paste your image here if your editor supports it.</em></p>
+</section>
+<section id="question-2-vectors-and-manual-data-entry" class="level1">
+<h1>Question 2: Vectors and Manual Data Entry</h1>
+<p><strong>Task</strong>: Create a dataset from scratch using vectors.</p>
+<ol type="1">
+<li>Create a vector called <code>height_cm</code> with the following values: <code>165, 170, 178, 160, 182</code></li>
+<li>Create a vector called <code>weight_kg</code> with the following values: <code>68, 75, 82, 55, 90</code></li>
+<li>Create a vector called <code>sbp</code> (Systolic Blood Pressure) with values: <code>120, 135, 140, 115, 150</code></li>
+</ol>
+<p><strong>produce</strong>: * <strong>Code</strong>: The R commands to create these three vectors.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Review how to create vectors using the <code>c()</code> function in <a href="../Lectures/getting-started-with-r.html#vectors">Getting Started with R</a>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="question-3-calculations-and-dataframes" class="level1">
+<h1>Question 3: Calculations and Dataframes</h1>
+<p><strong>Task</strong>: Perform calculations on vectors and combine them.</p>
+<ol type="1">
+<li>Create a new vector <code>height_m</code> by dividing <code>height_cm</code> by 100.</li>
+<li>Calculate <code>bmi</code> using the formula: <span class="math inline">\(BMI = \frac{weight_{kg}}{height_m^2}\)</span>.</li>
+<li>Combine <code>height_cm</code>, <code>weight_kg</code>, <code>sbp</code>, and <code>bmi</code> into a data frame called <code>health_data</code>.</li>
+<li>Print the <code>health_data</code> object.</li>
+</ol>
+<p><strong>Produce</strong>: * <strong>Code</strong>: Calculations and data frame creation. * <strong>Output</strong>: The printed data frame showing all 5 subjects.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Need help computing the math or creating a dataframe? See <a href="../Lectures/getting-started-with-r.html#functions">Functions</a> and <a href="../Lectures/getting-started-with-r.html#data-frames">Data Frames</a>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="question-4-basic-graphing" class="level1">
+<h1>Question 4: Basic Graphing</h1>
+<p><strong>Task</strong>: Visualize your manually created data.</p>
+<ol type="1">
+<li>Create a <strong>Histogram</strong> of the <code>bmi</code> variable. Give it a title “Distribution of BMI” and label the x-axis “BMI”.</li>
+<li>Create a <strong>Scatterplot</strong> plotting <code>bmi</code> on the X-axis and <code>sbp</code> on the Y-axis. Title it “BMI vs Systolic BP”.</li>
+</ol>
+<p><strong>Produce</strong>: * <strong>Code</strong>: <code>hist()</code> and <code>plot()</code> commands. * <strong>Output</strong>: The two plots. * <strong>Interpretation</strong>: Briefly describe the relationship you see in the scatterplot (e.g., as BMI increases, what happens to SBP?).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See <a href="../Lectures/graphing-your-data.html">Graphing Your Data</a> for examples of histograms and scatterplots (check sections <a href="../Lectures/graphing-your-data.html#histogram">Histogram</a> and <a href="../Lectures/graphing-your-data.html#scatter-plot">Scatter Plot</a>).</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="question-5-loading-external-data" class="level1">
+<h1>Question 5: Loading External Data</h1>
+<p><strong>Task</strong>: Load the course dataset <code>Coffee Data.csv</code>.</p>
+<ol type="1">
+<li>Download the dataset from the link at the top of the page.</li>
+<li>Load it into an R object named <code>coffee</code> using <code>read.csv()</code>.</li>
+<li>Display the first 6 rows using the <code>head()</code> function.</li>
+</ol>
+<p><strong>Produce</strong>: * <strong>Code</strong>: The R commands to read the file and display the head. * <strong>Output</strong>: The standard R output showing the data frame structure.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Forgotten how to read a CSV? Review <a href="../Lectures/getting-started-with-r.html#reading-data-from-csv-files">Importing Data</a>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="question-6-research-scenarios" class="level1">
+<h1>Question 6: Research Scenarios</h1>
+<p><strong>Task</strong>: For each research scenario, identify the variables.</p>
+<p><strong>Produce</strong>: * <strong>Written Answer</strong>: Clearly state the Independent Variable (IV) and Dependent Variable (DV) for each case.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Need a refresher on Independent vs Dependent variables? Check the <a href="../Lectures/preliminaries.html">Preliminaries Lecture</a>.</p>
+</div>
+</div>
+<ol type="1">
+<li><strong>Scenario</strong>: A researcher wants to study if the type of music played in a waiting room (Classical, Jazz, or No Music) affects patient anxiety levels (measured on a scale of 1-10).
 <ul>
-<li>Input these data into JMP. What are the means for the three groups? Conduct an ANOVA and compute the sums of squares, degrees of freedom, and mean squares for these data. What is the value of F? Using an alpha of .05, is the F statistically significant? Summarize this information in both words and in an ANOVA table.</li>
+<li><strong>IV</strong>: [Your Answer Here]</li>
+<li><strong>DV</strong>: [Your Answer Here]</li>
 </ul></li>
-<li><p>Using the data from Question 4, compute three t-tests to compare all possible pairs of means with the Bonferroni method with a family-wise α = .05. Which pairs are significantly different from one another, using this multiple comparison procedure? Also complete a contrast for testing if Nonsmokers are different from ever Smoking. What is the Null and Alternative Hypothesis for this test? What is the P-value for this contrast? Compare this result to α = .05. What is the result and interpretation?</p></li>
+<li><strong>Scenario</strong>: A study looks at whether the number of hours of sleep (continuous variable) predicts reaction time (milliseconds) in drivers.
+<ul>
+<li><strong>IV</strong>: [Your Answer Here]</li>
+<li><strong>DV</strong>: [Your Answer Here]</li>
+</ul></li>
+<li><strong>Scenario</strong>: Comparing the blood pressure of patients before and after an exercise intervention.
+<ul>
+<li><strong>IV</strong>: [Your Answer Here]</li>
+<li><strong>DV</strong>: [Your Answer Here]</li>
+</ul></li>
 </ol>
 
 

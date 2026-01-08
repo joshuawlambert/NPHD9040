@@ -11,6 +11,10 @@ format:
     width: "99%"
 ---
 
+[**Download R Code for this Lecture**](code/introduction-to-anova.R){ .btn .btn-primary }
+
+
+
 # Understanding Hypothesis Testing and ANOVA
 
 ## Constructing a Written and Mathematical Hypothesis
@@ -47,8 +51,9 @@ Type 2 Error: Failing to reject the null hypothesis when it is false (false nega
 1.  The dependent variable is measured on an interval or ratio scale.
 2.  The independent variable is categorical.
 3.  Random sampling.
-4.  Normal distribution of the dependent variable.
-5.  Homogeneity of variance.
+4.  Normality of Errors
+    - The population errors should be normally distributed. We check this by looking at a histogram or Q-Q plot of the model residuals.
+5.  Homogeneity of population variance.
 
 > **💡 R Tip**: You can check ANOVA assumptions in R (for more detail on assumption checking, see the [Preliminaries](preliminaries.qmd#taking-your-data-on-a-date-exploratory-data-analysis) lecture):
 > - **Normality**: `shapiro.test()` on residuals or Q-Q plot
@@ -66,26 +71,28 @@ Boxplots are essential for visualizing data distribution across groups in ANOVA.
 ```{r, eval=FALSE}
 # Example boxplot in R
 data <- data.frame(
-  group = rep(c("Placebo", "Behavioral", "Drug"), each = 10),
-  stress = c(rnorm(10, 5, 1), rnorm(10, 7, 1), rnorm(10, 6, 1))
+    group = rep(c("Placebo", "Behavioral", "Drug"), each = 10),
+    stress = c(rnorm(10, 5, 1), rnorm(10, 7, 1), rnorm(10, 6, 1))
 )
 
 # Basic boxplot
-boxplot(stress ~ group, 
-        data = data, 
-        main = "Boxplot of Stress Scores",
-        xlab = "Group", 
-        ylab = "Stress Score",
-        col = c("lightblue", "lightgreen", "lightcoral"))
+boxplot(stress ~ group,
+    data = data,
+    main = "Boxplot of Stress Scores",
+    xlab = "Group",
+    ylab = "Stress Score",
+    col = c("lightblue", "lightgreen", "lightcoral")
+)
 
 # Add individual points
-stripchart(stress ~ group, 
-           data = data, 
-           vertical = TRUE, 
-           method = "jitter",
-           add = TRUE, 
-           pch = 19, 
-           col = "darkgray")
+stripchart(stress ~ group,
+    data = data,
+    vertical = TRUE,
+    method = "jitter",
+    add = TRUE,
+    pch = 19,
+    col = "darkgray"
+)
 ```
 
 > **💡 R Tip**: The formula `stress ~ group` means "stress by group". The `~` symbol separates the dependent variable (left) from the independent variable (right).
@@ -237,18 +244,18 @@ Let's work through a complete ANOVA analysis from start to finish:
 # ============================================
 
 # Step 1: Load required packages
-library(car)  # For Levene's test
+library(car) # For Levene's test
 
 # Step 2: Create or read data
 set.seed(456)
 pain_data <- data.frame(
-  patient_id = 1:60,
-  treatment = rep(c("Standard", "Physical Therapy", "Medication"), each = 20),
-  pain_reduction = c(
-    rnorm(20, mean = 2.5, sd = 1.2),  # Standard
-    rnorm(20, mean = 4.2, sd = 1.3),  # Physical Therapy
-    rnorm(20, mean = 3.8, sd = 1.1)   # Medication
-  )
+    patient_id = 1:60,
+    treatment = rep(c("Standard", "Physical Therapy", "Medication"), each = 20),
+    pain_reduction = c(
+        rnorm(20, mean = 2.5, sd = 1.2), # Standard
+        rnorm(20, mean = 4.2, sd = 1.3), # Physical Therapy
+        rnorm(20, mean = 3.8, sd = 1.1) # Medication
+    )
 )
 
 # Convert treatment to factor
@@ -273,27 +280,30 @@ par(mfrow = c(1, 2))
 
 # Boxplot
 boxplot(pain_reduction ~ treatment,
-        data = pain_data,
-        main = "Pain Reduction by Treatment",
-        xlab = "Treatment",
-        ylab = "Pain Reduction (points)",
-        col = c("lightblue", "lightgreen", "lightcoral"))
+    data = pain_data,
+    main = "Pain Reduction by Treatment",
+    xlab = "Treatment",
+    ylab = "Pain Reduction (points)",
+    col = c("lightblue", "lightgreen", "lightcoral")
+)
 
 # Add points
 stripchart(pain_reduction ~ treatment,
-           data = pain_data,
-           vertical = TRUE,
-           method = "jitter",
-           add = TRUE,
-           pch = 19,
-           col = "darkgray")
+    data = pain_data,
+    vertical = TRUE,
+    method = "jitter",
+    add = TRUE,
+    pch = 19,
+    col = "darkgray"
+)
 
 # Histogram of all data
 hist(pain_data$pain_reduction,
-     main = "Distribution of Pain Reduction",
-     xlab = "Pain Reduction (points)",
-     col = "lightblue",
-     border = "white")
+    main = "Distribution of Pain Reduction",
+    xlab = "Pain Reduction (points)",
+    col = "lightblue",
+    border = "white"
+)
 
 par(mfrow = c(1, 1))
 
@@ -331,20 +341,21 @@ par(mfrow = c(1, 1))
 
 # Step 8: Post-hoc tests (if ANOVA is significant)
 if (p_value < 0.05) {
-  cat("\n=== Post-hoc Analysis (Tukey HSD) ===\n")
-  tukey_results <- TukeyHSD(anova_model)
-  print(tukey_results)
-  
-  # Plot Tukey results
-  plot(tukey_results, las = 1)
-  
-  cat("\n=== Pairwise Comparisons (Bonferroni) ===\n")
-  pairwise_results <- pairwise.t.test(pain_data$pain_reduction, 
-                                       pain_data$treatment, 
-                                       p.adjust.method = "bonferroni")
-  print(pairwise_results)
+    cat("\n=== Post-hoc Analysis (Tukey HSD) ===\n")
+    tukey_results <- TukeyHSD(anova_model)
+    print(tukey_results)
+
+    # Plot Tukey results
+    plot(tukey_results, las = 1)
+
+    cat("\n=== Pairwise Comparisons (Bonferroni) ===\n")
+    pairwise_results <- pairwise.t.test(pain_data$pain_reduction,
+        pain_data$treatment,
+        p.adjust.method = "bonferroni"
+    )
+    print(pairwise_results)
 } else {
-  cat("\nANOVA not significant (p >= 0.05). Post-hoc tests not needed.\n")
+    cat("\nANOVA not significant (p >= 0.05). Post-hoc tests not needed.\n")
 }
 
 # Step 9: Effect size (eta-squared)
@@ -354,23 +365,31 @@ eta_squared <- ss_between / ss_total
 
 cat("\n=== Effect Size ===\n")
 cat("Eta-squared:", round(eta_squared, 3), "\n")
-cat("Interpretation: ", 
+cat(
+    "Interpretation: ",
     ifelse(eta_squared < 0.01, "negligible",
-           ifelse(eta_squared < 0.06, "small",
-                  ifelse(eta_squared < 0.14, "medium", "large"))), "\n")
+        ifelse(eta_squared < 0.06, "small",
+            ifelse(eta_squared < 0.14, "medium", "large")
+        )
+    ), "\n"
+)
 
 # Step 10: Report results
 cat("\n=== Summary for Reporting ===\n")
 cat("A one-way ANOVA was conducted to compare pain reduction across three treatment groups.\n")
-cat("The ANOVA was", ifelse(p_value < 0.05, "significant", "not significant"), 
-    sprintf("F(%d, %d) = %.2f, p %s.\n",
-            anova_summary[[1]]$Df[1],
-            anova_summary[[1]]$Df[2],
-            f_value,
-            ifelse(p_value < 0.001, "< .001", paste("=", round(p_value, 3)))))
+cat(
+    "The ANOVA was", ifelse(p_value < 0.05, "significant", "not significant"),
+    sprintf(
+        "F(%d, %d) = %.2f, p %s.\n",
+        anova_summary[[1]]$Df[1],
+        anova_summary[[1]]$Df[2],
+        f_value,
+        ifelse(p_value < 0.001, "< .001", paste("=", round(p_value, 3)))
+    )
+)
 
 if (p_value < 0.05) {
-  cat("Post-hoc comparisons using Tukey HSD indicated significant differences between groups.\n")
+    cat("Post-hoc comparisons using Tukey HSD indicated significant differences between groups.\n")
 }
 
 cat("\n=== Analysis Complete ===\n")

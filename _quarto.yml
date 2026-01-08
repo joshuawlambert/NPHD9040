@@ -3,9 +3,12 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - "Assignments/_templates"
+
 
 website:
-  title: "NPHD 9040 -- Applied Multivariable Analysis with R"
+  title: "NPHD 9040"
   navbar:
     left:
       - text: "Home"
@@ -43,7 +46,22 @@ website:
           - text: "2-Way ANOVA"
             href: Flashcards/flashcards_2wanova.qmd
       - text: "Assignments"
-        href: Assignments/assign_list.qmd
+        menu:
+          - text: "HW1"
+            href: Assignments/hw1.qmd
+          - text: "HW2"
+            href: Assignments/hw2.qmd
+          - text: "HW3"
+            href: Assignments/hw3.qmd
+          - text: "HW4"
+            href: Assignments/hw4.qmd
+          - text: "HW5"
+            href: Assignments/hw5.qmd
+
+          - text: "Midterm Presentation"
+            href: Assignments/midterm.qmd
+          - text: "Final Project"
+            href: Assignments/final.qmd
       - text: "About Dr. L"
         href: Other/aboutDrL.qmd
 

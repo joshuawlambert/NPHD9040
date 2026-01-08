@@ -10,6 +10,10 @@ format:
     code-tools: true 
 ---
 
+[**Download R Code for this Lecture**](code/graphing-your-data.R){ .btn .btn-primary }
+
+
+
 # Graphing Your Data
 
 ## Identifying Differences in Types of Data and How to Graph

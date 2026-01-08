@@ -14,6 +14,10 @@ editor:
     wrap: 72
 ---
 
+[**Download R Code for this Lecture**](code/introduction-to-logistic-regression.R){ .btn .btn-primary }
+
+
+
 ## Introduction
 
 Logistic regression is a fundamental statistical method used to model

@@ -1,0 +1,113 @@
+---
+title: "NPHD 9040 Homework 3"
+subtitle: "Two-Way ANOVA"
+author: "Your Name Here"
+date: "Due Date"
+format: 
+  html:
+    toc: true
+---
+
+# Instructions
+
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
+
+**Goal**: This assignment covers Two-Way ANOVA, allowing you to examine the main effects of two independent variables and their interaction on a continuous outcome.
+
+# Question 1: Data Import and Exploration
+
+**Task**: Prepare the data.
+
+1.  Load `Coffee Data.csv`.
+2.  Ensure `Grind` and `Temperature` are treated as factors.
+
+**Produce**:
+*   **Code**: Loading and conversion code.
+*   **Output**: `str()` or `summary()` showing the variables are Factors.
+
+::: {.callout-tip}
+## Hint
+Remember to use `as.factor()` if variables aren't read correctly. See [Data Types](../Lectures/getting-started-with-r.qmd#data-types).
+:::
+
+```{r}
+#| label: load-data
+#| warning: false
+
+# Your code here
+```
+
+# Question 2: Descriptive Statistics
+
+**Task**: Visualize the interaction.
+
+1.  Calculate the Mean `Strength` for all combinations of Grind and Temperature (e.g., Fine/Hot, Fine/Cold, etc.).
+2.  Create an Interaction Plot (line plot with one variable on X and separate lines for the other).
+
+**Produce**:
+*   **Code**: Commands for means (e.g., `tapply` or `group_by`) and plotting (e.g., `interaction.plot` or `ggplot`).
+*   **Output**: The table of means and the plot.
+*   **Interpretation**: Looking at the plot, do the lines cross? Does the effect of Temperature look different depending on Grind?
+
+::: {.callout-tip}
+## Hint
+See [Example 1 in Two-Way ANOVA](../Lectures/introduction-to-two-way-anova.qmd#examples-of-two-way-anova-in-nursing-research) for relevant code structures.
+:::
+
+```{r}
+#| label: interaction-plot
+
+# Your code here
+```
+
+# Question 3: Two-Way ANOVA Model
+
+**Task**: Test for significance.
+
+1.  Fit the Two-Way ANOVA model: `Strength ~ Grind * Temperature`.
+2.  Produce the ANOVA table.
+
+**Produce**:
+*   **Code**: `aov()` command and `summary()`.
+*   **Output**: The ANOVA table showing Main Effects and Interaction.
+*   **Interpretation**:
+    *   Is the Interaction effect significant?
+    *   Is the Main Effect of Grind significant?
+    *   Is the Main Effect of Temperature significant?
+
+::: {.callout-tip}
+## Hint
+Follow the syntax in [Examples of Two-Way ANOVA](../Lectures/introduction-to-two-way-anova.qmd#examples-of-two-way-anova-in-nursing-research). Note the use of `*` for interaction.
+:::
+
+```{r}
+#| label: run-2way-anova
+
+# Your code here
+```
+
+# Question 4: Post-Hoc Tests (Simple Main Effects)
+
+**Task**: Deconstruct the interaction (or main effects).
+
+1.  If the interaction was significant, finding *which* temperature differs at *which* grind level is important. Run a Tukey HSD test on the model.
+2.  (Optional challenge) Attempt to test "Simple Main Effects" (e.g., does Temperature matter specifically for "Fine" grind?).
+
+**Produce**:
+*   **Code**: TukeyHSD command.
+*   **Output**: Pairwise comparison table.
+*   **Interpretation**: Select one significant comparison from the list and explain it in plain English (e.g., "Strength is significantly higher for Hot vs Cold, but only when Grind is Fine").
+
+::: {.callout-tip}
+## Hint
+For interactions, [Post-hoc Analysis](../Lectures/introduction-to-two-way-anova.qmd#post-hoc-analysis) explains how to interpret the complex pairwise comparisons.
+:::
+
+```{r}
+#| label: post-hoc-2way
+
+# Your code here
+```

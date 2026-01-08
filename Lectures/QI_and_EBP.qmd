@@ -8,6 +8,10 @@ format:
     css: styles.css
 ---
 
+[**Download R Code for this Lecture**](code/QI_and_EBP.R){ .btn .btn-primary }
+
+
+
 This page presents frequently asked statistics questions by students related to QI and EBP final projects. Llinks for the [t-test](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd) or [chi-square](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd). Please email [joshua.lambert@uc.edu](mailto:joshua.lambert@uc.edu) with more questions.
 
 ---

@@ -13,6 +13,10 @@ editor:
     wrap: 72
 ---
 
+[**Download R Code for this Lecture**](code/introduction-to-two-way-anova.R){ .btn .btn-primary }
+
+
+
 # Introduction to Two-Way ANOVA
 
 ## Objectives

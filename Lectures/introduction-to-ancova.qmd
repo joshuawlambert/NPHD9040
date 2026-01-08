@@ -10,6 +10,10 @@ format:
     code-tools: true
 ---
 
+[**Download R Code for this Lecture**](code/introduction-to-ancova.R){ .btn .btn-primary }
+
+
+
 # Understanding Hypothesis Testing and ANCOVA
 
 ### Definition and Purpose of ANCOVA

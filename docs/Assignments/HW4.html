@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dr.&nbsp;JL">
 
-<title>Homework 4 – NPHD 9040 – Applied Multivariable Analysis with R</title>
+<title>NPHD 9040 Homework 4 – NPHD 9040</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,10 +103,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-
-<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -86,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NPHD 9040 – Applied Multivariable Analysis with R</span>
+    <span class="navbar-title">NPHD 9040</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -169,10 +199,41 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../Assignments/assign_list.html"> 
-<span class="menu-text">Assignments</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw1.html">
+ <span class="dropdown-text">HW1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw2.html">
+ <span class="dropdown-text">HW2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw3.html">
+ <span class="dropdown-text">HW3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw4.html">
+ <span class="dropdown-text">HW4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw5.html">
+ <span class="dropdown-text">HW5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/midterm.html">
+ <span class="dropdown-text">Midterm Presentation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/final.html">
+ <span class="dropdown-text">Final Project</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../Other/aboutDrL.html"> 
 <span class="menu-text">About Dr.&nbsp;L</span></a>
@@ -188,27 +249,33 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#question-1-data-import-and-structure" id="toc-question-1-data-import-and-structure" class="nav-link" data-scroll-target="#question-1-data-import-and-structure">Question 1: Data Import and Structure</a></li>
+  <li><a href="#question-2-descriptive-statistics-and-visualization" id="toc-question-2-descriptive-statistics-and-visualization" class="nav-link" data-scroll-target="#question-2-descriptive-statistics-and-visualization">Question 2: Descriptive Statistics and Visualization</a></li>
+  <li><a href="#question-3-assumption-checking" id="toc-question-3-assumption-checking" class="nav-link" data-scroll-target="#question-3-assumption-checking">Question 3: Assumption Checking</a></li>
+  <li><a href="#question-4-run-repeated-measures-anova" id="toc-question-4-run-repeated-measures-anova" class="nav-link" data-scroll-target="#question-4-run-repeated-measures-anova">Question 4: Run Repeated Measures ANOVA</a></li>
+  <li><a href="#question-5-post-hoc-analysis" id="toc-question-5-post-hoc-analysis" class="nav-link" data-scroll-target="#question-5-post-hoc-analysis">Question 5: Post-Hoc Analysis</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 4</h1>
+<h1 class="title">NPHD 9040 Homework 4</h1>
+<p class="subtitle lead">Repeated Measures ANOVA</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dr.&nbsp;JL </p>
-          </div>
-  </div>
     
   
     
@@ -219,96 +286,167 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Name:_____________________________</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>New to R Markdown?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../Other/working_with_rmd.html"><strong>Click here for a guide on Getting Started with R Markdown</strong></a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Downloads
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="_templates/hw4.Rmd" class="btn btn-primary"><strong>Download Assignment Template</strong></a></p>
+<p><a href="../course_data/rm_ex.csv" class="btn btn-success"><strong>Download Data: rm_ex.csv</strong></a></p>
+</div>
+</div>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
 <ol type="1">
-<li>R Squared is known as the:</li>
+<li><strong>Download</strong> the assignment template (right-click and “Save Link As…” on the button above).</li>
+<li><strong>Open</strong> the <code>.Rmd</code> file in RStudio.</li>
+<li><strong>Complete</strong> the assignment by adding your R code chunks and written answers where indicated.</li>
+<li><strong>Submission</strong>: Submit <strong>BOTH</strong> your completed R Markdown file (<code>.Rmd</code>) and the rendered output file (HTML, PDF, or Word) to Canvas.</li>
 </ol>
-<!-- -->
-<ol type="a">
-<li>Coefficient of determination.</li>
-<li>Multiple correlation coefficient.</li>
-<li>Partial correlation coefficient.</li>
-<li>Semi-partial correlation coefficient.</li>
+<p><strong>Goal</strong>: This assignment covers One-Way Repeated Measures ANOVA.</p>
+</section>
+<section id="question-1-data-import-and-structure" class="level1">
+<h1>Question 1: Data Import and Structure</h1>
+<p><strong>Task</strong>: Load and format data.</p>
+<ol type="1">
+<li>Load <code>rm_ex.csv</code>.</li>
+<li><strong>Crucial Step</strong>: Ensure <code>Subject</code> is a Factor. Ensure <code>Time</code> is a Factor.</li>
 </ol>
-<!-- -->
-<ol start="2" type="1">
-<li>What is b0 in SLR?</li>
+<p><strong>Produce</strong>: * <strong>Code</strong>: Loading and <code>as.factor()</code> conversion. * <strong>Output</strong>: Verification (str or summary).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Subject ID must be a factor for the error term to work. See <a href="../Lectures/introduction-to-repeated-measures-anova.html#understanding-the-structure-of-a-repeated-measures-design">Understanding the Structure</a>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="question-2-descriptive-statistics-and-visualization" class="level1">
+<h1>Question 2: Descriptive Statistics and Visualization</h1>
+<p><strong>Task</strong>: Visualize subject trajectories.</p>
+<ol type="1">
+<li>Calculate Means by Time.</li>
+<li>Create a “Spaghetti Plot” (lines connecting each subject’s data points) OR a Boxplot by Time.</li>
 </ol>
-<!-- -->
-<ol type="a">
-<li>The value of the outcome when the independent variable is 0.</li>
-<li>The relationship between an independent variable and the outcome variable.</li>
-<li>The value of the independent variable when the outcome is zero.</li>
-<li>The gradient of the regression line.</li>
+<p><strong>Produce</strong>: * <strong>Code</strong>: Plotting commands. * <strong>Output</strong>: The plot. * <strong>Interpretation</strong>: Do subjects seem to increase or decrease over time? Is there a consistent pattern?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While the lecture focuses on analysis, you can see general graphing tips in <a href="../Lectures/graphing-your-data.html">Reference</a> or check out general R resources for “spaghetti plots”.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="question-3-assumption-checking" class="level1">
+<h1>Question 3: Assumption Checking</h1>
+<p><strong>Task</strong>: Understand Sphericity.</p>
+<ol type="1">
+<li>Repeated measures ANOVA assumes “Sphericity”.</li>
+<li>Provide a written definition.</li>
+<li>(Optional) Run <code>ezANOVA</code> or <code>anova_test</code> (rstatix) to see Mauchly’s Test for Sphericity results.</li>
 </ol>
-<!-- -->
-<ol start="3" type="1">
-<li>_____ method is used to find the line of best fit.</li>
+<p><strong>Produce</strong>: * <strong>Written Answer</strong>: What is sphericity? Why does it matter? * <strong>(Optional) Code/Output</strong>: Mauchly’s test result.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Read about <a href="../Lectures/introduction-to-repeated-measures-anova.html#sphericity-assumption">Sphericity Assumption</a>.</p>
+</div>
+</div>
+</section>
+<section id="question-4-run-repeated-measures-anova" class="level1">
+<h1>Question 4: Run Repeated Measures ANOVA</h1>
+<p><strong>Task</strong>: Determine if Time has an effect.</p>
+<ol type="1">
+<li>Run the Repeated Measures ANOVA. (Hint: <code>aov(BP ~ Time + Error(Subject/Time))</code>).</li>
+<li>Display the summary.</li>
 </ol>
-<!-- -->
-<ol type="a">
-<li>Fisher’s</li>
-<li>Most minimum R Squared</li>
-<li>Ordinary Least Squares</li>
-<li>Moderates</li>
+<p><strong>Produce</strong>: * <strong>Code</strong>: The <code>aov</code> command with the Error term. * <strong>Output</strong>: The ANOVA summary table. * <strong>Interpretation</strong>: Is the effect of Time significant? Report F, df, and p-value.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See <a href="../Lectures/introduction-to-repeated-measures-anova.html#examples-of-repeated-measures-anova-in-nursing-research">Example 1 in Repeated Measures</a> for <code>ezANOVA</code> usage, or standard R guides for <code>aov</code>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="question-5-post-hoc-analysis" class="level1">
+<h1>Question 5: Post-Hoc Analysis</h1>
+<p><strong>Task</strong>: Pairwise comparisons.</p>
+<ol type="1">
+<li>If Time is significant, test differences between specific time points (Baseline vs Week 1, etc.) using <code>pairwise.t.test</code> with <code>paired = TRUE</code> and a correction method (like Bonferroni).</li>
 </ol>
-<!-- -->
-<ol start="4" type="1">
-<li>Input the following data into Excel and import into your favorite statistical software. Conduct a simple linear regression where the response is SBP and the Independent variable is Age. What are the regression coefficients? What is the R Squared for the model?&nbsp; What is the Null and Alternative Hypothesis for effect of Age? Is age significant? Interpret the effect of age regardless if it is significant. &nbsp;</li>
-</ol>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 28%">
-<col style="width: 11%">
-<col style="width: 59%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">Subject ID</th>
-<th style="text-align: center;">Age</th>
-<th style="text-align: center;">Systolic.Blood.Pressure</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">100</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">110</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: center;">24</td>
-<td style="text-align: center;">140</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">140</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">125</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">135</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: center;">24</td>
-<td style="text-align: center;">115</td>
-</tr>
-</tbody>
-</table>
+<p><strong>Produce</strong>: * <strong>Code</strong>: Pairwise t-test command. * <strong>Output</strong>: Matrix of p-values. * <strong>Interpretation</strong>: Which specific time points differ significantly?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>See <a href="../Lectures/introduction-to-repeated-measures-anova.html#bonferroni-correction">Bonferroni Correction</a> for the concept.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

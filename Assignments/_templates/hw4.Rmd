@@ -1,0 +1,126 @@
+---
+title: "NPHD 9040 Homework 4"
+subtitle: "Repeated Measures ANOVA"
+author: "Your Name Here"
+date: "Due Date"
+format: 
+  html:
+    toc: true
+---
+
+# Instructions
+
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
+
+**Goal**: This assignment covers One-Way Repeated Measures ANOVA.
+
+# Question 1: Data Import and Structure
+
+**Task**: Load and format data.
+
+1.  Load `rm_ex.csv`.
+2.  **Crucial Step**: Ensure `Subject` is a Factor. Ensure `Time` is a Factor.
+
+**Produce**:
+*   **Code**: Loading and `as.factor()` conversion.
+*   **Output**: Verification (str or summary).
+
+::: {.callout-tip}
+## Hint
+Subject ID must be a factor for the error term to work. See [Understanding the Structure](../Lectures/introduction-to-repeated-measures-anova.qmd#understanding-the-structure-of-a-repeated-measures-design).
+:::
+
+```{r}
+#| label: load-data
+#| warning: false
+
+# Your code here
+```
+
+# Question 2: Descriptive Statistics and Visualization
+
+**Task**: Visualize subject trajectories.
+
+1.  Calculate Means by Time.
+2.  Create a "Spaghetti Plot" (lines connecting each subject's data points) OR a Boxplot by Time.
+
+**Produce**:
+*   **Code**: Plotting commands.
+*   **Output**: The plot.
+*   **Interpretation**: Do subjects seem to increase or decrease over time? Is there a consistent pattern?
+
+::: {.callout-tip}
+## Hint
+While the lecture focuses on analysis, you can see general graphing tips in [Reference](../Lectures/graphing-your-data.qmd) or check out general R resources for "spaghetti plots".
+:::
+
+```{r}
+#| label: visualize-rm
+
+# Your code here
+```
+
+# Question 3: Assumption Checking
+
+**Task**: Understand Sphericity.
+
+1.  Repeated measures ANOVA assumes "Sphericity".
+2.  Provide a written definition.
+3.  (Optional) Run `ezANOVA` or `anova_test` (rstatix) to see Mauchly's Test for Sphericity results.
+
+**Produce**:
+*   **Written Answer**: What is sphericity? Why does it matter?
+*   **(Optional) Code/Output**: Mauchly's test result.
+
+::: {.callout-tip}
+## Hint
+Read about [Sphericity Assumption](../Lectures/introduction-to-repeated-measures-anova.qmd#sphericity-assumption).
+:::
+
+# Question 4: Run Repeated Measures ANOVA
+
+**Task**: Determine if Time has an effect.
+
+1.  Run the Repeated Measures ANOVA. (Hint: `aov(BP ~ Time + Error(Subject/Time))`).
+2.  Display the summary.
+
+**Produce**:
+*   **Code**: The `aov` command with the Error term.
+*   **Output**: The ANOVA summary table.
+*   **Interpretation**: Is the effect of Time significant? Report F, df, and p-value.
+
+::: {.callout-tip}
+## Hint
+See [Example 1 in Repeated Measures](../Lectures/introduction-to-repeated-measures-anova.qmd#examples-of-repeated-measures-anova-in-nursing-research) for `ezANOVA` usage, or standard R guides for `aov`.
+:::
+
+```{r}
+#| label: run-rm-anova
+
+# Your code here
+```
+
+# Question 5: Post-Hoc Analysis
+
+**Task**: Pairwise comparisons.
+
+1.  If Time is significant, test differences between specific time points (Baseline vs Week 1, etc.) using `pairwise.t.test` with `paired = TRUE` and a correction method (like Bonferroni).
+
+**Produce**:
+*   **Code**: Pairwise t-test command.
+*   **Output**: Matrix of p-values.
+*   **Interpretation**: Which specific time points differ significantly?
+
+::: {.callout-tip}
+## Hint
+See [Bonferroni Correction](../Lectures/introduction-to-repeated-measures-anova.qmd#bonferroni-correction) for the concept.
+:::
+
+```{r}
+#| label: post-hoc-rm
+
+# Your code here
+```

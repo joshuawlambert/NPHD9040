@@ -1,116 +1,125 @@
 ---
-title: "Homework 3"
-author: "NPHD9040"
-output: html
-format:
+title: "NPHD 9040 Homework 3"
+subtitle: "Two-Way ANOVA"
+format: 
   html:
     toc: true
-    toc-title: "Assignments"
-    code-fold: true
-    code-tools: true
+    css: ../styles.css
 ---
+::: {.callout-tip icon=false}
+## New to R Markdown?
+[**Click here for a guide on Getting Started with R Markdown**](../Other/working_with_rmd.qmd)
+:::
 
-## 1. Use the “co8ee.jmp” file to complete a 2-Way ANOVA. The dependent variable will be the strength of the co8ee, independent variable 1 is the Grind of the co8ee, and independent variable 2 is the time the co8ee is brewed. Here are the descriptions of the variables:
+::: {.callout-note icon=false}
+## Downloads
+[**Download Assignment Template**](_templates/hw3.Rmd){ .btn .btn-primary }
 
-- **Grind**: Coarseness of the ground beans
-- **Temperature**: Temperature of the water used to brew the co8ee (in degrees Fahrenheit)
-- **Time**: Brewing time in minutes
-- **Charge**: Grams of co8ee beans per ounce of water
-- **Station**: Table at which the co8ee was brewed
-- **Strength**: Number of dissolved solids in the co8ee as measured by a refractometer
+[**Download Data: Coffee Data.csv**](../course_data/Coffee Data.csv){ .btn .btn-success }
 
-### a. Please first plot the relationship using a method we discussed.
+:::
 
-\`\`\`
-[Your plot here]
-\`\`\`
 
-### b. Conduct the two-way ANOVA. What is the conclusion about the interaction between the two independent variables?
+# Instructions
 
-\`\`\`
-[Your ANOVA results and conclusion here]
-\`\`\`
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
 
-### c. If the interaction was significant, complete a Tukey’s post-hoc test, if not, complete a Tukey’s post-hoc test on the lower order terms that were significant (p-value<0.05).
+**Goal**: This assignment covers Two-Way ANOVA, allowing you to examine the main effects of two independent variables and their interaction on a continuous outcome.
 
-\`\`\`
-[Your post-hoc test results here]
-\`\`\`
+# Question 1: Data Import and Exploration
 
-### d. Report the conclusion in words that are understandable to a lay person, as well as to someone who is in 9040, and me! Let me know if you have any questions.
+**Task**: Prepare the data.
 
-\`\`\`
-[Your conclusion here]
-\`\`\`
+1.  Load `Coffee Data.csv`.
+2.  Ensure `Grind` and `Temperature` are treated as factors.
 
----
+**Produce**:
+*   **Code**: Loading and conversion code.
+*   **Output**: `str()` or `summary()` showing the variables are Factors.
 
-## Multiple Choice
+::: {.callout-tip}
+## Hint
+Remember to use `as.factor()` if variables aren't read correctly. See [Data Types](../Lectures/getting-started-with-r.qmd#data-types).
+:::
 
-### 2. What is a 2-way ANOVA primarily test for?
+```{r}
+#| label: load-data
+#| warning: false
 
-- [ ] A. The effect of one independent variable on a dependent variable.
-- [ ] B. The effect of two independent variables on a dependent variable and their interaction.
-- [ ] C. The relationship between two dependent variables.
-- [ ] D. The effect of a dependent variable on two independent variables.
+# Your code here
+```
 
-\`\`\`
-[Your answer here]
-\`\`\`
+# Question 2: Descriptive Statistics
 
-### 3. Which assumption is unique to repeated measures ANOVA compared to a standard ANOVA?
+**Task**: Visualize the interaction.
 
-- [ ] A. Homogeneity of variances.
-- [ ] B. Normality.
-- [ ] C. Sphericity.
-- [ ] D. Independence of observations.
+1.  Calculate the Mean `Strength` for all combinations of Grind and Temperature (e.g., Fine/Hot, Fine/Cold, etc.).
+2.  Create an Interaction Plot (line plot with one variable on X and separate lines for the other).
 
-\`\`\`
-[Your answer here]
-\`\`\`
+**Produce**:
+*   **Code**: Commands for means (e.g., `tapply` or `group_by`) and plotting (e.g., `interaction.plot` or `ggplot`).
+*   **Output**: The table of means and the plot.
+*   **Interpretation**: Looking at the plot, do the lines cross? Does the effect of Temperature look different depending on Grind?
 
-### 4. In a 2-way ANOVA, what does an interaction effect indicate?
+::: {.callout-tip}
+## Hint
+See [Example 1 in Two-Way ANOVA](../Lectures/introduction-to-two-way-anova.qmd#examples-of-two-way-anova-in-nursing-research) for relevant code structures.
+:::
 
-- [ ] A. The effect of each independent variable is additive.
-- [ ] B. The effect of one independent variable depends on the level of the other variable.
-- [ ] C. Both independent variables have no effect on the dependent variable.
-- [ ] D. The independent variables are correlated with each other.
+```{r}
+#| label: interaction-plot
 
-\`\`\`
-[Your answer here]
-\`\`\`
+# Your code here
+```
 
-### 5. What is a potential disadvantage of using repeated measures in an ANOVA?
+# Question 3: Two-Way ANOVA Model
 
-- [ ] A. Increased risk of Type II errors.
-- [ ] B. Decreased statistical power.
-- [ ] C. Carryover effects.
-- [ ] D. Increased risk of violating the assumption of independence.
+**Task**: Test for significance.
 
-\`\`\`
-[Your answer here]
-\`\`\`
+1.  Fit the Two-Way ANOVA model: `Strength ~ Grind * Temperature`.
+2.  Produce the ANOVA table.
 
-### 6. In the context of 2-way ANOVA, what does the term 'main effect' refer to?
+**Produce**:
+*   **Code**: `aov()` command and `summary()`.
+*   **Output**: The ANOVA table showing Main Effects and Interaction.
+*   **Interpretation**:
+    *   Is the Interaction effect significant?
+    *   Is the Main Effect of Grind significant?
+    *   Is the Main Effect of Temperature significant?
 
-- [ ] A. The combined effect of the two independent variables.
-- [ ] B. The effect of each independent variable considered separately.
-- [ ] C. The effect that is common to both independent variables.
-- [ ] D. The effect that is not accounted for by the independent variables.
+::: {.callout-tip}
+## Hint
+Follow the syntax in [Examples of Two-Way ANOVA](../Lectures/introduction-to-two-way-anova.qmd#examples-of-two-way-anova-in-nursing-research). Note the use of `*` for interaction.
+:::
 
-\`\`\`
-[Your answer here]
-\`\`\`
+```{r}
+#| label: run-2way-anova
 
-### 7. Which of the following is a correct interpretation of a significant interaction in a 2-way ANOVA?
+# Your code here
+```
 
-- [ ] A. The independent variables independently influence the dependent variable.
-- [ ] B. The effect of one independent variable on the dependent variable changes across levels of the other variable.
-- [ ] C. The dependent variable is not affected by either of the independent variables.
-- [ ] D. The interaction is an artifact of measurement error.
+# Question 4: Post-Hoc Tests (Simple Main Effects)
 
-\`\`\`
-[Your answer here]
-\`\`\`
+**Task**: Deconstruct the interaction (or main effects).
 
----
+1.  If the interaction was significant, finding *which* temperature differs at *which* grind level is important. Run a Tukey HSD test on the model.
+2.  (Optional challenge) Attempt to test "Simple Main Effects" (e.g., does Temperature matter specifically for "Fine" grind?).
+
+**Produce**:
+*   **Code**: TukeyHSD command.
+*   **Output**: Pairwise comparison table.
+*   **Interpretation**: Select one significant comparison from the list and explain it in plain English (e.g., "Strength is significantly higher for Hot vs Cold, but only when Grind is Fine").
+
+::: {.callout-tip}
+## Hint
+For interactions, [Post-hoc Analysis](../Lectures/introduction-to-two-way-anova.qmd#post-hoc-analysis) explains how to interpret the complex pairwise comparisons.
+:::
+
+```{r}
+#| label: post-hoc-2way
+
+# Your code here
+```

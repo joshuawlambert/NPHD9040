@@ -1,0 +1,69 @@
+---
+title: "Working with R Markdown"
+format: 
+  html:
+    toc: true
+    css: ../styles.css
+---
+
+# What is R Markdown?
+
+R Markdown (`.Rmd`) is a file format that allows you to save and execute R code within a document. It combines your code, the output of that code (graphs, tables, values), and your written commentary into a single nice-looking report (HTML, PDF, or Word).
+
+# The Anatomy of an R Markdown File
+
+An RMD file has three main parts:
+
+## 1. The YAML Header
+
+This is the block of text at the very top of the file, enclosed by three dashes (`---`). It controls the document's settings.
+
+```yaml
+---
+title: "Homework 1"
+author: "Your Name"
+date: "2024-01-01"
+output: html_document
+---
+```
+
+**What you do:** Change the `author` and `date` to your own.
+
+## 2. Text (Markdown)
+
+You can type normal text anywhere in the document (outside of the code chunks). You can use Markdown syntax to format your text:
+
+*   **Bold**: `**text**` -> **text**
+*   *Italic*: `*text*` -> *text*
+*   Headers: `#` for main titles, `##` for section titles.
+
+## 3. Code Chunks
+
+This is where your R code lives. A code chunk looks like this:
+
+````markdown
+`r ''````{r}
+# This is a comment inside code
+mean(c(1, 2, 3))
+```
+````
+
+*   **Insert a Chunk**: You can type it manually or use the shortcut `Ctrl + Alt + I` (Windows) or `Cmd + Option + I` (Mac).
+*   **Run a Chunk**: Click the green "Play" button at the top right of the chunk to run the code and see the output immediately below it.
+
+# How to Complete Your Assignments
+
+1.  **Download the Template**: Use the link provided in the assignment page.
+2.  **Open in RStudio**: Do not just double-click; ensure it opens in RStudio.
+3.  **Edit**:
+    *   Update the YAML top section with your name.
+    *   Scroll down to the questions.
+    *   Type your specific code into the empty code chunks provided (e.g., `# Your code here`).
+    *   Type your written answers in the white space outside the chunks.
+4.  **Knit**: When you are finished, click the **Knit** button at the top of the editor window. This will execute all your code from scratch and create an HTML file.
+5.  **Submit**: Upload both the `.Rmd` file and the resulting `.html` file to Canvas.
+
+# Troubleshooting
+
+*   **Code error?** If your code has an error, the document will likely fail to Knit. Check the "Render" tab or run your chunks manually to find the mistake.
+*   **Missing package?** If you see "there is no package called...", run `install.packages("package_name")` in your **Console** (bottom left), not in the RMD file itself.

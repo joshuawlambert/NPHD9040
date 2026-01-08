@@ -1,26 +1,156 @@
 ---
-title: "NPHD9040:Homework 5"
-author: "Dr. Joshua Lambert"
-output:
-  html_document:
+title: "NPHD 9040 Homework 5"
+subtitle: "Linear and Multiple Linear Regression"
+format: 
+  html:
     toc: true
-    toc-title: "Assignments"
-    code_folding: hide
-    code_highlight: true
+    css: ../styles.css
 ---
+::: {.callout-tip icon=false}
+## New to R Markdown?
+[**Click here for a guide on Getting Started with R Markdown**](../Other/working_with_rmd.qmd)
+:::
 
-Name:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+::: {.callout-note icon=false}
+## Downloads
+[**Download Assignment Template**](_templates/hw5.Rmd){ .btn .btn-primary }
 
-Over 7,000 participants were surveyed during the 2015-2016 National Health and Nutrition Examination Survey (NHANES) survey collection.  NHANES is a "program of studies designed to assess the health and nutritional status of adults and children in the United States. The survey is unique in that it combines interviews and physical examinations."  A researcher is interested in understanding how demographic information (such as Sex, Age, Race), and Socio-Economic Status impact blood pressure (systolic, and diastolic) as well as pulse. After exclusion criteria were considered, and missing data removed, a final sample of 6,436 subjects remained in the dataset. You were assigned to help this research explore these relationships. Complete the following steps as well as other plots, tables, or analysis you believe to be necessary. 
+[**Download Data: slr_ex1.csv**](../course_data/slr_ex1.csv){ .btn .btn-success }
 
-<small>Variables: SEQN (unique subject identifier), Sex (Male, or Female), Age (range from 8 to 80), SES (LT1= Below poverty line, GT1= Above poverty line), pulse (range from 36 to 142), systolic blood pressure (ranges from 72 to 236), and diastolic pressure (ranges 0 to 120).</small>
+[**Download Data: mlr_ex1.csv**](../course_data/mlr_ex1.csv){ .btn .btn-success }
 
-1.  What the dependent variables? What types of variables are they?
+:::
 
-2.  What are the independent variables? What types of variables are they?
 
-3.  Using a statistical software and your knowledge of regression, estimate the effect of age on systolic blood pressure. Interpret the parameter estimate from the regression. What does the residual plot look like? Does the residual plot indicate a good model fit?
+# Instructions
 
-4.  Using a statistical software and your knowledge of regression, estimate the effect of age on systolic blood pressure while controlling for sex, race, SES, and Pulse. Interpret the parameter estimate for age from the regression. What does the residual plot look like? Does the residual plot indicate a good model fit?
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
 
-5.  How did the parameter estimate for age change from question 3 to 4? Which estimate do you think is more accurate and why? What other considerations did you think of why completing this assignment that might impact the results?
+**Goal**: This assignment covers Simple Linear Regression (one predictor) and Multiple Linear Regression (multiple predictors).
+
+# Part 1: Simple Linear Regression
+
+## Question 1: Data and Relationship
+
+**Task**: Explore two variables.
+
+1.  Load `slr_ex1.csv`.
+2.  Create a scatterplot of `BP` (y) vs `BMI` (x).
+
+**Produce**:
+*   **Code**: Loading and plotting code.
+*   **Output**: Scatterplot.
+*   **Interpretation**: Describe the direction (positive/negative) and strength (strong/weak) of the relationship visible in the plot.
+
+::: {.callout-tip}
+## Hint
+Review [Visualizing the Relationship](../Lectures/introduction-to-simple-linear-regression.qmd#visualizing-the-relationship-between-variables) for visualizing the relationship.
+:::
+
+```{r}
+#| label: load-slr
+
+# Your code here
+```
+
+## Question 2: Model Fitting
+
+**Task**: Quantify the relationship.
+
+1.  Fit the linear model: `lm(BP ~ BMI)`.
+2.  View the summary.
+
+**Produce**:
+*   **Code**: `lm()` and `summary()` commands.
+*   **Output**: Model coefficients table.
+*   **Interpretation**:
+    *   Write the regression equation: $BP = \beta_0 + \beta_1(BMI)$
+    *   Interpret the *slope*: For every 1 unit increase in BMI, BP increases by...
+    *   State the statistical significance of the slope.
+
+::: {.callout-tip}
+## Hint
+See [Examples of Simple Linear Regression](../Lectures/introduction-to-simple-linear-regression.qmd#examples-of-simple-linear-regression-in-nursing-research) and [Interpretation of Regression Coefficients](../Lectures/introduction-to-simple-linear-regression.qmd#interpretation-of-regression-coefficients).
+:::
+
+```{r}
+#| label: fit-slr
+
+# Your code here
+```
+
+# Part 2: Multiple Linear Regression
+
+## Question 3: Data Import
+
+**Task**: Prepare for multiple predictors.
+
+1.  Load `mlr_ex1.csv`.
+2.  Use `cor()` to check correlations between `Recovery_Time` and potential predictors (`Age`, `Medication_Adherence`, `Physiotherapy_Sessions`).
+
+**Produce**:
+*   **Code**: Loading and correlation commands.
+*   **Output**: Correlation matrix or list of correlation values.
+*   **Interpretation**: Which predictor has the strongest individual correlation with Recovery Time?
+
+::: {.callout-tip}
+## Hint
+Check [Introduction to Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd).
+:::
+
+```{r}
+#| label: load-mlr
+
+# Your code here
+```
+
+## Question 4: Model Fitting
+
+**Task**: Fit the full model.
+
+1.  Fit the model: `lm(Recovery_Time ~ Age + Medication_Adherence + Physiotherapy_Sessions)`.
+2.  View the summary.
+
+**Produce**:
+*   **Code**: `lm()` and `summary()` commands.
+*   **Output**: Regression summary table.
+*   **Interpretation**: Interpret the coefficient for `Medication_Adherence`. (Hint: "Holding Age and Physio constant, a 1 unit increase in Adherence...")
+
+::: {.callout-tip}
+## Hint
+Follow the [Introduction to Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd) steps.
+:::
+
+```{r}
+#| label: fit-mlr
+
+# Your code here
+```
+
+## Question 5: Model Evaluation
+
+**Task**: Assess fit and assumptions.
+
+1.  Identify the **Adjusted R-squared**.
+2.  Produce diagnostic plots (`plot(model)`).
+
+**Produce**:
+*   **Code**: Diagnostic plot command.
+*   **Output**: Numeric R-squared value and the 4 diagnostic plots.
+*   **Interpretation**:
+    *   What percent of variance does the model explain (R-squared)?
+    *   Do the residuals look normally distributed (Q-Q plot) and homoscedastic (Residuals vs Fitted)?
+
+::: {.callout-tip}
+## Hint
+See [Introduction to Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd) for interpreting these plots.
+:::
+
+```{r}
+#| label: diagnostics-mlr
+
+# Your code here
+```

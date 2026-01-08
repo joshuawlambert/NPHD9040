@@ -121,5 +121,86 @@
   },
   "Lectures/getting-started-with-r.qmd": {
     "getting-started-with-r.html": "c8e83212"
+  },
+  "Assignments_Backup/assign_list.qmd": {
+    "assign_list.html": "2ff023d4"
+  },
+  "Assignments_Backup/HW 2 Data Table.qmd": {
+    "HW 2 Data Table.html": "e019470a"
+  },
+  "Assignments_Backup/hw1-copy.qmd": {
+    "hw1-copy.html": "6199473b"
+  },
+  "Assignments_Backup/hw1.qmd": {
+    "hw1.html": "0878d83c"
+  },
+  "Assignments_Backup/HW2.qmd": {
+    "HW2.html": "99ad2c10"
+  },
+  "Assignments_Backup/HW3.qmd": {
+    "HW3.html": "e98e6e1e"
+  },
+  "Assignments/final.qmd": {
+    "final.html": "2c6c5268"
+  },
+  "Assignments/hw2.qmd": {
+    "hw2.html": "a6741e62"
+  },
+  "Assignments/hw3.qmd": {
+    "hw3.html": "959242de"
+  },
+  "Assignments/hw4.qmd": {
+    "hw4.html": "3e1986a9"
+  },
+  "Assignments/hw5.qmd": {
+    "hw5.html": "d9c2f6f8"
+  },
+  "Assignments/hw6.qmd": {
+    "hw6.html": "42a9a41c"
+  },
+  "Assignments/midterm.qmd": {
+    "midterm.html": "26b39731"
+  },
+  "docs/Assignments/final.qmd": {
+    "final.html": "4ca861ba"
+  },
+  "docs/Assignments/hw2.qmd": {
+    "hw2.html": "9a0c267c"
+  },
+  "docs/Assignments/hw3.qmd": {
+    "hw3.html": "441f532c"
+  },
+  "docs/Assignments/hw4.qmd": {
+    "hw4.html": "5ecaa4f5"
+  },
+  "docs/Assignments/hw5.qmd": {
+    "hw5.html": "79e0838a"
+  },
+  "docs/Assignments/hw6.qmd": {
+    "hw6.html": "9a6a8068"
+  },
+  "docs/Assignments/midterm.qmd": {
+    "midterm.html": "dd4339e4"
+  },
+  "Assignments/hw1a.qmd": {
+    "hw1a.html": "dca08c60"
+  },
+  "Assignments/templates/hw1.Rmd": {
+    "hw1.html": "e0e288be"
+  },
+  "Assignments/templates/hw2.Rmd": {
+    "hw2.html": "c000a269"
+  },
+  "Assignments/templates/hw3.Rmd": {
+    "hw3.html": "d3d7a74c"
+  },
+  "Assignments/templates/hw4.Rmd": {
+    "hw4.html": "799c2844"
+  },
+  "Assignments/templates/hw5.Rmd": {
+    "hw5.html": "155b3eea"
+  },
+  "Other/working_with_rmd.qmd": {
+    "working_with_rmd.html": "fdef085a"
   }
 }

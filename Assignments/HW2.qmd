@@ -1,51 +1,149 @@
 ---
-title: "Homework 2"
-author: "Dr. Joshua Lambert"
-output: html
-format:
+title: "NPHD 9040 Homework 2"
+subtitle: "One-Way ANOVA"
+format: 
   html:
     toc: true
-    toc-title: "Assignments"
-    code-fold: true
-    code-tools: true
+    css: ../styles.css
 ---
+::: {.callout-tip icon=false}
+## New to R Markdown?
+[**Click here for a guide on Getting Started with R Markdown**](../Other/working_with_rmd.qmd)
+:::
 
-## 1. What statistical procedure is most appropriate for the following scenario?
+::: {.callout-note icon=false}
+## Downloads
+[**Download Assignment Template**](_templates/hw2.Rmd){ .btn .btn-primary }
 
-### a. Independent variable: Mediterranean diet versus regular (no special) diet; dependent variable: total cholesterol; covariate: body mass index at baseline.
+[**Download Data: anova_ex1.csv**](../course_data/anova_ex1.csv){ .btn .btn-success }
 
-\`\`\` \[Your answer here\] \`\`\`
+:::
 
-### b. Independent variable: Presence vs. absence of boomerang pillows; dependent variable: respiratory capacity before treatment and 1 and 2 days after treatment.
 
-\`\`\` \[Your answer here\] \`\`\`
+# Instructions
 
-## 2. Suppose you were interested in studying the effect of a person's early retirement (at or below age 62 versus at age 65 or later) on indicators of physical and emotional health. What variables would you suggest using as covariates to enhance the comparability of the groups?
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
 
-\`\`\` \[Your answer here\] \`\`\`
+**Goal**: This assignment covers the One-Way Analysis of Variance (ANOVA), including assumptions, execution in R, and interpretation of results.
 
-## 3. Below are some means from a randomized controlled trial. Indicate at least two ways to analyze the data to test for treatment effects.
+# Question 1: Data Import and Exploration
 
-|                             | **Experimental Group** | **Control Group** |
-|-----------------------------|:-----------------------|:------------------|
-| **Baseline Data**           | 53.88                  | 52.99             |
-| **Post-Intervention Score** | 65.23                  | 57.47             |
+**Task**: Prepare the data for analysis.
 
-\`\`\` \[Your answer here\] \`\`\`
+1.  Load `anova_ex1.csv` into R.
+2.  Display the first few rows.
+3.  Check the structure of the dataframe.
 
-------------------------------------------------------------------------
+**Produce**:
+*   **Code**: R commands to load and inspect data.
+*   **Output**: The `head()` and `str()` (or `summary()`) of the dataset.
+*   **Interpretation**: Briefly confirm that your grouping variable is a factor (or character) and your outcome is numeric.
 
-## 4. A covariate in ANCOVA is:
+::: {.callout-tip}
+## Hint
+Review [Reading Data](../Lectures/getting-started-with-r.qmd#reading-data-from-csv-files) if needed.
+:::
 
--   [ ] a. Always a pretest measure of the outcome variable
--   [ ] b. A second dependent variable
--   [ ] c. An interaction term
--   [ ] d. A variable the researcher wants to statistically control
+```{r}
+#| label: load-data
+#| warning: false
 
-\`\`\` \[Your answer here\] \`\`\`
+# Your code here
+```
 
-## 5. Suppose we tested this belief by taking three groups of participants and administering one group with a placebo (such as a sugar pill), one group with a low dose of Viagra and one with a high dose. The dependent variable was an objective measure of libido. Also included in the file is the partners libido. Use the partners libido as a covariate and conduct an ANCOVA on whether there is a group effect on subjects measured libido. The data can be found in the file ViagraCovariate.sav. Please begin by checking the assumptions with graphs/tables. Report those here. Then complete the analysis, and follow up with post-hoc test when appropriate. Interpret any significant finds in words and with figures (box-plots) and tables.
+# Question 2: Descriptive Statistics and Visualization
 
-\`\`\` \[Your analysis here\] \`\`\`
+**Task**: Explore the data visually and numerically before testing.
 
-------------------------------------------------------------------------
+1.  Calculate determining summary statistics (Mean and SD) for each group.
+2.  Create a boxplot of `stress` by `group`.
+
+**Produce**:
+*   **Code**: R commands for summary stats and plotting.
+*   **Output**: A table (or printed output) of Means/SDs and the Boxplot image.
+*   **Interpretation**: Describe any apparent differences in the boxplots (e.g., "The Behavioral group appears to have higher stress...").
+
+::: {.callout-tip}
+## Hint
+See [Visualizing Using Boxplots](../Lectures/introduction-to-anova.qmd#visualizing-using-boxplots) for code examples.
+:::
+
+```{r}
+#| label: descriptive-stats
+
+# Your code here
+```
+
+# Question 3: Assumptions of ANOVA
+
+**Task**: Verify that the data meets the requirements for ANOVA.
+
+1.  **Normality**: Test the normality of the residuals (Shapiro-Wilk) or visually inspect a histogram or Q-Q plot.
+2.  **Homogeneity of Variance**: Test if groups have equal variances (Levene's Test).
+
+**Produce**:
+*   **Code**: R commands for Shapiro-Wilk and Levene's tests.
+*   **Output**: Test statistics and p-values.
+*   **Interpretation**:
+    *   Normality: Is the p-value > 0.05? What does that mean?
+    *   Homogeneity: Is the p-value > 0.05? What does that mean?
+
+::: {.callout-tip}
+## Hint
+Check [Assumptions of ANOVA](../Lectures/introduction-to-anova.qmd#assumptions-of-anova) and how to test them in R.
+:::
+
+```{r}
+#| label: check-assumptions
+
+# Your code here
+```
+
+# Question 4: One-Way ANOVA
+
+**Task**: Perform the omnibus One-Way ANOVA test.
+
+1.  Run the ANOVA model (`aov(outcome ~ group)`).
+2.  Print the summary table.
+
+**Produce**:
+*   **Code**: R command to fit model and show summary.
+*   **Output**: The ANOVA table.
+*   **Interpretation**: Report the F-statistic, degrees of freedom, and p-value. State clearly whether the result is statistically significant and what that implies (ie. "At least one group differs...").
+
+::: {.callout-tip}
+## Hint
+Follow the steps in [Conducting ANOVA in R](../Lectures/introduction-to-anova.qmd#conducting-anova-in-r).
+:::
+
+```{r}
+#| label: run-anova
+
+# Your code here
+```
+
+# Question 5: Post-Hoc Analysis
+
+**Task**: Identifying specific group differences.
+
+1.  If the ANOVA in Q4 was significant, conduct a Tukey HSD post-hoc test.
+2.  If it was not significant, note that post-hoc tests are not needed (but run the code anyway for practice).
+
+**Produce**:
+*   **Code**: R command for TukeyHSD.
+*   **Output**: The table of pairwise comparisons.
+*   **Interpretation**: Identify which specific pairs of groups are significantly different from each other based on the adjusted p-values.
+
+::: {.callout-tip}
+## Hint
+See [Post-hoc Analysis](../Lectures/introduction-to-anova.qmd#post-hoc-analysis) for using `TukeyHSD()`.
+:::
+
+```{r}
+#| label: post-hoc
+
+# Your code here
+```

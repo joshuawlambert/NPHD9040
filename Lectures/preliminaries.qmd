@@ -11,6 +11,10 @@ format:
     css: ../styles.css
 ---
 
+[**Download R Code for this Lecture**](code/preliminaries.R){ .btn .btn-primary }
+
+
+
 # Preliminaries
 
 ## Preliminary Steps for Data Analysis

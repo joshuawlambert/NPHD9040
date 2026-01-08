@@ -1,0 +1,153 @@
+﻿---
+title: "NPHD 9040 Homework 1"
+subtitle: "Getting Started with R & Preliminaries"
+author: "Your Name Here"
+date: "Due Date"
+format: 
+  html:
+    toc: true
+---
+
+# Instructions
+
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
+
+**Goal**: This assignment is designed to ensure you are effectively set up with R and RStudio, to practice manual data entry and calculation with vectors, and to perform basic plotting.
+
+# Question 1: R Setup
+
+**Task**: Demonstrate that your R environment is ready.
+
+1.  Open RStudio.
+2.  In the Console pane, type `R.version.string` and press Enter.
+3.  Take a screenshot of your full RStudio window showing this output.
+
+**Produce**:
+*   An image file (e.g., png or jpg) embedded below.
+
+::: {.callout-tip}
+## Hint
+Unsure where to find the console? Check the [interface overview](../Lectures/getting-started-with-r.qmd#understanding-the-rstudio-interface).
+:::
+
+*Replace this text with your screenshot: `![My RStudio](path/to/image.png)` or simply paste your image here if your editor supports it.*
+
+# Question 2: Vectors and Manual Data Entry
+
+**Task**: Create a dataset from scratch using vectors.
+
+1.  Create a vector called `height_cm` with the following values: `165, 170, 178, 160, 182`
+2.  Create a vector called `weight_kg` with the following values: `68, 75, 82, 55, 90`
+3.  Create a vector called `sbp` (Systolic Blood Pressure) with values: `120, 135, 140, 115, 150`
+
+**produce**:
+*   **Code**: The R commands to create these three vectors.
+
+::: {.callout-tip}
+## Hint
+Review how to create vectors using the `c()` function in [Getting Started with R](../Lectures/getting-started-with-r.qmd#vectors).
+:::
+
+```{r}
+#| label: create-vectors
+
+# Your code here
+```
+
+# Question 3: Calculations and Dataframes
+
+**Task**: Perform calculations on vectors and combine them.
+
+1.  Create a new vector `height_m` by dividing `height_cm` by 100.
+2.  Calculate `bmi` using the formula: $BMI = \frac{weight_{kg}}{height_m^2}$.
+3.  Combine `height_cm`, `weight_kg`, `sbp`, and `bmi` into a data frame called `health_data`.
+4.  Print the `health_data` object.
+
+**Produce**:
+*   **Code**: Calculations and data frame creation.
+*   **Output**: The printed data frame showing all 5 subjects.
+
+::: {.callout-tip}
+## Hint
+Need help computing the math or creating a dataframe? See [Functions](../Lectures/getting-started-with-r.qmd#functions) and [Data Frames](../Lectures/getting-started-with-r.qmd#data-frames).
+:::
+
+```{r}
+#| label: calc-bmi
+
+# Your code here
+```
+
+# Question 4: Basic Graphing
+
+**Task**: Visualize your manually created data.
+
+1.  Create a **Histogram** of the `bmi` variable. Give it a title "Distribution of BMI" and label the x-axis "BMI".
+2.  Create a **Scatterplot** plotting `bmi` on the X-axis and `sbp` on the Y-axis. Title it "BMI vs Systolic BP".
+
+**Produce**:
+*   **Code**: `hist()` and `plot()` commands.
+*   **Output**: The two plots.
+*   **Interpretation**: Briefly describe the relationship you see in the scatterplot (e.g., as BMI increases, what happens to SBP?).
+
+::: {.callout-tip}
+## Hint
+See [Graphing Your Data](../Lectures/graphing-your-data.qmd) for examples of histograms and scatterplots (check sections [Histogram](../Lectures/graphing-your-data.qmd#histogram) and [Scatter Plot](../Lectures/graphing-your-data.qmd#scatter-plot)).
+:::
+
+```{r}
+#| label: basic-plots
+
+# Your code here
+```
+
+# Question 5: Loading External Data
+
+**Task**: Load the course dataset `Coffee Data.csv`.
+
+1.  Download the dataset from the link at the top of the page.
+2.  Load it into an R object named `coffee` using `read.csv()`.
+3.  Display the first 6 rows using the `head()` function.
+
+**Produce**:
+*   **Code**: The R commands to read the file and display the head.
+*   **Output**: The standard R output showing the data frame structure.
+
+::: {.callout-tip}
+## Hint
+Forgotten how to read a CSV? Review [Importing Data](../Lectures/getting-started-with-r.qmd#reading-data-from-csv-files).
+:::
+
+```{r}
+#| label: load-data
+#| warning: false
+
+# Your code here
+```
+
+# Question 6: Research Scenarios
+
+**Task**: For each research scenario, identify the variables.
+
+**Produce**:
+*   **Written Answer**: Clearly state the Independent Variable (IV) and Dependent Variable (DV) for each case.
+
+::: {.callout-tip}
+## Hint
+Need a refresher on Independent vs Dependent variables? Check the [Preliminaries Lecture](../Lectures/preliminaries.qmd).
+:::
+
+1.  **Scenario**: A researcher wants to study if the type of music played in a waiting room (Classical, Jazz, or No Music) affects patient anxiety levels (measured on a scale of 1-10).
+    *   **IV**: [Your Answer Here]
+    *   **DV**: [Your Answer Here]
+
+2.  **Scenario**: A study looks at whether the number of hours of sleep (continuous variable) predicts reaction time (milliseconds) in drivers.
+    *   **IV**: [Your Answer Here]
+    *   **DV**: [Your Answer Here]
+
+3.  **Scenario**: Comparing the blood pressure of patients before and after an exercise intervention.
+    *   **IV**: [Your Answer Here]
+    *   **DV**: [Your Answer Here]

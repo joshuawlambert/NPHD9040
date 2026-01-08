@@ -13,6 +13,10 @@ editor:
     wrap: 72
 ---
 
+[**Download R Code for this Lecture**](code/introduction-to-multiple-linear-regression.R){ .btn .btn-primary }
+
+
+
 # Introduction to Multiple Linear Regression
 
 ## Objectives

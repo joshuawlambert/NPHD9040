@@ -1,72 +1,138 @@
 ---
-title: "Homework 4"
-author: "Dr. JL"
-output:
-  html_document:
+title: "NPHD 9040 Homework 4"
+subtitle: "Repeated Measures ANOVA"
+format: 
+  html:
     toc: true
-    toc-title: "Assignments"
-    code_folding: hide
-    code_highlight: true
+    css: ../styles.css
 ---
+::: {.callout-tip icon=false}
+## New to R Markdown?
+[**Click here for a guide on Getting Started with R Markdown**](../Other/working_with_rmd.qmd)
+:::
 
-Name:\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+::: {.callout-note icon=false}
+## Downloads
+[**Download Assignment Template**](_templates/hw4.Rmd){ .btn .btn-primary }
 
-1.  R Squared is known as the:
+[**Download Data: rm_ex.csv**](../course_data/rm_ex.csv){ .btn .btn-success }
 
-```{=html}
-<!-- -->
-```
-a.  Coefficient of determination.
-b.  Multiple correlation coefficient.
-c.  Partial correlation coefficient.
-d.  Semi-partial correlation coefficient.
+:::
 
-```{=html}
-<!-- -->
-```
-2.  What is b0 in SLR?
 
-```{=html}
-<!-- -->
-```
-a.  The value of the outcome when the independent variable is 0.
-b.  The relationship between an independent variable and the outcome variable.
-c.  The value of the independent variable when the outcome is zero.
-d.  The gradient of the regression line.
+# Instructions
 
-```{=html}
-<!-- -->
-```
-3.  \_\_\_\_\_ method is used to find the line of best fit.
+1.  **Download** the assignment template (right-click and "Save Link As..." on the button above).
+2.  **Open** the `.Rmd` file in RStudio.
+3.  **Complete** the assignment by adding your R code chunks and written answers where indicated.
+4.  **Submission**: Submit **BOTH** your completed R Markdown file (`.Rmd`) and the rendered output file (HTML, PDF, or Word) to Canvas.
 
-```{=html}
-<!-- -->
-```
-a.  Fisher's
-b.  Most minimum R Squared
-c.  Ordinary Least Squares
-d.  Moderates
+**Goal**: This assignment covers One-Way Repeated Measures ANOVA.
 
-```{=html}
-<!-- -->
-```
-4.  Input the following data into Excel and import into your favorite statistical software. Conduct a simple linear regression where the response is SBP and the Independent variable is Age. What are the regression coefficients? What is the R Squared for the model?  What is the Null and Alternative Hypothesis for effect of Age? Is age significant? Interpret the effect of age regardless if it is significant.  
+# Question 1: Data Import and Structure
 
-```{r, echo=FALSE,include=FALSE}
-library(knitr) 
-library(kableExtra) 
-data <- data.frame( "Subject ID" = c(1, 2, 3, 4, 5, 6, 7), "Age" = c(20, 21, 24, 25, 26, 30, 24), "Systolic Blood Pressure" = c(100, 110, 140, 140, 125, 135, 115) )  
-kable(data, format = "html", caption = "Data for Simple Linear Regression") %>%  
-  kable_styling(full_width = FALSE, position = "left", bootstrap_options = c("striped", "responsive")) %>%   
-  row_spec(0, align = "c")  # Center-align all rows
+**Task**: Load and format data.
+
+1.  Load `rm_ex.csv`.
+2.  **Crucial Step**: Ensure `Subject` is a Factor. Ensure `Time` is a Factor.
+
+**Produce**:
+*   **Code**: Loading and `as.factor()` conversion.
+*   **Output**: Verification (str or summary).
+
+::: {.callout-tip}
+## Hint
+Subject ID must be a factor for the error term to work. See [Understanding the Structure](../Lectures/introduction-to-repeated-measures-anova.qmd#understanding-the-structure-of-a-repeated-measures-design).
+:::
+
+```{r}
+#| label: load-data
+#| warning: false
+
+# Your code here
 ```
 
-| Subject ID | Age | Systolic.Blood.Pressure |
-|-----------:|:---:|:-----------------------:|
-|          1 | 20  |           100           |
-|          2 | 21  |           110           |
-|          3 | 24  |           140           |
-|          4 | 25  |           140           |
-|          5 | 26  |           125           |
-|          6 | 30  |           135           |
-|          7 | 24  |           115           |
+# Question 2: Descriptive Statistics and Visualization
+
+**Task**: Visualize subject trajectories.
+
+1.  Calculate Means by Time.
+2.  Create a "Spaghetti Plot" (lines connecting each subject's data points) OR a Boxplot by Time.
+
+**Produce**:
+*   **Code**: Plotting commands.
+*   **Output**: The plot.
+*   **Interpretation**: Do subjects seem to increase or decrease over time? Is there a consistent pattern?
+
+::: {.callout-tip}
+## Hint
+While the lecture focuses on analysis, you can see general graphing tips in [Reference](../Lectures/graphing-your-data.qmd) or check out general R resources for "spaghetti plots".
+:::
+
+```{r}
+#| label: visualize-rm
+
+# Your code here
+```
+
+# Question 3: Assumption Checking
+
+**Task**: Understand Sphericity.
+
+1.  Repeated measures ANOVA assumes "Sphericity".
+2.  Provide a written definition.
+3.  (Optional) Run `ezANOVA` or `anova_test` (rstatix) to see Mauchly's Test for Sphericity results.
+
+**Produce**:
+*   **Written Answer**: What is sphericity? Why does it matter?
+*   **(Optional) Code/Output**: Mauchly's test result.
+
+::: {.callout-tip}
+## Hint
+Read about [Sphericity Assumption](../Lectures/introduction-to-repeated-measures-anova.qmd#sphericity-assumption).
+:::
+
+# Question 4: Run Repeated Measures ANOVA
+
+**Task**: Determine if Time has an effect.
+
+1.  Run the Repeated Measures ANOVA. (Hint: `aov(BP ~ Time + Error(Subject/Time))`).
+2.  Display the summary.
+
+**Produce**:
+*   **Code**: The `aov` command with the Error term.
+*   **Output**: The ANOVA summary table.
+*   **Interpretation**: Is the effect of Time significant? Report F, df, and p-value.
+
+::: {.callout-tip}
+## Hint
+See [Example 1 in Repeated Measures](../Lectures/introduction-to-repeated-measures-anova.qmd#examples-of-repeated-measures-anova-in-nursing-research) for `ezANOVA` usage, or standard R guides for `aov`.
+:::
+
+```{r}
+#| label: run-rm-anova
+
+# Your code here
+```
+
+# Question 5: Post-Hoc Analysis
+
+**Task**: Pairwise comparisons.
+
+1.  If Time is significant, test differences between specific time points (Baseline vs Week 1, etc.) using `pairwise.t.test` with `paired = TRUE` and a correction method (like Bonferroni).
+
+**Produce**:
+*   **Code**: Pairwise t-test command.
+*   **Output**: Matrix of p-values.
+*   **Interpretation**: Which specific time points differ significantly?
+
+::: {.callout-tip}
+## Hint
+See [Bonferroni Correction](../Lectures/introduction-to-repeated-measures-anova.qmd#bonferroni-correction) for the concept.
+:::
+
+```{r}
+#| label: post-hoc-rm
+
+# Your code here
+```

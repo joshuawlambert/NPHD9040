@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Joshua Lambert">
 
-<title>Graphing Your Data – NPHD 9040 – Applied Multivariable Analysis with R</title>
+<title>Graphing Your Data – NPHD 9040</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NPHD 9040 – Applied Multivariable Analysis with R</span>
+    <span class="navbar-title">NPHD 9040</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -200,10 +200,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../Assignments/assign_list.html"> 
-<span class="menu-text">Assignments</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw1.html">
+ <span class="dropdown-text">HW1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw2.html">
+ <span class="dropdown-text">HW2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw3.html">
+ <span class="dropdown-text">HW3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw4.html">
+ <span class="dropdown-text">HW4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw5.html">
+ <span class="dropdown-text">HW5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/midterm.html">
+ <span class="dropdown-text">Midterm Presentation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/final.html">
+ <span class="dropdown-text">Final Project</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../Other/aboutDrL.html"> 
 <span class="menu-text">About Dr.&nbsp;L</span></a>
@@ -287,6 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><a href="code/graphing-your-data.R" class="btn btn-primary"><strong>Download R Code for this Lecture</strong></a></p>
 <section id="graphing-your-data" class="level1">
 <h1>Graphing Your Data</h1>
 <section id="identifying-differences-in-types-of-data-and-how-to-graph" class="level2">
@@ -1342,498 +1374,502 @@ Treemaps are excellent for visualizing hierarchical data efficiently and intuiti
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true </span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Graphing Your Data</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Download R Code for this Lecture**</span><span class="co">](code/graphing-your-data.R)</span>{ .btn .btn-primary }</span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Identifying Differences in Types of Data and How to Graph</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why Graph Data? Benefits</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu"># Graphing Your Data</span></span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>Graphs are crucial in data analysis and presentation because they help:</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Identifying Differences in Types of Data and How to Graph</span></span>
 <span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Quick Interpretation:** Graphs provide a quick overview of data trends, making them easier to interpret than tables.</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why Graph Data? Benefits</span></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pattern Identification:** They help identify patterns, relationships, and outliers.</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>Graphs are crucial in data analysis and presentation because they help:</span>
 <span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hypothesis Generation:** Aids in forming research hypotheses.</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Quick Interpretation:** Graphs provide a quick overview of data trends, making them easier to interpret than tables.</span>
 <span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Audience Engagement:** Captures and maintains the audience's attention.</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pattern Identification:** They help identify patterns, relationships, and outliers.</span>
 <span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Decision Support:** Facilitates evidence-based decision-making.</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hypothesis Generation:** Aids in forming research hypotheses.</span>
 <span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Types</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Audience Engagement:** Captures and maintains the audience's attention.</span>
 <span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Categorical Data:**</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Decision Support:** Facilitates evidence-based decision-making.</span>
 <span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Nominal:** No inherent order or ranking (e.g., coffee, tea, water).\</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Ordinal:** Has a meaningful order or ranking (e.g., small, medium, large).</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    **Pros:** Easy to categorize and analyze.\</span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    **Cons:** Limited statistical techniques apply, and numerical differences are not meaningful.</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Continuous Data:**</span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Interval:** Has equal intervals between values but no true zero (e.g., temperature, dates).\</span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Ratio:** Has a meaningful zero point and equal intervals (e.g., weight, strength, pressure).</span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    **Pros:** Wide range of statistical techniques available.\</span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    **Cons:** Requires more complex handling due to scale.</span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Types of Graphs</span></span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Univariate Graphs:**</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Data Types</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Categorical Data:**</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Nominal:** No inherent order or ranking (e.g., coffee, tea, water).\</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Ordinal:** Has a meaningful order or ranking (e.g., small, medium, large).</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    **Pros:** Easy to categorize and analyze.\</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    **Cons:** Limited statistical techniques apply, and numerical differences are not meaningful.</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Continuous Data:**</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Interval:** Has equal intervals between values but no true zero (e.g., temperature, dates).\</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Ratio:** Has a meaningful zero point and equal intervals (e.g., weight, strength, pressure).</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>    **Pros:** Wide range of statistical techniques available.\</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>    **Cons:** Requires more complex handling due to scale.</span>
 <span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Definition:** Focuses on a single variable.</span>
-<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Examples:** Histograms, Box plots.</span>
-<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>    **Pros:**</span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Simple and intuitive.</span></span>
-<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Provides distributional insights.</span></span>
-<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a><span class="in">    **Cons:**</span></span>
-<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Limited to understanding one variable.</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### Types of Graphs</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Univariate Graphs:**</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Definition:** Focuses on a single variable.</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Examples:** Histograms, Box plots.</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>    **Pros:**</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Simple and intuitive.</span></span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Provides distributional insights.</span></span>
 <span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Bivariate Graphs:**</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a><span class="in">    **Cons:**</span></span>
 <span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Definition:** Displays the relationship between two variables.</span>
-<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Examples:** Scatter plots, Box plots.</span>
-<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>    **Pros:**</span>
-<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Useful for studying relationships and trends.</span></span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Limited to understanding one variable.</span></span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Bivariate Graphs:**</span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Definition:** Displays the relationship between two variables.</span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Examples:** Scatter plots, Box plots.</span>
 <span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a><span class="in">    **Cons:**</span></span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>    **Pros:**</span>
 <span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Might not reveal hidden multivariate trends.</span></span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Useful for studying relationships and trends.</span></span>
 <span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Multivariate Graphs:**</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a><span class="in">    **Cons:**</span></span>
 <span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Definition:** Involves multiple variables.</span>
-<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Examples:** Scatter plot matrices, Mosaic plots, Treemaps.</span>
-<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>    **Pros:**</span>
-<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Effective for uncovering complex relationships.</span></span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Might not reveal hidden multivariate trends.</span></span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Multivariate Graphs:**</span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Definition:** Involves multiple variables.</span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Examples:** Scatter plot matrices, Mosaic plots, Treemaps.</span>
 <span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a><span class="in">    **Cons:**</span></span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>    **Pros:**</span>
 <span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Interpretation can be challenging without proper labels.</span></span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Effective for uncovering complex relationships.</span></span>
 <span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stephen Few's Graphic Data Display Key Points</span></span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a><span class="in">    **Cons:**</span></span>
 <span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Know Your Audience:** Understand how your audience processes information to tailor your visualizations effectively.</span>
-<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Define Your Message:** Clearly convey your message simply and quickly.</span>
-<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Use Visual Elements Appropriately:** Combine words, numbers, and images meaningfully.</span>
-<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Principles of Excellence:** Based on Edward Tufte's principles of good graphical design:</span>
-<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Enforce Visual Comparisons:** Allow comparisons between data points.</span>
-<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Show Causality:** Highlight causal relationships if possible.</span>
-<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Integrate All Visual Elements:** Include relevant text and numbers to provide context.</span>
-<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Content-Driven Design:** Ensure design is driven by data quality, relevance, and integrity.</span>
-<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Principles of Good and Bad Graphical Design</span></span>
-<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tips and Tricks</span></span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="in">    -   Interpretation can be challenging without proper labels.</span></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stephen Few's Graphic Data Display Key Points</span></span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Know Your Audience:** Understand how your audience processes information to tailor your visualizations effectively.</span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Define Your Message:** Clearly convey your message simply and quickly.</span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Use Visual Elements Appropriately:** Combine words, numbers, and images meaningfully.</span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Principles of Excellence:** Based on Edward Tufte's principles of good graphical design:</span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Enforce Visual Comparisons:** Allow comparisons between data points.</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Show Causality:** Highlight causal relationships if possible.</span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Integrate All Visual Elements:** Include relevant text and numbers to provide context.</span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Content-Driven Design:** Ensure design is driven by data quality, relevance, and integrity.</span>
 <span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Graphical Excellence:**</span>
-<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Show Multivariate Data:** Present data across multiple dimensions.</span>
-<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Integrate All Visual Elements:** Include text, numbers, and images cohesively.</span>
-<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Use Quality, Relevant, and Honest Data:** Ensure data integrity and honesty.</span>
-<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Common Mistakes:**</span>
-<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Distorting Data Meaning:** Misleading visuals distort interpretation.</span>
-<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Incorrect Scaling:** Scaling errors can misrepresent data trends.</span>
-<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Poor Data-to-Ink Ratio:** Avoid excessive chart junk that doesn't add value.</span>
-<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">The 27 Worst Charts Of All Time</span><span class="co">](https://www.businessinsider.com/the-27-worst-charts-of-all-time-2013-6#unordered-perplexingly-circular-and-difficult-to-ascertain-any-information-from-this-globe-and-mail-chart-they-went-out-of-their-way-to-make-this-flashy-but-difficult-to-actually-read-we-get-what-they-were-going-for-but-this-chart-is-precisely-why-humanity-invented-tables-6)</span></span>
-<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> width</span><span class="op">=</span><span class="st">"560"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"315"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://www.youtube.com/embed/FcllfpC7kAY"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="ot"> allowfullscreen</span><span class="dt">&gt;</span></span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Principles of Good and Bad Graphical Design</span></span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tips and Tricks</span></span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Graphical Excellence:**</span>
+<span id="cb14-111"><a href="#cb14-111" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Show Multivariate Data:** Present data across multiple dimensions.</span>
+<span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Integrate All Visual Elements:** Include text, numbers, and images cohesively.</span>
+<span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Use Quality, Relevant, and Honest Data:** Ensure data integrity and honesty.</span>
+<span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Common Mistakes:**</span>
+<span id="cb14-115"><a href="#cb14-115" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Distorting Data Meaning:** Misleading visuals distort interpretation.</span>
+<span id="cb14-116"><a href="#cb14-116" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Incorrect Scaling:** Scaling errors can misrepresent data trends.</span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Poor Data-to-Ink Ratio:** Avoid excessive chart junk that doesn't add value.</span>
 <span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">The 27 Worst Charts Of All Time</span><span class="co">](https://www.businessinsider.com/the-27-worst-charts-of-all-time-2013-6#unordered-perplexingly-circular-and-difficult-to-ascertain-any-information-from-this-globe-and-mail-chart-they-went-out-of-their-way-to-make-this-flashy-but-difficult-to-actually-read-we-get-what-they-were-going-for-but-this-chart-is-precisely-why-humanity-invented-tables-6)</span></span>
 <span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a><span class="fu">## Graph Types and How to Use Them</span></span>
+<span id="cb14-121"><a href="#cb14-121" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> width</span><span class="op">=</span><span class="st">"560"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"315"</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://www.youtube.com/embed/FcllfpC7kAY"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="ot"> allowfullscreen</span><span class="dt">&gt;</span></span>
 <span id="cb14-122"><a href="#cb14-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histogram</span></span>
+<span id="cb14-123"><a href="#cb14-123" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
 <span id="cb14-124"><a href="#cb14-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a histogram in R</span></span>
-<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(data, <span class="at">main =</span> <span class="st">"Histogram of Data"</span>, <span class="at">xlab =</span> <span class="st">"Values"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span>
-<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Graphical representation of data distribution using bins of equal length to count frequencies.</span>
-<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Helps visualize the distribution shape.</span>
-<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Easy to compare different distributions.</span>
-<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identifies outliers and skewness.</span>
-<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Bin size selection can lead to over or under-smoothing.</span>
-<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Not suitable for small data sets.</span>
-<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram in R</span></span>
-<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(data, <span class="at">main =</span> <span class="st">"Histogram of Data"</span>, <span class="at">xlab =</span> <span class="st">"Values"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span>
-<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a><span class="fu">### Box Plot</span></span>
-<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a> <span class="co"># Create a box plot in R</span></span>
-<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a>        <span class="fu">boxplot</span>(data, <span class="at">main =</span> <span class="st">"Box Plot Example"</span>)</span>
-<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Graphically represents data distribution based on quartiles, highlighting outliers, median, and spread.</span>
-<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for identifying outliers.</span>
-<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Compares multiple groups easily.</span>
-<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Robust to non-normal data.</span>
-<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Less informative for small data sets.</span>
-<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Not ideal for displaying multimodal distributions.</span>
-<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot in R</span></span>
-<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a>        <span class="fu">boxplot</span>(data, <span class="at">main =</span> <span class="st">"Box Plot Example"</span>)</span>
-<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pie Chart</span></span>
-<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a> <span class="co"># Create a pie chart in R</span></span>
-<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>        labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
-<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pie</span>(values, <span class="at">labels =</span> labels, <span class="at">main =</span> <span class="st">"Pie Chart Example"</span>)</span>
-<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays relative proportions in part-to-whole relationships using slices of a circle.</span>
-<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Visually intuitive.</span>
-<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for simple categorical data.</span>
-<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Difficult to compare proportions across different charts.</span>
-<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Not suitable for large numbers of categories.</span>
-<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can distort differences due to angle perception issues.</span>
-<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pie chart in R</span></span>
-<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a>        labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
-<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pie</span>(values, <span class="at">labels =</span> labels, <span class="at">main =</span> <span class="st">"Pie Chart Example"</span>)</span>
-<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scatter Plot</span></span>
-<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot in R</span></span>
-<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a>        y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">"Scatter Plot Example"</span>, <span class="at">xlab =</span> <span class="st">"X-axis"</span>, <span class="at">ylab =</span> <span class="st">"Y-axis"</span>)</span>
-<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Shows the relationship between two continuous variables.</span>
-<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identifies correlations and relationships between variables.</span>
-<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Highlights clusters and patterns.</span>
-<span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Detects outliers effectively.</span>
-<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can suffer from overplotting with large data sets.</span>
-<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Requires understanding of correlation interpretation.</span>
-<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-212"><a href="#cb14-212" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-213"><a href="#cb14-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot in R</span></span>
-<span id="cb14-214"><a href="#cb14-214" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-215"><a href="#cb14-215" aria-hidden="true" tabindex="-1"></a>        y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-216"><a href="#cb14-216" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">"Scatter Plot Example"</span>, <span class="at">xlab =</span> <span class="st">"X-axis"</span>, <span class="at">ylab =</span> <span class="st">"Y-axis"</span>)</span>
-<span id="cb14-217"><a href="#cb14-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-218"><a href="#cb14-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-219"><a href="#cb14-219" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mosaic Plot</span></span>
-<span id="cb14-220"><a href="#cb14-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-221"><a href="#cb14-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-222"><a href="#cb14-222" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Titanic dataset</span></span>
-<span id="cb14-223"><a href="#cb14-223" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Titanic)</span>
+<span id="cb14-125"><a href="#cb14-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Graph Types and How to Use Them</span></span>
+<span id="cb14-126"><a href="#cb14-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-127"><a href="#cb14-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histogram</span></span>
+<span id="cb14-128"><a href="#cb14-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-129"><a href="#cb14-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-130"><a href="#cb14-130" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a histogram in R</span></span>
+<span id="cb14-131"><a href="#cb14-131" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-132"><a href="#cb14-132" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(data, <span class="at">main =</span> <span class="st">"Histogram of Data"</span>, <span class="at">xlab =</span> <span class="st">"Values"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span>
+<span id="cb14-133"><a href="#cb14-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-134"><a href="#cb14-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Graphical representation of data distribution using bins of equal length to count frequencies.</span>
+<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Helps visualize the distribution shape.</span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Easy to compare different distributions.</span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identifies outliers and skewness.</span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Bin size selection can lead to over or under-smoothing.</span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Not suitable for small data sets.</span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-144"><a href="#cb14-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-145"><a href="#cb14-145" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram in R</span></span>
+<span id="cb14-146"><a href="#cb14-146" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-147"><a href="#cb14-147" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(data, <span class="at">main =</span> <span class="st">"Histogram of Data"</span>, <span class="at">xlab =</span> <span class="st">"Values"</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span>
+<span id="cb14-148"><a href="#cb14-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-149"><a href="#cb14-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-150"><a href="#cb14-150" aria-hidden="true" tabindex="-1"></a><span class="fu">### Box Plot</span></span>
+<span id="cb14-151"><a href="#cb14-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a> <span class="co"># Create a box plot in R</span></span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a>        <span class="fu">boxplot</span>(data, <span class="at">main =</span> <span class="st">"Box Plot Example"</span>)</span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Graphically represents data distribution based on quartiles, highlighting outliers, median, and spread.</span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for identifying outliers.</span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Compares multiple groups easily.</span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Robust to non-normal data.</span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Less informative for small data sets.</span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Not ideal for displaying multimodal distributions.</span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot in R</span></span>
+<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a>        <span class="fu">boxplot</span>(data, <span class="at">main =</span> <span class="st">"Box Plot Example"</span>)</span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pie Chart</span></span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a> <span class="co"># Create a pie chart in R</span></span>
+<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a>        labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
+<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pie</span>(values, <span class="at">labels =</span> labels, <span class="at">main =</span> <span class="st">"Pie Chart Example"</span>)</span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays relative proportions in part-to-whole relationships using slices of a circle.</span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Visually intuitive.</span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for simple categorical data.</span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Difficult to compare proportions across different charts.</span>
+<span id="cb14-188"><a href="#cb14-188" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Not suitable for large numbers of categories.</span>
+<span id="cb14-189"><a href="#cb14-189" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can distort differences due to angle perception issues.</span>
+<span id="cb14-190"><a href="#cb14-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-191"><a href="#cb14-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-192"><a href="#cb14-192" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pie chart in R</span></span>
+<span id="cb14-193"><a href="#cb14-193" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb14-194"><a href="#cb14-194" aria-hidden="true" tabindex="-1"></a>        labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
+<span id="cb14-195"><a href="#cb14-195" aria-hidden="true" tabindex="-1"></a>        <span class="fu">pie</span>(values, <span class="at">labels =</span> labels, <span class="at">main =</span> <span class="st">"Pie Chart Example"</span>)</span>
+<span id="cb14-196"><a href="#cb14-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-197"><a href="#cb14-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-198"><a href="#cb14-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scatter Plot</span></span>
+<span id="cb14-199"><a href="#cb14-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-200"><a href="#cb14-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-201"><a href="#cb14-201" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot in R</span></span>
+<span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a>        y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">"Scatter Plot Example"</span>, <span class="at">xlab =</span> <span class="st">"X-axis"</span>, <span class="at">ylab =</span> <span class="st">"Y-axis"</span>)</span>
+<span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Shows the relationship between two continuous variables.</span>
+<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identifies correlations and relationships between variables.</span>
+<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Highlights clusters and patterns.</span>
+<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Detects outliers effectively.</span>
+<span id="cb14-212"><a href="#cb14-212" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-213"><a href="#cb14-213" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can suffer from overplotting with large data sets.</span>
+<span id="cb14-214"><a href="#cb14-214" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Requires understanding of correlation interpretation.</span>
+<span id="cb14-215"><a href="#cb14-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-216"><a href="#cb14-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-217"><a href="#cb14-217" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatter plot in R</span></span>
+<span id="cb14-218"><a href="#cb14-218" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-219"><a href="#cb14-219" aria-hidden="true" tabindex="-1"></a>        y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-220"><a href="#cb14-220" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(x, y, <span class="at">main =</span> <span class="st">"Scatter Plot Example"</span>, <span class="at">xlab =</span> <span class="st">"X-axis"</span>, <span class="at">ylab =</span> <span class="st">"Y-axis"</span>)</span>
+<span id="cb14-221"><a href="#cb14-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-222"><a href="#cb14-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-223"><a href="#cb14-223" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mosaic Plot</span></span>
 <span id="cb14-224"><a href="#cb14-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-225"><a href="#cb14-225" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(<span class="sc">~</span> Sex <span class="sc">+</span>Survived, <span class="at">data =</span> Titanic, <span class="at">color =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-226"><a href="#cb14-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-227"><a href="#cb14-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-225"><a href="#cb14-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-226"><a href="#cb14-226" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Titanic dataset</span></span>
+<span id="cb14-227"><a href="#cb14-227" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Titanic)</span>
 <span id="cb14-228"><a href="#cb14-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-229"><a href="#cb14-229" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays the relationships between two or more categorical variables using a stacked rectangle visualization.</span>
-<span id="cb14-230"><a href="#cb14-230" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-231"><a href="#cb14-231" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for identifying associations in contingency tables.</span>
-<span id="cb14-232"><a href="#cb14-232" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Highlights interactions between variables.</span>
-<span id="cb14-233"><a href="#cb14-233" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-234"><a href="#cb14-234" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interpretation can be challenging for complex relationships.</span>
-<span id="cb14-235"><a href="#cb14-235" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Less intuitive than simpler visualizations.</span>
-<span id="cb14-236"><a href="#cb14-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-237"><a href="#cb14-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-238"><a href="#cb14-238" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a mosaic plot in R</span></span>
-<span id="cb14-239"><a href="#cb14-239" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(vcd)</span>
-<span id="cb14-240"><a href="#cb14-240" aria-hidden="true" tabindex="-1"></a>        <span class="fu">data</span>(Titanic)</span>
-<span id="cb14-241"><a href="#cb14-241" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mosaic</span>(Titanic, <span class="at">shade =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-242"><a href="#cb14-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-243"><a href="#cb14-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-244"><a href="#cb14-244" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bar/Column Chart</span></span>
-<span id="cb14-245"><a href="#cb14-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-246"><a href="#cb14-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-247"><a href="#cb14-247" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart in R</span></span>
-<span id="cb14-248"><a href="#cb14-248" aria-hidden="true" tabindex="-1"></a>        categories <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
-<span id="cb14-249"><a href="#cb14-249" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb14-250"><a href="#cb14-250" aria-hidden="true" tabindex="-1"></a>        <span class="fu">barplot</span>(values, <span class="at">names.arg =</span> categories, <span class="at">main =</span> <span class="st">"Bar Chart Example"</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb14-251"><a href="#cb14-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-252"><a href="#cb14-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-253"><a href="#cb14-253" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** A bar or column chart compares data across categories using rectangular bars, where each bar's length represents the value or frequency of a category. The bars can be vertical (column chart) or horizontal (bar chart).</span>
-<span id="cb14-254"><a href="#cb14-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-255"><a href="#cb14-255" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-229"><a href="#cb14-229" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(<span class="sc">~</span> Sex <span class="sc">+</span>Survived, <span class="at">data =</span> Titanic, <span class="at">color =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-230"><a href="#cb14-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-231"><a href="#cb14-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-232"><a href="#cb14-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-233"><a href="#cb14-233" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays the relationships between two or more categorical variables using a stacked rectangle visualization.</span>
+<span id="cb14-234"><a href="#cb14-234" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-235"><a href="#cb14-235" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for identifying associations in contingency tables.</span>
+<span id="cb14-236"><a href="#cb14-236" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Highlights interactions between variables.</span>
+<span id="cb14-237"><a href="#cb14-237" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-238"><a href="#cb14-238" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interpretation can be challenging for complex relationships.</span>
+<span id="cb14-239"><a href="#cb14-239" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Less intuitive than simpler visualizations.</span>
+<span id="cb14-240"><a href="#cb14-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-241"><a href="#cb14-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-242"><a href="#cb14-242" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a mosaic plot in R</span></span>
+<span id="cb14-243"><a href="#cb14-243" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(vcd)</span>
+<span id="cb14-244"><a href="#cb14-244" aria-hidden="true" tabindex="-1"></a>        <span class="fu">data</span>(Titanic)</span>
+<span id="cb14-245"><a href="#cb14-245" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mosaic</span>(Titanic, <span class="at">shade =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-246"><a href="#cb14-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-247"><a href="#cb14-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-248"><a href="#cb14-248" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bar/Column Chart</span></span>
+<span id="cb14-249"><a href="#cb14-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-250"><a href="#cb14-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-251"><a href="#cb14-251" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart in R</span></span>
+<span id="cb14-252"><a href="#cb14-252" aria-hidden="true" tabindex="-1"></a>        categories <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
+<span id="cb14-253"><a href="#cb14-253" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb14-254"><a href="#cb14-254" aria-hidden="true" tabindex="-1"></a>        <span class="fu">barplot</span>(values, <span class="at">names.arg =</span> categories, <span class="at">main =</span> <span class="st">"Bar Chart Example"</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb14-255"><a href="#cb14-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-256"><a href="#cb14-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-257"><a href="#cb14-257" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Easily Compares Data:**</span>
-<span id="cb14-258"><a href="#cb14-258" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Makes it simple to compare data across different categories.</span>
-<span id="cb14-259"><a href="#cb14-259" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Highlights significant differences between groups.</span>
-<span id="cb14-260"><a href="#cb14-260" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Quick Insight:**</span>
-<span id="cb14-261"><a href="#cb14-261" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Provides immediate visual insights into category differences.</span>
-<span id="cb14-262"><a href="#cb14-262" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Suitable for presenting data to non-technical audiences.</span>
-<span id="cb14-263"><a href="#cb14-263" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Intuitive Interpretation:**</span>
-<span id="cb14-264"><a href="#cb14-264" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Clear and straightforward representation.</span>
-<span id="cb14-265"><a href="#cb14-265" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Suitable for a wide range of audiences due to its intuitive nature.</span>
-<span id="cb14-266"><a href="#cb14-266" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Flexibility:**</span>
-<span id="cb14-267"><a href="#cb14-267" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Can represent both frequency (count data) and summary statistics (e.g., means, medians).</span>
-<span id="cb14-268"><a href="#cb14-268" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Can be customized with different bar colors, stacking, grouping, etc.</span>
-<span id="cb14-269"><a href="#cb14-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-270"><a href="#cb14-270" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-271"><a href="#cb14-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-272"><a href="#cb14-272" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Misleading Scaling:**</span>
-<span id="cb14-273"><a href="#cb14-273" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Can mislead if bar lengths, axis scales, or data representations are inconsistent.</span>
-<span id="cb14-274"><a href="#cb14-274" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Improper axis truncation may exaggerate or minimize differences.</span>
-<span id="cb14-275"><a href="#cb14-275" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Overloading with Categories:**</span>
-<span id="cb14-276"><a href="#cb14-276" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Too many categories can clutter the chart, making it hard to interpret.</span>
-<span id="cb14-277"><a href="#cb14-277" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Limited space can lead to overlapping labels, hindering readability.</span>
-<span id="cb14-278"><a href="#cb14-278" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Not Ideal for Continuous Data:**</span>
-<span id="cb14-279"><a href="#cb14-279" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Works best with categorical data but not suitable for continuous variables.</span>
-<span id="cb14-280"><a href="#cb14-280" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Summarizing continuous data into categories can lead to loss of detail or oversimplification.</span>
-<span id="cb14-281"><a href="#cb14-281" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Chart Junk:**</span>
-<span id="cb14-282"><a href="#cb14-282" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Excessive use of gridlines, 3D effects, or non-data elements can lead to "chart junk," distracting from the data itself.</span>
-<span id="cb14-283"><a href="#cb14-283" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Data-to-Ink Ratio:**</span>
-<span id="cb14-284"><a href="#cb14-284" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Low data-to-ink ratio due to large bars relative to the actual information conveyed.</span>
-<span id="cb14-285"><a href="#cb14-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-286"><a href="#cb14-286" aria-hidden="true" tabindex="-1"></a>**Summary:**\</span>
-<span id="cb14-287"><a href="#cb14-287" aria-hidden="true" tabindex="-1"></a>Bar/column charts are highly effective for comparing categorical data and highlighting category differences. However, careful attention to scaling and data representation is crucial to ensure accurate and clear visualization.</span>
-<span id="cb14-288"><a href="#cb14-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-289"><a href="#cb14-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-290"><a href="#cb14-290" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart in R</span></span>
-<span id="cb14-291"><a href="#cb14-291" aria-hidden="true" tabindex="-1"></a>        categories <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
-<span id="cb14-292"><a href="#cb14-292" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb14-293"><a href="#cb14-293" aria-hidden="true" tabindex="-1"></a>        <span class="fu">barplot</span>(values, <span class="at">names.arg =</span> categories, <span class="at">main =</span> <span class="st">"Bar Chart Example"</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb14-294"><a href="#cb14-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-295"><a href="#cb14-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-296"><a href="#cb14-296" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quantile Plot</span></span>
-<span id="cb14-297"><a href="#cb14-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-298"><a href="#cb14-298" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-299"><a href="#cb14-299" aria-hidden="true" tabindex="-1"></a> <span class="co"># Create a quantile plot in R</span></span>
-<span id="cb14-300"><a href="#cb14-300" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-301"><a href="#cb14-301" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqnorm</span>(data)</span>
-<span id="cb14-302"><a href="#cb14-302" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqline</span>(data, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb14-303"><a href="#cb14-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-304"><a href="#cb14-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-305"><a href="#cb14-305" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays cumulative quantiles of a distribution versus expected quantiles (e.g., normal distribution).</span>
-<span id="cb14-306"><a href="#cb14-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-307"><a href="#cb14-307" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-257"><a href="#cb14-257" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** A bar or column chart compares data across categories using rectangular bars, where each bar's length represents the value or frequency of a category. The bars can be vertical (column chart) or horizontal (bar chart).</span>
+<span id="cb14-258"><a href="#cb14-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-259"><a href="#cb14-259" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-260"><a href="#cb14-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-261"><a href="#cb14-261" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Easily Compares Data:**</span>
+<span id="cb14-262"><a href="#cb14-262" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Makes it simple to compare data across different categories.</span>
+<span id="cb14-263"><a href="#cb14-263" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Highlights significant differences between groups.</span>
+<span id="cb14-264"><a href="#cb14-264" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Quick Insight:**</span>
+<span id="cb14-265"><a href="#cb14-265" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Provides immediate visual insights into category differences.</span>
+<span id="cb14-266"><a href="#cb14-266" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Suitable for presenting data to non-technical audiences.</span>
+<span id="cb14-267"><a href="#cb14-267" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Intuitive Interpretation:**</span>
+<span id="cb14-268"><a href="#cb14-268" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Clear and straightforward representation.</span>
+<span id="cb14-269"><a href="#cb14-269" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Suitable for a wide range of audiences due to its intuitive nature.</span>
+<span id="cb14-270"><a href="#cb14-270" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Flexibility:**</span>
+<span id="cb14-271"><a href="#cb14-271" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Can represent both frequency (count data) and summary statistics (e.g., means, medians).</span>
+<span id="cb14-272"><a href="#cb14-272" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Can be customized with different bar colors, stacking, grouping, etc.</span>
+<span id="cb14-273"><a href="#cb14-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-274"><a href="#cb14-274" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-275"><a href="#cb14-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-276"><a href="#cb14-276" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Misleading Scaling:**</span>
+<span id="cb14-277"><a href="#cb14-277" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Can mislead if bar lengths, axis scales, or data representations are inconsistent.</span>
+<span id="cb14-278"><a href="#cb14-278" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Improper axis truncation may exaggerate or minimize differences.</span>
+<span id="cb14-279"><a href="#cb14-279" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Overloading with Categories:**</span>
+<span id="cb14-280"><a href="#cb14-280" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Too many categories can clutter the chart, making it hard to interpret.</span>
+<span id="cb14-281"><a href="#cb14-281" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Limited space can lead to overlapping labels, hindering readability.</span>
+<span id="cb14-282"><a href="#cb14-282" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Not Ideal for Continuous Data:**</span>
+<span id="cb14-283"><a href="#cb14-283" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Works best with categorical data but not suitable for continuous variables.</span>
+<span id="cb14-284"><a href="#cb14-284" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Summarizing continuous data into categories can lead to loss of detail or oversimplification.</span>
+<span id="cb14-285"><a href="#cb14-285" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Chart Junk:**</span>
+<span id="cb14-286"><a href="#cb14-286" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Excessive use of gridlines, 3D effects, or non-data elements can lead to "chart junk," distracting from the data itself.</span>
+<span id="cb14-287"><a href="#cb14-287" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Data-to-Ink Ratio:**</span>
+<span id="cb14-288"><a href="#cb14-288" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Low data-to-ink ratio due to large bars relative to the actual information conveyed.</span>
+<span id="cb14-289"><a href="#cb14-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-290"><a href="#cb14-290" aria-hidden="true" tabindex="-1"></a>**Summary:**\</span>
+<span id="cb14-291"><a href="#cb14-291" aria-hidden="true" tabindex="-1"></a>Bar/column charts are highly effective for comparing categorical data and highlighting category differences. However, careful attention to scaling and data representation is crucial to ensure accurate and clear visualization.</span>
+<span id="cb14-292"><a href="#cb14-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-293"><a href="#cb14-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-294"><a href="#cb14-294" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart in R</span></span>
+<span id="cb14-295"><a href="#cb14-295" aria-hidden="true" tabindex="-1"></a>        categories <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</span>
+<span id="cb14-296"><a href="#cb14-296" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb14-297"><a href="#cb14-297" aria-hidden="true" tabindex="-1"></a>        <span class="fu">barplot</span>(values, <span class="at">names.arg =</span> categories, <span class="at">main =</span> <span class="st">"Bar Chart Example"</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb14-298"><a href="#cb14-298" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-299"><a href="#cb14-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-300"><a href="#cb14-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quantile Plot</span></span>
+<span id="cb14-301"><a href="#cb14-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-302"><a href="#cb14-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-303"><a href="#cb14-303" aria-hidden="true" tabindex="-1"></a> <span class="co"># Create a quantile plot in R</span></span>
+<span id="cb14-304"><a href="#cb14-304" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-305"><a href="#cb14-305" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqnorm</span>(data)</span>
+<span id="cb14-306"><a href="#cb14-306" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqline</span>(data, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb14-307"><a href="#cb14-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-308"><a href="#cb14-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-309"><a href="#cb14-309" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Identifies Distribution Deviations:**</span>
-<span id="cb14-310"><a href="#cb14-310" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Clearly shows deviations of data distribution from a theoretical distribution.</span>
-<span id="cb14-311"><a href="#cb14-311" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Efficient Distribution Fit Determination:**</span>
-<span id="cb14-312"><a href="#cb14-312" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Quickly determines whether the data fits a specific distribution.</span>
-<span id="cb14-313"><a href="#cb14-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-314"><a href="#cb14-314" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-315"><a href="#cb14-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-316"><a href="#cb14-316" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Requires Statistical Knowledge:**</span>
-<span id="cb14-317"><a href="#cb14-317" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Accurate interpretation requires understanding quantile statistics.</span>
-<span id="cb14-318"><a href="#cb14-318" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Less Intuitive:**</span>
-<span id="cb14-319"><a href="#cb14-319" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Less intuitive than histograms or box plots for non-technical audiences.</span>
-<span id="cb14-320"><a href="#cb14-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-321"><a href="#cb14-321" aria-hidden="true" tabindex="-1"></a>**Summary:**\</span>
-<span id="cb14-322"><a href="#cb14-322" aria-hidden="true" tabindex="-1"></a>Quantile plots are ideal for identifying distribution deviations from theoretical distributions. However, they require statistical knowledge for accurate interpretation and might be less intuitive than other visualization techniques.</span>
-<span id="cb14-323"><a href="#cb14-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-324"><a href="#cb14-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-325"><a href="#cb14-325" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a quantile plot in R</span></span>
-<span id="cb14-326"><a href="#cb14-326" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb14-327"><a href="#cb14-327" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqnorm</span>(data)</span>
-<span id="cb14-328"><a href="#cb14-328" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqline</span>(data, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb14-329"><a href="#cb14-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-330"><a href="#cb14-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-331"><a href="#cb14-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### Treemap</span></span>
-<span id="cb14-332"><a href="#cb14-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-333"><a href="#cb14-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-334"><a href="#cb14-334" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a treemap in R</span></span>
-<span id="cb14-335"><a href="#cb14-335" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(treemap)</span>
-<span id="cb14-336"><a href="#cb14-336" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb14-337"><a href="#cb14-337" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-338"><a href="#cb14-338" aria-hidden="true" tabindex="-1"></a>          <span class="at">category =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>),</span>
-<span id="cb14-339"><a href="#cb14-339" aria-hidden="true" tabindex="-1"></a>          <span class="at">subcategory =</span> <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"B1"</span>, <span class="st">"C1"</span>, <span class="st">"D1"</span>),</span>
-<span id="cb14-340"><a href="#cb14-340" aria-hidden="true" tabindex="-1"></a>          <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb14-341"><a href="#cb14-341" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb14-342"><a href="#cb14-342" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb14-343"><a href="#cb14-343" aria-hidden="true" tabindex="-1"></a>        <span class="fu">treemap</span>(</span>
-<span id="cb14-344"><a href="#cb14-344" aria-hidden="true" tabindex="-1"></a>          data,</span>
-<span id="cb14-345"><a href="#cb14-345" aria-hidden="true" tabindex="-1"></a>          <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"category"</span>, <span class="st">"subcategory"</span>),</span>
-<span id="cb14-346"><a href="#cb14-346" aria-hidden="true" tabindex="-1"></a>          <span class="at">vSize =</span> <span class="st">"value"</span>,</span>
-<span id="cb14-347"><a href="#cb14-347" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Treemap Example"</span></span>
-<span id="cb14-348"><a href="#cb14-348" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb14-349"><a href="#cb14-349" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-350"><a href="#cb14-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-351"><a href="#cb14-351" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Visualizes hierarchical data using nested rectangles.</span>
-<span id="cb14-352"><a href="#cb14-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-353"><a href="#cb14-353" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-309"><a href="#cb14-309" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays cumulative quantiles of a distribution versus expected quantiles (e.g., normal distribution).</span>
+<span id="cb14-310"><a href="#cb14-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-311"><a href="#cb14-311" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-312"><a href="#cb14-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-313"><a href="#cb14-313" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Identifies Distribution Deviations:**</span>
+<span id="cb14-314"><a href="#cb14-314" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Clearly shows deviations of data distribution from a theoretical distribution.</span>
+<span id="cb14-315"><a href="#cb14-315" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Efficient Distribution Fit Determination:**</span>
+<span id="cb14-316"><a href="#cb14-316" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Quickly determines whether the data fits a specific distribution.</span>
+<span id="cb14-317"><a href="#cb14-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-318"><a href="#cb14-318" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-319"><a href="#cb14-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-320"><a href="#cb14-320" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Requires Statistical Knowledge:**</span>
+<span id="cb14-321"><a href="#cb14-321" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Accurate interpretation requires understanding quantile statistics.</span>
+<span id="cb14-322"><a href="#cb14-322" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Less Intuitive:**</span>
+<span id="cb14-323"><a href="#cb14-323" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Less intuitive than histograms or box plots for non-technical audiences.</span>
+<span id="cb14-324"><a href="#cb14-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-325"><a href="#cb14-325" aria-hidden="true" tabindex="-1"></a>**Summary:**\</span>
+<span id="cb14-326"><a href="#cb14-326" aria-hidden="true" tabindex="-1"></a>Quantile plots are ideal for identifying distribution deviations from theoretical distributions. However, they require statistical knowledge for accurate interpretation and might be less intuitive than other visualization techniques.</span>
+<span id="cb14-327"><a href="#cb14-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-328"><a href="#cb14-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-329"><a href="#cb14-329" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a quantile plot in R</span></span>
+<span id="cb14-330"><a href="#cb14-330" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb14-331"><a href="#cb14-331" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqnorm</span>(data)</span>
+<span id="cb14-332"><a href="#cb14-332" aria-hidden="true" tabindex="-1"></a>        <span class="fu">qqline</span>(data, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb14-333"><a href="#cb14-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-334"><a href="#cb14-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-335"><a href="#cb14-335" aria-hidden="true" tabindex="-1"></a><span class="fu">### Treemap</span></span>
+<span id="cb14-336"><a href="#cb14-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-337"><a href="#cb14-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-338"><a href="#cb14-338" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a treemap in R</span></span>
+<span id="cb14-339"><a href="#cb14-339" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(treemap)</span>
+<span id="cb14-340"><a href="#cb14-340" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-341"><a href="#cb14-341" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-342"><a href="#cb14-342" aria-hidden="true" tabindex="-1"></a>          <span class="at">category =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>),</span>
+<span id="cb14-343"><a href="#cb14-343" aria-hidden="true" tabindex="-1"></a>          <span class="at">subcategory =</span> <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"B1"</span>, <span class="st">"C1"</span>, <span class="st">"D1"</span>),</span>
+<span id="cb14-344"><a href="#cb14-344" aria-hidden="true" tabindex="-1"></a>          <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb14-345"><a href="#cb14-345" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-346"><a href="#cb14-346" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-347"><a href="#cb14-347" aria-hidden="true" tabindex="-1"></a>        <span class="fu">treemap</span>(</span>
+<span id="cb14-348"><a href="#cb14-348" aria-hidden="true" tabindex="-1"></a>          data,</span>
+<span id="cb14-349"><a href="#cb14-349" aria-hidden="true" tabindex="-1"></a>          <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"category"</span>, <span class="st">"subcategory"</span>),</span>
+<span id="cb14-350"><a href="#cb14-350" aria-hidden="true" tabindex="-1"></a>          <span class="at">vSize =</span> <span class="st">"value"</span>,</span>
+<span id="cb14-351"><a href="#cb14-351" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Treemap Example"</span></span>
+<span id="cb14-352"><a href="#cb14-352" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-353"><a href="#cb14-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-354"><a href="#cb14-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-355"><a href="#cb14-355" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Displays Large Amounts of Data Efficiently:**</span>
-<span id="cb14-356"><a href="#cb14-356" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Suitable for representing large hierarchical data sets.</span>
-<span id="cb14-357"><a href="#cb14-357" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Intuitive for Showing Hierarchical Relationships:**</span>
-<span id="cb14-358"><a href="#cb14-358" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Clearly shows hierarchical relationships in a visual format.</span>
-<span id="cb14-359"><a href="#cb14-359" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Highlights Patterns and Clusters Visually:**</span>
-<span id="cb14-360"><a href="#cb14-360" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Highlights patterns, clusters, and outliers effectively.</span>
-<span id="cb14-361"><a href="#cb14-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-362"><a href="#cb14-362" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-363"><a href="#cb14-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-364"><a href="#cb14-364" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Distorts Proportions if Sizes are Too Small:**</span>
-<span id="cb14-365"><a href="#cb14-365" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Smaller rectangles can become unreadable and distort proportions.</span>
-<span id="cb14-366"><a href="#cb14-366" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Challenging to Interpret for High-Depth Hierarchies:**</span>
-<span id="cb14-367"><a href="#cb14-367" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Deep hierarchies can make interpretation challenging and confusing.</span>
-<span id="cb14-368"><a href="#cb14-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-369"><a href="#cb14-369" aria-hidden="true" tabindex="-1"></a>**Summary:**\</span>
-<span id="cb14-370"><a href="#cb14-370" aria-hidden="true" tabindex="-1"></a>Treemaps are excellent for visualizing hierarchical data efficiently and intuitively. However, careful design is crucial to avoid distortions and ensure interpretability, especially with deep hierarchies.</span>
-<span id="cb14-371"><a href="#cb14-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-372"><a href="#cb14-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-373"><a href="#cb14-373" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a treemap in R</span></span>
-<span id="cb14-374"><a href="#cb14-374" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(treemap)</span>
-<span id="cb14-375"><a href="#cb14-375" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb14-376"><a href="#cb14-376" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-377"><a href="#cb14-377" aria-hidden="true" tabindex="-1"></a>          <span class="at">category =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>),</span>
-<span id="cb14-378"><a href="#cb14-378" aria-hidden="true" tabindex="-1"></a>          <span class="at">subcategory =</span> <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"B1"</span>, <span class="st">"C1"</span>, <span class="st">"D1"</span>),</span>
-<span id="cb14-379"><a href="#cb14-379" aria-hidden="true" tabindex="-1"></a>          <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb14-380"><a href="#cb14-380" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb14-381"><a href="#cb14-381" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb14-382"><a href="#cb14-382" aria-hidden="true" tabindex="-1"></a>        <span class="fu">treemap</span>(</span>
-<span id="cb14-383"><a href="#cb14-383" aria-hidden="true" tabindex="-1"></a>          data,</span>
-<span id="cb14-384"><a href="#cb14-384" aria-hidden="true" tabindex="-1"></a>          <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"category"</span>, <span class="st">"subcategory"</span>),</span>
-<span id="cb14-385"><a href="#cb14-385" aria-hidden="true" tabindex="-1"></a>          <span class="at">vSize =</span> <span class="st">"value"</span>,</span>
-<span id="cb14-386"><a href="#cb14-386" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Treemap Example"</span></span>
-<span id="cb14-387"><a href="#cb14-387" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb14-388"><a href="#cb14-388" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-389"><a href="#cb14-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-390"><a href="#cb14-390" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advanced Graphs</span></span>
-<span id="cb14-391"><a href="#cb14-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-392"><a href="#cb14-392" aria-hidden="true" tabindex="-1"></a><span class="fu">### Time Series Plots</span></span>
+<span id="cb14-355"><a href="#cb14-355" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Visualizes hierarchical data using nested rectangles.</span>
+<span id="cb14-356"><a href="#cb14-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-357"><a href="#cb14-357" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-358"><a href="#cb14-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-359"><a href="#cb14-359" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Displays Large Amounts of Data Efficiently:**</span>
+<span id="cb14-360"><a href="#cb14-360" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Suitable for representing large hierarchical data sets.</span>
+<span id="cb14-361"><a href="#cb14-361" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Intuitive for Showing Hierarchical Relationships:**</span>
+<span id="cb14-362"><a href="#cb14-362" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Clearly shows hierarchical relationships in a visual format.</span>
+<span id="cb14-363"><a href="#cb14-363" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Highlights Patterns and Clusters Visually:**</span>
+<span id="cb14-364"><a href="#cb14-364" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Highlights patterns, clusters, and outliers effectively.</span>
+<span id="cb14-365"><a href="#cb14-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-366"><a href="#cb14-366" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-367"><a href="#cb14-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-368"><a href="#cb14-368" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Distorts Proportions if Sizes are Too Small:**</span>
+<span id="cb14-369"><a href="#cb14-369" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Smaller rectangles can become unreadable and distort proportions.</span>
+<span id="cb14-370"><a href="#cb14-370" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Challenging to Interpret for High-Depth Hierarchies:**</span>
+<span id="cb14-371"><a href="#cb14-371" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Deep hierarchies can make interpretation challenging and confusing.</span>
+<span id="cb14-372"><a href="#cb14-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-373"><a href="#cb14-373" aria-hidden="true" tabindex="-1"></a>**Summary:**\</span>
+<span id="cb14-374"><a href="#cb14-374" aria-hidden="true" tabindex="-1"></a>Treemaps are excellent for visualizing hierarchical data efficiently and intuitively. However, careful design is crucial to avoid distortions and ensure interpretability, especially with deep hierarchies.</span>
+<span id="cb14-375"><a href="#cb14-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-376"><a href="#cb14-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-377"><a href="#cb14-377" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a treemap in R</span></span>
+<span id="cb14-378"><a href="#cb14-378" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(treemap)</span>
+<span id="cb14-379"><a href="#cb14-379" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-380"><a href="#cb14-380" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-381"><a href="#cb14-381" aria-hidden="true" tabindex="-1"></a>          <span class="at">category =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>),</span>
+<span id="cb14-382"><a href="#cb14-382" aria-hidden="true" tabindex="-1"></a>          <span class="at">subcategory =</span> <span class="fu">c</span>(<span class="st">"A1"</span>, <span class="st">"B1"</span>, <span class="st">"C1"</span>, <span class="st">"D1"</span>),</span>
+<span id="cb14-383"><a href="#cb14-383" aria-hidden="true" tabindex="-1"></a>          <span class="at">value =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb14-384"><a href="#cb14-384" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-385"><a href="#cb14-385" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb14-386"><a href="#cb14-386" aria-hidden="true" tabindex="-1"></a>        <span class="fu">treemap</span>(</span>
+<span id="cb14-387"><a href="#cb14-387" aria-hidden="true" tabindex="-1"></a>          data,</span>
+<span id="cb14-388"><a href="#cb14-388" aria-hidden="true" tabindex="-1"></a>          <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"category"</span>, <span class="st">"subcategory"</span>),</span>
+<span id="cb14-389"><a href="#cb14-389" aria-hidden="true" tabindex="-1"></a>          <span class="at">vSize =</span> <span class="st">"value"</span>,</span>
+<span id="cb14-390"><a href="#cb14-390" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Treemap Example"</span></span>
+<span id="cb14-391"><a href="#cb14-391" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb14-392"><a href="#cb14-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-393"><a href="#cb14-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-394"><a href="#cb14-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-395"><a href="#cb14-395" aria-hidden="true" tabindex="-1"></a>       <span class="co"># Create a time series plot in R</span></span>
-<span id="cb14-396"><a href="#cb14-396" aria-hidden="true" tabindex="-1"></a>        time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2022-01-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
-<span id="cb14-397"><a href="#cb14-397" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
-<span id="cb14-398"><a href="#cb14-398" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(time, values, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Time Series Plot Example"</span>)</span>
-<span id="cb14-399"><a href="#cb14-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-400"><a href="#cb14-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-401"><a href="#cb14-401" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays data trends over time.</span>
-<span id="cb14-402"><a href="#cb14-402" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-403"><a href="#cb14-403" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Ideal for identifying trends, cycles, and seasonal patterns.</span>
-<span id="cb14-404"><a href="#cb14-404" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Supports multiple time series on the same graph.</span>
-<span id="cb14-405"><a href="#cb14-405" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Facilitates forecasting and future planning.</span>
-<span id="cb14-406"><a href="#cb14-406" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-407"><a href="#cb14-407" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Less effective for non-temporal data.</span>
-<span id="cb14-408"><a href="#cb14-408" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can suffer from overplotting with too many series.</span>
-<span id="cb14-409"><a href="#cb14-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-410"><a href="#cb14-410" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-411"><a href="#cb14-411" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a time series plot in R</span></span>
-<span id="cb14-412"><a href="#cb14-412" aria-hidden="true" tabindex="-1"></a>        time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2022-01-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
-<span id="cb14-413"><a href="#cb14-413" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
-<span id="cb14-414"><a href="#cb14-414" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(time, values, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Time Series Plot Example"</span>)</span>
-<span id="cb14-415"><a href="#cb14-415" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-416"><a href="#cb14-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-417"><a href="#cb14-417" aria-hidden="true" tabindex="-1"></a><span class="fu">### Maps</span></span>
-<span id="cb14-418"><a href="#cb14-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-419"><a href="#cb14-419" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
-<span id="cb14-420"><a href="#cb14-420" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a map in R</span></span>
-<span id="cb14-421"><a href="#cb14-421" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(ggplot2)</span>
-<span id="cb14-422"><a href="#cb14-422" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(maps)</span>
-<span id="cb14-423"><a href="#cb14-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-424"><a href="#cb14-424" aria-hidden="true" tabindex="-1"></a>        world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
-<span id="cb14-425"><a href="#cb14-425" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(world_map, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
-<span id="cb14-426"><a href="#cb14-426" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_polygon</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb14-427"><a href="#cb14-427" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ggtitle</span>(<span class="st">"World Map Example"</span>)</span>
-<span id="cb14-428"><a href="#cb14-428" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-429"><a href="#cb14-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-430"><a href="#cb14-430" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Visualizes geographic data by plotting locations on maps.</span>
-<span id="cb14-431"><a href="#cb14-431" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-432"><a href="#cb14-432" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Provides spatial context to data.</span>
-<span id="cb14-433"><a href="#cb14-433" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for highlighting geographic patterns.</span>
-<span id="cb14-434"><a href="#cb14-434" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Supports data aggregation at regional levels.</span>
-<span id="cb14-435"><a href="#cb14-435" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-436"><a href="#cb14-436" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interpretation can be misleading without proper scaling.</span>
-<span id="cb14-437"><a href="#cb14-437" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Requires geographic knowledge for accurate interpretation.</span>
-<span id="cb14-438"><a href="#cb14-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-439"><a href="#cb14-439" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-440"><a href="#cb14-440" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a map in R</span></span>
-<span id="cb14-441"><a href="#cb14-441" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(ggplot2)</span>
-<span id="cb14-442"><a href="#cb14-442" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(maps)</span>
-<span id="cb14-443"><a href="#cb14-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-444"><a href="#cb14-444" aria-hidden="true" tabindex="-1"></a>        world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
-<span id="cb14-445"><a href="#cb14-445" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(world_map, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
-<span id="cb14-446"><a href="#cb14-446" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_polygon</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb14-447"><a href="#cb14-447" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ggtitle</span>(<span class="st">"World Map Example"</span>)</span>
-<span id="cb14-448"><a href="#cb14-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-449"><a href="#cb14-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-450"><a href="#cb14-450" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unstructured Text</span></span>
-<span id="cb14-451"><a href="#cb14-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-452"><a href="#cb14-452" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Word Cloud Example</span></span>
+<span id="cb14-394"><a href="#cb14-394" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advanced Graphs</span></span>
+<span id="cb14-395"><a href="#cb14-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-396"><a href="#cb14-396" aria-hidden="true" tabindex="-1"></a><span class="fu">### Time Series Plots</span></span>
+<span id="cb14-397"><a href="#cb14-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-398"><a href="#cb14-398" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-399"><a href="#cb14-399" aria-hidden="true" tabindex="-1"></a>       <span class="co"># Create a time series plot in R</span></span>
+<span id="cb14-400"><a href="#cb14-400" aria-hidden="true" tabindex="-1"></a>        time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2022-01-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
+<span id="cb14-401"><a href="#cb14-401" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb14-402"><a href="#cb14-402" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(time, values, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Time Series Plot Example"</span>)</span>
+<span id="cb14-403"><a href="#cb14-403" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-404"><a href="#cb14-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-405"><a href="#cb14-405" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Displays data trends over time.</span>
+<span id="cb14-406"><a href="#cb14-406" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-407"><a href="#cb14-407" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Ideal for identifying trends, cycles, and seasonal patterns.</span>
+<span id="cb14-408"><a href="#cb14-408" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Supports multiple time series on the same graph.</span>
+<span id="cb14-409"><a href="#cb14-409" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Facilitates forecasting and future planning.</span>
+<span id="cb14-410"><a href="#cb14-410" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-411"><a href="#cb14-411" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Less effective for non-temporal data.</span>
+<span id="cb14-412"><a href="#cb14-412" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can suffer from overplotting with too many series.</span>
+<span id="cb14-413"><a href="#cb14-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-414"><a href="#cb14-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-415"><a href="#cb14-415" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a time series plot in R</span></span>
+<span id="cb14-416"><a href="#cb14-416" aria-hidden="true" tabindex="-1"></a>        time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="fu">as.Date</span>(<span class="st">"2022-01-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
+<span id="cb14-417"><a href="#cb14-417" aria-hidden="true" tabindex="-1"></a>        values <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">12</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb14-418"><a href="#cb14-418" aria-hidden="true" tabindex="-1"></a>        <span class="fu">plot</span>(time, values, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">main =</span> <span class="st">"Time Series Plot Example"</span>)</span>
+<span id="cb14-419"><a href="#cb14-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-420"><a href="#cb14-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-421"><a href="#cb14-421" aria-hidden="true" tabindex="-1"></a><span class="fu">### Maps</span></span>
+<span id="cb14-422"><a href="#cb14-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-423"><a href="#cb14-423" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, message=FALSE}</span></span>
+<span id="cb14-424"><a href="#cb14-424" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a map in R</span></span>
+<span id="cb14-425"><a href="#cb14-425" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-426"><a href="#cb14-426" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(maps)</span>
+<span id="cb14-427"><a href="#cb14-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-428"><a href="#cb14-428" aria-hidden="true" tabindex="-1"></a>        world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
+<span id="cb14-429"><a href="#cb14-429" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(world_map, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
+<span id="cb14-430"><a href="#cb14-430" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_polygon</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb14-431"><a href="#cb14-431" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ggtitle</span>(<span class="st">"World Map Example"</span>)</span>
+<span id="cb14-432"><a href="#cb14-432" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-433"><a href="#cb14-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-434"><a href="#cb14-434" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Visualizes geographic data by plotting locations on maps.</span>
+<span id="cb14-435"><a href="#cb14-435" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-436"><a href="#cb14-436" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Provides spatial context to data.</span>
+<span id="cb14-437"><a href="#cb14-437" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effective for highlighting geographic patterns.</span>
+<span id="cb14-438"><a href="#cb14-438" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Supports data aggregation at regional levels.</span>
+<span id="cb14-439"><a href="#cb14-439" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-440"><a href="#cb14-440" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interpretation can be misleading without proper scaling.</span>
+<span id="cb14-441"><a href="#cb14-441" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Requires geographic knowledge for accurate interpretation.</span>
+<span id="cb14-442"><a href="#cb14-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-443"><a href="#cb14-443" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-444"><a href="#cb14-444" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a map in R</span></span>
+<span id="cb14-445"><a href="#cb14-445" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-446"><a href="#cb14-446" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(maps)</span>
+<span id="cb14-447"><a href="#cb14-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-448"><a href="#cb14-448" aria-hidden="true" tabindex="-1"></a>        world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
+<span id="cb14-449"><a href="#cb14-449" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ggplot</span>(world_map, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group)) <span class="sc">+</span></span>
+<span id="cb14-450"><a href="#cb14-450" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_polygon</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb14-451"><a href="#cb14-451" aria-hidden="true" tabindex="-1"></a>          <span class="fu">ggtitle</span>(<span class="st">"World Map Example"</span>)</span>
+<span id="cb14-452"><a href="#cb14-452" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-453"><a href="#cb14-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-454"><a href="#cb14-454" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r, echo=FALSE, message=FALSE} --&gt;</span></span>
+<span id="cb14-454"><a href="#cb14-454" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unstructured Text</span></span>
 <span id="cb14-455"><a href="#cb14-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-456"><a href="#cb14-456" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- # Summarize unstructured text in R --&gt;</span></span>
+<span id="cb14-456"><a href="#cb14-456" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Word Cloud Example</span></span>
 <span id="cb14-457"><a href="#cb14-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-458"><a href="#cb14-458" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         library(tm) --&gt;</span></span>
+<span id="cb14-458"><a href="#cb14-458" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r, echo=FALSE, message=FALSE} --&gt;</span></span>
 <span id="cb14-459"><a href="#cb14-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-460"><a href="#cb14-460" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         library(wordcloud) --&gt;</span></span>
+<span id="cb14-460"><a href="#cb14-460" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- # Summarize unstructured text in R --&gt;</span></span>
 <span id="cb14-461"><a href="#cb14-461" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-462"><a href="#cb14-462" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         text &lt;- c("sepsis", "infection", "fever", "hospital", "antibiotics",  --&gt;</span></span>
+<span id="cb14-462"><a href="#cb14-462" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         library(tm) --&gt;</span></span>
 <span id="cb14-463"><a href="#cb14-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-464"><a href="#cb14-464" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--           "bacteria", "blood", "severe", "septic shock", "intensive care") --&gt;</span></span>
+<span id="cb14-464"><a href="#cb14-464" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         library(wordcloud) --&gt;</span></span>
 <span id="cb14-465"><a href="#cb14-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-466"><a href="#cb14-466" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         # Repeat each word a random number of times --&gt;</span></span>
+<span id="cb14-466"><a href="#cb14-466" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         text &lt;- c("sepsis", "infection", "fever", "hospital", "antibiotics",  --&gt;</span></span>
 <span id="cb14-467"><a href="#cb14-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-468"><a href="#cb14-468" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         text_repeated &lt;- unlist(lapply(text, function(word) rep(word, sample(5:15, 1)))) --&gt;</span></span>
+<span id="cb14-468"><a href="#cb14-468" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--           "bacteria", "blood", "severe", "septic shock", "intensive care") --&gt;</span></span>
 <span id="cb14-469"><a href="#cb14-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-470"><a href="#cb14-470" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         corpus &lt;- Corpus(VectorSource(text_repeated)) --&gt;</span></span>
+<span id="cb14-470"><a href="#cb14-470" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         # Repeat each word a random number of times --&gt;</span></span>
 <span id="cb14-471"><a href="#cb14-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-472"><a href="#cb14-472" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         tdm &lt;- TermDocumentMatrix(corpus) --&gt;</span></span>
+<span id="cb14-472"><a href="#cb14-472" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         text_repeated &lt;- unlist(lapply(text, function(word) rep(word, sample(5:15, 1)))) --&gt;</span></span>
 <span id="cb14-473"><a href="#cb14-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-474"><a href="#cb14-474" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         word_freq &lt;- sort(rowSums(as.matrix(tdm)), decreasing = TRUE) --&gt;</span></span>
+<span id="cb14-474"><a href="#cb14-474" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         corpus &lt;- Corpus(VectorSource(text_repeated)) --&gt;</span></span>
 <span id="cb14-475"><a href="#cb14-475" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-476"><a href="#cb14-476" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         wordcloud(names(word_freq), word_freq, scale = c(3, 0.5), colors = brewer.pal(8, "Dark2")) --&gt;</span></span>
+<span id="cb14-476"><a href="#cb14-476" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         tdm &lt;- TermDocumentMatrix(corpus) --&gt;</span></span>
 <span id="cb14-477"><a href="#cb14-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-478"><a href="#cb14-478" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb14-478"><a href="#cb14-478" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         word_freq &lt;- sort(rowSums(as.matrix(tdm)), decreasing = TRUE) --&gt;</span></span>
 <span id="cb14-479"><a href="#cb14-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-480"><a href="#cb14-480" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Summarizes text data numerically to gain insights.</span>
-<span id="cb14-481"><a href="#cb14-481" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb14-482"><a href="#cb14-482" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Extracts useful information from textual data.</span>
-<span id="cb14-483"><a href="#cb14-483" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identifies patterns and trends in large text corpora.</span>
-<span id="cb14-484"><a href="#cb14-484" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Supports topic modeling and sentiment analysis.</span>
-<span id="cb14-485"><a href="#cb14-485" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb14-486"><a href="#cb14-486" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Requires preprocessing to handle noise and inconsistencies.</span>
-<span id="cb14-487"><a href="#cb14-487" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interpretation challenges due to language ambiguities.</span>
-<span id="cb14-488"><a href="#cb14-488" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-489"><a href="#cb14-489" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb14-490"><a href="#cb14-490" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize unstructured text in R</span></span>
-<span id="cb14-491"><a href="#cb14-491" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(tm)</span>
-<span id="cb14-492"><a href="#cb14-492" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(wordcloud)</span>
-<span id="cb14-493"><a href="#cb14-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-494"><a href="#cb14-494" aria-hidden="true" tabindex="-1"></a>        text <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"word1"</span>, <span class="st">"word2"</span>, <span class="st">"word3"</span>, <span class="st">"word1"</span>, <span class="st">"word2"</span>)</span>
-<span id="cb14-495"><a href="#cb14-495" aria-hidden="true" tabindex="-1"></a>        corpus <span class="ot">&lt;-</span> <span class="fu">Corpus</span>(<span class="fu">VectorSource</span>(text))</span>
-<span id="cb14-496"><a href="#cb14-496" aria-hidden="true" tabindex="-1"></a>        tdm <span class="ot">&lt;-</span> <span class="fu">TermDocumentMatrix</span>(corpus)</span>
-<span id="cb14-497"><a href="#cb14-497" aria-hidden="true" tabindex="-1"></a>        word_freq <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rowSums</span>(<span class="fu">as.matrix</span>(tdm)), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-498"><a href="#cb14-498" aria-hidden="true" tabindex="-1"></a>        <span class="fu">wordcloud</span>(<span class="fu">names</span>(word_freq), word_freq, <span class="at">scale =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">0.5</span>), <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"Dark2"</span>))</span>
-<span id="cb14-499"><a href="#cb14-499" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb14-500"><a href="#cb14-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-501"><a href="#cb14-501" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
-<span id="cb14-502"><a href="#cb14-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-503"><a href="#cb14-503" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Tufte, Edward R. *The Visual Display of Quantitative Information*. Graphics Press, 2001.</span>
-<span id="cb14-504"><a href="#cb14-504" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Few, Stephen. *Now You See It: Simple Visualization Techniques for Quantitative Analysis*. Analytics Press, 2009.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb14-480"><a href="#cb14-480" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--         wordcloud(names(word_freq), word_freq, scale = c(3, 0.5), colors = brewer.pal(8, "Dark2")) --&gt;</span></span>
+<span id="cb14-481"><a href="#cb14-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-482"><a href="#cb14-482" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb14-483"><a href="#cb14-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-484"><a href="#cb14-484" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Definition:** Summarizes text data numerically to gain insights.</span>
+<span id="cb14-485"><a href="#cb14-485" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb14-486"><a href="#cb14-486" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Extracts useful information from textual data.</span>
+<span id="cb14-487"><a href="#cb14-487" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identifies patterns and trends in large text corpora.</span>
+<span id="cb14-488"><a href="#cb14-488" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Supports topic modeling and sentiment analysis.</span>
+<span id="cb14-489"><a href="#cb14-489" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb14-490"><a href="#cb14-490" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Requires preprocessing to handle noise and inconsistencies.</span>
+<span id="cb14-491"><a href="#cb14-491" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Interpretation challenges due to language ambiguities.</span>
+<span id="cb14-492"><a href="#cb14-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-493"><a href="#cb14-493" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb14-494"><a href="#cb14-494" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize unstructured text in R</span></span>
+<span id="cb14-495"><a href="#cb14-495" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(tm)</span>
+<span id="cb14-496"><a href="#cb14-496" aria-hidden="true" tabindex="-1"></a>        <span class="fu">library</span>(wordcloud)</span>
+<span id="cb14-497"><a href="#cb14-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-498"><a href="#cb14-498" aria-hidden="true" tabindex="-1"></a>        text <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"word1"</span>, <span class="st">"word2"</span>, <span class="st">"word3"</span>, <span class="st">"word1"</span>, <span class="st">"word2"</span>)</span>
+<span id="cb14-499"><a href="#cb14-499" aria-hidden="true" tabindex="-1"></a>        corpus <span class="ot">&lt;-</span> <span class="fu">Corpus</span>(<span class="fu">VectorSource</span>(text))</span>
+<span id="cb14-500"><a href="#cb14-500" aria-hidden="true" tabindex="-1"></a>        tdm <span class="ot">&lt;-</span> <span class="fu">TermDocumentMatrix</span>(corpus)</span>
+<span id="cb14-501"><a href="#cb14-501" aria-hidden="true" tabindex="-1"></a>        word_freq <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rowSums</span>(<span class="fu">as.matrix</span>(tdm)), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-502"><a href="#cb14-502" aria-hidden="true" tabindex="-1"></a>        <span class="fu">wordcloud</span>(<span class="fu">names</span>(word_freq), word_freq, <span class="at">scale =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">0.5</span>), <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"Dark2"</span>))</span>
+<span id="cb14-503"><a href="#cb14-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb14-504"><a href="#cb14-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-505"><a href="#cb14-505" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
+<span id="cb14-506"><a href="#cb14-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-507"><a href="#cb14-507" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Tufte, Edward R. *The Visual Display of Quantitative Information*. Graphics Press, 2001.</span>
+<span id="cb14-508"><a href="#cb14-508" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Few, Stephen. *Now You See It: Simple Visualization Techniques for Quantitative Analysis*. Analytics Press, 2009.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

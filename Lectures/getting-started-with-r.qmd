@@ -10,6 +10,10 @@ format:
     css: ../styles.css
 ---
 
+[**Download R Code for this Lecture**](code/getting-started-with-r.R){ .btn .btn-primary }
+
+
+
 # Getting Started with R
 
 Welcome to R! This guide will help you get started with R and RStudio, even if you have no prior programming experience. R is a powerful, free statistical software that is widely used in research, including nursing and healthcare.

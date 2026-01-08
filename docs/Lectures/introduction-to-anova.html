@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Joshua Lambert">
 
-<title>Introduction to ANOVA – NPHD 9040 – Applied Multivariable Analysis with R</title>
+<title>Introduction to ANOVA – NPHD 9040</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,7 +146,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NPHD 9040 – Applied Multivariable Analysis with R</span>
+    <span class="navbar-title">NPHD 9040</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -229,10 +229,41 @@ window.Quarto = {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../Assignments/assign_list.html"> 
-<span class="menu-text">Assignments</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw1.html">
+ <span class="dropdown-text">HW1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw2.html">
+ <span class="dropdown-text">HW2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw3.html">
+ <span class="dropdown-text">HW3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw4.html">
+ <span class="dropdown-text">HW4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw5.html">
+ <span class="dropdown-text">HW5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/midterm.html">
+ <span class="dropdown-text">Midterm Presentation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/final.html">
+ <span class="dropdown-text">Final Project</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../Other/aboutDrL.html"> 
 <span class="menu-text">About Dr.&nbsp;L</span></a>
@@ -309,6 +340,7 @@ window.Quarto = {
 </header>
 
 
+<p><a href="code/introduction-to-anova.R" class="btn btn-primary"><strong>Download R Code for this Lecture</strong></a></p>
 <section id="understanding-hypothesis-testing-and-anova" class="level1">
 <h1>Understanding Hypothesis Testing and ANOVA</h1>
 <section id="constructing-a-written-and-mathematical-hypothesis" class="level2">
@@ -350,8 +382,11 @@ Type 2 Error: Failing to reject the null hypothesis when it is false (false nega
 <li>The dependent variable is measured on an interval or ratio scale.</li>
 <li>The independent variable is categorical.</li>
 <li>Random sampling.</li>
-<li>Normal distribution of the dependent variable.</li>
-<li>Homogeneity of variance.</li>
+<li>Normality of Errors
+<ul>
+<li>The population errors should be normally distributed. We check this by looking at a histogram or Q-Q plot of the model residuals.</li>
+</ul></li>
+<li>Homogeneity of population variance.</li>
 </ol>
 <blockquote class="blockquote">
 <p><strong>💡 R Tip</strong>: You can check ANOVA assumptions in R (for more detail on assumption checking, see the <a href="../Lectures/preliminaries.html#taking-your-data-on-a-date-exploratory-data-analysis">Preliminaries</a> lecture): - <strong>Normality</strong>: <code>shapiro.test()</code> on residuals or Q-Q plot - <strong>Homogeneity of variance</strong>: <code>leveneTest()</code> from the car package - <strong>Visual checks</strong>: Residual plots using <code>plot(model)</code></p>
@@ -365,26 +400,28 @@ Type 2 Error: Failing to reject the null hypothesis when it is false (false nega
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example boxplot in R</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Behavioral"</span>, <span class="st">"Drug"</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">stress =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">1</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Behavioral"</span>, <span class="st">"Drug"</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">1</span>))</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic boxplot</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(stress <span class="sc">~</span> group, </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> data, </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Stress Scores"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Group"</span>, </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Stress Score"</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>))</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add individual points</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(stress <span class="sc">~</span> group, </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> data, </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">vertical =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">pch =</span> <span class="dv">19</span>, </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">"darkgray"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(stress <span class="sc">~</span> group,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Boxplot of Stress Scores"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Group"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">"Stress Score"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add individual points</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(stress <span class="sc">~</span> group,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">vertical =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"darkgray"</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>💡 R Tip</strong>: The formula <code>stress ~ group</code> means “stress by group”. The <code>~</code> symbol separates the dependent variable (left) from the independent variable (right).</p>
@@ -537,7 +574,7 @@ F = \frac{MSB}{MSW}
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Load required packages</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)  <span class="co"># For Levene's test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># For Levene's test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'car' was built under R version 4.5.2</code></pre>
 </div>
@@ -550,13 +587,13 @@ F = \frac{MSB}{MSW}
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Create or read data</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>pain_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Physical Therapy"</span>, <span class="st">"Medication"</span>), <span class="at">each =</span> <span class="dv">20</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">pain_reduction =</span> <span class="fu">c</span>(</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">2.5</span>, <span class="at">sd =</span> <span class="fl">1.2</span>),  <span class="co"># Standard</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">4.2</span>, <span class="at">sd =</span> <span class="fl">1.3</span>),  <span class="co"># Physical Therapy</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">3.8</span>, <span class="at">sd =</span> <span class="fl">1.1</span>)   <span class="co"># Medication</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Physical Therapy"</span>, <span class="st">"Medication"</span>), <span class="at">each =</span> <span class="dv">20</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">pain_reduction =</span> <span class="fu">c</span>(</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">2.5</span>, <span class="at">sd =</span> <span class="fl">1.2</span>), <span class="co"># Standard</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">4.2</span>, <span class="at">sd =</span> <span class="fl">1.3</span>), <span class="co"># Physical Therapy</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">3.8</span>, <span class="at">sd =</span> <span class="fl">1.1</span>) <span class="co"># Medication</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert treatment to factor</span></span>
@@ -617,27 +654,30 @@ Standard Deviations:</code></pre>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot</span></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pain_reduction <span class="sc">~</span> treatment,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pain_data,</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Pain Reduction by Treatment"</span>,</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment"</span>,</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>))</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add points</span></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(pain_reduction <span class="sc">~</span> treatment,</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> pain_data,</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">vertical =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">"darkgray"</span>)</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of all data</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pain_data<span class="sc">$</span>pain_reduction,</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Pain Reduction"</span>,</span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pain_data,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Pain Reduction by Treatment"</span>,</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Treatment"</span>,</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add points</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(pain_reduction <span class="sc">~</span> treatment,</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pain_data,</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vertical =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"darkgray"</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of all data</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pain_data<span class="sc">$</span>pain_reduction,</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Distribution of Pain Reduction"</span>,</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">border =</span> <span class="st">"white"</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -730,21 +770,22 @@ F-statistic: 4.63 </code></pre>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 8: Post-hoc tests (if ANOVA is significant)</span></span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Post-hoc Analysis (Tukey HSD) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>  tukey_results <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(anova_model)</span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(tukey_results)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot Tukey results</span></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(tukey_results, <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Pairwise Comparisons (Bonferroni) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  pairwise_results <span class="ot">&lt;-</span> <span class="fu">pairwise.t.test</span>(pain_data<span class="sc">$</span>pain_reduction, </span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>                                       pain_data<span class="sc">$</span>treatment, </span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>)</span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(pairwise_results)</span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">ANOVA not significant (p &gt;= 0.05). Post-hoc tests not needed.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Post-hoc Analysis (Tukey HSD) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    tukey_results <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(anova_model)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(tukey_results)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Tukey results</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(tukey_results, <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Pairwise Comparisons (Bonferroni) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>    pairwise_results <span class="ot">&lt;-</span> <span class="fu">pairwise.t.test</span>(pain_data<span class="sc">$</span>pain_reduction,</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>        pain_data<span class="sc">$</span>treatment,</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(pairwise_results)</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">ANOVA not significant (p &gt;= 0.05). Post-hoc tests not needed.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 === Post-hoc Analysis (Tukey HSD) ===
@@ -794,10 +835,14 @@ P value adjustment method: bonferroni </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Eta-squared: 0.14 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Interpretation: "</span>, </span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.01</span>, <span class="st">"negligible"</span>,</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.06</span>, <span class="st">"small"</span>,</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.14</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Interpretation: "</span>,</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.01</span>, <span class="st">"negligible"</span>,</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.06</span>, <span class="st">"small"</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.14</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>)</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    ), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Interpretation:  medium </code></pre>
 </div>
@@ -811,17 +856,21 @@ P value adjustment method: bonferroni </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>A one-way ANOVA was conducted to compare pain reduction across three treatment groups.</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The ANOVA was"</span>, <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">"significant"</span>, <span class="st">"not significant"</span>), </span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">"F(%d, %d) = %.2f, p %s.</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>            anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">1</span>],</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>            anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">2</span>],</span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>            f_value,</span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">paste</span>(<span class="st">"="</span>, <span class="fu">round</span>(p_value, <span class="dv">3</span>)))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The ANOVA was"</span>, <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">"significant"</span>, <span class="st">"not significant"</span>),</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sprintf</span>(</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"F(%d, %d) = %.2f, p %s.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>        anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">1</span>],</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>        anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">2</span>],</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>        f_value,</span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">paste</span>(<span class="st">"="</span>, <span class="fu">round</span>(p_value, <span class="dv">3</span>)))</span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The ANOVA was significant F(2, 57) = 4.63, p = 0.014.</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Post-hoc comparisons using Tukey HSD indicated significant differences between groups.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Post-hoc comparisons using Tukey HSD indicated significant differences between groups.</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Post-hoc comparisons using Tukey HSD indicated significant differences between groups.</code></pre>
@@ -1317,382 +1366,401 @@ P value adjustment method: bonferroni </code></pre>
 <span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="co">    width: "99%"</span></span>
 <span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Understanding Hypothesis Testing and ANOVA</span></span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Download R Code for this Lecture**</span><span class="co">](code/introduction-to-anova.R)</span>{ .btn .btn-primary }</span>
 <span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Constructing a Written and Mathematical Hypothesis</span></span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>When constructing a hypothesis for ANOVA, it's important to formulate it both in a written and mathematical format.</span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Understanding Hypothesis Testing and ANOVA</span></span>
 <span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Written Hypothesis (Example 1):**</span>
-<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Null Hypothesis (H₀): The average stress in cardiac patients is not different between a placebo group and a behavioral intervention group.</span>
-<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Alternative Hypothesis (H₁): The average stress in cardiac patients differs between the placebo and behavioral intervention groups.</span>
-<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Mathematical Hypothesis (Example 1):** $$ H_{0}: \mu_{placebo} = \mu_{behavior}$$</span>
-<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-25"><a href="#cb70-25" aria-hidden="true" tabindex="-1"></a>$$H_{1}: \mu_{placebo} \neq \mu_{behavior}$$</span>
-<span id="cb70-26"><a href="#cb70-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-27"><a href="#cb70-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: In R, we test these hypotheses using the </span><span class="in">`aov()`</span><span class="at"> function (analysis of variance). The formula notation </span><span class="in">`outcome ~ group`</span><span class="at"> means "outcome explained by group".</span></span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Constructing a Written and Mathematical Hypothesis</span></span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a>When constructing a hypothesis for ANOVA, it's important to formulate it both in a written and mathematical format.</span>
+<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Written Hypothesis (Example 1):**</span>
+<span id="cb70-25"><a href="#cb70-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Null Hypothesis (H₀): The average stress in cardiac patients is not different between a placebo group and a behavioral intervention group.</span>
+<span id="cb70-26"><a href="#cb70-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Alternative Hypothesis (H₁): The average stress in cardiac patients differs between the placebo and behavioral intervention groups.</span>
+<span id="cb70-27"><a href="#cb70-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Mathematical Hypothesis (Example 1):** $$ H_{0}: \mu_{placebo} = \mu_{behavior}$$</span>
 <span id="cb70-28"><a href="#cb70-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-29"><a href="#cb70-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## T-test vs. ANOVA</span></span>
+<span id="cb70-29"><a href="#cb70-29" aria-hidden="true" tabindex="-1"></a>$$H_{1}: \mu_{placebo} \neq \mu_{behavior}$$</span>
 <span id="cb70-30"><a href="#cb70-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-31"><a href="#cb70-31" aria-hidden="true" tabindex="-1"></a>When comparing means between two groups, the t-test and ANOVA will yield the same results. However, ANOVA extends to cases with more than two groups.</span>
+<span id="cb70-31"><a href="#cb70-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: In R, we test these hypotheses using the </span><span class="in">`aov()`</span><span class="at"> function (analysis of variance). The formula notation </span><span class="in">`outcome ~ group`</span><span class="at"> means "outcome explained by group".</span></span>
 <span id="cb70-32"><a href="#cb70-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-33"><a href="#cb70-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: For two groups, you can use either </span><span class="in">`t.test()`</span><span class="at"> or </span><span class="in">`aov()`</span><span class="at"> in R. For three or more groups, you must use ANOVA.</span></span>
+<span id="cb70-33"><a href="#cb70-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## T-test vs. ANOVA</span></span>
 <span id="cb70-34"><a href="#cb70-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-35"><a href="#cb70-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Writing ANOVA Hypothesis, Type 1 and 2 Errors</span></span>
+<span id="cb70-35"><a href="#cb70-35" aria-hidden="true" tabindex="-1"></a>When comparing means between two groups, the t-test and ANOVA will yield the same results. However, ANOVA extends to cases with more than two groups.</span>
 <span id="cb70-36"><a href="#cb70-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-37"><a href="#cb70-37" aria-hidden="true" tabindex="-1"></a>In ANOVA, the hypotheses are:</span>
+<span id="cb70-37"><a href="#cb70-37" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: For two groups, you can use either </span><span class="in">`t.test()`</span><span class="at"> or </span><span class="in">`aov()`</span><span class="at"> in R. For three or more groups, you must use ANOVA.</span></span>
 <span id="cb70-38"><a href="#cb70-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-39"><a href="#cb70-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Null Hypothesis (H₀): All group means are equal.</span>
-<span id="cb70-40"><a href="#cb70-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Alternative Hypothesis (H₁): At least one group mean is different.</span>
-<span id="cb70-41"><a href="#cb70-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-42"><a href="#cb70-42" aria-hidden="true" tabindex="-1"></a>Type 1 Error: Rejecting the null hypothesis when it is true (false positive).  </span>
-<span id="cb70-43"><a href="#cb70-43" aria-hidden="true" tabindex="-1"></a>Type 2 Error: Failing to reject the null hypothesis when it is false (false negative).</span>
-<span id="cb70-44"><a href="#cb70-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-45"><a href="#cb70-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assumptions of ANOVA</span></span>
-<span id="cb70-46"><a href="#cb70-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-47"><a href="#cb70-47" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>The dependent variable is measured on an interval or ratio scale.</span>
-<span id="cb70-48"><a href="#cb70-48" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>The independent variable is categorical.</span>
-<span id="cb70-49"><a href="#cb70-49" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Random sampling.</span>
-<span id="cb70-50"><a href="#cb70-50" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Normal distribution of the dependent variable.</span>
-<span id="cb70-51"><a href="#cb70-51" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Homogeneity of variance.</span>
-<span id="cb70-52"><a href="#cb70-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-53"><a href="#cb70-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: You can check ANOVA assumptions in R (for more detail on assumption checking, see the </span><span class="co">[</span><span class="ot">Preliminaries</span><span class="co">](preliminaries.qmd#taking-your-data-on-a-date-exploratory-data-analysis)</span><span class="at"> lecture):</span></span>
-<span id="cb70-54"><a href="#cb70-54" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **Normality**: </span><span class="in">`shapiro.test()`</span><span class="at"> on residuals or Q-Q plot</span></span>
-<span id="cb70-55"><a href="#cb70-55" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **Homogeneity of variance**: </span><span class="in">`leveneTest()`</span><span class="at"> from the car package</span></span>
-<span id="cb70-56"><a href="#cb70-56" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **Visual checks**: Residual plots using </span><span class="in">`plot(model)`</span></span>
+<span id="cb70-39"><a href="#cb70-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Writing ANOVA Hypothesis, Type 1 and 2 Errors</span></span>
+<span id="cb70-40"><a href="#cb70-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-41"><a href="#cb70-41" aria-hidden="true" tabindex="-1"></a>In ANOVA, the hypotheses are:</span>
+<span id="cb70-42"><a href="#cb70-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-43"><a href="#cb70-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Null Hypothesis (H₀): All group means are equal.</span>
+<span id="cb70-44"><a href="#cb70-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Alternative Hypothesis (H₁): At least one group mean is different.</span>
+<span id="cb70-45"><a href="#cb70-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-46"><a href="#cb70-46" aria-hidden="true" tabindex="-1"></a>Type 1 Error: Rejecting the null hypothesis when it is true (false positive).  </span>
+<span id="cb70-47"><a href="#cb70-47" aria-hidden="true" tabindex="-1"></a>Type 2 Error: Failing to reject the null hypothesis when it is false (false negative).</span>
+<span id="cb70-48"><a href="#cb70-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-49"><a href="#cb70-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assumptions of ANOVA</span></span>
+<span id="cb70-50"><a href="#cb70-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-51"><a href="#cb70-51" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>The dependent variable is measured on an interval or ratio scale.</span>
+<span id="cb70-52"><a href="#cb70-52" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>The independent variable is categorical.</span>
+<span id="cb70-53"><a href="#cb70-53" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Random sampling.</span>
+<span id="cb70-54"><a href="#cb70-54" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Normality of Errors</span>
+<span id="cb70-55"><a href="#cb70-55" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>The population errors should be normally distributed. We check this by looking at a histogram or Q-Q plot of the model residuals.</span>
+<span id="cb70-56"><a href="#cb70-56" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Homogeneity of population variance.</span>
 <span id="cb70-57"><a href="#cb70-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-58"><a href="#cb70-58" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_2/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"1000px"</span><span class="dt">&gt;</span></span>
-<span id="cb70-59"><a href="#cb70-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-60"><a href="#cb70-60" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
-<span id="cb70-61"><a href="#cb70-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-62"><a href="#cb70-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualizing Using Boxplots</span></span>
-<span id="cb70-63"><a href="#cb70-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-64"><a href="#cb70-64" aria-hidden="true" tabindex="-1"></a>Boxplots are essential for visualizing data distribution across groups in ANOVA.</span>
-<span id="cb70-65"><a href="#cb70-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-66"><a href="#cb70-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb70-67"><a href="#cb70-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Example boxplot in R</span></span>
-<span id="cb70-68"><a href="#cb70-68" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb70-69"><a href="#cb70-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Behavioral"</span>, <span class="st">"Drug"</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
-<span id="cb70-70"><a href="#cb70-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">stress =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">1</span>))</span>
-<span id="cb70-71"><a href="#cb70-71" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb70-72"><a href="#cb70-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-73"><a href="#cb70-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic boxplot</span></span>
-<span id="cb70-74"><a href="#cb70-74" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(stress <span class="sc">~</span> group, </span>
-<span id="cb70-75"><a href="#cb70-75" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> data, </span>
-<span id="cb70-76"><a href="#cb70-76" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Stress Scores"</span>,</span>
-<span id="cb70-77"><a href="#cb70-77" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Group"</span>, </span>
-<span id="cb70-78"><a href="#cb70-78" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Stress Score"</span>,</span>
-<span id="cb70-79"><a href="#cb70-79" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>))</span>
-<span id="cb70-80"><a href="#cb70-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-81"><a href="#cb70-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Add individual points</span></span>
-<span id="cb70-82"><a href="#cb70-82" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(stress <span class="sc">~</span> group, </span>
-<span id="cb70-83"><a href="#cb70-83" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> data, </span>
-<span id="cb70-84"><a href="#cb70-84" aria-hidden="true" tabindex="-1"></a>           <span class="at">vertical =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb70-85"><a href="#cb70-85" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
-<span id="cb70-86"><a href="#cb70-86" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb70-87"><a href="#cb70-87" aria-hidden="true" tabindex="-1"></a>           <span class="at">pch =</span> <span class="dv">19</span>, </span>
-<span id="cb70-88"><a href="#cb70-88" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">"darkgray"</span>)</span>
-<span id="cb70-89"><a href="#cb70-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb70-90"><a href="#cb70-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-91"><a href="#cb70-91" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: The formula </span><span class="in">`stress ~ group`</span><span class="at"> means "stress by group". The </span><span class="in">`~`</span><span class="at"> symbol separates the dependent variable (left) from the independent variable (right).</span></span>
-<span id="cb70-92"><a href="#cb70-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-93"><a href="#cb70-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculating Variation and Degrees of Freedom</span></span>
-<span id="cb70-94"><a href="#cb70-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-95"><a href="#cb70-95" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Sum of Squares Between (SSB):** Variation between groups.</span>
-<span id="cb70-96"><a href="#cb70-96" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Sum of Squares Within (SSW):** Variation within groups.</span>
-<span id="cb70-97"><a href="#cb70-97" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Total Sum of Squares (SST):** Total variation.</span>
-<span id="cb70-98"><a href="#cb70-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-99"><a href="#cb70-99" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Degrees of Freedom:**</span>
-<span id="cb70-100"><a href="#cb70-100" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>$$df_{between} = k - 1$$ (where k is the number of groups)</span>
-<span id="cb70-101"><a href="#cb70-101" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>$$df_{within} = N - k$$ (where N is the total sample size)</span>
-<span id="cb70-102"><a href="#cb70-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-103"><a href="#cb70-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## The F Statistic and P-Value</span></span>
-<span id="cb70-104"><a href="#cb70-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-105"><a href="#cb70-105" aria-hidden="true" tabindex="-1"></a>The F statistic is calculated using the ratio of mean squares:</span>
-<span id="cb70-106"><a href="#cb70-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-107"><a href="#cb70-107" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb70-108"><a href="#cb70-108" aria-hidden="true" tabindex="-1"></a>F = \frac{MSB}{MSW}</span>
-<span id="cb70-109"><a href="#cb70-109" aria-hidden="true" tabindex="-1"></a>$$ </span>
-<span id="cb70-110"><a href="#cb70-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-111"><a href="#cb70-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>MSB: Mean Square Between </span>
-<span id="cb70-112"><a href="#cb70-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>MSW: Mean Square Within</span>
+<span id="cb70-58"><a href="#cb70-58" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: You can check ANOVA assumptions in R (for more detail on assumption checking, see the </span><span class="co">[</span><span class="ot">Preliminaries</span><span class="co">](preliminaries.qmd#taking-your-data-on-a-date-exploratory-data-analysis)</span><span class="at"> lecture):</span></span>
+<span id="cb70-59"><a href="#cb70-59" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **Normality**: </span><span class="in">`shapiro.test()`</span><span class="at"> on residuals or Q-Q plot</span></span>
+<span id="cb70-60"><a href="#cb70-60" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **Homogeneity of variance**: </span><span class="in">`leveneTest()`</span><span class="at"> from the car package</span></span>
+<span id="cb70-61"><a href="#cb70-61" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **Visual checks**: Residual plots using </span><span class="in">`plot(model)`</span></span>
+<span id="cb70-62"><a href="#cb70-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-63"><a href="#cb70-63" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_2/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"1000px"</span><span class="dt">&gt;</span></span>
+<span id="cb70-64"><a href="#cb70-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-65"><a href="#cb70-65" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb70-66"><a href="#cb70-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-67"><a href="#cb70-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualizing Using Boxplots</span></span>
+<span id="cb70-68"><a href="#cb70-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-69"><a href="#cb70-69" aria-hidden="true" tabindex="-1"></a>Boxplots are essential for visualizing data distribution across groups in ANOVA.</span>
+<span id="cb70-70"><a href="#cb70-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-71"><a href="#cb70-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb70-72"><a href="#cb70-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Example boxplot in R</span></span>
+<span id="cb70-73"><a href="#cb70-73" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb70-74"><a href="#cb70-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Placebo"</span>, <span class="st">"Behavioral"</span>, <span class="st">"Drug"</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb70-75"><a href="#cb70-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">stress =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">1</span>))</span>
+<span id="cb70-76"><a href="#cb70-76" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-77"><a href="#cb70-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-78"><a href="#cb70-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic boxplot</span></span>
+<span id="cb70-79"><a href="#cb70-79" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(stress <span class="sc">~</span> group,</span>
+<span id="cb70-80"><a href="#cb70-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data,</span>
+<span id="cb70-81"><a href="#cb70-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Boxplot of Stress Scores"</span>,</span>
+<span id="cb70-82"><a href="#cb70-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Group"</span>,</span>
+<span id="cb70-83"><a href="#cb70-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">"Stress Score"</span>,</span>
+<span id="cb70-84"><a href="#cb70-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>)</span>
+<span id="cb70-85"><a href="#cb70-85" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-86"><a href="#cb70-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-87"><a href="#cb70-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Add individual points</span></span>
+<span id="cb70-88"><a href="#cb70-88" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(stress <span class="sc">~</span> group,</span>
+<span id="cb70-89"><a href="#cb70-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> data,</span>
+<span id="cb70-90"><a href="#cb70-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">vertical =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb70-91"><a href="#cb70-91" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
+<span id="cb70-92"><a href="#cb70-92" aria-hidden="true" tabindex="-1"></a>    <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb70-93"><a href="#cb70-93" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb70-94"><a href="#cb70-94" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"darkgray"</span></span>
+<span id="cb70-95"><a href="#cb70-95" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-96"><a href="#cb70-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-97"><a href="#cb70-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-98"><a href="#cb70-98" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: The formula </span><span class="in">`stress ~ group`</span><span class="at"> means "stress by group". The </span><span class="in">`~`</span><span class="at"> symbol separates the dependent variable (left) from the independent variable (right).</span></span>
+<span id="cb70-99"><a href="#cb70-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-100"><a href="#cb70-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculating Variation and Degrees of Freedom</span></span>
+<span id="cb70-101"><a href="#cb70-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-102"><a href="#cb70-102" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Sum of Squares Between (SSB):** Variation between groups.</span>
+<span id="cb70-103"><a href="#cb70-103" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Sum of Squares Within (SSW):** Variation within groups.</span>
+<span id="cb70-104"><a href="#cb70-104" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Total Sum of Squares (SST):** Total variation.</span>
+<span id="cb70-105"><a href="#cb70-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-106"><a href="#cb70-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Degrees of Freedom:**</span>
+<span id="cb70-107"><a href="#cb70-107" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>$$df_{between} = k - 1$$ (where k is the number of groups)</span>
+<span id="cb70-108"><a href="#cb70-108" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>$$df_{within} = N - k$$ (where N is the total sample size)</span>
+<span id="cb70-109"><a href="#cb70-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-110"><a href="#cb70-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## The F Statistic and P-Value</span></span>
+<span id="cb70-111"><a href="#cb70-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-112"><a href="#cb70-112" aria-hidden="true" tabindex="-1"></a>The F statistic is calculated using the ratio of mean squares:</span>
 <span id="cb70-113"><a href="#cb70-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-114"><a href="#cb70-114" aria-hidden="true" tabindex="-1"></a>The p-value is derived from the F distribution, given the degrees of freedom.</span>
-<span id="cb70-115"><a href="#cb70-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-116"><a href="#cb70-116" aria-hidden="true" tabindex="-1"></a>The F-distribution is a continuous probability distribution that arises frequently as the null distribution of test statistics, particularly in analysis of variance (ANOVA). It is characterized by two parameters: the degrees of freedom of the numerator (df_between) and the degrees of freedom of the denominator (df_within).</span>
+<span id="cb70-114"><a href="#cb70-114" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb70-115"><a href="#cb70-115" aria-hidden="true" tabindex="-1"></a>F = \frac{MSB}{MSW}</span>
+<span id="cb70-116"><a href="#cb70-116" aria-hidden="true" tabindex="-1"></a>$$ </span>
 <span id="cb70-117"><a href="#cb70-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-118"><a href="#cb70-118" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_1/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"600px"</span><span class="dt">&gt;</span></span>
-<span id="cb70-119"><a href="#cb70-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-120"><a href="#cb70-120" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
-<span id="cb70-121"><a href="#cb70-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-122"><a href="#cb70-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conducting ANOVA in R</span></span>
-<span id="cb70-123"><a href="#cb70-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-124"><a href="#cb70-124" aria-hidden="true" tabindex="-1"></a><span class="fu">### Basic ANOVA</span></span>
-<span id="cb70-125"><a href="#cb70-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-126"><a href="#cb70-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb70-127"><a href="#cb70-127" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit ANOVA model</span></span>
-<span id="cb70-128"><a href="#cb70-128" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">aov</span>(stress <span class="sc">~</span> group, <span class="at">data =</span> data)</span>
-<span id="cb70-129"><a href="#cb70-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-130"><a href="#cb70-130" aria-hidden="true" tabindex="-1"></a><span class="co"># View results</span></span>
-<span id="cb70-131"><a href="#cb70-131" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb70-118"><a href="#cb70-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>MSB: Mean Square Between </span>
+<span id="cb70-119"><a href="#cb70-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>MSW: Mean Square Within</span>
+<span id="cb70-120"><a href="#cb70-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-121"><a href="#cb70-121" aria-hidden="true" tabindex="-1"></a>The p-value is derived from the F distribution, given the degrees of freedom.</span>
+<span id="cb70-122"><a href="#cb70-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-123"><a href="#cb70-123" aria-hidden="true" tabindex="-1"></a>The F-distribution is a continuous probability distribution that arises frequently as the null distribution of test statistics, particularly in analysis of variance (ANOVA). It is characterized by two parameters: the degrees of freedom of the numerator (df_between) and the degrees of freedom of the denominator (df_within).</span>
+<span id="cb70-124"><a href="#cb70-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-125"><a href="#cb70-125" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_1/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"600px"</span><span class="dt">&gt;</span></span>
+<span id="cb70-126"><a href="#cb70-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-127"><a href="#cb70-127" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb70-128"><a href="#cb70-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-129"><a href="#cb70-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conducting ANOVA in R</span></span>
+<span id="cb70-130"><a href="#cb70-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-131"><a href="#cb70-131" aria-hidden="true" tabindex="-1"></a><span class="fu">### Basic ANOVA</span></span>
 <span id="cb70-132"><a href="#cb70-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-133"><a href="#cb70-133" aria-hidden="true" tabindex="-1"></a><span class="co"># The output shows:</span></span>
-<span id="cb70-134"><a href="#cb70-134" aria-hidden="true" tabindex="-1"></a><span class="co"># - Df: Degrees of freedom</span></span>
-<span id="cb70-135"><a href="#cb70-135" aria-hidden="true" tabindex="-1"></a><span class="co"># - Sum Sq: Sum of squares</span></span>
-<span id="cb70-136"><a href="#cb70-136" aria-hidden="true" tabindex="-1"></a><span class="co"># - Mean Sq: Mean squares</span></span>
-<span id="cb70-137"><a href="#cb70-137" aria-hidden="true" tabindex="-1"></a><span class="co"># - F value: F statistic</span></span>
-<span id="cb70-138"><a href="#cb70-138" aria-hidden="true" tabindex="-1"></a><span class="co"># - Pr(&gt;F): P-value</span></span>
-<span id="cb70-139"><a href="#cb70-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb70-140"><a href="#cb70-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-141"><a href="#cb70-141" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: The </span><span class="in">`summary()`</span><span class="at"> function on an </span><span class="in">`aov`</span><span class="at"> object gives you the ANOVA table. Look for the </span><span class="in">`Pr(&gt;F)`</span><span class="at"> column for the p-value.</span></span>
-<span id="cb70-142"><a href="#cb70-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-143"><a href="#cb70-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Extracting Specific Values</span></span>
-<span id="cb70-144"><a href="#cb70-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-145"><a href="#cb70-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb70-146"><a href="#cb70-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract F-statistic</span></span>
-<span id="cb70-147"><a href="#cb70-147" aria-hidden="true" tabindex="-1"></a>f_stat <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
-<span id="cb70-148"><a href="#cb70-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-149"><a href="#cb70-149" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p-value</span></span>
-<span id="cb70-150"><a href="#cb70-150" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb70-133"><a href="#cb70-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb70-134"><a href="#cb70-134" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit ANOVA model</span></span>
+<span id="cb70-135"><a href="#cb70-135" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">aov</span>(stress <span class="sc">~</span> group, <span class="at">data =</span> data)</span>
+<span id="cb70-136"><a href="#cb70-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-137"><a href="#cb70-137" aria-hidden="true" tabindex="-1"></a><span class="co"># View results</span></span>
+<span id="cb70-138"><a href="#cb70-138" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb70-139"><a href="#cb70-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-140"><a href="#cb70-140" aria-hidden="true" tabindex="-1"></a><span class="co"># The output shows:</span></span>
+<span id="cb70-141"><a href="#cb70-141" aria-hidden="true" tabindex="-1"></a><span class="co"># - Df: Degrees of freedom</span></span>
+<span id="cb70-142"><a href="#cb70-142" aria-hidden="true" tabindex="-1"></a><span class="co"># - Sum Sq: Sum of squares</span></span>
+<span id="cb70-143"><a href="#cb70-143" aria-hidden="true" tabindex="-1"></a><span class="co"># - Mean Sq: Mean squares</span></span>
+<span id="cb70-144"><a href="#cb70-144" aria-hidden="true" tabindex="-1"></a><span class="co"># - F value: F statistic</span></span>
+<span id="cb70-145"><a href="#cb70-145" aria-hidden="true" tabindex="-1"></a><span class="co"># - Pr(&gt;F): P-value</span></span>
+<span id="cb70-146"><a href="#cb70-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-147"><a href="#cb70-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-148"><a href="#cb70-148" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: The </span><span class="in">`summary()`</span><span class="at"> function on an </span><span class="in">`aov`</span><span class="at"> object gives you the ANOVA table. Look for the </span><span class="in">`Pr(&gt;F)`</span><span class="at"> column for the p-value.</span></span>
+<span id="cb70-149"><a href="#cb70-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-150"><a href="#cb70-150" aria-hidden="true" tabindex="-1"></a><span class="fu">### Extracting Specific Values</span></span>
 <span id="cb70-151"><a href="#cb70-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-152"><a href="#cb70-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb70-153"><a href="#cb70-153" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"F-statistic:"</span>, f_stat, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-154"><a href="#cb70-154" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P-value:"</span>, p_value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-155"><a href="#cb70-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb70-156"><a href="#cb70-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-157"><a href="#cb70-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Checking Assumptions</span></span>
+<span id="cb70-152"><a href="#cb70-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb70-153"><a href="#cb70-153" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract F-statistic</span></span>
+<span id="cb70-154"><a href="#cb70-154" aria-hidden="true" tabindex="-1"></a>f_stat <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb70-155"><a href="#cb70-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-156"><a href="#cb70-156" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p-value</span></span>
+<span id="cb70-157"><a href="#cb70-157" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
 <span id="cb70-158"><a href="#cb70-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-159"><a href="#cb70-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb70-160"><a href="#cb70-160" aria-hidden="true" tabindex="-1"></a><span class="co"># Check normality of residuals</span></span>
-<span id="cb70-161"><a href="#cb70-161" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span>
-<span id="cb70-162"><a href="#cb70-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-163"><a href="#cb70-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Q-Q plot for normality</span></span>
-<span id="cb70-164"><a href="#cb70-164" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(model))</span>
-<span id="cb70-165"><a href="#cb70-165" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(model), <span class="at">col =</span> <span class="st">"red"</span>)</span>
-<span id="cb70-166"><a href="#cb70-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-167"><a href="#cb70-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Check homogeneity of variance (requires car package)</span></span>
-<span id="cb70-168"><a href="#cb70-168" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb70-169"><a href="#cb70-169" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(stress <span class="sc">~</span> group, <span class="at">data =</span> data)</span>
-<span id="cb70-170"><a href="#cb70-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-171"><a href="#cb70-171" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plots</span></span>
-<span id="cb70-172"><a href="#cb70-172" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb70-173"><a href="#cb70-173" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span>
-<span id="cb70-174"><a href="#cb70-174" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb70-175"><a href="#cb70-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb70-176"><a href="#cb70-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-177"><a href="#cb70-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## Post-hoc Analysis</span></span>
-<span id="cb70-178"><a href="#cb70-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-179"><a href="#cb70-179" aria-hidden="true" tabindex="-1"></a>Post-hoc analysis is essential in ANOVA to identify specific group differences following the detection of a significant F-statistic. This analysis involves comparing all possible pairs of group means to determine which differences are statistically significant.</span>
-<span id="cb70-180"><a href="#cb70-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-181"><a href="#cb70-181" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Problem of Multiple Comparisons</span></span>
-<span id="cb70-182"><a href="#cb70-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-183"><a href="#cb70-183" aria-hidden="true" tabindex="-1"></a>When we conduct multiple statistical tests simultaneously, the probability of making at least one **Type I error** (a false positive) increases. This is known as **Alpha Inflation** or the **Family-Wise Error Rate (FWER)**.</span>
-<span id="cb70-184"><a href="#cb70-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-185"><a href="#cb70-185" aria-hidden="true" tabindex="-1"></a>If you conduct one test at $\alpha = 0.05$, there is a 5% chance of a false positive. However, if you compare 3 groups, you have 3 possible pairwise comparisons. The probability of making *at least one* error is:</span>
-<span id="cb70-186"><a href="#cb70-186" aria-hidden="true" tabindex="-1"></a>$$1 - (1 - 0.05)^3 \approx 0.14 \text{ or 14%}$$</span>
+<span id="cb70-159"><a href="#cb70-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb70-160"><a href="#cb70-160" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"F-statistic:"</span>, f_stat, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-161"><a href="#cb70-161" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P-value:"</span>, p_value, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-162"><a href="#cb70-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-163"><a href="#cb70-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-164"><a href="#cb70-164" aria-hidden="true" tabindex="-1"></a><span class="fu">### Checking Assumptions</span></span>
+<span id="cb70-165"><a href="#cb70-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-166"><a href="#cb70-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb70-167"><a href="#cb70-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Check normality of residuals</span></span>
+<span id="cb70-168"><a href="#cb70-168" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(model))</span>
+<span id="cb70-169"><a href="#cb70-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-170"><a href="#cb70-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Q-Q plot for normality</span></span>
+<span id="cb70-171"><a href="#cb70-171" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(model))</span>
+<span id="cb70-172"><a href="#cb70-172" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(model), <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb70-173"><a href="#cb70-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-174"><a href="#cb70-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Check homogeneity of variance (requires car package)</span></span>
+<span id="cb70-175"><a href="#cb70-175" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb70-176"><a href="#cb70-176" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(stress <span class="sc">~</span> group, <span class="at">data =</span> data)</span>
+<span id="cb70-177"><a href="#cb70-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-178"><a href="#cb70-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plots</span></span>
+<span id="cb70-179"><a href="#cb70-179" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb70-180"><a href="#cb70-180" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span>
+<span id="cb70-181"><a href="#cb70-181" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb70-182"><a href="#cb70-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-183"><a href="#cb70-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-184"><a href="#cb70-184" aria-hidden="true" tabindex="-1"></a><span class="fu">## Post-hoc Analysis</span></span>
+<span id="cb70-185"><a href="#cb70-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-186"><a href="#cb70-186" aria-hidden="true" tabindex="-1"></a>Post-hoc analysis is essential in ANOVA to identify specific group differences following the detection of a significant F-statistic. This analysis involves comparing all possible pairs of group means to determine which differences are statistically significant.</span>
 <span id="cb70-187"><a href="#cb70-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-188"><a href="#cb70-188" aria-hidden="true" tabindex="-1"></a>To protect against this, we must use one of two strategies:</span>
+<span id="cb70-188"><a href="#cb70-188" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Problem of Multiple Comparisons</span></span>
 <span id="cb70-189"><a href="#cb70-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-190"><a href="#cb70-190" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Adjust the Alpha ($\alpha$):** Lower the threshold for significance for each individual test (e.g., the Bonferroni method uses $\alpha / \text{number of tests}$).</span>
-<span id="cb70-191"><a href="#cb70-191" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Adjust the P-values:** Keep the $\alpha$ at 0.05 but "penalize" the p-values by making them larger based on the number of comparisons.</span>
-<span id="cb70-192"><a href="#cb70-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-193"><a href="#cb70-193" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tukey HSD vs Bonferroni</span></span>
+<span id="cb70-190"><a href="#cb70-190" aria-hidden="true" tabindex="-1"></a>When we conduct multiple statistical tests simultaneously, the probability of making at least one **Type I error** (a false positive) increases. This is known as **Alpha Inflation** or the **Family-Wise Error Rate (FWER)**.</span>
+<span id="cb70-191"><a href="#cb70-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-192"><a href="#cb70-192" aria-hidden="true" tabindex="-1"></a>If you conduct one test at $\alpha = 0.05$, there is a 5% chance of a false positive. However, if you compare 3 groups, you have 3 possible pairwise comparisons. The probability of making *at least one* error is:</span>
+<span id="cb70-193"><a href="#cb70-193" aria-hidden="true" tabindex="-1"></a>$$1 - (1 - 0.05)^3 \approx 0.14 \text{ or 14%}$$</span>
 <span id="cb70-194"><a href="#cb70-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-195"><a href="#cb70-195" aria-hidden="true" tabindex="-1"></a>Tukey's Honestly Significant Difference (HSD) test and the Bonferroni correction are both methods used to manage these multiple comparisons. </span>
+<span id="cb70-195"><a href="#cb70-195" aria-hidden="true" tabindex="-1"></a>To protect against this, we must use one of two strategies:</span>
 <span id="cb70-196"><a href="#cb70-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-197"><a href="#cb70-197" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Tukey's HSD**: Specifically designed for pairwise comparisons of all group means. It adjusts the p-values and confidence intervals to maintain the family-wise error rate at exactly 0.05.</span>
-<span id="cb70-198"><a href="#cb70-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Bonferroni Correction**: The most conservative method. It simply divides your overall alpha (0.05) by the number of comparisons. For 3 comparisons, you would only call a result significant if $p &lt; 0.0167$.</span>
+<span id="cb70-197"><a href="#cb70-197" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Adjust the Alpha ($\alpha$):** Lower the threshold for significance for each individual test (e.g., the Bonferroni method uses $\alpha / \text{number of tests}$).</span>
+<span id="cb70-198"><a href="#cb70-198" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Adjust the P-values:** Keep the $\alpha$ at 0.05 but "penalize" the p-values by making them larger based on the number of comparisons.</span>
 <span id="cb70-199"><a href="#cb70-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-200"><a href="#cb70-200" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_3/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"850px"</span><span class="dt">&gt;</span></span>
+<span id="cb70-200"><a href="#cb70-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tukey HSD vs Bonferroni</span></span>
 <span id="cb70-201"><a href="#cb70-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-202"><a href="#cb70-202" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb70-202"><a href="#cb70-202" aria-hidden="true" tabindex="-1"></a>Tukey's Honestly Significant Difference (HSD) test and the Bonferroni correction are both methods used to manage these multiple comparisons. </span>
 <span id="cb70-203"><a href="#cb70-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-204"><a href="#cb70-204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tukey HSD in R</span></span>
-<span id="cb70-205"><a href="#cb70-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-206"><a href="#cb70-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb70-207"><a href="#cb70-207" aria-hidden="true" tabindex="-1"></a><span class="co"># Tukey HSD post-hoc test</span></span>
-<span id="cb70-208"><a href="#cb70-208" aria-hidden="true" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(model)</span>
-<span id="cb70-209"><a href="#cb70-209" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tukey_result)</span>
+<span id="cb70-204"><a href="#cb70-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Tukey's HSD**: Specifically designed for pairwise comparisons of all group means. It adjusts the p-values and confidence intervals to maintain the family-wise error rate at exactly 0.05.</span>
+<span id="cb70-205"><a href="#cb70-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Bonferroni Correction**: The most conservative method. It simply divides your overall alpha (0.05) by the number of comparisons. For 3 comparisons, you would only call a result significant if $p &lt; 0.0167$.</span>
+<span id="cb70-206"><a href="#cb70-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-207"><a href="#cb70-207" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_3/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"850px"</span><span class="dt">&gt;</span></span>
+<span id="cb70-208"><a href="#cb70-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-209"><a href="#cb70-209" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
 <span id="cb70-210"><a href="#cb70-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-211"><a href="#cb70-211" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results</span></span>
-<span id="cb70-212"><a href="#cb70-212" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span>
-<span id="cb70-213"><a href="#cb70-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-214"><a href="#cb70-214" aria-hidden="true" tabindex="-1"></a><span class="co"># The output shows:</span></span>
-<span id="cb70-215"><a href="#cb70-215" aria-hidden="true" tabindex="-1"></a><span class="co"># - diff: Difference in means</span></span>
-<span id="cb70-216"><a href="#cb70-216" aria-hidden="true" tabindex="-1"></a><span class="co"># - lwr, upr: 95% confidence interval</span></span>
-<span id="cb70-217"><a href="#cb70-217" aria-hidden="true" tabindex="-1"></a><span class="co"># - p adj: Adjusted p-value</span></span>
-<span id="cb70-218"><a href="#cb70-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb70-219"><a href="#cb70-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-220"><a href="#cb70-220" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: If the confidence interval for a pairwise comparison does not include 0, the difference is statistically significant at the 0.05 level.</span></span>
-<span id="cb70-221"><a href="#cb70-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-222"><a href="#cb70-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pairwise t-tests with Bonferroni Correction</span></span>
-<span id="cb70-223"><a href="#cb70-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-224"><a href="#cb70-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb70-225"><a href="#cb70-225" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairwise t-tests with Bonferroni adjustment</span></span>
-<span id="cb70-226"><a href="#cb70-226" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(data<span class="sc">$</span>stress, data<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>)</span>
-<span id="cb70-227"><a href="#cb70-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-211"><a href="#cb70-211" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tukey HSD in R</span></span>
+<span id="cb70-212"><a href="#cb70-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-213"><a href="#cb70-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb70-214"><a href="#cb70-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Tukey HSD post-hoc test</span></span>
+<span id="cb70-215"><a href="#cb70-215" aria-hidden="true" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(model)</span>
+<span id="cb70-216"><a href="#cb70-216" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tukey_result)</span>
+<span id="cb70-217"><a href="#cb70-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-218"><a href="#cb70-218" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results</span></span>
+<span id="cb70-219"><a href="#cb70-219" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span>
+<span id="cb70-220"><a href="#cb70-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-221"><a href="#cb70-221" aria-hidden="true" tabindex="-1"></a><span class="co"># The output shows:</span></span>
+<span id="cb70-222"><a href="#cb70-222" aria-hidden="true" tabindex="-1"></a><span class="co"># - diff: Difference in means</span></span>
+<span id="cb70-223"><a href="#cb70-223" aria-hidden="true" tabindex="-1"></a><span class="co"># - lwr, upr: 95% confidence interval</span></span>
+<span id="cb70-224"><a href="#cb70-224" aria-hidden="true" tabindex="-1"></a><span class="co"># - p adj: Adjusted p-value</span></span>
+<span id="cb70-225"><a href="#cb70-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-226"><a href="#cb70-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-227"><a href="#cb70-227" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: If the confidence interval for a pairwise comparison does not include 0, the difference is statistically significant at the 0.05 level.</span></span>
 <span id="cb70-228"><a href="#cb70-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-229"><a href="#cb70-229" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comprehensive Example: Complete ANOVA Workflow</span></span>
+<span id="cb70-229"><a href="#cb70-229" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pairwise t-tests with Bonferroni Correction</span></span>
 <span id="cb70-230"><a href="#cb70-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-231"><a href="#cb70-231" aria-hidden="true" tabindex="-1"></a>Let's work through a complete ANOVA analysis from start to finish:</span>
-<span id="cb70-232"><a href="#cb70-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-235"><a href="#cb70-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb70-236"><a href="#cb70-236" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
-<span id="cb70-237"><a href="#cb70-237" aria-hidden="true" tabindex="-1"></a><span class="co"># Complete ANOVA Example</span></span>
-<span id="cb70-238"><a href="#cb70-238" aria-hidden="true" tabindex="-1"></a><span class="co"># Research Question: Does treatment type affect pain reduction?</span></span>
-<span id="cb70-239"><a href="#cb70-239" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
-<span id="cb70-240"><a href="#cb70-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-241"><a href="#cb70-241" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Load required packages</span></span>
-<span id="cb70-242"><a href="#cb70-242" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)  <span class="co"># For Levene's test</span></span>
-<span id="cb70-243"><a href="#cb70-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-244"><a href="#cb70-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Create or read data</span></span>
-<span id="cb70-245"><a href="#cb70-245" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
-<span id="cb70-246"><a href="#cb70-246" aria-hidden="true" tabindex="-1"></a>pain_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb70-247"><a href="#cb70-247" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>,</span>
-<span id="cb70-248"><a href="#cb70-248" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Physical Therapy"</span>, <span class="st">"Medication"</span>), <span class="at">each =</span> <span class="dv">20</span>),</span>
-<span id="cb70-249"><a href="#cb70-249" aria-hidden="true" tabindex="-1"></a>  <span class="at">pain_reduction =</span> <span class="fu">c</span>(</span>
-<span id="cb70-250"><a href="#cb70-250" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">2.5</span>, <span class="at">sd =</span> <span class="fl">1.2</span>),  <span class="co"># Standard</span></span>
-<span id="cb70-251"><a href="#cb70-251" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">4.2</span>, <span class="at">sd =</span> <span class="fl">1.3</span>),  <span class="co"># Physical Therapy</span></span>
-<span id="cb70-252"><a href="#cb70-252" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">3.8</span>, <span class="at">sd =</span> <span class="fl">1.1</span>)   <span class="co"># Medication</span></span>
-<span id="cb70-253"><a href="#cb70-253" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb70-254"><a href="#cb70-254" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb70-255"><a href="#cb70-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-256"><a href="#cb70-256" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert treatment to factor</span></span>
-<span id="cb70-257"><a href="#cb70-257" aria-hidden="true" tabindex="-1"></a>pain_data<span class="sc">$</span>treatment <span class="ot">&lt;-</span> <span class="fu">factor</span>(pain_data<span class="sc">$</span>treatment)</span>
-<span id="cb70-258"><a href="#cb70-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-259"><a href="#cb70-259" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Explore the data</span></span>
-<span id="cb70-260"><a href="#cb70-260" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"=== Data Summary ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-261"><a href="#cb70-261" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pain_data)</span>
+<span id="cb70-231"><a href="#cb70-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb70-232"><a href="#cb70-232" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairwise t-tests with Bonferroni adjustment</span></span>
+<span id="cb70-233"><a href="#cb70-233" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(data<span class="sc">$</span>stress, data<span class="sc">$</span>group, <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>)</span>
+<span id="cb70-234"><a href="#cb70-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-235"><a href="#cb70-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-236"><a href="#cb70-236" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comprehensive Example: Complete ANOVA Workflow</span></span>
+<span id="cb70-237"><a href="#cb70-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-238"><a href="#cb70-238" aria-hidden="true" tabindex="-1"></a>Let's work through a complete ANOVA analysis from start to finish:</span>
+<span id="cb70-239"><a href="#cb70-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-242"><a href="#cb70-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb70-243"><a href="#cb70-243" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb70-244"><a href="#cb70-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Complete ANOVA Example</span></span>
+<span id="cb70-245"><a href="#cb70-245" aria-hidden="true" tabindex="-1"></a><span class="co"># Research Question: Does treatment type affect pain reduction?</span></span>
+<span id="cb70-246"><a href="#cb70-246" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb70-247"><a href="#cb70-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-248"><a href="#cb70-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Load required packages</span></span>
+<span id="cb70-249"><a href="#cb70-249" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) <span class="co"># For Levene's test</span></span>
+<span id="cb70-250"><a href="#cb70-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-251"><a href="#cb70-251" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Create or read data</span></span>
+<span id="cb70-252"><a href="#cb70-252" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb70-253"><a href="#cb70-253" aria-hidden="true" tabindex="-1"></a>pain_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb70-254"><a href="#cb70-254" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>,</span>
+<span id="cb70-255"><a href="#cb70-255" aria-hidden="true" tabindex="-1"></a>    <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Physical Therapy"</span>, <span class="st">"Medication"</span>), <span class="at">each =</span> <span class="dv">20</span>),</span>
+<span id="cb70-256"><a href="#cb70-256" aria-hidden="true" tabindex="-1"></a>    <span class="at">pain_reduction =</span> <span class="fu">c</span>(</span>
+<span id="cb70-257"><a href="#cb70-257" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">2.5</span>, <span class="at">sd =</span> <span class="fl">1.2</span>), <span class="co"># Standard</span></span>
+<span id="cb70-258"><a href="#cb70-258" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">4.2</span>, <span class="at">sd =</span> <span class="fl">1.3</span>), <span class="co"># Physical Therapy</span></span>
+<span id="cb70-259"><a href="#cb70-259" aria-hidden="true" tabindex="-1"></a>        <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">3.8</span>, <span class="at">sd =</span> <span class="fl">1.1</span>) <span class="co"># Medication</span></span>
+<span id="cb70-260"><a href="#cb70-260" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb70-261"><a href="#cb70-261" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb70-262"><a href="#cb70-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-263"><a href="#cb70-263" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Sample Sizes ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-264"><a href="#cb70-264" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pain_data<span class="sc">$</span>treatment)</span>
+<span id="cb70-263"><a href="#cb70-263" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert treatment to factor</span></span>
+<span id="cb70-264"><a href="#cb70-264" aria-hidden="true" tabindex="-1"></a>pain_data<span class="sc">$</span>treatment <span class="ot">&lt;-</span> <span class="fu">factor</span>(pain_data<span class="sc">$</span>treatment)</span>
 <span id="cb70-265"><a href="#cb70-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-266"><a href="#cb70-266" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Descriptive Statistics by Group ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-267"><a href="#cb70-267" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Means:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-268"><a href="#cb70-268" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_data<span class="sc">$</span>pain_reduction, pain_data<span class="sc">$</span>treatment, mean)</span>
+<span id="cb70-266"><a href="#cb70-266" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Explore the data</span></span>
+<span id="cb70-267"><a href="#cb70-267" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"=== Data Summary ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-268"><a href="#cb70-268" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pain_data)</span>
 <span id="cb70-269"><a href="#cb70-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-270"><a href="#cb70-270" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Standard Deviations:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-271"><a href="#cb70-271" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_data<span class="sc">$</span>pain_reduction, pain_data<span class="sc">$</span>treatment, sd)</span>
+<span id="cb70-270"><a href="#cb70-270" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Sample Sizes ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-271"><a href="#cb70-271" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pain_data<span class="sc">$</span>treatment)</span>
 <span id="cb70-272"><a href="#cb70-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-273"><a href="#cb70-273" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Visualize the data</span></span>
-<span id="cb70-274"><a href="#cb70-274" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb70-275"><a href="#cb70-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-276"><a href="#cb70-276" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot</span></span>
-<span id="cb70-277"><a href="#cb70-277" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pain_reduction <span class="sc">~</span> treatment,</span>
-<span id="cb70-278"><a href="#cb70-278" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pain_data,</span>
-<span id="cb70-279"><a href="#cb70-279" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Pain Reduction by Treatment"</span>,</span>
-<span id="cb70-280"><a href="#cb70-280" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment"</span>,</span>
-<span id="cb70-281"><a href="#cb70-281" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
-<span id="cb70-282"><a href="#cb70-282" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>))</span>
-<span id="cb70-283"><a href="#cb70-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-284"><a href="#cb70-284" aria-hidden="true" tabindex="-1"></a><span class="co"># Add points</span></span>
-<span id="cb70-285"><a href="#cb70-285" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(pain_reduction <span class="sc">~</span> treatment,</span>
-<span id="cb70-286"><a href="#cb70-286" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> pain_data,</span>
-<span id="cb70-287"><a href="#cb70-287" aria-hidden="true" tabindex="-1"></a>           <span class="at">vertical =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb70-288"><a href="#cb70-288" aria-hidden="true" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
-<span id="cb70-289"><a href="#cb70-289" aria-hidden="true" tabindex="-1"></a>           <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb70-290"><a href="#cb70-290" aria-hidden="true" tabindex="-1"></a>           <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb70-291"><a href="#cb70-291" aria-hidden="true" tabindex="-1"></a>           <span class="at">col =</span> <span class="st">"darkgray"</span>)</span>
-<span id="cb70-292"><a href="#cb70-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-293"><a href="#cb70-293" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of all data</span></span>
-<span id="cb70-294"><a href="#cb70-294" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pain_data<span class="sc">$</span>pain_reduction,</span>
-<span id="cb70-295"><a href="#cb70-295" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Pain Reduction"</span>,</span>
-<span id="cb70-296"><a href="#cb70-296" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
-<span id="cb70-297"><a href="#cb70-297" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb70-298"><a href="#cb70-298" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"white"</span>)</span>
-<span id="cb70-299"><a href="#cb70-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-300"><a href="#cb70-300" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb70-273"><a href="#cb70-273" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Descriptive Statistics by Group ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-274"><a href="#cb70-274" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Means:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-275"><a href="#cb70-275" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_data<span class="sc">$</span>pain_reduction, pain_data<span class="sc">$</span>treatment, mean)</span>
+<span id="cb70-276"><a href="#cb70-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-277"><a href="#cb70-277" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Standard Deviations:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-278"><a href="#cb70-278" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_data<span class="sc">$</span>pain_reduction, pain_data<span class="sc">$</span>treatment, sd)</span>
+<span id="cb70-279"><a href="#cb70-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-280"><a href="#cb70-280" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Visualize the data</span></span>
+<span id="cb70-281"><a href="#cb70-281" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb70-282"><a href="#cb70-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-283"><a href="#cb70-283" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot</span></span>
+<span id="cb70-284"><a href="#cb70-284" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pain_reduction <span class="sc">~</span> treatment,</span>
+<span id="cb70-285"><a href="#cb70-285" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pain_data,</span>
+<span id="cb70-286"><a href="#cb70-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Pain Reduction by Treatment"</span>,</span>
+<span id="cb70-287"><a href="#cb70-287" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Treatment"</span>,</span>
+<span id="cb70-288"><a href="#cb70-288" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
+<span id="cb70-289"><a href="#cb70-289" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>)</span>
+<span id="cb70-290"><a href="#cb70-290" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-291"><a href="#cb70-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-292"><a href="#cb70-292" aria-hidden="true" tabindex="-1"></a><span class="co"># Add points</span></span>
+<span id="cb70-293"><a href="#cb70-293" aria-hidden="true" tabindex="-1"></a><span class="fu">stripchart</span>(pain_reduction <span class="sc">~</span> treatment,</span>
+<span id="cb70-294"><a href="#cb70-294" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pain_data,</span>
+<span id="cb70-295"><a href="#cb70-295" aria-hidden="true" tabindex="-1"></a>    <span class="at">vertical =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb70-296"><a href="#cb70-296" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"jitter"</span>,</span>
+<span id="cb70-297"><a href="#cb70-297" aria-hidden="true" tabindex="-1"></a>    <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb70-298"><a href="#cb70-298" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb70-299"><a href="#cb70-299" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"darkgray"</span></span>
+<span id="cb70-300"><a href="#cb70-300" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb70-301"><a href="#cb70-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-302"><a href="#cb70-302" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Check assumptions</span></span>
-<span id="cb70-303"><a href="#cb70-303" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Assumption Checks ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-304"><a href="#cb70-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-305"><a href="#cb70-305" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality (overall)</span></span>
-<span id="cb70-306"><a href="#cb70-306" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Shapiro-Wilk Test for Normality:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-307"><a href="#cb70-307" aria-hidden="true" tabindex="-1"></a>shapiro_test <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(pain_data<span class="sc">$</span>pain_reduction)</span>
-<span id="cb70-308"><a href="#cb70-308" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(shapiro_test)</span>
+<span id="cb70-302"><a href="#cb70-302" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of all data</span></span>
+<span id="cb70-303"><a href="#cb70-303" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pain_data<span class="sc">$</span>pain_reduction,</span>
+<span id="cb70-304"><a href="#cb70-304" aria-hidden="true" tabindex="-1"></a>    <span class="at">main =</span> <span class="st">"Distribution of Pain Reduction"</span>,</span>
+<span id="cb70-305"><a href="#cb70-305" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Pain Reduction (points)"</span>,</span>
+<span id="cb70-306"><a href="#cb70-306" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb70-307"><a href="#cb70-307" aria-hidden="true" tabindex="-1"></a>    <span class="at">border =</span> <span class="st">"white"</span></span>
+<span id="cb70-308"><a href="#cb70-308" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb70-309"><a href="#cb70-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-310"><a href="#cb70-310" aria-hidden="true" tabindex="-1"></a><span class="co"># Homogeneity of variance</span></span>
-<span id="cb70-311"><a href="#cb70-311" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Levene's Test for Homogeneity of Variance:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-312"><a href="#cb70-312" aria-hidden="true" tabindex="-1"></a>levene_test <span class="ot">&lt;-</span> <span class="fu">leveneTest</span>(pain_reduction <span class="sc">~</span> treatment, <span class="at">data =</span> pain_data)</span>
-<span id="cb70-313"><a href="#cb70-313" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(levene_test)</span>
+<span id="cb70-310"><a href="#cb70-310" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb70-311"><a href="#cb70-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-312"><a href="#cb70-312" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Check assumptions</span></span>
+<span id="cb70-313"><a href="#cb70-313" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Assumption Checks ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
 <span id="cb70-314"><a href="#cb70-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-315"><a href="#cb70-315" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Conduct ANOVA</span></span>
-<span id="cb70-316"><a href="#cb70-316" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== ANOVA Results ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-317"><a href="#cb70-317" aria-hidden="true" tabindex="-1"></a>anova_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(pain_reduction <span class="sc">~</span> treatment, <span class="at">data =</span> pain_data)</span>
-<span id="cb70-318"><a href="#cb70-318" aria-hidden="true" tabindex="-1"></a>anova_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(anova_model)</span>
-<span id="cb70-319"><a href="#cb70-319" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(anova_summary)</span>
-<span id="cb70-320"><a href="#cb70-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-321"><a href="#cb70-321" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract key values</span></span>
-<span id="cb70-322"><a href="#cb70-322" aria-hidden="true" tabindex="-1"></a>f_value <span class="ot">&lt;-</span> anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
-<span id="cb70-323"><a href="#cb70-323" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb70-315"><a href="#cb70-315" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality (overall)</span></span>
+<span id="cb70-316"><a href="#cb70-316" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Shapiro-Wilk Test for Normality:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-317"><a href="#cb70-317" aria-hidden="true" tabindex="-1"></a>shapiro_test <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(pain_data<span class="sc">$</span>pain_reduction)</span>
+<span id="cb70-318"><a href="#cb70-318" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(shapiro_test)</span>
+<span id="cb70-319"><a href="#cb70-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-320"><a href="#cb70-320" aria-hidden="true" tabindex="-1"></a><span class="co"># Homogeneity of variance</span></span>
+<span id="cb70-321"><a href="#cb70-321" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Levene's Test for Homogeneity of Variance:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-322"><a href="#cb70-322" aria-hidden="true" tabindex="-1"></a>levene_test <span class="ot">&lt;-</span> <span class="fu">leveneTest</span>(pain_reduction <span class="sc">~</span> treatment, <span class="at">data =</span> pain_data)</span>
+<span id="cb70-323"><a href="#cb70-323" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(levene_test)</span>
 <span id="cb70-324"><a href="#cb70-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-325"><a href="#cb70-325" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">F-statistic:"</span>, <span class="fu">round</span>(f_value, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-326"><a href="#cb70-326" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P-value:"</span>, <span class="fu">format.pval</span>(p_value, <span class="at">digits =</span> <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-327"><a href="#cb70-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-328"><a href="#cb70-328" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Check model diagnostics</span></span>
-<span id="cb70-329"><a href="#cb70-329" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Model Diagnostics ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-330"><a href="#cb70-330" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb70-331"><a href="#cb70-331" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anova_model)</span>
-<span id="cb70-332"><a href="#cb70-332" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb70-333"><a href="#cb70-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-334"><a href="#cb70-334" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 8: Post-hoc tests (if ANOVA is significant)</span></span>
-<span id="cb70-335"><a href="#cb70-335" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb70-336"><a href="#cb70-336" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Post-hoc Analysis (Tukey HSD) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-337"><a href="#cb70-337" aria-hidden="true" tabindex="-1"></a>  tukey_results <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(anova_model)</span>
-<span id="cb70-338"><a href="#cb70-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(tukey_results)</span>
-<span id="cb70-339"><a href="#cb70-339" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb70-340"><a href="#cb70-340" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot Tukey results</span></span>
-<span id="cb70-341"><a href="#cb70-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(tukey_results, <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb70-342"><a href="#cb70-342" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb70-343"><a href="#cb70-343" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Pairwise Comparisons (Bonferroni) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-344"><a href="#cb70-344" aria-hidden="true" tabindex="-1"></a>  pairwise_results <span class="ot">&lt;-</span> <span class="fu">pairwise.t.test</span>(pain_data<span class="sc">$</span>pain_reduction, </span>
-<span id="cb70-345"><a href="#cb70-345" aria-hidden="true" tabindex="-1"></a>                                       pain_data<span class="sc">$</span>treatment, </span>
-<span id="cb70-346"><a href="#cb70-346" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span>)</span>
-<span id="cb70-347"><a href="#cb70-347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(pairwise_results)</span>
-<span id="cb70-348"><a href="#cb70-348" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb70-349"><a href="#cb70-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">ANOVA not significant (p &gt;= 0.05). Post-hoc tests not needed.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-350"><a href="#cb70-350" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb70-351"><a href="#cb70-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-352"><a href="#cb70-352" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 9: Effect size (eta-squared)</span></span>
-<span id="cb70-353"><a href="#cb70-353" aria-hidden="true" tabindex="-1"></a>ss_between <span class="ot">&lt;-</span> anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="dv">1</span>]</span>
-<span id="cb70-354"><a href="#cb70-354" aria-hidden="true" tabindex="-1"></a>ss_total <span class="ot">&lt;-</span> <span class="fu">sum</span>(anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>)</span>
-<span id="cb70-355"><a href="#cb70-355" aria-hidden="true" tabindex="-1"></a>eta_squared <span class="ot">&lt;-</span> ss_between <span class="sc">/</span> ss_total</span>
-<span id="cb70-356"><a href="#cb70-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-357"><a href="#cb70-357" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Effect Size ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-358"><a href="#cb70-358" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Eta-squared:"</span>, <span class="fu">round</span>(eta_squared, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-359"><a href="#cb70-359" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Interpretation: "</span>, </span>
-<span id="cb70-360"><a href="#cb70-360" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.01</span>, <span class="st">"negligible"</span>,</span>
-<span id="cb70-361"><a href="#cb70-361" aria-hidden="true" tabindex="-1"></a>           <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.06</span>, <span class="st">"small"</span>,</span>
-<span id="cb70-362"><a href="#cb70-362" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.14</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>))), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-363"><a href="#cb70-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-364"><a href="#cb70-364" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 10: Report results</span></span>
-<span id="cb70-365"><a href="#cb70-365" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Summary for Reporting ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-366"><a href="#cb70-366" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"A one-way ANOVA was conducted to compare pain reduction across three treatment groups.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-367"><a href="#cb70-367" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"The ANOVA was"</span>, <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">"significant"</span>, <span class="st">"not significant"</span>), </span>
-<span id="cb70-368"><a href="#cb70-368" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">"F(%d, %d) = %.2f, p %s.</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb70-369"><a href="#cb70-369" aria-hidden="true" tabindex="-1"></a>            anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">1</span>],</span>
-<span id="cb70-370"><a href="#cb70-370" aria-hidden="true" tabindex="-1"></a>            anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">2</span>],</span>
-<span id="cb70-371"><a href="#cb70-371" aria-hidden="true" tabindex="-1"></a>            f_value,</span>
-<span id="cb70-372"><a href="#cb70-372" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">paste</span>(<span class="st">"="</span>, <span class="fu">round</span>(p_value, <span class="dv">3</span>)))))</span>
-<span id="cb70-373"><a href="#cb70-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-374"><a href="#cb70-374" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb70-375"><a href="#cb70-375" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Post-hoc comparisons using Tukey HSD indicated significant differences between groups.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-376"><a href="#cb70-376" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb70-377"><a href="#cb70-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-378"><a href="#cb70-378" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Analysis Complete ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb70-379"><a href="#cb70-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb70-380"><a href="#cb70-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-381"><a href="#cb70-381" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Takeaways</span></span>
-<span id="cb70-382"><a href="#cb70-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-383"><a href="#cb70-383" aria-hidden="true" tabindex="-1"></a>✅ ANOVA tests if means differ across 3+ groups  </span>
-<span id="cb70-384"><a href="#cb70-384" aria-hidden="true" tabindex="-1"></a>✅ Check assumptions before running ANOVA (normality, homogeneity of variance)  </span>
-<span id="cb70-385"><a href="#cb70-385" aria-hidden="true" tabindex="-1"></a>✅ Use <span class="in">`aov()`</span> function in R with formula notation <span class="in">`outcome ~ group`</span>  </span>
-<span id="cb70-386"><a href="#cb70-386" aria-hidden="true" tabindex="-1"></a>✅ If significant, conduct post-hoc tests to identify which groups differ  </span>
-<span id="cb70-387"><a href="#cb70-387" aria-hidden="true" tabindex="-1"></a>✅ Tukey HSD controls for multiple comparisons  </span>
-<span id="cb70-388"><a href="#cb70-388" aria-hidden="true" tabindex="-1"></a>✅ Always visualize your data with boxplots before and after analysis  </span>
-<span id="cb70-389"><a href="#cb70-389" aria-hidden="true" tabindex="-1"></a>✅ Report F-statistic, degrees of freedom, and p-value  </span>
-<span id="cb70-390"><a href="#cb70-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-391"><a href="#cb70-391" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Save your ANOVA model as an object (</span><span class="in">`model &lt;- aov(...)`</span><span class="at">). You can then use this object for post-hoc tests, diagnostic plots, and extracting results without re-running the analysis!</span></span>
+<span id="cb70-325"><a href="#cb70-325" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Conduct ANOVA</span></span>
+<span id="cb70-326"><a href="#cb70-326" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== ANOVA Results ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-327"><a href="#cb70-327" aria-hidden="true" tabindex="-1"></a>anova_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(pain_reduction <span class="sc">~</span> treatment, <span class="at">data =</span> pain_data)</span>
+<span id="cb70-328"><a href="#cb70-328" aria-hidden="true" tabindex="-1"></a>anova_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(anova_model)</span>
+<span id="cb70-329"><a href="#cb70-329" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(anova_summary)</span>
+<span id="cb70-330"><a href="#cb70-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-331"><a href="#cb70-331" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract key values</span></span>
+<span id="cb70-332"><a href="#cb70-332" aria-hidden="true" tabindex="-1"></a>f_value <span class="ot">&lt;-</span> anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb70-333"><a href="#cb70-333" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb70-334"><a href="#cb70-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-335"><a href="#cb70-335" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">F-statistic:"</span>, <span class="fu">round</span>(f_value, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-336"><a href="#cb70-336" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P-value:"</span>, <span class="fu">format.pval</span>(p_value, <span class="at">digits =</span> <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-337"><a href="#cb70-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-338"><a href="#cb70-338" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Check model diagnostics</span></span>
+<span id="cb70-339"><a href="#cb70-339" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Model Diagnostics ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-340"><a href="#cb70-340" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb70-341"><a href="#cb70-341" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anova_model)</span>
+<span id="cb70-342"><a href="#cb70-342" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb70-343"><a href="#cb70-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-344"><a href="#cb70-344" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 8: Post-hoc tests (if ANOVA is significant)</span></span>
+<span id="cb70-345"><a href="#cb70-345" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb70-346"><a href="#cb70-346" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Post-hoc Analysis (Tukey HSD) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-347"><a href="#cb70-347" aria-hidden="true" tabindex="-1"></a>    tukey_results <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(anova_model)</span>
+<span id="cb70-348"><a href="#cb70-348" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(tukey_results)</span>
+<span id="cb70-349"><a href="#cb70-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-350"><a href="#cb70-350" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot Tukey results</span></span>
+<span id="cb70-351"><a href="#cb70-351" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(tukey_results, <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb70-352"><a href="#cb70-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-353"><a href="#cb70-353" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Pairwise Comparisons (Bonferroni) ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-354"><a href="#cb70-354" aria-hidden="true" tabindex="-1"></a>    pairwise_results <span class="ot">&lt;-</span> <span class="fu">pairwise.t.test</span>(pain_data<span class="sc">$</span>pain_reduction,</span>
+<span id="cb70-355"><a href="#cb70-355" aria-hidden="true" tabindex="-1"></a>        pain_data<span class="sc">$</span>treatment,</span>
+<span id="cb70-356"><a href="#cb70-356" aria-hidden="true" tabindex="-1"></a>        <span class="at">p.adjust.method =</span> <span class="st">"bonferroni"</span></span>
+<span id="cb70-357"><a href="#cb70-357" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb70-358"><a href="#cb70-358" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(pairwise_results)</span>
+<span id="cb70-359"><a href="#cb70-359" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb70-360"><a href="#cb70-360" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">ANOVA not significant (p &gt;= 0.05). Post-hoc tests not needed.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-361"><a href="#cb70-361" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb70-362"><a href="#cb70-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-363"><a href="#cb70-363" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 9: Effect size (eta-squared)</span></span>
+<span id="cb70-364"><a href="#cb70-364" aria-hidden="true" tabindex="-1"></a>ss_between <span class="ot">&lt;-</span> anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="dv">1</span>]</span>
+<span id="cb70-365"><a href="#cb70-365" aria-hidden="true" tabindex="-1"></a>ss_total <span class="ot">&lt;-</span> <span class="fu">sum</span>(anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>)</span>
+<span id="cb70-366"><a href="#cb70-366" aria-hidden="true" tabindex="-1"></a>eta_squared <span class="ot">&lt;-</span> ss_between <span class="sc">/</span> ss_total</span>
+<span id="cb70-367"><a href="#cb70-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-368"><a href="#cb70-368" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Effect Size ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-369"><a href="#cb70-369" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Eta-squared:"</span>, <span class="fu">round</span>(eta_squared, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-370"><a href="#cb70-370" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
+<span id="cb70-371"><a href="#cb70-371" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Interpretation: "</span>,</span>
+<span id="cb70-372"><a href="#cb70-372" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.01</span>, <span class="st">"negligible"</span>,</span>
+<span id="cb70-373"><a href="#cb70-373" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.06</span>, <span class="st">"small"</span>,</span>
+<span id="cb70-374"><a href="#cb70-374" aria-hidden="true" tabindex="-1"></a>            <span class="fu">ifelse</span>(eta_squared <span class="sc">&lt;</span> <span class="fl">0.14</span>, <span class="st">"medium"</span>, <span class="st">"large"</span>)</span>
+<span id="cb70-375"><a href="#cb70-375" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb70-376"><a href="#cb70-376" aria-hidden="true" tabindex="-1"></a>    ), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span></span>
+<span id="cb70-377"><a href="#cb70-377" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-378"><a href="#cb70-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-379"><a href="#cb70-379" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 10: Report results</span></span>
+<span id="cb70-380"><a href="#cb70-380" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Summary for Reporting ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-381"><a href="#cb70-381" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"A one-way ANOVA was conducted to compare pain reduction across three treatment groups.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-382"><a href="#cb70-382" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(</span>
+<span id="cb70-383"><a href="#cb70-383" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The ANOVA was"</span>, <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>, <span class="st">"significant"</span>, <span class="st">"not significant"</span>),</span>
+<span id="cb70-384"><a href="#cb70-384" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sprintf</span>(</span>
+<span id="cb70-385"><a href="#cb70-385" aria-hidden="true" tabindex="-1"></a>        <span class="st">"F(%d, %d) = %.2f, p %s.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb70-386"><a href="#cb70-386" aria-hidden="true" tabindex="-1"></a>        anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">1</span>],</span>
+<span id="cb70-387"><a href="#cb70-387" aria-hidden="true" tabindex="-1"></a>        anova_summary[[<span class="dv">1</span>]]<span class="sc">$</span>Df[<span class="dv">2</span>],</span>
+<span id="cb70-388"><a href="#cb70-388" aria-hidden="true" tabindex="-1"></a>        f_value,</span>
+<span id="cb70-389"><a href="#cb70-389" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ifelse</span>(p_value <span class="sc">&lt;</span> <span class="fl">0.001</span>, <span class="st">"&lt; .001"</span>, <span class="fu">paste</span>(<span class="st">"="</span>, <span class="fu">round</span>(p_value, <span class="dv">3</span>)))</span>
+<span id="cb70-390"><a href="#cb70-390" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb70-391"><a href="#cb70-391" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-392"><a href="#cb70-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-393"><a href="#cb70-393" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (p_value <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb70-394"><a href="#cb70-394" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Post-hoc comparisons using Tukey HSD indicated significant differences between groups.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-395"><a href="#cb70-395" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb70-396"><a href="#cb70-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-397"><a href="#cb70-397" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">=== Analysis Complete ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb70-398"><a href="#cb70-398" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb70-399"><a href="#cb70-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-400"><a href="#cb70-400" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Takeaways</span></span>
+<span id="cb70-401"><a href="#cb70-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-402"><a href="#cb70-402" aria-hidden="true" tabindex="-1"></a>✅ ANOVA tests if means differ across 3+ groups  </span>
+<span id="cb70-403"><a href="#cb70-403" aria-hidden="true" tabindex="-1"></a>✅ Check assumptions before running ANOVA (normality, homogeneity of variance)  </span>
+<span id="cb70-404"><a href="#cb70-404" aria-hidden="true" tabindex="-1"></a>✅ Use <span class="in">`aov()`</span> function in R with formula notation <span class="in">`outcome ~ group`</span>  </span>
+<span id="cb70-405"><a href="#cb70-405" aria-hidden="true" tabindex="-1"></a>✅ If significant, conduct post-hoc tests to identify which groups differ  </span>
+<span id="cb70-406"><a href="#cb70-406" aria-hidden="true" tabindex="-1"></a>✅ Tukey HSD controls for multiple comparisons  </span>
+<span id="cb70-407"><a href="#cb70-407" aria-hidden="true" tabindex="-1"></a>✅ Always visualize your data with boxplots before and after analysis  </span>
+<span id="cb70-408"><a href="#cb70-408" aria-hidden="true" tabindex="-1"></a>✅ Report F-statistic, degrees of freedom, and p-value  </span>
+<span id="cb70-409"><a href="#cb70-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-410"><a href="#cb70-410" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Save your ANOVA model as an object (</span><span class="in">`model &lt;- aov(...)`</span><span class="at">). You can then use this object for post-hoc tests, diagnostic plots, and extracting results without re-running the analysis!</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

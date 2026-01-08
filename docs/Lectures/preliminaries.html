@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dr.&nbsp;Joshua Lambert">
 
-<title>Preliminaries – NPHD 9040 – Applied Multivariable Analysis with R</title>
+<title>Preliminaries – NPHD 9040</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">NPHD 9040 – Applied Multivariable Analysis with R</span>
+    <span class="navbar-title">NPHD 9040</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -200,10 +200,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../Assignments/assign_list.html"> 
-<span class="menu-text">Assignments</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-assignments" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Assignments</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw1.html">
+ <span class="dropdown-text">HW1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw2.html">
+ <span class="dropdown-text">HW2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw3.html">
+ <span class="dropdown-text">HW3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw4.html">
+ <span class="dropdown-text">HW4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/hw5.html">
+ <span class="dropdown-text">HW5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/midterm.html">
+ <span class="dropdown-text">Midterm Presentation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Assignments/final.html">
+ <span class="dropdown-text">Final Project</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="../Other/aboutDrL.html"> 
 <span class="menu-text">About Dr.&nbsp;L</span></a>
@@ -270,6 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><a href="code/preliminaries.R" class="btn btn-primary"><strong>Download R Code for this Lecture</strong></a></p>
 <section id="preliminaries" class="level1">
 <h1>Preliminaries</h1>
 <section id="preliminary-steps-for-data-analysis" class="level2">
@@ -1229,336 +1261,340 @@ W = 0.99173, p-value = 0.9575</code></pre>
 <span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co">    css: ../styles.css</span></span>
 <span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preliminaries</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Download R Code for this Lecture**</span><span class="co">](code/preliminaries.R)</span>{ .btn .btn-primary }</span>
 <span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preliminary Steps for Data Analysis</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>Before conducting statistical analyses in R, it's crucial to follow these steps:</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preliminaries</span></span>
 <span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### Define Your Research Question and Hypothesis</span></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preliminary Steps for Data Analysis</span></span>
 <span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Research Question:** Start with a clear, concise research question relevant to your primary interest.</span>
-<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hypothesis:** Formulate a testable statement that answers your research question.</span>
-<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Null Hypothesis (H₀):** Represents no effect or difference.</span>
-<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Alternative Hypothesis (Hₐ):** Represents an effect or difference.</span>
-<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>**Example:**</span>
-<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Research Question: Does a new pain management intervention reduce pain scores compared to standard care?</span>
-<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>H₀: The mean pain score is the same for both groups.</span>
-<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hₐ: The mean pain score differs between groups.</span>
-<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pick Appropriate Variables and Measures</span></span>
-<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Identify key variables relevant to your research question.</span>
-<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Choose between continuous or categorical variables based on the type of data available.</span>
-<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Continuous Variables:** Unlimited set of values (e.g., weight, age, blood pressure).</span>
-<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Categorical Variables:** Limited set of values (e.g., treatment status, diagnosis).</span>
-<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**Ordinal:** Ordered categories (e.g., pain rating - low, medium, high).</span>
-<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**Nominal:** Unordered categories (e.g., sex - male, female).</span>
-<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**Dichotomous:** Only two levels (e.g., yes/no, treatment/control).</span>
-<span id="cb53-41"><a href="#cb53-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-42"><a href="#cb53-42" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: In R, categorical variables should be stored as **factors**. Use </span><span class="in">`factor()`</span><span class="at"> to convert character variables to factors, especially for ordinal data where you can specify the order.</span></span>
-<span id="cb53-43"><a href="#cb53-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-44"><a href="#cb53-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb53-45"><a href="#cb53-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to factor</span></span>
-<span id="cb53-46"><a href="#cb53-46" aria-hidden="true" tabindex="-1"></a>pain_level <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>))</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>Before conducting statistical analyses in R, it's crucial to follow these steps:</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### Define Your Research Question and Hypothesis</span></span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Research Question:** Start with a clear, concise research question relevant to your primary interest.</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hypothesis:** Formulate a testable statement that answers your research question.</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Null Hypothesis (H₀):** Represents no effect or difference.</span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Alternative Hypothesis (Hₐ):** Represents an effect or difference.</span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a>**Example:**</span>
+<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Research Question: Does a new pain management intervention reduce pain scores compared to standard care?</span>
+<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>H₀: The mean pain score is the same for both groups.</span>
+<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Hₐ: The mean pain score differs between groups.</span>
+<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Pick Appropriate Variables and Measures</span></span>
+<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Identify key variables relevant to your research question.</span>
+<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Choose between continuous or categorical variables based on the type of data available.</span>
+<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Continuous Variables:** Unlimited set of values (e.g., weight, age, blood pressure).</span>
+<span id="cb53-41"><a href="#cb53-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Categorical Variables:** Limited set of values (e.g., treatment status, diagnosis).</span>
+<span id="cb53-42"><a href="#cb53-42" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**Ordinal:** Ordered categories (e.g., pain rating - low, medium, high).</span>
+<span id="cb53-43"><a href="#cb53-43" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**Nominal:** Unordered categories (e.g., sex - male, female).</span>
+<span id="cb53-44"><a href="#cb53-44" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**Dichotomous:** Only two levels (e.g., yes/no, treatment/control).</span>
+<span id="cb53-45"><a href="#cb53-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-46"><a href="#cb53-46" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: In R, categorical variables should be stored as **factors**. Use </span><span class="in">`factor()`</span><span class="at"> to convert character variables to factors, especially for ordinal data where you can specify the order.</span></span>
 <span id="cb53-47"><a href="#cb53-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-48"><a href="#cb53-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordered factor (for ordinal data)</span></span>
-<span id="cb53-49"><a href="#cb53-49" aria-hidden="true" tabindex="-1"></a>pain_level <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>),</span>
-<span id="cb53-50"><a href="#cb53-50" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>),</span>
-<span id="cb53-51"><a href="#cb53-51" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb53-52"><a href="#cb53-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-53"><a href="#cb53-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-54"><a href="#cb53-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### Understand the P-Value: Pros and Cons</span></span>
-<span id="cb53-55"><a href="#cb53-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-56"><a href="#cb53-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The p-value is a statistical measure that helps assess evidence against the null hypothesis.</span>
-<span id="cb53-57"><a href="#cb53-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
-<span id="cb53-58"><a href="#cb53-58" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Easy to interpret.</span>
-<span id="cb53-59"><a href="#cb53-59" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Helps determine statistical significance.</span>
-<span id="cb53-60"><a href="#cb53-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
-<span id="cb53-61"><a href="#cb53-61" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Often misinterpreted (e.g., "significant" does not always imply clinical relevance).</span>
-<span id="cb53-62"><a href="#cb53-62" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can be misleading in the presence of small sample sizes.</span>
-<span id="cb53-63"><a href="#cb53-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Does not measure effect size or practical importance.</span>
-<span id="cb53-64"><a href="#cb53-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-65"><a href="#cb53-65" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: In R, p-values are typically found in the output of statistical tests. Look for columns labeled </span><span class="in">`Pr(&gt;|t|)`</span><span class="at">, </span><span class="in">`p-value`</span><span class="at">, or similar. A common threshold is p &lt; 0.05 for statistical significance.</span></span>
-<span id="cb53-66"><a href="#cb53-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-67"><a href="#cb53-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Determine Sample Size and Power</span></span>
+<span id="cb53-48"><a href="#cb53-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb53-49"><a href="#cb53-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to factor</span></span>
+<span id="cb53-50"><a href="#cb53-50" aria-hidden="true" tabindex="-1"></a>pain_level <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>))</span>
+<span id="cb53-51"><a href="#cb53-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-52"><a href="#cb53-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordered factor (for ordinal data)</span></span>
+<span id="cb53-53"><a href="#cb53-53" aria-hidden="true" tabindex="-1"></a>pain_level <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>, <span class="st">"low"</span>, <span class="st">"high"</span>),</span>
+<span id="cb53-54"><a href="#cb53-54" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>),</span>
+<span id="cb53-55"><a href="#cb53-55" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-56"><a href="#cb53-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb53-57"><a href="#cb53-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-58"><a href="#cb53-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### Understand the P-Value: Pros and Cons</span></span>
+<span id="cb53-59"><a href="#cb53-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-60"><a href="#cb53-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The p-value is a statistical measure that helps assess evidence against the null hypothesis.</span>
+<span id="cb53-61"><a href="#cb53-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Pros:**</span>
+<span id="cb53-62"><a href="#cb53-62" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Easy to interpret.</span>
+<span id="cb53-63"><a href="#cb53-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Helps determine statistical significance.</span>
+<span id="cb53-64"><a href="#cb53-64" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Cons:**</span>
+<span id="cb53-65"><a href="#cb53-65" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Often misinterpreted (e.g., "significant" does not always imply clinical relevance).</span>
+<span id="cb53-66"><a href="#cb53-66" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Can be misleading in the presence of small sample sizes.</span>
+<span id="cb53-67"><a href="#cb53-67" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Does not measure effect size or practical importance.</span>
 <span id="cb53-68"><a href="#cb53-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-69"><a href="#cb53-69" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Sample Size:** Ensure that the proposed sample is large enough to answer your research question confidently.</span>
-<span id="cb53-70"><a href="#cb53-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Power Analysis:** Conduct a power analysis to determine the minimum sample size required.</span>
-<span id="cb53-71"><a href="#cb53-71" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Power:** Probability of rejecting a false null hypothesis (typically 0.80 or 80%).</span>
-<span id="cb53-72"><a href="#cb53-72" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Type I Error (α):** Probability of a false positive (usually 0.05).</span>
-<span id="cb53-73"><a href="#cb53-73" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Type II Error (β):** Probability of a false negative (usually 0.20).</span>
-<span id="cb53-74"><a href="#cb53-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Factors Influencing Power:**</span>
-<span id="cb53-75"><a href="#cb53-75" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effect size</span>
-<span id="cb53-76"><a href="#cb53-76" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Significance level</span>
-<span id="cb53-77"><a href="#cb53-77" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Sample size</span>
-<span id="cb53-78"><a href="#cb53-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-79"><a href="#cb53-79" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Power Analysis in R</span></span>
-<span id="cb53-80"><a href="#cb53-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-81"><a href="#cb53-81" aria-hidden="true" tabindex="-1"></a>R has the <span class="in">`pwr`</span> package for power calculations:</span>
+<span id="cb53-69"><a href="#cb53-69" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: In R, p-values are typically found in the output of statistical tests. Look for columns labeled </span><span class="in">`Pr(&gt;|t|)`</span><span class="at">, </span><span class="in">`p-value`</span><span class="at">, or similar. A common threshold is p &lt; 0.05 for statistical significance.</span></span>
+<span id="cb53-70"><a href="#cb53-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-71"><a href="#cb53-71" aria-hidden="true" tabindex="-1"></a><span class="fu">### Determine Sample Size and Power</span></span>
+<span id="cb53-72"><a href="#cb53-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-73"><a href="#cb53-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Sample Size:** Ensure that the proposed sample is large enough to answer your research question confidently.</span>
+<span id="cb53-74"><a href="#cb53-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Power Analysis:** Conduct a power analysis to determine the minimum sample size required.</span>
+<span id="cb53-75"><a href="#cb53-75" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Power:** Probability of rejecting a false null hypothesis (typically 0.80 or 80%).</span>
+<span id="cb53-76"><a href="#cb53-76" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Type I Error (α):** Probability of a false positive (usually 0.05).</span>
+<span id="cb53-77"><a href="#cb53-77" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Type II Error (β):** Probability of a false negative (usually 0.20).</span>
+<span id="cb53-78"><a href="#cb53-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Factors Influencing Power:**</span>
+<span id="cb53-79"><a href="#cb53-79" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Effect size</span>
+<span id="cb53-80"><a href="#cb53-80" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Significance level</span>
+<span id="cb53-81"><a href="#cb53-81" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Sample size</span>
 <span id="cb53-82"><a href="#cb53-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-83"><a href="#cb53-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb53-84"><a href="#cb53-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the package (only once)</span></span>
-<span id="cb53-85"><a href="#cb53-85" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pwr"</span>)</span>
+<span id="cb53-83"><a href="#cb53-83" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Power Analysis in R</span></span>
+<span id="cb53-84"><a href="#cb53-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-85"><a href="#cb53-85" aria-hidden="true" tabindex="-1"></a>R has the <span class="in">`pwr`</span> package for power calculations:</span>
 <span id="cb53-86"><a href="#cb53-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-87"><a href="#cb53-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package</span></span>
-<span id="cb53-88"><a href="#cb53-88" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
-<span id="cb53-89"><a href="#cb53-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-90"><a href="#cb53-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Power analysis for t-test</span></span>
-<span id="cb53-91"><a href="#cb53-91" aria-hidden="true" tabindex="-1"></a><span class="co"># What sample size do we need to detect a medium effect (d=0.5)</span></span>
-<span id="cb53-92"><a href="#cb53-92" aria-hidden="true" tabindex="-1"></a><span class="co"># with 80% power at alpha=0.05?</span></span>
-<span id="cb53-93"><a href="#cb53-93" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,           <span class="co"># Effect size (Cohen's d)</span></span>
-<span id="cb53-94"><a href="#cb53-94" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>,   <span class="co"># Alpha</span></span>
-<span id="cb53-95"><a href="#cb53-95" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,       <span class="co"># Desired power</span></span>
-<span id="cb53-96"><a href="#cb53-96" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"two.sample"</span>)</span>
-<span id="cb53-97"><a href="#cb53-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-98"><a href="#cb53-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: What power do we have with n=30 per group?</span></span>
-<span id="cb53-99"><a href="#cb53-99" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>,</span>
-<span id="cb53-100"><a href="#cb53-100" aria-hidden="true" tabindex="-1"></a>           <span class="at">d =</span> <span class="fl">0.5</span>,</span>
-<span id="cb53-101"><a href="#cb53-101" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
-<span id="cb53-102"><a href="#cb53-102" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"two.sample"</span>)</span>
-<span id="cb53-103"><a href="#cb53-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-104"><a href="#cb53-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-105"><a href="#cb53-105" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Common effect sizes (Cohen's d): small = 0.2, medium = 0.5, large = 0.8. The </span><span class="in">`pwr`</span><span class="at"> package has functions for many test types: </span><span class="in">`pwr.t.test()`</span><span class="at">, </span><span class="in">`pwr.anova.test()`</span><span class="at">, </span><span class="in">`pwr.chisq.test()`</span><span class="at">, etc.</span></span>
-<span id="cb53-106"><a href="#cb53-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-107"><a href="#cb53-107" aria-hidden="true" tabindex="-1"></a><span class="fu">### Working with Data in R</span></span>
+<span id="cb53-87"><a href="#cb53-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb53-88"><a href="#cb53-88" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the package (only once)</span></span>
+<span id="cb53-89"><a href="#cb53-89" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pwr"</span>)</span>
+<span id="cb53-90"><a href="#cb53-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-91"><a href="#cb53-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package</span></span>
+<span id="cb53-92"><a href="#cb53-92" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
+<span id="cb53-93"><a href="#cb53-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-94"><a href="#cb53-94" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Power analysis for t-test</span></span>
+<span id="cb53-95"><a href="#cb53-95" aria-hidden="true" tabindex="-1"></a><span class="co"># What sample size do we need to detect a medium effect (d=0.5)</span></span>
+<span id="cb53-96"><a href="#cb53-96" aria-hidden="true" tabindex="-1"></a><span class="co"># with 80% power at alpha=0.05?</span></span>
+<span id="cb53-97"><a href="#cb53-97" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.5</span>,           <span class="co"># Effect size (Cohen's d)</span></span>
+<span id="cb53-98"><a href="#cb53-98" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>,   <span class="co"># Alpha</span></span>
+<span id="cb53-99"><a href="#cb53-99" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> <span class="fl">0.80</span>,       <span class="co"># Desired power</span></span>
+<span id="cb53-100"><a href="#cb53-100" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"two.sample"</span>)</span>
+<span id="cb53-101"><a href="#cb53-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-102"><a href="#cb53-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: What power do we have with n=30 per group?</span></span>
+<span id="cb53-103"><a href="#cb53-103" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">30</span>,</span>
+<span id="cb53-104"><a href="#cb53-104" aria-hidden="true" tabindex="-1"></a>           <span class="at">d =</span> <span class="fl">0.5</span>,</span>
+<span id="cb53-105"><a href="#cb53-105" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb53-106"><a href="#cb53-106" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"two.sample"</span>)</span>
+<span id="cb53-107"><a href="#cb53-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-108"><a href="#cb53-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-109"><a href="#cb53-109" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Setting Up Your Workspace</span></span>
+<span id="cb53-109"><a href="#cb53-109" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Common effect sizes (Cohen's d): small = 0.2, medium = 0.5, large = 0.8. The </span><span class="in">`pwr`</span><span class="at"> package has functions for many test types: </span><span class="in">`pwr.t.test()`</span><span class="at">, </span><span class="in">`pwr.anova.test()`</span><span class="at">, </span><span class="in">`pwr.chisq.test()`</span><span class="at">, etc.</span></span>
 <span id="cb53-110"><a href="#cb53-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-111"><a href="#cb53-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb53-112"><a href="#cb53-112" aria-hidden="true" tabindex="-1"></a><span class="co"># Check your current working directory</span></span>
-<span id="cb53-113"><a href="#cb53-113" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb53-111"><a href="#cb53-111" aria-hidden="true" tabindex="-1"></a><span class="fu">### Working with Data in R</span></span>
+<span id="cb53-112"><a href="#cb53-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-113"><a href="#cb53-113" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Setting Up Your Workspace</span></span>
 <span id="cb53-114"><a href="#cb53-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-115"><a href="#cb53-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Set working directory to where your data is stored</span></span>
-<span id="cb53-116"><a href="#cb53-116" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Documents/NPHD9040"</span>)</span>
-<span id="cb53-117"><a href="#cb53-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-118"><a href="#cb53-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use RStudio: Session → Set Working Directory → Choose Directory</span></span>
-<span id="cb53-119"><a href="#cb53-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-120"><a href="#cb53-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-121"><a href="#cb53-121" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Keep all files for a project in one folder. This makes it easier to manage your data, scripts, and output.</span></span>
-<span id="cb53-122"><a href="#cb53-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-123"><a href="#cb53-123" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reading Data into R</span></span>
+<span id="cb53-115"><a href="#cb53-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb53-116"><a href="#cb53-116" aria-hidden="true" tabindex="-1"></a><span class="co"># Check your current working directory</span></span>
+<span id="cb53-117"><a href="#cb53-117" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb53-118"><a href="#cb53-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-119"><a href="#cb53-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Set working directory to where your data is stored</span></span>
+<span id="cb53-120"><a href="#cb53-120" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Documents/NPHD9040"</span>)</span>
+<span id="cb53-121"><a href="#cb53-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-122"><a href="#cb53-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use RStudio: Session → Set Working Directory → Choose Directory</span></span>
+<span id="cb53-123"><a href="#cb53-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-124"><a href="#cb53-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-125"><a href="#cb53-125" aria-hidden="true" tabindex="-1"></a>For a more detailed guide on importing different file types (including using the RStudio GUI), see the <span class="co">[</span><span class="ot">Getting Started with R</span><span class="co">](getting-started-with-r.qmd#reading-data-from-csv-files)</span> module.</span>
+<span id="cb53-125"><a href="#cb53-125" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Keep all files for a project in one folder. This makes it easier to manage your data, scripts, and output.</span></span>
 <span id="cb53-126"><a href="#cb53-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-127"><a href="#cb53-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb53-128"><a href="#cb53-128" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV file</span></span>
-<span id="cb53-129"><a href="#cb53-129" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"patient_data.csv"</span>)</span>
+<span id="cb53-127"><a href="#cb53-127" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reading Data into R</span></span>
+<span id="cb53-128"><a href="#cb53-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-129"><a href="#cb53-129" aria-hidden="true" tabindex="-1"></a>For a more detailed guide on importing different file types (including using the RStudio GUI), see the <span class="co">[</span><span class="ot">Getting Started with R</span><span class="co">](getting-started-with-r.qmd#reading-data-from-csv-files)</span> module.</span>
 <span id="cb53-130"><a href="#cb53-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-131"><a href="#cb53-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Select file interactively</span></span>
-<span id="cb53-132"><a href="#cb53-132" aria-hidden="true" tabindex="-1"></a><span class="co"># my_data &lt;- read.csv(file.choose())</span></span>
-<span id="cb53-133"><a href="#cb53-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-134"><a href="#cb53-134" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV with specific options</span></span>
-<span id="cb53-135"><a href="#cb53-135" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"patient_data.csv"</span>,</span>
-<span id="cb53-136"><a href="#cb53-136" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,        <span class="co"># First row contains column names</span></span>
-<span id="cb53-137"><a href="#cb53-137" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)  <span class="co"># Don't auto-convert to factors</span></span>
-<span id="cb53-138"><a href="#cb53-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-139"><a href="#cb53-139" aria-hidden="true" tabindex="-1"></a><span class="co"># For Excel files, use readxl package</span></span>
-<span id="cb53-140"><a href="#cb53-140" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb53-141"><a href="#cb53-141" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"patient_data.xlsx"</span>)</span>
+<span id="cb53-131"><a href="#cb53-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb53-132"><a href="#cb53-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV file</span></span>
+<span id="cb53-133"><a href="#cb53-133" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"patient_data.csv"</span>)</span>
+<span id="cb53-134"><a href="#cb53-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-135"><a href="#cb53-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Select file interactively</span></span>
+<span id="cb53-136"><a href="#cb53-136" aria-hidden="true" tabindex="-1"></a><span class="co"># my_data &lt;- read.csv(file.choose())</span></span>
+<span id="cb53-137"><a href="#cb53-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-138"><a href="#cb53-138" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV with specific options</span></span>
+<span id="cb53-139"><a href="#cb53-139" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"patient_data.csv"</span>,</span>
+<span id="cb53-140"><a href="#cb53-140" aria-hidden="true" tabindex="-1"></a>                    <span class="at">header =</span> <span class="cn">TRUE</span>,        <span class="co"># First row contains column names</span></span>
+<span id="cb53-141"><a href="#cb53-141" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)  <span class="co"># Don't auto-convert to factors</span></span>
 <span id="cb53-142"><a href="#cb53-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-143"><a href="#cb53-143" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data</span></span>
-<span id="cb53-144"><a href="#cb53-144" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(my_data)  <span class="co"># Opens in spreadsheet viewer</span></span>
-<span id="cb53-145"><a href="#cb53-145" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_data)  <span class="co"># First 6 rows</span></span>
-<span id="cb53-146"><a href="#cb53-146" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(my_data)  <span class="co"># Last 6 rows</span></span>
-<span id="cb53-147"><a href="#cb53-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-148"><a href="#cb53-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-149"><a href="#cb53-149" aria-hidden="true" tabindex="-1"></a><span class="fu">### Taking Your Data on a Date: Exploratory Data Analysis</span></span>
-<span id="cb53-150"><a href="#cb53-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-151"><a href="#cb53-151" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Collect Consistent and High-Quality Data:**</span>
-<span id="cb53-152"><a href="#cb53-152" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Use secure electronic records whenever possible (e.g., REDCap).</span>
-<span id="cb53-153"><a href="#cb53-153" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Consult the Institutional Review Board (IRB) before beginning data collection.</span>
-<span id="cb53-154"><a href="#cb53-154" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Take note of possible biases or skewed observations that may affect results.</span>
-<span id="cb53-155"><a href="#cb53-155" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Transform and Organize Data:**</span>
-<span id="cb53-156"><a href="#cb53-156" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Raw Data:** Direct data collected from your research.</span>
-<span id="cb53-157"><a href="#cb53-157" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Tidy Data:** Organized and transformed version of raw data.</span>
-<span id="cb53-158"><a href="#cb53-158" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Apply necessary transformations (e.g., standardization) to clean your data.</span>
-<span id="cb53-159"><a href="#cb53-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Conduct Exploratory Data Analysis:**</span>
-<span id="cb53-160"><a href="#cb53-160" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Summarize your data using basic descriptive statistics.</span>
-<span id="cb53-161"><a href="#cb53-161" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Visualize your data through various graphs (e.g., histograms, box plots).</span>
-<span id="cb53-162"><a href="#cb53-162" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identify potential differences and insights within or between groups.</span>
-<span id="cb53-163"><a href="#cb53-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-164"><a href="#cb53-164" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Descriptive Statistics in R</span></span>
-<span id="cb53-165"><a href="#cb53-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-166"><a href="#cb53-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb53-167"><a href="#cb53-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics for all variables</span></span>
-<span id="cb53-168"><a href="#cb53-168" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_data)</span>
+<span id="cb53-143"><a href="#cb53-143" aria-hidden="true" tabindex="-1"></a><span class="co"># For Excel files, use readxl package</span></span>
+<span id="cb53-144"><a href="#cb53-144" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb53-145"><a href="#cb53-145" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"patient_data.xlsx"</span>)</span>
+<span id="cb53-146"><a href="#cb53-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-147"><a href="#cb53-147" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data</span></span>
+<span id="cb53-148"><a href="#cb53-148" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(my_data)  <span class="co"># Opens in spreadsheet viewer</span></span>
+<span id="cb53-149"><a href="#cb53-149" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_data)  <span class="co"># First 6 rows</span></span>
+<span id="cb53-150"><a href="#cb53-150" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(my_data)  <span class="co"># Last 6 rows</span></span>
+<span id="cb53-151"><a href="#cb53-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb53-152"><a href="#cb53-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-153"><a href="#cb53-153" aria-hidden="true" tabindex="-1"></a><span class="fu">### Taking Your Data on a Date: Exploratory Data Analysis</span></span>
+<span id="cb53-154"><a href="#cb53-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-155"><a href="#cb53-155" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Collect Consistent and High-Quality Data:**</span>
+<span id="cb53-156"><a href="#cb53-156" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Use secure electronic records whenever possible (e.g., REDCap).</span>
+<span id="cb53-157"><a href="#cb53-157" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Consult the Institutional Review Board (IRB) before beginning data collection.</span>
+<span id="cb53-158"><a href="#cb53-158" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Take note of possible biases or skewed observations that may affect results.</span>
+<span id="cb53-159"><a href="#cb53-159" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Transform and Organize Data:**</span>
+<span id="cb53-160"><a href="#cb53-160" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Raw Data:** Direct data collected from your research.</span>
+<span id="cb53-161"><a href="#cb53-161" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**Tidy Data:** Organized and transformed version of raw data.</span>
+<span id="cb53-162"><a href="#cb53-162" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Apply necessary transformations (e.g., standardization) to clean your data.</span>
+<span id="cb53-163"><a href="#cb53-163" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Conduct Exploratory Data Analysis:**</span>
+<span id="cb53-164"><a href="#cb53-164" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Summarize your data using basic descriptive statistics.</span>
+<span id="cb53-165"><a href="#cb53-165" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Visualize your data through various graphs (e.g., histograms, box plots).</span>
+<span id="cb53-166"><a href="#cb53-166" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Identify potential differences and insights within or between groups.</span>
+<span id="cb53-167"><a href="#cb53-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-168"><a href="#cb53-168" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Descriptive Statistics in R</span></span>
 <span id="cb53-169"><a href="#cb53-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-170"><a href="#cb53-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean, median, standard deviation for a specific variable</span></span>
-<span id="cb53-171"><a href="#cb53-171" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_data<span class="sc">$</span>age)</span>
-<span id="cb53-172"><a href="#cb53-172" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(my_data<span class="sc">$</span>age)</span>
-<span id="cb53-173"><a href="#cb53-173" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(my_data<span class="sc">$</span>age)</span>
-<span id="cb53-174"><a href="#cb53-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-175"><a href="#cb53-175" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values with na.rm = TRUE</span></span>
-<span id="cb53-176"><a href="#cb53-176" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_data<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb53-177"><a href="#cb53-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-178"><a href="#cb53-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency table for categorical variables</span></span>
-<span id="cb53-179"><a href="#cb53-179" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(my_data<span class="sc">$</span>treatment_group)</span>
-<span id="cb53-180"><a href="#cb53-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-181"><a href="#cb53-181" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulation</span></span>
-<span id="cb53-182"><a href="#cb53-182" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(my_data<span class="sc">$</span>treatment_group, my_data<span class="sc">$</span>outcome_category)</span>
-<span id="cb53-183"><a href="#cb53-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-184"><a href="#cb53-184" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportions</span></span>
-<span id="cb53-185"><a href="#cb53-185" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(my_data<span class="sc">$</span>treatment_group))</span>
-<span id="cb53-186"><a href="#cb53-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb53-170"><a href="#cb53-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb53-171"><a href="#cb53-171" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics for all variables</span></span>
+<span id="cb53-172"><a href="#cb53-172" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_data)</span>
+<span id="cb53-173"><a href="#cb53-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-174"><a href="#cb53-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean, median, standard deviation for a specific variable</span></span>
+<span id="cb53-175"><a href="#cb53-175" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_data<span class="sc">$</span>age)</span>
+<span id="cb53-176"><a href="#cb53-176" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(my_data<span class="sc">$</span>age)</span>
+<span id="cb53-177"><a href="#cb53-177" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(my_data<span class="sc">$</span>age)</span>
+<span id="cb53-178"><a href="#cb53-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-179"><a href="#cb53-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove missing values with na.rm = TRUE</span></span>
+<span id="cb53-180"><a href="#cb53-180" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(my_data<span class="sc">$</span>age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-181"><a href="#cb53-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-182"><a href="#cb53-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency table for categorical variables</span></span>
+<span id="cb53-183"><a href="#cb53-183" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(my_data<span class="sc">$</span>treatment_group)</span>
+<span id="cb53-184"><a href="#cb53-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-185"><a href="#cb53-185" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulation</span></span>
+<span id="cb53-186"><a href="#cb53-186" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(my_data<span class="sc">$</span>treatment_group, my_data<span class="sc">$</span>outcome_category)</span>
 <span id="cb53-187"><a href="#cb53-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-188"><a href="#cb53-188" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Use </span><span class="in">`str(my_data)`</span><span class="at"> to see the structure of your data frame. This shows variable names, types, and first few values - very helpful for understanding your data!</span></span>
-<span id="cb53-189"><a href="#cb53-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-190"><a href="#cb53-190" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Checking for Missing Data</span></span>
+<span id="cb53-188"><a href="#cb53-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportions</span></span>
+<span id="cb53-189"><a href="#cb53-189" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(my_data<span class="sc">$</span>treatment_group))</span>
+<span id="cb53-190"><a href="#cb53-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-191"><a href="#cb53-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-192"><a href="#cb53-192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb53-193"><a href="#cb53-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
-<span id="cb53-194"><a href="#cb53-194" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(my_data))  <span class="co"># Total missing values</span></span>
+<span id="cb53-192"><a href="#cb53-192" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Use </span><span class="in">`str(my_data)`</span><span class="at"> to see the structure of your data frame. This shows variable names, types, and first few values - very helpful for understanding your data!</span></span>
+<span id="cb53-193"><a href="#cb53-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-194"><a href="#cb53-194" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Checking for Missing Data</span></span>
 <span id="cb53-195"><a href="#cb53-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-196"><a href="#cb53-196" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing values per variable</span></span>
-<span id="cb53-197"><a href="#cb53-197" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(my_data))</span>
-<span id="cb53-198"><a href="#cb53-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-199"><a href="#cb53-199" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify rows with any missing values</span></span>
-<span id="cb53-200"><a href="#cb53-200" aria-hidden="true" tabindex="-1"></a>my_data[<span class="sc">!</span><span class="fu">complete.cases</span>(my_data), ]</span>
-<span id="cb53-201"><a href="#cb53-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-202"><a href="#cb53-202" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove rows with missing values (use with caution!)</span></span>
-<span id="cb53-203"><a href="#cb53-203" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(my_data)</span>
-<span id="cb53-204"><a href="#cb53-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb53-196"><a href="#cb53-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb53-197"><a href="#cb53-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
+<span id="cb53-198"><a href="#cb53-198" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(my_data))  <span class="co"># Total missing values</span></span>
+<span id="cb53-199"><a href="#cb53-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-200"><a href="#cb53-200" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing values per variable</span></span>
+<span id="cb53-201"><a href="#cb53-201" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(my_data))</span>
+<span id="cb53-202"><a href="#cb53-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-203"><a href="#cb53-203" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify rows with any missing values</span></span>
+<span id="cb53-204"><a href="#cb53-204" aria-hidden="true" tabindex="-1"></a>my_data[<span class="sc">!</span><span class="fu">complete.cases</span>(my_data), ]</span>
 <span id="cb53-205"><a href="#cb53-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-206"><a href="#cb53-206" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comprehensive Example: Complete Exploratory Analysis</span></span>
-<span id="cb53-207"><a href="#cb53-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-208"><a href="#cb53-208" aria-hidden="true" tabindex="-1"></a>Let's walk through a complete exploratory data analysis workflow in R:</span>
+<span id="cb53-206"><a href="#cb53-206" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove rows with missing values (use with caution!)</span></span>
+<span id="cb53-207"><a href="#cb53-207" aria-hidden="true" tabindex="-1"></a>my_data_complete <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(my_data)</span>
+<span id="cb53-208"><a href="#cb53-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-209"><a href="#cb53-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-212"><a href="#cb53-212" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb53-213"><a href="#cb53-213" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
-<span id="cb53-214"><a href="#cb53-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploratory Data Analysis Example</span></span>
-<span id="cb53-215"><a href="#cb53-215" aria-hidden="true" tabindex="-1"></a><span class="co"># Research Question: Do pain scores differ by treatment group?</span></span>
-<span id="cb53-216"><a href="#cb53-216" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
-<span id="cb53-217"><a href="#cb53-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-218"><a href="#cb53-218" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create sample data (normally you'd read from a file)</span></span>
-<span id="cb53-219"><a href="#cb53-219" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
-<span id="cb53-220"><a href="#cb53-220" aria-hidden="true" tabindex="-1"></a>pain_study <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb53-221"><a href="#cb53-221" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>,</span>
-<span id="cb53-222"><a href="#cb53-222" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="dv">55</span>, <span class="at">sd =</span> <span class="dv">12</span>)),</span>
-<span id="cb53-223"><a href="#cb53-223" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>), <span class="dv">60</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-224"><a href="#cb53-224" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Intervention A"</span>, <span class="st">"Intervention B"</span>), <span class="at">each =</span> <span class="dv">20</span>),</span>
-<span id="cb53-225"><a href="#cb53-225" aria-hidden="true" tabindex="-1"></a>  <span class="at">baseline_pain =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="dv">7</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>),</span>
-<span id="cb53-226"><a href="#cb53-226" aria-hidden="true" tabindex="-1"></a>  <span class="at">followup_pain =</span> <span class="fu">c</span>(</span>
-<span id="cb53-227"><a href="#cb53-227" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">6.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>),  <span class="co"># Standard</span></span>
-<span id="cb53-228"><a href="#cb53-228" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">4.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>),  <span class="co"># Intervention A</span></span>
-<span id="cb53-229"><a href="#cb53-229" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">3.8</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>)   <span class="co"># Intervention B</span></span>
-<span id="cb53-230"><a href="#cb53-230" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb53-231"><a href="#cb53-231" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb53-232"><a href="#cb53-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-233"><a href="#cb53-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Examine the data structure</span></span>
-<span id="cb53-234"><a href="#cb53-234" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Data Structure:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-235"><a href="#cb53-235" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pain_study)</span>
+<span id="cb53-210"><a href="#cb53-210" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comprehensive Example: Complete Exploratory Analysis</span></span>
+<span id="cb53-211"><a href="#cb53-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-212"><a href="#cb53-212" aria-hidden="true" tabindex="-1"></a>Let's walk through a complete exploratory data analysis workflow in R:</span>
+<span id="cb53-213"><a href="#cb53-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-216"><a href="#cb53-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-217"><a href="#cb53-217" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb53-218"><a href="#cb53-218" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploratory Data Analysis Example</span></span>
+<span id="cb53-219"><a href="#cb53-219" aria-hidden="true" tabindex="-1"></a><span class="co"># Research Question: Do pain scores differ by treatment group?</span></span>
+<span id="cb53-220"><a href="#cb53-220" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb53-221"><a href="#cb53-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-222"><a href="#cb53-222" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create sample data (normally you'd read from a file)</span></span>
+<span id="cb53-223"><a href="#cb53-223" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
+<span id="cb53-224"><a href="#cb53-224" aria-hidden="true" tabindex="-1"></a>pain_study <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb53-225"><a href="#cb53-225" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>,</span>
+<span id="cb53-226"><a href="#cb53-226" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="dv">55</span>, <span class="at">sd =</span> <span class="dv">12</span>)),</span>
+<span id="cb53-227"><a href="#cb53-227" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>), <span class="dv">60</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-228"><a href="#cb53-228" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Standard"</span>, <span class="st">"Intervention A"</span>, <span class="st">"Intervention B"</span>), <span class="at">each =</span> <span class="dv">20</span>),</span>
+<span id="cb53-229"><a href="#cb53-229" aria-hidden="true" tabindex="-1"></a>  <span class="at">baseline_pain =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">60</span>, <span class="at">mean =</span> <span class="dv">7</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>),</span>
+<span id="cb53-230"><a href="#cb53-230" aria-hidden="true" tabindex="-1"></a>  <span class="at">followup_pain =</span> <span class="fu">c</span>(</span>
+<span id="cb53-231"><a href="#cb53-231" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">6.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>),  <span class="co"># Standard</span></span>
+<span id="cb53-232"><a href="#cb53-232" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">4.5</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>),  <span class="co"># Intervention A</span></span>
+<span id="cb53-233"><a href="#cb53-233" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="fl">3.8</span>, <span class="at">sd =</span> <span class="fl">1.5</span>), <span class="dv">1</span>)   <span class="co"># Intervention B</span></span>
+<span id="cb53-234"><a href="#cb53-234" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb53-235"><a href="#cb53-235" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb53-236"><a href="#cb53-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-237"><a href="#cb53-237" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">First few rows:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-238"><a href="#cb53-238" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pain_study)</span>
-<span id="cb53-239"><a href="#cb53-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-240"><a href="#cb53-240" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Check for missing data</span></span>
-<span id="cb53-241"><a href="#cb53-241" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Missing values per variable:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-242"><a href="#cb53-242" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(pain_study))</span>
+<span id="cb53-237"><a href="#cb53-237" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Examine the data structure</span></span>
+<span id="cb53-238"><a href="#cb53-238" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Data Structure:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-239"><a href="#cb53-239" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pain_study)</span>
+<span id="cb53-240"><a href="#cb53-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-241"><a href="#cb53-241" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">First few rows:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-242"><a href="#cb53-242" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pain_study)</span>
 <span id="cb53-243"><a href="#cb53-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-244"><a href="#cb53-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Convert categorical variables to factors</span></span>
-<span id="cb53-245"><a href="#cb53-245" aria-hidden="true" tabindex="-1"></a>pain_study<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(pain_study<span class="sc">$</span>sex)</span>
-<span id="cb53-246"><a href="#cb53-246" aria-hidden="true" tabindex="-1"></a>pain_study<span class="sc">$</span>treatment <span class="ot">&lt;-</span> <span class="fu">factor</span>(pain_study<span class="sc">$</span>treatment)</span>
+<span id="cb53-244"><a href="#cb53-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Check for missing data</span></span>
+<span id="cb53-245"><a href="#cb53-245" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Missing values per variable:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-246"><a href="#cb53-246" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(pain_study))</span>
 <span id="cb53-247"><a href="#cb53-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-248"><a href="#cb53-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Descriptive statistics - Overall</span></span>
-<span id="cb53-249"><a href="#cb53-249" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Overall Summary Statistics:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-250"><a href="#cb53-250" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pain_study)</span>
+<span id="cb53-248"><a href="#cb53-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Convert categorical variables to factors</span></span>
+<span id="cb53-249"><a href="#cb53-249" aria-hidden="true" tabindex="-1"></a>pain_study<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(pain_study<span class="sc">$</span>sex)</span>
+<span id="cb53-250"><a href="#cb53-250" aria-hidden="true" tabindex="-1"></a>pain_study<span class="sc">$</span>treatment <span class="ot">&lt;-</span> <span class="fu">factor</span>(pain_study<span class="sc">$</span>treatment)</span>
 <span id="cb53-251"><a href="#cb53-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-252"><a href="#cb53-252" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Descriptive statistics by group</span></span>
-<span id="cb53-253"><a href="#cb53-253" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Mean Follow-up Pain by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-254"><a href="#cb53-254" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_study<span class="sc">$</span>followup_pain, pain_study<span class="sc">$</span>treatment, mean)</span>
+<span id="cb53-252"><a href="#cb53-252" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Descriptive statistics - Overall</span></span>
+<span id="cb53-253"><a href="#cb53-253" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Overall Summary Statistics:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-254"><a href="#cb53-254" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pain_study)</span>
 <span id="cb53-255"><a href="#cb53-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-256"><a href="#cb53-256" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">SD of Follow-up Pain by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-257"><a href="#cb53-257" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_study<span class="sc">$</span>followup_pain, pain_study<span class="sc">$</span>treatment, sd)</span>
-<span id="cb53-258"><a href="#cb53-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-259"><a href="#cb53-259" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Create pain reduction variable</span></span>
-<span id="cb53-260"><a href="#cb53-260" aria-hidden="true" tabindex="-1"></a>pain_study<span class="sc">$</span>pain_reduction <span class="ot">&lt;-</span> pain_study<span class="sc">$</span>baseline_pain <span class="sc">-</span> pain_study<span class="sc">$</span>followup_pain</span>
-<span id="cb53-261"><a href="#cb53-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-262"><a href="#cb53-262" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Mean Pain Reduction by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-263"><a href="#cb53-263" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_study<span class="sc">$</span>pain_reduction, pain_study<span class="sc">$</span>treatment, mean)</span>
-<span id="cb53-264"><a href="#cb53-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-265"><a href="#cb53-265" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 8: Frequency tables</span></span>
-<span id="cb53-266"><a href="#cb53-266" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Sample Size by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-267"><a href="#cb53-267" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pain_study<span class="sc">$</span>treatment)</span>
+<span id="cb53-256"><a href="#cb53-256" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Descriptive statistics by group</span></span>
+<span id="cb53-257"><a href="#cb53-257" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Mean Follow-up Pain by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-258"><a href="#cb53-258" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_study<span class="sc">$</span>followup_pain, pain_study<span class="sc">$</span>treatment, mean)</span>
+<span id="cb53-259"><a href="#cb53-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-260"><a href="#cb53-260" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">SD of Follow-up Pain by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-261"><a href="#cb53-261" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_study<span class="sc">$</span>followup_pain, pain_study<span class="sc">$</span>treatment, sd)</span>
+<span id="cb53-262"><a href="#cb53-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-263"><a href="#cb53-263" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Create pain reduction variable</span></span>
+<span id="cb53-264"><a href="#cb53-264" aria-hidden="true" tabindex="-1"></a>pain_study<span class="sc">$</span>pain_reduction <span class="ot">&lt;-</span> pain_study<span class="sc">$</span>baseline_pain <span class="sc">-</span> pain_study<span class="sc">$</span>followup_pain</span>
+<span id="cb53-265"><a href="#cb53-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-266"><a href="#cb53-266" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Mean Pain Reduction by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-267"><a href="#cb53-267" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pain_study<span class="sc">$</span>pain_reduction, pain_study<span class="sc">$</span>treatment, mean)</span>
 <span id="cb53-268"><a href="#cb53-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-269"><a href="#cb53-269" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Sample Size by Treatment and Sex:</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-270"><a href="#cb53-270" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pain_study<span class="sc">$</span>treatment, pain_study<span class="sc">$</span>sex)</span>
-<span id="cb53-271"><a href="#cb53-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-272"><a href="#cb53-272" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 9: Visualize the data</span></span>
-<span id="cb53-273"><a href="#cb53-273" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># 2x2 grid of plots</span></span>
-<span id="cb53-274"><a href="#cb53-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-275"><a href="#cb53-275" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of age</span></span>
-<span id="cb53-276"><a href="#cb53-276" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pain_study<span class="sc">$</span>age, </span>
-<span id="cb53-277"><a href="#cb53-277" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Age"</span>,</span>
-<span id="cb53-278"><a href="#cb53-278" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Age (years)"</span>,</span>
-<span id="cb53-279"><a href="#cb53-279" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
-<span id="cb53-280"><a href="#cb53-280" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"white"</span>)</span>
-<span id="cb53-281"><a href="#cb53-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-282"><a href="#cb53-282" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of follow-up pain by treatment</span></span>
-<span id="cb53-283"><a href="#cb53-283" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(followup_pain <span class="sc">~</span> treatment,</span>
-<span id="cb53-284"><a href="#cb53-284" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pain_study,</span>
-<span id="cb53-285"><a href="#cb53-285" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Follow-up Pain by Treatment"</span>,</span>
-<span id="cb53-286"><a href="#cb53-286" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment Group"</span>,</span>
-<span id="cb53-287"><a href="#cb53-287" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pain Score"</span>,</span>
-<span id="cb53-288"><a href="#cb53-288" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightcoral"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightblue"</span>))</span>
-<span id="cb53-289"><a href="#cb53-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-290"><a href="#cb53-290" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of pain reduction by treatment</span></span>
-<span id="cb53-291"><a href="#cb53-291" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pain_reduction <span class="sc">~</span> treatment,</span>
-<span id="cb53-292"><a href="#cb53-292" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pain_study,</span>
-<span id="cb53-293"><a href="#cb53-293" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Pain Reduction by Treatment"</span>,</span>
-<span id="cb53-294"><a href="#cb53-294" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment Group"</span>,</span>
-<span id="cb53-295"><a href="#cb53-295" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pain Reduction"</span>,</span>
-<span id="cb53-296"><a href="#cb53-296" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightcoral"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightblue"</span>))</span>
-<span id="cb53-297"><a href="#cb53-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-298"><a href="#cb53-298" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of baseline vs follow-up pain</span></span>
-<span id="cb53-299"><a href="#cb53-299" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pain_study<span class="sc">$</span>baseline_pain, pain_study<span class="sc">$</span>followup_pain,</span>
-<span id="cb53-300"><a href="#cb53-300" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Baseline vs Follow-up Pain"</span>,</span>
-<span id="cb53-301"><a href="#cb53-301" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Baseline Pain"</span>,</span>
-<span id="cb53-302"><a href="#cb53-302" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Follow-up Pain"</span>,</span>
-<span id="cb53-303"><a href="#cb53-303" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb53-304"><a href="#cb53-304" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">as.numeric</span>(pain_study<span class="sc">$</span>treatment))</span>
-<span id="cb53-305"><a href="#cb53-305" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
-<span id="cb53-306"><a href="#cb53-306" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">levels</span>(pain_study<span class="sc">$</span>treatment),</span>
-<span id="cb53-307"><a href="#cb53-307" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb53-308"><a href="#cb53-308" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>)</span>
-<span id="cb53-309"><a href="#cb53-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-310"><a href="#cb53-310" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset plot layout</span></span>
-<span id="cb53-311"><a href="#cb53-311" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb53-312"><a href="#cb53-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-313"><a href="#cb53-313" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 10: Check assumptions visually</span></span>
-<span id="cb53-314"><a href="#cb53-314" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality of pain reduction</span></span>
-<span id="cb53-315"><a href="#cb53-315" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Shapiro-Wilk Test for Normality (Pain Reduction):</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-316"><a href="#cb53-316" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(pain_study<span class="sc">$</span>pain_reduction)</span>
-<span id="cb53-317"><a href="#cb53-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-318"><a href="#cb53-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Q-Q plot for normality</span></span>
-<span id="cb53-319"><a href="#cb53-319" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(pain_study<span class="sc">$</span>pain_reduction)</span>
-<span id="cb53-320"><a href="#cb53-320" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(pain_study<span class="sc">$</span>pain_reduction, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb53-269"><a href="#cb53-269" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 8: Frequency tables</span></span>
+<span id="cb53-270"><a href="#cb53-270" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Sample Size by Treatment:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-271"><a href="#cb53-271" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pain_study<span class="sc">$</span>treatment)</span>
+<span id="cb53-272"><a href="#cb53-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-273"><a href="#cb53-273" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Sample Size by Treatment and Sex:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-274"><a href="#cb53-274" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(pain_study<span class="sc">$</span>treatment, pain_study<span class="sc">$</span>sex)</span>
+<span id="cb53-275"><a href="#cb53-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-276"><a href="#cb53-276" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 9: Visualize the data</span></span>
+<span id="cb53-277"><a href="#cb53-277" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># 2x2 grid of plots</span></span>
+<span id="cb53-278"><a href="#cb53-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-279"><a href="#cb53-279" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram of age</span></span>
+<span id="cb53-280"><a href="#cb53-280" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(pain_study<span class="sc">$</span>age, </span>
+<span id="cb53-281"><a href="#cb53-281" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of Age"</span>,</span>
+<span id="cb53-282"><a href="#cb53-282" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Age (years)"</span>,</span>
+<span id="cb53-283"><a href="#cb53-283" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,</span>
+<span id="cb53-284"><a href="#cb53-284" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb53-285"><a href="#cb53-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-286"><a href="#cb53-286" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of follow-up pain by treatment</span></span>
+<span id="cb53-287"><a href="#cb53-287" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(followup_pain <span class="sc">~</span> treatment,</span>
+<span id="cb53-288"><a href="#cb53-288" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pain_study,</span>
+<span id="cb53-289"><a href="#cb53-289" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Follow-up Pain by Treatment"</span>,</span>
+<span id="cb53-290"><a href="#cb53-290" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment Group"</span>,</span>
+<span id="cb53-291"><a href="#cb53-291" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pain Score"</span>,</span>
+<span id="cb53-292"><a href="#cb53-292" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightcoral"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightblue"</span>))</span>
+<span id="cb53-293"><a href="#cb53-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-294"><a href="#cb53-294" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of pain reduction by treatment</span></span>
+<span id="cb53-295"><a href="#cb53-295" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(pain_reduction <span class="sc">~</span> treatment,</span>
+<span id="cb53-296"><a href="#cb53-296" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> pain_study,</span>
+<span id="cb53-297"><a href="#cb53-297" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Pain Reduction by Treatment"</span>,</span>
+<span id="cb53-298"><a href="#cb53-298" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment Group"</span>,</span>
+<span id="cb53-299"><a href="#cb53-299" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pain Reduction"</span>,</span>
+<span id="cb53-300"><a href="#cb53-300" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightcoral"</span>, <span class="st">"lightgreen"</span>, <span class="st">"lightblue"</span>))</span>
+<span id="cb53-301"><a href="#cb53-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-302"><a href="#cb53-302" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot of baseline vs follow-up pain</span></span>
+<span id="cb53-303"><a href="#cb53-303" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pain_study<span class="sc">$</span>baseline_pain, pain_study<span class="sc">$</span>followup_pain,</span>
+<span id="cb53-304"><a href="#cb53-304" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Baseline vs Follow-up Pain"</span>,</span>
+<span id="cb53-305"><a href="#cb53-305" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Baseline Pain"</span>,</span>
+<span id="cb53-306"><a href="#cb53-306" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Follow-up Pain"</span>,</span>
+<span id="cb53-307"><a href="#cb53-307" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb53-308"><a href="#cb53-308" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="fu">as.numeric</span>(pain_study<span class="sc">$</span>treatment))</span>
+<span id="cb53-309"><a href="#cb53-309" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb53-310"><a href="#cb53-310" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">levels</span>(pain_study<span class="sc">$</span>treatment),</span>
+<span id="cb53-311"><a href="#cb53-311" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb53-312"><a href="#cb53-312" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb53-313"><a href="#cb53-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-314"><a href="#cb53-314" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset plot layout</span></span>
+<span id="cb53-315"><a href="#cb53-315" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb53-316"><a href="#cb53-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-317"><a href="#cb53-317" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 10: Check assumptions visually</span></span>
+<span id="cb53-318"><a href="#cb53-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Normality of pain reduction</span></span>
+<span id="cb53-319"><a href="#cb53-319" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">Shapiro-Wilk Test for Normality (Pain Reduction):</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-320"><a href="#cb53-320" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(pain_study<span class="sc">$</span>pain_reduction)</span>
 <span id="cb53-321"><a href="#cb53-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-322"><a href="#cb53-322" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 11: Save cleaned data (optional)</span></span>
-<span id="cb53-323"><a href="#cb53-323" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(pain_study, "pain_study_cleaned.csv", row.names = FALSE)</span></span>
-<span id="cb53-324"><a href="#cb53-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-325"><a href="#cb53-325" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">=== Exploratory Analysis Complete ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-326"><a href="#cb53-326" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Next steps: Proceed with formal statistical testing in the [Introduction to ANOVA](introduction-to-anova.qmd) lecture.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb53-327"><a href="#cb53-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb53-322"><a href="#cb53-322" aria-hidden="true" tabindex="-1"></a><span class="co"># Q-Q plot for normality</span></span>
+<span id="cb53-323"><a href="#cb53-323" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(pain_study<span class="sc">$</span>pain_reduction)</span>
+<span id="cb53-324"><a href="#cb53-324" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(pain_study<span class="sc">$</span>pain_reduction, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb53-325"><a href="#cb53-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-326"><a href="#cb53-326" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 11: Save cleaned data (optional)</span></span>
+<span id="cb53-327"><a href="#cb53-327" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(pain_study, "pain_study_cleaned.csv", row.names = FALSE)</span></span>
 <span id="cb53-328"><a href="#cb53-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-329"><a href="#cb53-329" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Takeaways</span></span>
-<span id="cb53-330"><a href="#cb53-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-331"><a href="#cb53-331" aria-hidden="true" tabindex="-1"></a>✅ Always start with a clear research question and hypothesis  </span>
-<span id="cb53-332"><a href="#cb53-332" aria-hidden="true" tabindex="-1"></a>✅ Understand your variables and their measurement scales  </span>
-<span id="cb53-333"><a href="#cb53-333" aria-hidden="true" tabindex="-1"></a>✅ Conduct power analysis before data collection  </span>
-<span id="cb53-334"><a href="#cb53-334" aria-hidden="true" tabindex="-1"></a>✅ Explore your data thoroughly before formal testing  </span>
-<span id="cb53-335"><a href="#cb53-335" aria-hidden="true" tabindex="-1"></a>✅ Check for missing data and outliers  </span>
-<span id="cb53-336"><a href="#cb53-336" aria-hidden="true" tabindex="-1"></a>✅ Visualize your data to understand distributions and relationships  </span>
-<span id="cb53-337"><a href="#cb53-337" aria-hidden="true" tabindex="-1"></a>✅ Document your process in R scripts for reproducibility  </span>
-<span id="cb53-338"><a href="#cb53-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-339"><a href="#cb53-339" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Save your R code in a script file (.R) as you work. This creates a complete record of your analysis that you can run again later or share with colleagues. Use comments (#) liberally to explain what each section does!</span></span>
-<span id="cb53-340"><a href="#cb53-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-341"><a href="#cb53-341" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
+<span id="cb53-329"><a href="#cb53-329" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n\n</span><span class="st">=== Exploratory Analysis Complete ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-330"><a href="#cb53-330" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Next steps: Proceed with formal statistical testing in the [Introduction to ANOVA](introduction-to-anova.qmd) lecture.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb53-331"><a href="#cb53-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb53-332"><a href="#cb53-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-333"><a href="#cb53-333" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Takeaways</span></span>
+<span id="cb53-334"><a href="#cb53-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-335"><a href="#cb53-335" aria-hidden="true" tabindex="-1"></a>✅ Always start with a clear research question and hypothesis  </span>
+<span id="cb53-336"><a href="#cb53-336" aria-hidden="true" tabindex="-1"></a>✅ Understand your variables and their measurement scales  </span>
+<span id="cb53-337"><a href="#cb53-337" aria-hidden="true" tabindex="-1"></a>✅ Conduct power analysis before data collection  </span>
+<span id="cb53-338"><a href="#cb53-338" aria-hidden="true" tabindex="-1"></a>✅ Explore your data thoroughly before formal testing  </span>
+<span id="cb53-339"><a href="#cb53-339" aria-hidden="true" tabindex="-1"></a>✅ Check for missing data and outliers  </span>
+<span id="cb53-340"><a href="#cb53-340" aria-hidden="true" tabindex="-1"></a>✅ Visualize your data to understand distributions and relationships  </span>
+<span id="cb53-341"><a href="#cb53-341" aria-hidden="true" tabindex="-1"></a>✅ Document your process in R scripts for reproducibility  </span>
 <span id="cb53-342"><a href="#cb53-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-343"><a href="#cb53-343" aria-hidden="true" tabindex="-1"></a>Following these preliminary steps will ensure a solid foundation for statistical analysis. Carefully consider each step, from hypothesis formulation to data collection and exploration. Being thorough in the preliminaries will enhance the validity and reliability of your findings.</span>
+<span id="cb53-343"><a href="#cb53-343" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **💡 R Tip**: Save your R code in a script file (.R) as you work. This creates a complete record of your analysis that you can run again later or share with colleagues. Use comments (#) liberally to explain what each section does!</span></span>
 <span id="cb53-344"><a href="#cb53-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-345"><a href="#cb53-345" aria-hidden="true" tabindex="-1"></a>**Remember**: R makes your analysis reproducible. Every step is documented in code, which means you (or others) can verify and replicate your work!</span>
+<span id="cb53-345"><a href="#cb53-345" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
+<span id="cb53-346"><a href="#cb53-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-347"><a href="#cb53-347" aria-hidden="true" tabindex="-1"></a>Following these preliminary steps will ensure a solid foundation for statistical analysis. Carefully consider each step, from hypothesis formulation to data collection and exploration. Being thorough in the preliminaries will enhance the validity and reliability of your findings.</span>
+<span id="cb53-348"><a href="#cb53-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-349"><a href="#cb53-349" aria-hidden="true" tabindex="-1"></a>**Remember**: R makes your analysis reproducible. Every step is documented in code, which means you (or others) can verify and replicate your work!</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
