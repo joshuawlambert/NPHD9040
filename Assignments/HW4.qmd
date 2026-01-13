@@ -13,7 +13,7 @@ format:
 
 ::: {.callout-note icon=false}
 ## Downloads
-[**Download Assignment Template**](_templates/hw4.Rmd){ .btn .btn-primary }
+[**Download Assignment Template**](_templates/hw4.Rmd){ .btn .btn-primary}
 
 [**Download Data: rm_ex.csv**](../course_data/rm_ex.csv){ .btn .btn-success }
 

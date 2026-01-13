@@ -202,5 +202,20 @@
   },
   "Other/working_with_rmd.qmd": {
     "working_with_rmd.html": "fdef085a"
+  },
+  "docs/Assignments/templates/hw1.Rmd": {
+    "hw1.html": "4d838caf"
+  },
+  "docs/Assignments/templates/hw2.Rmd": {
+    "hw2.html": "b96704b9"
+  },
+  "docs/Assignments/templates/hw3.Rmd": {
+    "hw3.html": "0f86c2a8"
+  },
+  "docs/Assignments/templates/hw4.Rmd": {
+    "hw4.html": "c9772e9c"
+  },
+  "docs/Assignments/templates/hw5.Rmd": {
+    "hw5.html": "16baa7f8"
   }
 }
