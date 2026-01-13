@@ -3,8 +3,11 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!Assignments/hw_templates/*"
   resources:
-    - "Assignments/_templates"
+    - "Assignments/hw_templates"
 
 
 website:
