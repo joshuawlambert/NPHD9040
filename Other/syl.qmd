@@ -26,18 +26,18 @@ editor:
 | 2 | Jan 20 | [ANOVA](../Lectures/introduction-to-anova.qmd) | | | | |
 | 3 | Jan 27 | [ANOVA](../Lectures/introduction-to-anova.qmd) | | [HW2](../Assignments/hw2.qmd) | [HW1](../Assignments/hw1.qmd) | |
 | 4 | Feb 3 | [ANCOVA](../Lectures/introduction-to-ancova.qmd) | | | | |
-| 5 | Feb 10 | [2-Way ANOVA](../Lectures/introduction-to-two-way-anova.qmd) | | [HW3](../Assignments/hw3.qmd) | [HW2](../Assignments/hw2.qmd) | |
+| 5 | Feb 10 | [2-Way ANOVA](../Lectures/introduction-to-two-way-anova.qmd) | | [HW3](../Assignments/hw3.qmd); [Midterm Proposal](../Assignments/midterm.qmd) | [HW2](../Assignments/hw2.qmd) | |
 | 6 | Feb 17 | [2-Way ANOVA](../Lectures/introduction-to-two-way-anova.qmd)| | | | |
-| 7 | Feb 24 | [Repeated Measures ANOVA](../Lectures/introduction-to-repeated-measures-anova.qmd) | | [HW4](../Assignments/hw4.qmd) | [HW3](../Assignments/hw3.qmd) | |
-| 8 | Mar 3 | Work Day | | | | |
-| 9 | Mar 10 | [Project 1 Presentation](../Assignments/midterm.qmd) | | | | |
-| -- | Mar 17 | **NO CLASS** | | | [HW4](../Assignments/hw4.qmd) | Spring Break |
-| 10 | Mar 24 | [Linear Regression](../Lectures/introduction-to-simple-linear-regression.qmd)  | | [HW5](../Assignments/hw5.qmd) | | |
-| 11 | Mar 31 | [Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd) | | | | |
-| 12 | Apr 7 |[Logistic Regression](../Lectures/introduction-to-logistic-regression.qmd) | | | | |
-| 13 | Apr 14 | Work Day | | | [HW5](../Assignments/hw5.qmd) | |
-| 14 | Apr 21 | [Final Project](../Assignments/final.qmd)| | | | Last Class |
-| 15 | Apr 28 | **Finals Week** | | | | |
+| 7 | Feb 24 | [Repeated Measures ANOVA](../Lectures/introduction-to-repeated-measures-anova.qmd) | | [Midterm Presentation](../Assignments/midterm.qmd) | [HW3](../Assignments/hw3.qmd); [Midterm Proposal](../Assignments/midterm.qmd) | |
+| 8 | Mar 3 | Work Day | | [HW4](../Assignments/hw4.qmd); [Midterm Paper](../Assignments/midterm.qmd) | | |
+| 9 | Mar 10 | [Project 1 Presentation](../Assignments/midterm.qmd) | | | [Midterm Presentation](../Assignments/midterm.qmd) | |
+| -- | Mar 17 | **NO CLASS** | | | [HW4](../Assignments/hw4.qmd); [Midterm Paper](../Assignments/midterm.qmd) | Spring Break |
+| 10 | Mar 24 | [Linear Regression](../Lectures/introduction-to-simple-linear-regression.qmd)  | | [Final Proposal](../Assignments/final.qmd) | | |
+| 11 | Mar 31 | [Multiple Linear Regression](../Lectures/introduction-to-multiple-linear-regression.qmd) | | [HW5](../Assignments/hw5.qmd) | | |
+| 12 | Apr 7 |[Logistic Regression](../Lectures/introduction-to-logistic-regression.qmd) | | [Final Presentation](../Assignments/final.qmd) | [Final Proposal](../Assignments/final.qmd) | |
+| 13 | Apr 14 | Work Day | | [Final Paper](../Assignments/final.qmd) | [HW5](../Assignments/hw5.qmd) | |
+| 14 | Apr 21 | [Final Project](../Assignments/final.qmd)| | | [Final Presentation](../Assignments/final.qmd) | Last Class |
+| 15 | Apr 28 | **Finals Week** | | | [Final Paper](../Assignments/final.qmd) | |
 
 ---
 
