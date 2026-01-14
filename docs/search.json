@@ -506,9 +506,51 @@
   {
     "objectID": "Assignments/midterm.html",
     "href": "Assignments/midterm.html",
-    "title": "Assignment Under Construction",
+    "title": "Midterm Project: ANOVA",
     "section": "",
-    "text": "Coming Soon\nThis assignment is currently being updated."
+    "text": "Please review the lecture Introduction to ANOVA. Ideally, your project will follow standard academic reporting guidelines. Please expand thoroughly during all three phases of your project."
+  },
+  {
+    "objectID": "Assignments/midterm.html#project-datasets-nhanes-2017-2018",
+    "href": "Assignments/midterm.html#project-datasets-nhanes-2017-2018",
+    "title": "Midterm Project: ANOVA",
+    "section": "Project Datasets: NHANES 2017-2018",
+    "text": "Project Datasets: NHANES 2017-2018\nFor this project, you are required to use data from the National Health and Nutrition Examination Survey (NHANES) for the 2017-2018 cycle. You will access this data directly in R using the nhanesA package.\n\nUsing the nhanesA Package\nFirst, ensure you have the package installed and loaded:\n\ninstall.packages(\"nhanesA\")\nlibrary(nhanesA)\n\nThe 2017-2018 data cycle in NHANES is typically denoted by the suffix _J in the table names (e.g., DEMO_J for Demographics).\nYou can search for available tables in different categories (e.g., Demographics, Examination, Laboratory, Questionnaire) using nhanesTables. The year argument 2017 covers the 2017-2018 cycle.\n\n# List demographic tables for 2017-2018\nnhanesTables('DEMO', 2017)\n\n# List examination tables for 2017-2018\nnhanesTables('EXAM', 2017)\n\nTo download a specific table, use the nhanes() function with the table name. For example, to get the Demographics data:\n\n# Download the 2017-2018 Demographics data\ndemo_data &lt;- nhanes('DEMO_J')\n\nIf you need to analyze variables from multiple tables (e.g., comparing a health outcome from the Examination data across demographic groups), you will need to merge the datasets. NHANES tables usually contain a common identifier column SEQN.\n\n# Example of merging demographics with another table (e.g., Body Measures 'BMX_J')\nbmx_data &lt;- nhanes('BMX_J')\nmerged_data &lt;- merge(demo_data, bmx_data, by = \"SEQN\")\n\nTask: Identify variables suitable for an ANOVA analysis. This typically involves a continuous outcome variable (Dependent Variable) and a categorical grouping variable (Independent Variable) with three or more levels.\nInformation about the variables and what they measure can be found on the NHANES 2017-2018 website."
+  },
+  {
+    "objectID": "Assignments/midterm.html#project-proposal",
+    "href": "Assignments/midterm.html#project-proposal",
+    "title": "Midterm Project: ANOVA",
+    "section": "Project Proposal",
+    "text": "Project Proposal\n\nLength: 1-2 pages.\nContent:\n\nIntroduction: Briefly introduce the topic and the relevance of the variables you chose from NHANES.\nGoals and Hypotheses: Clearly state the research question and hypothesis. Ensure it is textable via ANOVA.\nStatistical Analysis Plan (SAP): Outline the course of action for data collection (listing specific NHANES tables), data analysis, the type of statistical software used (R/RStudio), and plans for results and interpretations.\nMeeting: Schedule a meeting with Dr. Lambert at least two weeks prior to the project presentation to discuss your proposal."
+  },
+  {
+    "objectID": "Assignments/midterm.html#project-presentation",
+    "href": "Assignments/midterm.html#project-presentation",
+    "title": "Midterm Project: ANOVA",
+    "section": "Project Presentation",
+    "text": "Project Presentation\n\nLength: 20 minutes (10-15 PowerPoint slides).\nContent:\n\nStructure: One slide for each section from your paper (hypothesis, data description, statistical methods, results, and conclusions). Distribute these slides evenly throughout the presentation, adding detailed explanations in between.\nCreativity: Use original and engaging methods to present your results. Utilize external resources and materials to enhance your presentation.\nQ&A: Reserve 5-10 minutes for questions.\nPeer Review: Classmates will critique each presentation based on a scoring rubric. These reviews will be averaged for the peer review grade."
+  },
+  {
+    "objectID": "Assignments/midterm.html#project-paper",
+    "href": "Assignments/midterm.html#project-paper",
+    "title": "Midterm Project: ANOVA",
+    "section": "Project Paper",
+    "text": "Project Paper\n\nLength: At least 5 pages.\nContent:\n\nIntroduction: Provide a comprehensive introduction to the topic and explain why this research is necessary and interesting.\nData Description: Present the dataset (NHANES 2017-2018) and give a short description of the variables.\nStatistical Methods: Justify the chosen statistical methods (ANOVA) and explain how they will be applied (checking assumptions, etc.).\nResults: Present the findings from the analysis. Report statistical results as effect (95% CI; p-value) where appropriate, or F-statistics and p-values for ANOVA.\nDiscussion and Conclusion: Summarize the findings, discuss implications, and suggest future research directions. Address possible pitfalls in the study.\nReferences: Include a comprehensive list of references used in your research."
+  },
+  {
+    "objectID": "Assignments/midterm.html#grading-criteria",
+    "href": "Assignments/midterm.html#grading-criteria",
+    "title": "Midterm Project: ANOVA",
+    "section": "Grading Criteria",
+    "text": "Grading Criteria\n\nProposal:\n\nIntroduction to the Topic: 20%.\nStatistical Analysis Plan: 40%.\nGoals: 20%.\nMeeting with Dr. Lambert: 20%.\n\nPresentation:\n\nCreativity: 40%.\nPaper Components: 40%.\nQuestions: 20%.\n\nPaper:\n\nIntroduction: 10%\nData Description: 10%\nStatistical Methods: 25%\nResults: 25%\nDiscussion and Conclusion: 25%\nReferences: 5%"
+  },
+  {
+    "objectID": "Assignments/midterm.html#additional-details-and-questions",
+    "href": "Assignments/midterm.html#additional-details-and-questions",
+    "title": "Midterm Project: ANOVA",
+    "section": "Additional Details and Questions",
+    "text": "Additional Details and Questions\nIf you need any additional details or have questions please email me at joshua.lambert@uc.edu."
   },
   {
     "objectID": "Flashcards/flashcards_anova.html",

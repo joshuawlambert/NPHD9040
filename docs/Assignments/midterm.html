@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Dr.&nbsp;Joshua Lambert">
 
 <title>midterm – NPHD 9040</title>
 <style>
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -219,7 +255,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#coming-soon" id="toc-coming-soon" class="nav-link active" data-scroll-target="#coming-soon">Coming Soon</a></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#midterm-project-details-and-guidelines" id="toc-midterm-project-details-and-guidelines" class="nav-link" data-scroll-target="#midterm-project-details-and-guidelines">Midterm Project Details and Guidelines</a>
+  <ul class="collapse">
+  <li><a href="#project-datasets-nhanes-2017-2018" id="toc-project-datasets-nhanes-2017-2018" class="nav-link" data-scroll-target="#project-datasets-nhanes-2017-2018">Project Datasets: NHANES 2017-2018</a>
+  <ul class="collapse">
+  <li><a href="#using-the-nhanesa-package" id="toc-using-the-nhanesa-package" class="nav-link" data-scroll-target="#using-the-nhanesa-package">Using the <code>nhanesA</code> Package</a></li>
+  </ul></li>
+  <li><a href="#project-proposal" id="toc-project-proposal" class="nav-link" data-scroll-target="#project-proposal">Project Proposal</a></li>
+  <li><a href="#project-presentation" id="toc-project-presentation" class="nav-link" data-scroll-target="#project-presentation">Project Presentation</a></li>
+  <li><a href="#project-paper" id="toc-project-paper" class="nav-link" data-scroll-target="#project-paper">Project Paper</a></li>
+  <li><a href="#grading-criteria" id="toc-grading-criteria" class="nav-link" data-scroll-target="#grading-criteria">Grading Criteria</a></li>
+  <li><a href="#additional-details-and-questions" id="toc-additional-details-and-questions" class="nav-link" data-scroll-target="#additional-details-and-questions">Additional Details and Questions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -228,13 +276,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment Under Construction</h1>
+<h1 class="title">Midterm Project: ANOVA</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Joshua Lambert </p>
+          </div>
+  </div>
     
   
     
@@ -245,11 +299,126 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="coming-soon" class="level1">
-<h1>Coming Soon</h1>
-<p>This assignment is currently being updated.</p>
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p>Please review the lecture <a href="../Lectures/introduction-to-anova.html">Introduction to ANOVA</a>. Ideally, your project will follow standard academic reporting guidelines. Please expand thoroughly during all three phases of your project.</p>
+</section>
+<section id="midterm-project-details-and-guidelines" class="level1">
+<h1>Midterm Project Details and Guidelines</h1>
+<p>This academic project is a team effort involving a group of students, ideally with three-four members, unless specified otherwise by Dr.&nbsp;Lambert.</p>
+<p>The main goal of the Midterm Project is to assess your understanding of Analysis of Variance (ANOVA). The project has three parts: a project proposal, a presentation, and a comprehensive paper, following the standard structure used in academic research, including Title page, Abstract, Introduction, Methods, Results, Discussion, and References.</p>
+<p>The project proposal should be concise, focusing on the key ideas and <strong>excluding Results and Discussion</strong>. It lays the groundwork for the subsequent presentation. The presentation builds on the proposal by adding the omitted Results and Discussion sections, along with References. Feedback received during the presentation should be taken into account when finalizing the project paper.</p>
+<p>The project paper is the most substantial part, requiring at least five pages. It involves a thorough exploration of the subject, with in-depth discussions tailored to the reviewer’s interests.</p>
+<p>These components together simulate the academic research process, allowing participants to comprehensively utilize ANOVA through collaboration and scholarly investigation.</p>
+<p>For the project, you will develop a hypothesis and use NHANES data (specifically 2017-2018) to answer it. Present the findings in a clear and understandable manner, and consider incorporating insights from the lectures whenever possible.</p>
+<section id="project-datasets-nhanes-2017-2018" class="level2">
+<h2 class="anchored" data-anchor-id="project-datasets-nhanes-2017-2018">Project Datasets: NHANES 2017-2018</h2>
+<p>For this project, you are required to use data from the National Health and Nutrition Examination Survey (NHANES) for the 2017-2018 cycle. You will access this data directly in R using the <code>nhanesA</code> package.</p>
+<section id="using-the-nhanesa-package" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-nhanesa-package">Using the <code>nhanesA</code> Package</h3>
+<p>First, ensure you have the package installed and loaded:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"nhanesA"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nhanesA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The 2017-2018 data cycle in NHANES is typically denoted by the suffix <code>_J</code> in the table names (e.g., <code>DEMO_J</code> for Demographics).</p>
+<p>You can search for available tables in different categories (e.g., Demographics, Examination, Laboratory, Questionnaire) using <code>nhanesTables</code>. The year argument <code>2017</code> covers the 2017-2018 cycle.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List demographic tables for 2017-2018</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nhanesTables</span>(<span class="st">'DEMO'</span>, <span class="dv">2017</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List examination tables for 2017-2018</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nhanesTables</span>(<span class="st">'EXAM'</span>, <span class="dv">2017</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To download a specific table, use the <code>nhanes()</code> function with the table name. For example, to get the Demographics data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the 2017-2018 Demographics data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>demo_data <span class="ot">&lt;-</span> <span class="fu">nhanes</span>(<span class="st">'DEMO_J'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you need to analyze variables from multiple tables (e.g., comparing a health outcome from the Examination data across demographic groups), you will need to merge the datasets. NHANES tables usually contain a common identifier column <code>SEQN</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of merging demographics with another table (e.g., Body Measures 'BMX_J')</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bmx_data <span class="ot">&lt;-</span> <span class="fu">nhanes</span>(<span class="st">'BMX_J'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> <span class="fu">merge</span>(demo_data, bmx_data, <span class="at">by =</span> <span class="st">"SEQN"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Task:</strong> Identify variables suitable for an ANOVA analysis. This typically involves a continuous outcome variable (Dependent Variable) and a categorical grouping variable (Independent Variable) with three or more levels.</p>
+<p>Information about the variables and what they measure can be found on the <a href="https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2017">NHANES 2017-2018 website</a>.</p>
+</section>
+</section>
+<section id="project-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="project-proposal">Project Proposal</h2>
+<ul>
+<li><strong>Length</strong>: 1-2 pages.</li>
+<li><strong>Content</strong>:
+<ul>
+<li><strong>Introduction</strong>: Briefly introduce the topic and the relevance of the variables you chose from NHANES.</li>
+<li><strong>Goals and Hypotheses</strong>: Clearly state the research question and hypothesis. Ensure it is textable via ANOVA.</li>
+<li><strong>Statistical Analysis Plan (SAP)</strong>: Outline the course of action for data collection (listing specific NHANES tables), data analysis, the type of statistical software used (R/RStudio), and plans for results and interpretations.</li>
+<li><strong>Meeting</strong>: Schedule a meeting with Dr.&nbsp;Lambert at least two weeks prior to the project presentation to discuss your proposal.</li>
+</ul></li>
+</ul>
+</section>
+<section id="project-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="project-presentation">Project Presentation</h2>
+<ul>
+<li><strong>Length</strong>: 20 minutes (10-15 PowerPoint slides).</li>
+<li><strong>Content</strong>:
+<ul>
+<li><strong>Structure</strong>: One slide for each section from your paper (hypothesis, data description, statistical methods, results, and conclusions). Distribute these slides evenly throughout the presentation, adding detailed explanations in between.</li>
+<li><strong>Creativity</strong>: Use original and engaging methods to present your results. Utilize external resources and materials to enhance your presentation.</li>
+<li><strong>Q&amp;A</strong>: Reserve 5-10 minutes for questions.</li>
+<li><strong>Peer Review</strong>: Classmates will critique each presentation based on a scoring rubric. These reviews will be averaged for the peer review grade.</li>
+</ul></li>
+</ul>
+</section>
+<section id="project-paper" class="level2">
+<h2 class="anchored" data-anchor-id="project-paper">Project Paper</h2>
+<ul>
+<li><strong>Length</strong>: At least 5 pages.</li>
+<li><strong>Content</strong>:
+<ul>
+<li><strong>Introduction</strong>: Provide a comprehensive introduction to the topic and explain why this research is necessary and interesting.</li>
+<li><strong>Data Description</strong>: Present the dataset (NHANES 2017-2018) and give a short description of the variables.</li>
+<li><strong>Statistical Methods</strong>: Justify the chosen statistical methods (ANOVA) and explain how they will be applied (checking assumptions, etc.).</li>
+<li><strong>Results</strong>: Present the findings from the analysis. Report statistical results as effect (95% CI; p-value) where appropriate, or F-statistics and p-values for ANOVA.</li>
+<li><strong>Discussion and Conclusion</strong>: Summarize the findings, discuss implications, and suggest future research directions. Address possible pitfalls in the study.</li>
+<li><strong>References</strong>: Include a comprehensive list of references used in your research.</li>
+</ul></li>
+</ul>
+</section>
+<section id="grading-criteria" class="level2">
+<h2 class="anchored" data-anchor-id="grading-criteria">Grading Criteria</h2>
+<ul>
+<li><strong>Proposal</strong>:
+<ul>
+<li>Introduction to the Topic: 20%.</li>
+<li>Statistical Analysis Plan: 40%.</li>
+<li>Goals: 20%.</li>
+<li>Meeting with Dr.&nbsp;Lambert: 20%.</li>
+</ul></li>
+<li><strong>Presentation</strong>:
+<ul>
+<li>Creativity: 40%.</li>
+<li>Paper Components: 40%.</li>
+<li>Questions: 20%.</li>
+</ul></li>
+<li><strong>Paper</strong>:
+<ul>
+<li>Introduction: 10%</li>
+<li>Data Description: 10%</li>
+<li>Statistical Methods: 25%</li>
+<li>Results: 25%</li>
+<li>Discussion and Conclusion: 25%</li>
+<li>References: 5%</li>
+</ul></li>
+</ul>
+</section>
+<section id="additional-details-and-questions" class="level2">
+<h2 class="anchored" data-anchor-id="additional-details-and-questions">Additional Details and Questions</h2>
+<p>If you need any additional details or have questions please email me at <a href="mailto:joshua.lambert@uc.edu">joshua.lambert@uc.edu</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

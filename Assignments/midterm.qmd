@@ -1,5 +1,123 @@
 ﻿---
-title: 'Assignment Under Construction'
+title: "Midterm Project: ANOVA"
+author: "Dr. Joshua Lambert"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Midterm Project"
+    code-fold: true
+    code-tools: true
 ---
-# Coming Soon
-This assignment is currently being updated.
+
+# Intro
+
+Please review the lecture [Introduction to ANOVA](/Lectures/introduction-to-anova.qmd). Ideally, your project will follow standard academic reporting guidelines. Please expand thoroughly during all three phases of your project.
+
+# Midterm Project Details and Guidelines
+This academic project is a team effort involving a group of students, ideally with three-four members, unless specified otherwise by Dr. Lambert.
+
+The main goal of the Midterm Project is to assess your understanding of Analysis of Variance (ANOVA). The project has three parts: a project proposal, a presentation, and a comprehensive paper, following the standard structure used in academic research, including Title page, Abstract, Introduction, Methods, Results, Discussion, and References.
+
+The project proposal should be concise, focusing on the key ideas and **excluding Results and Discussion**. It lays the groundwork for the subsequent presentation. The presentation builds on the proposal by adding the omitted Results and Discussion sections, along with References. Feedback received during the presentation should be taken into account when finalizing the project paper.
+
+The project paper is the most substantial part, requiring at least five pages. It involves a thorough exploration of the subject, with in-depth discussions tailored to the reviewer's interests.
+
+These components together simulate the academic research process, allowing participants to comprehensively utilize ANOVA through collaboration and scholarly investigation.
+
+For the project, you will develop a hypothesis and use NHANES data (specifically 2017-2018) to answer it. Present the findings in a clear and understandable manner, and consider incorporating insights from the lectures whenever possible.
+
+
+## Project Datasets: NHANES 2017-2018
+For this project, you are required to use data from the National Health and Nutrition Examination Survey (NHANES) for the 2017-2018 cycle. You will access this data directly in R using the `nhanesA` package.
+
+### Using the `nhanesA` Package
+
+First, ensure you have the package installed and loaded:
+
+```{r}
+#| eval: false
+install.packages("nhanesA")
+library(nhanesA)
+```
+
+The 2017-2018 data cycle in NHANES is typically denoted by the suffix `_J` in the table names (e.g., `DEMO_J` for Demographics).
+
+You can search for available tables in different categories (e.g., Demographics, Examination, Laboratory, Questionnaire) using `nhanesTables`. The year argument `2017` covers the 2017-2018 cycle.
+
+```{r}
+#| eval: false
+# List demographic tables for 2017-2018
+nhanesTables('DEMO', 2017)
+
+# List examination tables for 2017-2018
+nhanesTables('EXAM', 2017)
+```
+
+To download a specific table, use the `nhanes()` function with the table name. For example, to get the Demographics data:
+
+```{r}
+#| eval: false
+# Download the 2017-2018 Demographics data
+demo_data <- nhanes('DEMO_J')
+```
+
+If you need to analyze variables from multiple tables (e.g., comparing a health outcome from the Examination data across demographic groups), you will need to merge the datasets. NHANES tables usually contain a common identifier column `SEQN`.
+
+```{r}
+#| eval: false
+# Example of merging demographics with another table (e.g., Body Measures 'BMX_J')
+bmx_data <- nhanes('BMX_J')
+merged_data <- merge(demo_data, bmx_data, by = "SEQN")
+```
+
+**Task:** Identify variables suitable for an ANOVA analysis. This typically involves a continuous outcome variable (Dependent Variable) and a categorical grouping variable (Independent Variable) with three or more levels.
+
+Information about the variables and what they measure can be found on the [NHANES 2017-2018 website](https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2017).
+
+## Project Proposal
+- **Length**: 1-2 pages.
+- **Content**:
+  - **Introduction**: Briefly introduce the topic and the relevance of the variables you chose from NHANES.
+  - **Goals and Hypotheses**: Clearly state the research question and hypothesis. Ensure it is textable via ANOVA.
+  - **Statistical Analysis Plan (SAP)**: Outline the course of action for data collection (listing specific NHANES tables), data analysis, the type of statistical software used (R/RStudio), and plans for results and interpretations.
+  - **Meeting**: Schedule a meeting with Dr. Lambert at least two weeks prior to the project presentation to discuss your proposal.
+
+## Project Presentation
+- **Length**: 20 minutes (10-15 PowerPoint slides).
+- **Content**:
+  - **Structure**: One slide for each section from your paper (hypothesis, data description, statistical methods, results, and conclusions). Distribute these slides evenly throughout the presentation, adding detailed explanations in between.
+  - **Creativity**: Use original and engaging methods to present your results. Utilize external resources and materials to enhance your presentation.
+  - **Q&A**: Reserve 5-10 minutes for questions.
+  - **Peer Review**: Classmates will critique each presentation based on a scoring rubric. These reviews will be averaged for the peer review grade.
+
+## Project Paper
+- **Length**: At least 5 pages.
+- **Content**:
+  - **Introduction**: Provide a comprehensive introduction to the topic and explain why this research is necessary and interesting.
+  - **Data Description**: Present the dataset (NHANES 2017-2018) and give a short description of the variables.
+  - **Statistical Methods**: Justify the chosen statistical methods (ANOVA) and explain how they will be applied (checking assumptions, etc.).
+  - **Results**: Present the findings from the analysis. Report statistical results as effect (95% CI; p-value) where appropriate, or F-statistics and p-values for ANOVA.
+  - **Discussion and Conclusion**: Summarize the findings, discuss implications, and suggest future research directions. Address possible pitfalls in the study.
+  - **References**: Include a comprehensive list of references used in your research.
+
+## Grading Criteria
+- **Proposal**:
+  - Introduction to the Topic: 20%.
+  - Statistical Analysis Plan: 40%.
+  - Goals: 20%.
+  - Meeting with Dr. Lambert: 20%.
+- **Presentation**:
+  - Creativity: 40%.
+  - Paper Components: 40%.
+  - Questions: 20%.
+- **Paper**:
+  - Introduction: 10%
+  - Data Description: 10%
+  - Statistical Methods: 25%
+  - Results: 25%
+  - Discussion and Conclusion: 25%
+  - References: 5%
+
+## Additional Details and Questions
+If you need any additional details or have questions please email me at [joshua.lambert@uc.edu](mailto:joshua.lambert@uc.edu).
