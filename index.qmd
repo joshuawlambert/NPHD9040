@@ -13,7 +13,7 @@ format:
 
 Hello and welcome to NPHD9040 - Applied Multivariable Analysis!
 
-I'm Dr. Joshua Lambert, and I'll be your instructor for this course. I'm excited to guide you through this journey as we explore the fascinating world of advanced statistical methods and their application in nursing and healthcare research.
+I'm Dr. Josh Lambert, and I'll be your instructor for this course. I'm excited to guide you through this journey as we explore the fascinating world of advanced statistical methods and their application in nursing and healthcare research.
 
 ## How to Reach Me
 
