@@ -60,6 +60,26 @@ Type 2 Error: Failing to reject the null hypothesis when it is false (false nega
 > - **Homogeneity of variance**: `leveneTest()` from the car package
 > - **Visual checks**: Residual plots using `plot(model)`
 
+### What if one of my assumptions is violated?
+
+- **Normality:** One-way ANOVA is generally robust to moderate violations of normality (especially with similar group sizes). Focus on large outliers and whether conclusions change.
+- **Be transparent:** Clearly report what you checked, what was violated (if anything), and how you handled it (Results + Limitations).
+- **Sensitivity analysis:** You can run (and report) a follow-up test that does not rely on the same violated assumptions.
+
+### Kruskal-Wallis Rank Sum Test (Alternative to One-Way ANOVA)
+
+The Kruskal-Wallis (KW) test is a common nonparametric alternative to one-way ANOVA.
+
+- Useful when your outcome is **ordinal** (e.g., Likert-type responses) or when normality is clearly not reasonable.
+- KW does **not** require normality.
+- KW does assume the group distributions have a similar **shape** (they may have different medians).
+
+```{r, eval=FALSE}
+# Nonparametric alternative to one-way ANOVA
+kw_model <- kruskal.test(stress ~ group, data = data)
+print(kw_model)
+```
+
 <iframe src="http://modeling.nursing.uc.edu/anova_app_2/" width="100%" height="1000px">
 
 </iframe>

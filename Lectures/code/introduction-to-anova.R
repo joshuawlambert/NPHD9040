@@ -82,6 +82,15 @@ par(mfrow = c(1, 1))
 # ```{r, eval=FALSE}
 #------------------------------
 
+# If an assumption is violated, consider a sensitivity analysis.
+# Kruskal-Wallis is a nonparametric alternative to one-way ANOVA.
+kw_model <- kruskal.test(stress ~ group, data = data)
+print(kw_model)
+
+#------------------------------
+# ```{r, eval=FALSE}
+#------------------------------
+
 # Tukey HSD post-hoc test
 tukey_result <- TukeyHSD(model)
 print(tukey_result)

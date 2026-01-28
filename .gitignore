@@ -6,3 +6,8 @@
 /.quarto/
 
 **/*.quarto_ipynb
+
+# Local toolchain/env (optional)
+/.tools/
+/.micromamba/
+/.env/
