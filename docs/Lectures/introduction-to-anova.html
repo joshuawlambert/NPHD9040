@@ -416,8 +416,10 @@ Type 2 Error: Failing to reject the null hypothesis when it is false (false nega
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>kw_model <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(stress <span class="sc">~</span> group, <span class="at">data =</span> data)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kw_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<iframe src="http://modeling.nursing.uc.edu/anova_app_2/" width="100%" height="1000px">
-</iframe>
+<p><a href="http://modeling.nursing.uc.edu/anova_app_2/" class="btn btn-primary" target="_blank"><strong>Open One-Way ANOVA App</strong></a></p>
+<blockquote class="blockquote">
+<p>Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site (GitHub Pages uses HTTPS). Use the button above to open it in a new tab.</p>
+</blockquote>
 </section>
 </section>
 <section id="visualizing-using-boxplots" class="level2">
@@ -480,8 +482,10 @@ F = \frac{MSB}{MSW}
 </ul>
 <p>The p-value is derived from the F distribution, given the degrees of freedom.</p>
 <p>The F-distribution is a continuous probability distribution that arises frequently as the null distribution of test statistics, particularly in analysis of variance (ANOVA). It is characterized by two parameters: the degrees of freedom of the numerator (df_between) and the degrees of freedom of the denominator (df_within).</p>
-<iframe src="http://modeling.nursing.uc.edu/anova_app_1/" width="100%" height="600px">
-</iframe>
+<p><a href="http://modeling.nursing.uc.edu/anova_app_1/" class="btn btn-primary" target="_blank"><strong>Open F Distribution (ANOVA) App</strong></a></p>
+<blockquote class="blockquote">
+<p>Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site. Use the button above to open it in a new tab.</p>
+</blockquote>
 </section>
 <section id="conducting-anova-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="conducting-anova-in-r">Conducting ANOVA in R</h2>
@@ -560,8 +564,10 @@ F = \frac{MSB}{MSW}
 <li><strong>Tukey’s HSD</strong>: Specifically designed for pairwise comparisons of all group means. It adjusts the p-values and confidence intervals to maintain the family-wise error rate at exactly 0.05.</li>
 <li><strong>Bonferroni Correction</strong>: The most conservative method. It simply divides your overall alpha (0.05) by the number of comparisons. For 3 comparisons, you would only call a result significant if <span class="math inline">\(p &lt; 0.0167\)</span>.</li>
 </ul>
-<iframe src="http://modeling.nursing.uc.edu/anova_app_3/" width="100%" height="850px">
-</iframe>
+<p><a href="http://modeling.nursing.uc.edu/anova_app_3/" class="btn btn-primary" target="_blank"><strong>Open Post-hoc / Multiple Comparisons App</strong></a></p>
+<blockquote class="blockquote">
+<p>Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site. Use the button above to open it in a new tab.</p>
+</blockquote>
 </section>
 <section id="tukey-hsd-in-r" class="level3">
 <h3 class="anchored" data-anchor-id="tukey-hsd-in-r">Tukey HSD in R</h3>
@@ -1455,9 +1461,9 @@ P value adjustment method: bonferroni </code></pre>
 <span id="cb69-80"><a href="#cb69-80" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kw_model)</span>
 <span id="cb69-81"><a href="#cb69-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb69-82"><a href="#cb69-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-83"><a href="#cb69-83" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_2/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"1000px"</span><span class="dt">&gt;</span></span>
+<span id="cb69-83"><a href="#cb69-83" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Open One-Way ANOVA App**</span><span class="co">](http://modeling.nursing.uc.edu/anova_app_2/)</span>{ .btn .btn-primary target="_blank" }</span>
 <span id="cb69-84"><a href="#cb69-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-85"><a href="#cb69-85" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb69-85"><a href="#cb69-85" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site (GitHub Pages uses HTTPS). Use the button above to open it in a new tab.</span></span>
 <span id="cb69-86"><a href="#cb69-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-87"><a href="#cb69-87" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualizing Using Boxplots</span></span>
 <span id="cb69-88"><a href="#cb69-88" aria-hidden="true" tabindex="-1"></a></span>
@@ -1517,9 +1523,9 @@ P value adjustment method: bonferroni </code></pre>
 <span id="cb69-142"><a href="#cb69-142" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-143"><a href="#cb69-143" aria-hidden="true" tabindex="-1"></a>The F-distribution is a continuous probability distribution that arises frequently as the null distribution of test statistics, particularly in analysis of variance (ANOVA). It is characterized by two parameters: the degrees of freedom of the numerator (df_between) and the degrees of freedom of the denominator (df_within).</span>
 <span id="cb69-144"><a href="#cb69-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-145"><a href="#cb69-145" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_1/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"600px"</span><span class="dt">&gt;</span></span>
+<span id="cb69-145"><a href="#cb69-145" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Open F Distribution (ANOVA) App**</span><span class="co">](http://modeling.nursing.uc.edu/anova_app_1/)</span>{ .btn .btn-primary target="_blank" }</span>
 <span id="cb69-146"><a href="#cb69-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-147"><a href="#cb69-147" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb69-147"><a href="#cb69-147" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site. Use the button above to open it in a new tab.</span></span>
 <span id="cb69-148"><a href="#cb69-148" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-149"><a href="#cb69-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conducting ANOVA in R</span></span>
 <span id="cb69-150"><a href="#cb69-150" aria-hidden="true" tabindex="-1"></a></span>
@@ -1599,9 +1605,9 @@ P value adjustment method: bonferroni </code></pre>
 <span id="cb69-224"><a href="#cb69-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Tukey's HSD**: Specifically designed for pairwise comparisons of all group means. It adjusts the p-values and confidence intervals to maintain the family-wise error rate at exactly 0.05.</span>
 <span id="cb69-225"><a href="#cb69-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Bonferroni Correction**: The most conservative method. It simply divides your overall alpha (0.05) by the number of comparisons. For 3 comparisons, you would only call a result significant if $p &lt; 0.0167$.</span>
 <span id="cb69-226"><a href="#cb69-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-227"><a href="#cb69-227" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"http://modeling.nursing.uc.edu/anova_app_3/"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"850px"</span><span class="dt">&gt;</span></span>
+<span id="cb69-227"><a href="#cb69-227" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Open Post-hoc / Multiple Comparisons App**</span><span class="co">](http://modeling.nursing.uc.edu/anova_app_3/)</span>{ .btn .btn-primary target="_blank" }</span>
 <span id="cb69-228"><a href="#cb69-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-229"><a href="#cb69-229" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb69-229"><a href="#cb69-229" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site. Use the button above to open it in a new tab.</span></span>
 <span id="cb69-230"><a href="#cb69-230" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-231"><a href="#cb69-231" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tukey HSD in R</span></span>
 <span id="cb69-232"><a href="#cb69-232" aria-hidden="true" tabindex="-1"></a></span>

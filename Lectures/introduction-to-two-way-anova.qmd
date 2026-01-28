@@ -170,9 +170,9 @@ corresponding degrees of freedom.
 -   If the calculated F-ratio is greater than the critical value, reject
     the null hypothesis.
 
-<iframe src="http://modeling.nursing.uc.edu/anova_2w_app_1/" width="100%" height="1000px">
+[**Open Two-Way ANOVA App**](http://modeling.nursing.uc.edu/anova_2w_app_1/){ .btn .btn-primary target="_blank" }
 
-</iframe>
+> Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site (GitHub Pages uses HTTPS). Use the button above to open it in a new tab.
 
 ## Effect Sizes and Significance
 
@@ -269,4 +269,3 @@ data2 <- data.frame(
 model2 <- aov(RecoveryTime ~ Intervention * Gender, data = data2)
 summary(model2)
 ```
-

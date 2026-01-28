@@ -80,9 +80,9 @@ kw_model <- kruskal.test(stress ~ group, data = data)
 print(kw_model)
 ```
 
-<iframe src="http://modeling.nursing.uc.edu/anova_app_2/" width="100%" height="1000px">
+[**Open One-Way ANOVA App**](http://modeling.nursing.uc.edu/anova_app_2/){ .btn .btn-primary target="_blank" }
 
-</iframe>
+> Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site (GitHub Pages uses HTTPS). Use the button above to open it in a new tab.
 
 ## Visualizing Using Boxplots
 
@@ -142,9 +142,9 @@ The p-value is derived from the F distribution, given the degrees of freedom.
 
 The F-distribution is a continuous probability distribution that arises frequently as the null distribution of test statistics, particularly in analysis of variance (ANOVA). It is characterized by two parameters: the degrees of freedom of the numerator (df_between) and the degrees of freedom of the denominator (df_within).
 
-<iframe src="http://modeling.nursing.uc.edu/anova_app_1/" width="100%" height="600px">
+[**Open F Distribution (ANOVA) App**](http://modeling.nursing.uc.edu/anova_app_1/){ .btn .btn-primary target="_blank" }
 
-</iframe>
+> Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site. Use the button above to open it in a new tab.
 
 ## Conducting ANOVA in R
 
@@ -224,9 +224,9 @@ Tukey's Honestly Significant Difference (HSD) test and the Bonferroni correction
 - **Tukey's HSD**: Specifically designed for pairwise comparisons of all group means. It adjusts the p-values and confidence intervals to maintain the family-wise error rate at exactly 0.05.
 - **Bonferroni Correction**: The most conservative method. It simply divides your overall alpha (0.05) by the number of comparisons. For 3 comparisons, you would only call a result significant if $p < 0.0167$.
 
-<iframe src="http://modeling.nursing.uc.edu/anova_app_3/" width="100%" height="850px">
+[**Open Post-hoc / Multiple Comparisons App**](http://modeling.nursing.uc.edu/anova_app_3/){ .btn .btn-primary target="_blank" }
 
-</iframe>
+> Note: This app is served over HTTP (not HTTPS), so it cannot be embedded on the course site. Use the button above to open it in a new tab.
 
 ### Tukey HSD in R
 
