@@ -12,106 +12,248 @@ format:
 
 
 
-This page presents frequently asked statistics questions by students related to QI and EBP final projects. Llinks for the [t-test](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd) or [chi-square](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd). Please email [joshua.lambert@uc.edu](mailto:joshua.lambert@uc.edu) with more questions.
+This page presents frequently asked statistics questions by students related to QI and EBP final projects. Links for the [t-test](https://ucincinnati.shinyapps.io/ttest/) or [chi-square](https://ucincinnati.shinyapps.io/chimc/). Please email [joshua.lambert@uc.edu](mailto:joshua.lambert@uc.edu) with more questions.
 
 ---
 
-## Questions
+## Choosing the Right Statistical Test
 
-**Q1: What's the best statistical test to compare CRNA autonomy levels (supervised vs collaborative) between different types of counties (urban vs rural)? I was thinking chi square, but I want to make sure that makes sense.**
+**Q: What's the best statistical test to compare two categorical variables (e.g., autonomy levels by county type, screening completion yes/no, referral rates)?**
 
-A1: Yes, Chi-square is appropriate. You're comparing two categorical variables (autonomy level: supervised vs. collaborative, and county type: urban vs. rural), so Chi-square is the best fit.
+- *What's the best statistical test to compare CRNA autonomy levels (supervised vs collaborative) between different types of counties (urban vs rural)? I was thinking chi square, but I want to make sure that makes sense.*
+- *Chi-square - So would this test be used for how a patient questionnaire affects rate of x (screenings, diagnosis, referral rates)?*
+- *If my project measures outcomes such as screening completion (yes/no) and engagement in trauma-informed treatment services, would a chi-square test be the most appropriate analysis, or are there other methods that may be more suitable?*
 
-Use this tool: [Chi-square Calculator](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd)
+A: Yes, Chi-square is appropriate whenever you're comparing two categorical variables. For example: autonomy level (supervised vs. collaborative) and county type (urban vs. rural), or questionnaire response (yes/no) and screening completed (yes/no). Chi-square is the best fit for these situations.
 
----
-
-**Q2: Since I'm not doing a clinical intervention, just collecting current state data from hospitals, is it okay to stick with descriptive stats (like percentages and means), or do I need to run inferential tests too?**
-
-A2: No, you don't need inferential stats. Descriptive statistics (percentages, averages) are totally fine for quality improvement (QI) projects focused on current state. Only use inferential stats if you're comparing groups or time points and trying to generalize beyond your sample.
+Use this tool: [Chi-square Calculator](https://ucincinnati.shinyapps.io/chimc/)
 
 ---
 
-**Q3: If I'm collecting both CRNA-level responses (autonomy and perception) and hospital level info (billing model and policy), should all that data be on one Excel sheet or split into two?**
+**Q: When might Fisher's exact test be appropriate to include?**
 
-A3: Use one Excel file but two separate tabs (worksheets):
-
-- One tab for CRNA responses (autonomy, perception, etc.)
-- One tab for hospital-level data (billing model, policy, etc.)
-
-If you're linking them, include a shared column like "Hospital ID."
+A: Fisher's exact test is used instead of Chi-square when your sample size is very small (typically when any expected cell count in the contingency table is less than 5). It gives an exact p-value rather than an approximation. If you have a small sample and are comparing two categorical variables, Fisher's exact is the better choice.
 
 ---
 
-**Q4: Do I need to assign unique identifiers if I'm not doing a pre/post design just one time surveys?**
+**Q: When working with different types of data (yes/no results and average scores), how do we choose the right statistical test?**
 
-A4: You do not need unique identifiers for one-time anonymous surveys. But include one if you think you might later want to link responses (like if doing subgroup analysis by site or unit).
+- *When working with different types of data like yes/no results and average scores how do we choose the right statistical test for a small-scale quality improvement cycle?*
+- *Do we need both independent and paired t tests?*
+- *For projects with pre- and post-implementation assessments, what is the simplest way to determine if my data should be run using a paired t-test or another method?*
+- *For a DNP project focused on improving documentation rates, would descriptive statistics alone be enough to evaluate pre- and post-intervention change, or would a paired t-test be recommended if the same participants are measured at both time points?*
+- *Can you run more than one statistical test for your DNP project or should you just focus on one?*
 
----
+A:
 
-**Q5: I want to include Likert scale questions about autonomy, efficiency, and OR delays. Is there a recommended number of questions to include so I can run an analysis later?**
+- For yes/no or categories → Chi-square or McNemar's (if paired/same participants)
+- For average scores → T-test (independent or paired)
+  - **Paired t-test**: Use when the *same* participants are measured at two time points (pre/post)
+  - **Independent t-test**: Use when comparing *different* groups
 
-A5: Aim for 3–5 questions per topic (e.g., 3 for autonomy, 3 for efficiency, etc.). This helps you measure a concept more reliably while keeping the survey short.
+Use descriptive stats first. Inferential only if you compare groups or time points. You can absolutely run more than one statistical test if you have multiple outcome measures - just make sure each test matches the data type it's analyzing.
 
----
+Use these tools:
 
-**Q6: Any tips on picking unique identifiers that allows participants to be anonymous, but still allows me to track pre and post answers?**
-
-A6: Create a self-generated code from a mix of personal but not-identifying elements. For example:
-
-- First 2 letters of mother's first name + last 2 digits of birth year + last letter of city born in (e.g., "Ma89o")
-
-Always test it to make sure it creates unique results across your sample.
-
----
-
-**Q7: Do you have a recommendation on statistical tests for qualitative data?**
-
-A7: Qualitative data isn't analyzed with statistical tests. Instead, use thematic analysis or coding. You can present counts of how often certain themes appear, or quotes to highlight key points.
+- [T-test Calculator](https://ucincinnati.shinyapps.io/ttest/)
+- [Chi-square Calculator](https://ucincinnati.shinyapps.io/chimc/)
 
 ---
 
-**Q8: How do we obtain statistical software? Does the type of project matter pertaining to software?**
+**Q: What about non-parametric alternatives when data doesn't meet assumptions (e.g., not normally distributed)?**
 
-A8: Yes. If you're doing QI (not formal research), Excel and online calculators are usually enough. If you're doing complex stats, you may need SPSS or JMP. Use tools you're comfortable with.
+- *The presentation covers t-tests and chi-square as the main statistical tests, but what if your data doesn't meet the assumptions for those tests (e.g., the data isn't normally distributed)? Are there non-parametric alternatives you'd be expected to use, and would the professors help guide that decision?*
+- *How do you determine the most appropriate statistical test for a DNP project when the sample size is small or the data are not normally distributed?*
 
----
+A: Yes, there are non-parametric alternatives:
 
-**Q9: Chi-square—So would this test be used for how a patient questionnaire affects rate of x (screenings, diagnosis, referral rates)?**
+- Instead of an independent t-test → **Mann-Whitney U test**
+- Instead of a paired t-test → **Wilcoxon signed-rank test**
+- Instead of Chi-square with small expected counts → **Fisher's exact test**
 
-A9: Yes, if both variables are categorical. For example:
-
-- Patient said yes/no on questionnaire (yes/no)
-- Screening completed (yes/no)
-
-Then a Chi-square test works great.
+For small samples or non-normal data, these are often more appropriate. Your chair and statistician can help guide this decision - don't hesitate to reach out.
 
 ---
 
-**Q10: Best YouTube/instructional videos for learning statistics in Excel?**
+**Q: Are the words "variable" and "group" interchangeable, or what did I miss?**
 
-A10: Try:
-
-- Leila Gharani (excellent Excel tutorials)
-- StatQuest with Josh Starmer (stats made simple)
-- University of Cincinnati's own tools:
-    - [T-test Tool](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd)
-    - [Chi-square Tool](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd)
+A: Not exactly. A **variable** is what you're measuring (e.g., blood pressure, satisfaction score, screening completion). A **group** is a subset of your sample defined by a variable (e.g., pre-intervention group vs. post-intervention group, or urban vs. rural). Variables define what you collect; groups define who you compare.
 
 ---
 
-**Q11: Keeping track of unique identifiers if we use something like an EMR, MyChart, etc. to administer whatever tool is being used for the project?**
+## When Descriptive Statistics Are Sufficient
 
-A11: Don't use names or MRNs. Instead:
+**Q: For QI projects or program evaluations, is it okay to just use descriptive statistics?**
+
+- *Since I'm not doing a clinical intervention, just collecting current state data from hospitals, is it okay to stick with descriptive stats (like percentages and means), or do I need to run inferential tests too?*
+- *What are the best statistical tests for a program evaluation of a developing program?*
+- *Would descriptive statistics be beneficial for arriving at conclusions in this program type?*
+- *My PICOT on CAUTI prevention will involve pre education baseline. Is it appropriate for me to mainly use descriptive statistics to present the findings?*
+- *If my primary outcome is time to enteral nutrition initiation after ICU admission, would descriptive statistics such as means and ranges be sufficient, or should I consider inferential testing to demonstrate improvement?*
+
+A: Descriptive statistics (percentages, averages, ranges) are totally fine for quality improvement (QI) projects focused on current state or program evaluation. Only use inferential stats (t-tests, chi-square) if you're comparing groups or time points and trying to generalize beyond your sample. For outcomes like time-based measures, means and ranges can be very informative - add inferential testing only if you have a comparison group or pre/post design with sufficient data.
+
+---
+
+**Q: Would you still recommend calculating a p-value with a quality improvement project on a single nursing unit with a small sample?**
+
+- *Bailey had mentioned that she would not necessarily expect a statistically significant result with a small sample size. Would you still recommend calculating a p value with a quality improvement project on a single nursing unit?*
+- *Since it is from a small group of nurses in one unit, what is a sufficient sample size to evaluate whether there has been a meaningful improvement without conducting a more complex analysis?*
+
+A: You can, but be cautious about over-interpreting. Focus more on direction of change and clinical relevance. With small samples from a single unit, descriptive statistics showing the trend of improvement are often more meaningful than a p-value.
+
+---
+
+## P-values, Confidence Intervals, and Power
+
+**Q: What circumstance would it be beneficial to have a p-value that is not alpha = 0.05?**
+
+A: The standard alpha = 0.05 works for most DNP projects. You might use a stricter alpha (e.g., 0.01) if: the consequences of a false positive are high, or you're running multiple tests and need to correct for multiple comparisons. You might use a more lenient alpha (e.g., 0.10) for: pilot studies or exploratory QI projects where you want to detect trends even with small samples. For most DNP projects, stick with 0.05.
+
+---
+
+**Q: How do you decide the confidence interval appropriate for the data or project?**
+
+A: A 95% confidence interval (matching alpha = 0.05) is standard for most projects. Use 99% CI if you need more certainty (e.g., safety-critical outcomes). Use 90% CI for exploratory or pilot work. The CI should match your alpha level: 95% CI goes with alpha = 0.05.
+
+---
+
+**Q: What exactly provides power to a small sample size? At what point does a small study provide enough power to be useful as evidence for practice changes?**
+
+- *I am curious as to what exactly would provide power to a small sample size? At what point does a study provide enough power to be useful to provide evidence for practice changes?*
+- *Given the number of caregiver observations needed, what sample size is adequate to detect a meaningful change?*
+- *How many observations per week would strengthen the reliability of my results?*
+- *What is the minimum sample size typically needed for statistical analysis in DNP projects conducted within a single clinical site?*
+
+A: Power depends on three things: sample size, effect size (how big the change is), and variability in your data. For small samples, you can increase power by: reducing measurement variability (use consistent methods), looking for larger effect sizes, and using paired designs (pre/post on same participants). There's no universal minimum sample size - it depends on your design and what you're measuring. For single-site QI projects, even small samples (n=10-30) can show meaningful trends. Focus on consistent data collection and clear outcome measures. More observations per week strengthens reliability, but balance this with feasibility.
+
+---
+
+## Pre/Post Test Design and Number of Questions
+
+**Q: How many questions should be on a pre/post test?**
+
+- *I want to include Likert scale questions about autonomy, efficiency, and OR delays. Is there a recommended number of questions to include so I can run an analysis later?*
+- *How many questions on the pre and post survey is ideal?*
+- *What are the best practices for determining the appropriate number of questions for pre- and post-tests in statistical evaluation, and how might this influence the reliability of the results?*
+- *Is there a specific amount of questions that should be included in the pre/post-test to yield more accurate results? For example, is having 3-5 questions on the pre/post-test adequate or should we aim for 10-15?*
+
+A: Aim for 5-10 focused, well-designed questions. Within that, aim for 3-5 questions per topic (e.g., 3 for confidence, 3 for knowledge). More than 10-15 can lower response quality and participant engagement. 5-10 solid, well-designed questions are better than 20 unclear ones. Focus on clarity and alignment with your outcome.
+
+---
+
+**Q: Does using multiple choice questions (instead of Likert-style) in a pre/post test affect the statistical test you can use?**
+
+A: Yes, question format affects which test you use. Multiple choice questions that are scored as correct/incorrect produce categorical data (right/wrong) - use McNemar's test or Chi-square for paired proportions. Likert-style questions produce ordinal/continuous-like data - use a paired t-test. You can mix formats, but you'll analyze them separately with different tests. Keep the same format across pre and post for each question.
+
+---
+
+**Q: If assessing knowledge change, is it better to analyze individual questions or a total score?**
+
+A: Both approaches have value:
+
+- **Total score**: Simpler, gives one overall measure of knowledge change. Easier to run a single paired t-test.
+- **Individual questions**: Shows where specific knowledge gaps exist. Useful for improving your educational intervention.
+
+For most DNP projects, start with the total score for your primary analysis, then look at individual questions descriptively to identify patterns.
+
+---
+
+## Likert Scales, Validated Instruments, and Survey Design
+
+**Q: Does it matter if I create my own Likert scale vs. using a validated one?**
+
+- *When using a Likert scale, does it impact the validity of your pre- and post-test (utilizing a paired t-test for analysis) if the Likert scale used was created by you, as compared to using a Likert scale that has already proven validity?*
+- *Do you have any advice about choosing a scale for pre and post test? I have selected a scale that seems to measure my endpoint and is validated, but wanted to see if there is anything additional I should be considering?*
+
+A: It can affect validity, but not your ability to run a paired t-test. You can still analyze it. Just be transparent that it's a new tool, and consider pilot testing it for clarity. If you've already picked a validated scale aligned with your endpoint, you're in great shape. Just make sure it has clear scoring and good reliability (check prior studies). If your project is very specific and requires a custom instrument, that's fine - just acknowledge the limitation.
+
+---
+
+**Q: How do I record Likert scale responses in my data?**
+
+- *If a Likert scale is used, do you just write out which category into the response column for that question?*
+
+A: Yes, either write the word (e.g., "Strongly Agree") or assign a number (e.g., 1-5). Just be consistent. I would recommend using the label or a shortened version of the label as the category in the data row and column, as it may be difficult later to remember what each number means. Add a key on your sheet to explain what each number means if you use numbers.
+
+---
+
+**Q: If we have two separate surveys for our sample population, do the questions need to be the same style in both surveys or can they be different (e.g., one multiple choice, one Likert)?**
+
+- *Can you use a mix of question style like interviewing format and several word based question if its consistent for both pre and post survey questions?*
+
+A: Yes, you can use different styles across different surveys. The key rules are:
+
+- The **same** format must be used in **pre and post** for each specific measure
+- It should be clearly matched and organized
+- You'll analyze each survey with the test appropriate to its format (t-test for Likert scores, Chi-square for categorical)
+
+---
+
+## Unique Identifiers and Tracking Participants
+
+**Q: When do I need unique identifiers, and how do I create them?**
+
+- *Do I need to assign unique identifiers if I'm not doing a pre/post design just one time surveys?*
+- *Any tips on picking unique identifiers that allows participants to be anonymous, but still allows me to track pre and post answers?*
+- *How does one obtain unique identifiers?*
+- *Can Unique Identifiers be email addresses if you are using google forms to collect data?*
+- *What are some ways to reliably track unique identifiers for QI projects?*
+- *For keeping track of the patients and their survey answers through PDSA cycles, would I use MRN numbers?*
+- *In your opinion, for pre- and post-intervention designs, is it better for the project lead (us) to create the unique identifier? Or is it better for the participants to create the identifiers, to provide a better chance of the participants remembering the identifier?*
+
+A: You do **not** need unique identifiers for one-time anonymous surveys. But you **do** need them for pre/post designs or tracking through PDSA cycles. **Do not** use names, MRNs, or emails - these are not anonymous.
+
+**How to create them:**
+
+- **Self-generated codes** (recommended for pre/post): Have participants create a code from personal but non-identifying info. For example: First 2 letters of mother's first name + last 2 digits of birth year + last letter of city born in (e.g., "Ma89o"). This lets participants recreate their code at post-test.
+- **Sequential IDs** (assigned by project lead): Use codes like 001, 002, 003 - best when you control data collection at both time points.
+- **Date/time stamp + 2-digit code**: Good for EMR-linked data.
+
+For PDSA cycles, participant-generated codes are often better since participants can recreate them. Always test your ID system to make sure it creates unique results across your sample.
+
+---
+
+**Q: Keeping track of unique identifiers if we use something like an EMR, MyChart, etc. to administer whatever tool is being used for the project?**
+
+A: Don't use names or MRNs. Instead:
 
 - Generate a study-specific code tied to a non-identifying feature (e.g., date/time stamp + 2-digit code)
 - Make sure data is exported de-identified
 
 ---
 
-**Q12: How would you run multiple tests with one table?**
+## Data Organization in Excel
 
-A12: Create a table with one row per variable or question, and columns for:
+**Q: How should I organize my data in Excel, especially with multiple data types, surveys, or variables?**
+
+- *If I'm collecting both CRNA-level responses (autonomy and perception) and hospital level info (billing model and policy), should all that data be on one Excel sheet or split into two?*
+- *What is the most effective way to organize the data from our study as it is being collected without the amount of data becoming overwhelming?*
+- *For my project I am looking to do multiple analyses of my population, like a Likert-scale survey, and a scoring system for performance in completion of a simulation. Since I am having multiple variables that I am analyzing would I need to store the results in separate excel files and run the analysis separately?*
+- *How do I organize multiple questions on a survey in Excel and read and organize the results?*
+- *If our project includes multiple outcome measures, should they be in the same data set or should they be analyzed separately?*
+
+A: Use **one Excel file** but **separate tabs** (worksheets) for different data types:
+
+- One tab for survey responses
+- One tab for clinical/audit data
+- One tab for demographics
+- One tab for simulation scores (if applicable)
+
+**Key rules:**
+
+- Clear headers in the first row (no spaces in variable names)
+- Each row = one participant or one encounter
+- Include a shared ID column across tabs to link data
+- Label everything and back up your file often
+
+You can keep multiple outcome measures in the same file - just organize by tab. You'll analyze each outcome with the test appropriate to its data type.
+
+---
+
+**Q: How would you run multiple tests with one table?**
+
+A: Create a table with one row per variable or question, and columns for:
 
 - Group 1 result
 - Group 2 result
@@ -121,90 +263,347 @@ Label clearly and use footnotes to explain test types.
 
 ---
 
-**Q13: When working with different types of data like yes/no results and average scores how do we choose the right statistical test for a small-scale quality improvement cycle?**
+**Q: How do you generate a graph when there are multiple questions? How does this affect a t-test?**
 
-A13:
-- For yes/no or categories → Chi-square or McNemar’s (if paired)
-- For average scores → T-test (independent or paired)
-
-Use descriptive stats first. Inferential only if you compare groups or time points.
+A: Each question can be graphed individually (bar chart comparing pre vs. post for that question) or you can graph the total/average score. For the t-test, you typically run it on the **total score** or **individual question scores** - not on the graph itself. The graph is for visualization; the t-test is for statistical comparison. You can create separate graphs for each question or a grouped bar chart showing all questions side by side.
 
 ---
 
-**Q14: If we only have a small amount of data during early testing, how can we still draw useful conclusions especially without doing a formal power analysis?**
+**Q: What should data collection answers look like for checklists and EMR review?**
 
-A14: Focus on:
+- *If I was implementing somewhat of a surgical checklist, for checklists particularly, should the answers in each medical history section be such as met or unmet or yes or no type answers? Or total a certain score?*
+- *For a facility that uses paper charting that is then uploaded online to a database, how would you recommend collecting and organizing the answers of a survey for a QI project?*
+- *The site that I will be using for my project does not have a computer charting system, it's full on paper charting. How do I best organize that kind of data?*
+
+A: For checklists, use simple categorical responses: **Yes/No**, **Met/Unmet**, or **Complete/Incomplete**. These are easy to analyze with Chi-square or descriptive percentages. You can also total a score if the checklist items form a composite measure.
+
+For paper charting sites:
+
+- Create an Excel template with your variables as column headers before you start
+- Go through charts systematically, entering data row by row
+- Use consistent coding (e.g., 1=Yes, 0=No) with a key
+- Consider having a second person verify a random sample for accuracy
+- It is labor intensive - plan dedicated time blocks and work methodically
+
+---
+
+## Demographics
+
+**Q: Do we need to collect demographic data? What is the benefit?**
+
+- *Are there specific variables or demographic data you recommend collecting along with the pre- and post-test scores?*
+- *Do we need to collect data on demographics? What is the benefit of having demographic data?*
+- *The one question I have is should we include demographic statistics, is it necessary?*
+- *Beyond the primary outcome, how do we determine which additional variables such as patient acuity, diagnosis, or feeding interruptions should be collected to help interpret the results?*
+
+A: Demographics are **not strictly required** but are **strongly recommended**. Benefits include:
+
+- Describing your sample (who participated)
+- Identifying whether results differ by subgroup
+- Strengthening the credibility of your findings
+- Helping others determine if results apply to their population
+
+**Common demographics to collect:** age, gender, years of experience, role/title, unit/department, education level. Only collect what's relevant to your project. For clinical outcomes, consider variables like patient acuity, diagnosis, or other factors that might influence your results.
+
+---
+
+**Q: When is it appropriate to stratify my results (e.g., by age, role, race), and how much stratification is reasonable for a DNP-level project?**
+
+A: Stratification is appropriate when you suspect a variable might influence your outcome differently across subgroups. However, for DNP projects with small samples, keep it minimal - typically 1-2 stratification variables at most. Too much stratification with a small sample creates subgroups too small to analyze meaningfully. Report demographics descriptively and only stratify if your sample is large enough to support it.
+
+---
+
+## Sample Size and Small Studies
+
+**Q: How can we draw useful conclusions from small samples or early data?**
+
+- *If we only have a small amount of data during early testing, how can we still draw useful conclusions especially without doing a formal power analysis?*
+- *If the intervention period is only a few months, how can we ensure that the data collected during that time frame is sufficient for meaningful analysis?*
+- *If baseline data are limited or unavailable before implementation, how should we approach evaluation of change in a QI project?*
+
+A: Focus on:
 
 - Trends or patterns
 - Percent change
+- Clinical significance (not just statistical significance)
 
-Use confidence intervals if possible. Even without formal power, describe improvements qualitatively and use graphs for impact.
+Use confidence intervals if possible. Even without formal power, describe improvements qualitatively and use graphs for impact. For short intervention periods, maximize data collection frequency and consistency. If baseline data is unavailable, consider using published benchmarks, national averages, or data from similar units as your comparison point.
 
 ---
 
-**Q15: What are the best ways to deal with missing answers in surveys or gaps in chart audit data especially when it could affect results like process or balancing measures?**
+## Missing Data and Minimizing Bias
 
-A15:
-- For surveys: Note missing % and don’t replace unless critical
+**Q: How should we handle missing or incomplete data?**
+
+- *What are the best ways to deal with missing answers in surveys or gaps in chart audit data especially when it could affect results like process or balancing measures?*
+- *Are there recommended strategies for handling missing or incomplete data in a quality improvement project?*
+
+A:
+
+- For surveys: Note missing % and don't replace unless critical. Report the response rate transparently.
 - For chart audits: Add a column like "Data Present (Y/N)". You can report how often data was missing to show transparency.
+- Never fabricate or assume missing data - acknowledge it as a limitation.
 
 ---
 
-**Q16: When we look at quiz scores before and after a training module, how can we make sure any improvements show actual learning and not just remembering the questions from before?**
+**Q: What steps should we take during data collection to minimize bias or inconsistencies between pre- and post-test measurements?**
 
-A16: Use a Paired t-test if comparing pre/post scores. To reduce memory bias:
+- *When we look at quiz scores before and after a training module, how can we make sure any improvements show actual learning and not just remembering the questions from before?*
 
-- Change question order
+A: To minimize bias:
+
+- Use the **same instrument** at both time points
+- Standardize the administration process (same instructions, same setting, same time allotted)
+- Change question order between pre and post to reduce memory bias
 - Use different but equivalent questions if possible
+- Collect data consistently (same person collecting, same method)
+- Document your process so it's reproducible
 
 ---
 
-**Q17: When using a Likert scale, does it impact the validity of your pre- and post-test (utilizing a paired t-test for analysis) if the Likert scale used was created by you, as compared to using a Likert scale that has already proven validity?**
+**Q: What are the most common statistical mistakes you see DNP students make, and how can we avoid them?**
 
-A17: Yes, it can affect validity, but not your ability to run a paired t-test. You can still analyze it. Just be transparent that it’s a new tool, and consider pilot testing it for clarity.
+A: Common mistakes include:
 
----
+- Choosing a statistical test before understanding the data type
+- Over-interpreting p-values from very small samples
+- Not organizing data properly in Excel before analysis (e.g., merged cells, inconsistent coding)
+- Running inferential tests when descriptive statistics are sufficient
+- Not matching pre/post data correctly (missing or mismatched IDs)
 
-**Q18: I ask this question because I am examining the confidence of OR RNs in managing difficult airway situations through a pre- and post-test to determine how education affects their confidence. Given that my project is very specific, I believe it is necessary to create my own version of a Likert scale to tailor it to what I am attempting to evaluate.**
-
-A18: Use one Excel file with separate tabs:
-
-- Tab 1: Survey responses
-- Tab 2: Simulation scores
-
-Keep consistent ID columns across tabs to match participants.
+Avoid these by: planning your data collection and analysis **before** starting, keeping data organized from day one, and consulting with your chair or a statistician early.
 
 ---
 
-**Q19: For my project I am looking to do multiple analyses of my population, like a Likert-scale survey, and a scoring system for performance in completion of a simulation. Since I am having multiple variables that I am analyzing would I need to store the results in separate excel files and run the analysis separately?**
+## How to Ensure Outcome Measures Are Clear and Measurable
 
-A19: Yes, either:
+**Q: How do I ensure my selected outcome measures are clear, measurable, and appropriate for the statistical method I plan to use?**
 
-- Write the word (e.g., “Strongly Agree”)
-- Or assign a number (e.g., 1–5)
+A: Your outcome measures should be:
 
-Just be consistent. Add a key on your sheet to explain what each number means.
+- **Specific**: Clearly define what you're measuring (e.g., "screening completion rate" not just "screening")
+- **Measurable**: Can be counted, scored, or categorized
+- **Matched to your test**: Continuous measures (scores, times) → t-test; Categorical measures (yes/no, met/unmet) → Chi-square
 
----
-
-**Q20: If a Likert scale is used, do you just write out which category into the response column for that question?**
-
-A20: Yes, that works or you can convert to a number system, although it may be difficult later to understand what number means. I would recommend using the label or a shortened version of the label as the category in the data row and column.
+Write out your outcome measures and the corresponding test before you start collecting data. If you can't clearly describe how you'll measure it, refine the measure.
 
 ---
 
-**Q21: What is the best way to get consent to add study at clinical site?**
+## Handling Conflicting Measures
 
-A21: Check if IRB approval is needed. Then:
+**Q: How should I handle data from a given subject with a positive objective measure and negative subjective measure (e.g., self-report questionnaire alongside biomarker testing)?**
+
+A: Report both measures separately and transparently. Discordance between objective and subjective measures is actually a meaningful finding. Analyze each measure with its appropriate test, then discuss the discrepancy in your interpretation. This is common in clinical research and shows the value of using multiple measurement approaches.
+
+---
+
+## Qualitative Data
+
+**Q: Do you have a recommendation on statistical tests for qualitative data?**
+
+A: Qualitative data isn't analyzed with statistical tests. Instead, use thematic analysis or coding. You can present counts of how often certain themes appear, or quotes to highlight key points.
+
+---
+
+## Software, Tools, and Resources
+
+**Q: Where can I find the t-test calculator and chi-square calculator?**
+
+- *Can you post the link for the t-test generator, please?*
+- *Where exactly is the t-test calculator in DNP community?*
+- *The only question I have is that she shared links to the T-test calculator and toolkit for excel, where can we find these links? Are they on the DNP community page?*
+- *Can you post the link for the Excel toolkit add-on, please?*
+- *If we use Dr. Lambert's T-test calculator, do we have to obtain permission to use for our projects?*
+
+A: Yes, they are on the DNP community page and they can be found here:
+
+- [T-test Calculator](https://ucincinnati.shinyapps.io/ttest/)
+- [Chi-square Calculator](https://ucincinnati.shinyapps.io/chimc/)
+
+No, you do not need permission to use these calculators - they are provided for your use.
+
+For Excel's Analysis ToolPak: Go to File → Options → Add-ins → Manage Excel Add-ins → Check "Analysis ToolPak" → OK. This adds statistical functions directly in Excel under the Data tab.
+
+---
+
+**Q: How do we obtain statistical software? What tools should I use?**
+
+- *How do we obtain statistical software? Does the type of project matter pertaining to software?*
+- *How do you really determine the right software or tool to utilize for data collection and analysis?*
+- *My only question is if there are any resources you would recommend for help on selecting appropriate evaluation and statistic tools?*
+
+A: This can be difficult for beginners. Picking one that matches your current ability is important.
+
+**Data Collection:**
+
+- Beginners: Microsoft Forms or SurveyMonkey
+- Advanced: Qualtrics or REDCap
+
+**Analysis:**
+
+- Beginners: Excel, online DNP calculators, and descriptive statistics
+- Advanced: JMP (free), SPSS (paid), R or Python
+
+If you don't have much time to commit to learning advanced software, choose Microsoft Forms or SurveyMonkey for collection, and Excel with online calculators for analysis.
+
+---
+
+**Q: Is there a digital program that can record paper forms of pre and post tests into Excel? Or is the only way to record the paper results to manually record in Excel?**
+
+A: For most DNP projects, you'll manually enter paper results into Excel. Some options to make this easier:
+
+- Use Microsoft Forms or Google Forms to create a data entry form that exports to a spreadsheet
+- REDCap has data entry forms designed for this purpose
+- Some scanning software (like Remark Office OMR) can read bubble sheets, but this is typically overkill for DNP projects
+
+Manual entry is most common - just double-check your entries for accuracy.
+
+---
+
+**Q: Is there a PDF or written walkthrough of how to organize the Excel file and use the data tool?**
+
+A: The video walkthrough is the primary resource. Key steps to remember:
+
+1. Create clear column headers (variable names) in Row 1
+2. Enter one participant per row
+3. Keep data types consistent within each column
+4. Use the [T-test Calculator](https://ucincinnati.shinyapps.io/ttest/) or [Chi-square Calculator](https://ucincinnati.shinyapps.io/chimc/) - they walk you through the process
+5. Refer back to the video as needed for step-by-step guidance
+
+---
+
+**Q: Best YouTube/instructional videos for learning statistics in Excel? How can I improve my statistical literacy?**
+
+- *In what ways can I improve my statistical literacy to ensure proper evaluation of program outcomes and instructional effectiveness?*
+
+A: Try:
+
+- Leila Gharani (excellent Excel tutorials)
+- StatQuest with Josh Starmer (stats made simple)
+- University of Cincinnati's own tools:
+    - [T-test Calculator](https://ucincinnati.shinyapps.io/ttest/)
+    - [Chi-square Calculator](https://ucincinnati.shinyapps.io/chimc/)
+
+You can also enroll in our PhD statistics classes as electives as time permits.
+
+---
+
+**Q: How can I leverage tools like Excel's Analysis Toolpak and the t-test calculator to perform accurate T-tests, and what are the pros and cons of each?**
+
+A:
+
+- Excel's Analysis Toolpak is more manual but lets you keep data in one place
+- The [T-test Calculator](https://ucincinnati.shinyapps.io/ttest/) is faster and gives a summary statement
+
+Use the calculator if you're unsure how to run stats in Excel.
+
+---
+
+**Q: What platforms have students found most useful for data collection outside of Excel?**
+
+- *Do you offer any webinars on the REDCap software? Or should I search YouTube?*
+
+A:
+
+- REDCap (best for surveys + audit)
+- SurveyMonkey or Google Forms (simpler)
+- JMP or SPSS (for complex stats, if needed)
+
+For REDCap training, YouTube has excellent tutorials. You can also contact your institution's REDCap support team for onboarding.
+
+---
+
+## Data Collection for Program Evaluation
+
+**Q: In a program evaluation, what data types will provide the most meaningful evidence that the program is improving both knowledge and outcomes?**
+
+A: Collect a mix of:
+
+- **Process measures**: Was the intervention delivered as intended? (e.g., checklist completion rates, attendance)
+- **Outcome measures**: Did the target outcome change? (e.g., screening rates, knowledge scores, clinical metrics)
+- **Balancing measures**: Were there unintended consequences? (e.g., increased workload, time burden)
+
+Use both quantitative (scores, rates) and qualitative (feedback, open-ended responses) data for the most complete picture.
+
+---
+
+## Pilot QI Studies
+
+**Q: I plan to do a pilot QI study with a small group (e.g., 4 nurses on a unit). Should I provide the questionnaire to all participants receiving the intervention and include all data?**
+
+- *My study is a pilot QI study on whether an educational intervention impacts school nurse follow-up on the HPV vaccine for 7th graders. I plan to do a pre and post test about knowledge, confidence, likelihood of recommendation, etc.*
+- *If my pilot QI project is focusing on 7th grade nurses n=4, but all nurses in the district are receiving the intervention, should I provide the questionnaire to all nurses and include all data?*
+
+A: Yes - if all nurses are receiving the education, give the questionnaire to all of them and include all data. More data strengthens your analysis. For the write-up, you can note that your primary focus was the n=4 target nurses, but including additional participants provides context and may reveal broader trends. Use paired t-tests for pre/post comparison on the full group.
+
+---
+
+## Presenting and Visualizing Results
+
+**Q: Would you recommend any specific types of graphs or ways to present statistical data for dissemination?**
+
+A:
+
+- Bar charts for categorical comparisons
+- Box plots for score changes
+- Line graphs for trends over time
+- Pie charts for demographics (use sparingly)
+
+Choose the graph type that most clearly communicates your finding. Keep graphs clean, labeled, and easy to interpret.
+
+---
+
+**Q: To show pre/post results like screening tool percentages, are percentages okay or should I use a different test?**
+
+- *I plan on using descriptive statistics to show demographic data. My intervention is going to be screening patients for depression and anxiety again at 12-14 weeks postpartum. Would percentages be okay to show the answers for the screening tool? Or would there be another statistical test that would be more appropriate?*
+
+A: Yes, absolutely. Use percentages and bar graphs to show change over time. If you want to compare pre/post, and you used the same patients, you could consider McNemar's test.
+
+---
+
+## Privacy, Consent, and IRB
+
+**Q: What is the best way to get consent to add a study at a clinical site?**
+
+A: Check if IRB approval is needed. Then:
 
 - Use a brief consent script or form
 - Include who you are, what the study is, that participation is voluntary and confidential
 
 ---
 
-**Q22: If unable to have intervention at clinical site is there a specific project change you recommend?**
+**Q: What is the best way to code data to adhere to IRB standards?**
 
-A22: If intervention isn’t allowed:
+A:
+
+- Remove all direct identifiers (name, DOB, MRN)
+- Use non-identifying study codes
+- Save ID key separately and securely (if needed)
+
+---
+
+## Data Collection Timing
+
+**Q: How long should we collect data, and how do we know when we have enough?**
+
+A: Enough to:
+
+- Reach your target number
+- Capture full QI cycle
+
+You're ready to stop if:
+
+- You're not seeing new themes
+- Data is consistent
+- You met your aim or timeline
+
+---
+
+## Clinical Site Challenges
+
+**Q: If unable to have an intervention at the clinical site, is there a specific project change you recommend?**
+
+A: If intervention isn't allowed:
 
 - Focus on current state assessment
 - Add interviews or surveys
@@ -212,193 +611,48 @@ A22: If intervention isn’t allowed:
 
 ---
 
-**Q23: What is the most effective way to organize the data from our study as it is being collected without the amount of data becoming overwhelming?**
+**Q: Can I still use surveys and interviews for my community needs assessment even though my project is not research?**
 
-A23:
-- Use Excel with clear headers (no spaces in names). First row is name of variable.
-- Keep each row = one participant or one encounter
-- Add tabs for demographics, survey, audit data, etc.
-
-Label everything and back up your file often.
-
----
-
-**Q24: To protect patient/practitioner privacy, what is the recommended or best way to code the data that will adhere to IRB standards?**
-
-A24:
-- Remove all direct identifiers (name, DOB, MRN)
-- Use non-identifying study codes
-- Save ID key separately and securely (if needed)
-
----
-
-**Q25: After initial data collection and evaluation, how long should we give to collect further data in order to make sure that we have covered enough ground in our collection process? How do you know that you have an adequate amount to move forward in your project's progression vs knowing when to pause and continue to collect more data?**
-
-A25: Enough to:
-
-- Reach your target number
-- Capture full QI cycle
-
-You’re ready to stop if:
-
-- You’re not seeing new themes
-- Data is consistent
-- You met your aim or timeline
-
----
-
-**Q26: When creating the collection instrument and methodology of collection, what platforms did students in the past find to have provided most useful for analysis outside of Excel?**
-
-A26:
-- REDCap (best for surveys + audit)
-- SurveyMonkey or Google Forms (simpler)
-- JMP or SPSS (for complex stats, if needed)
-
----
-
-**Q27: Can Unique Identifiers be email addresses if you are using google forms to collect data?**
-
-A27: No — emails are not anonymous. Use self-generated codes instead.
-
----
-
-**Q28: Can you use a mix of question style like interviewing format and several word based question if its consistent for both pre and post survey questions?**
-
-A28: Yes, as long as:
-
-- The same format is used in pre and post
-- It’s clearly matched and organized
-
----
-
-**Q29: How many questions on the pre and post survey is ideal?**
-
-A29: Aim for 5–10 focused questions. More than that can lower response quality. Group by theme (e.g., 3 for confidence, 3 for knowledge).
-
----
-
-**Q30: I plan on using descriptive statistics to show demographic data. My intervention is going to be screening patients for depression and anxiety again at 12-14 weeks postpartum to determine if they feel more comfortable disclosing symptoms at that point. I plan on doing an interview with these patients as well. To show the results, would percentages be okay to show the answers for the screening tool? Or would there be another statistical test that would be more appropriate?**
-
-A30: Yes, absolutely. Use percentages and bar graphs to show change over time. If you want to compare pre/post, and you used the same patients, you could consider McNemar’s test.
-
----
-
-**Q31: My EBP project focuses on using mindfulness to reduce stress in parents of children with ADHD. Even though it’s not research, can I still use surveys and interviews for my community needs assessment? Are there any special considerations I should keep in mind for analyzing or reporting that data?**
-
-A31: Yes. For QI, both are great. Just keep:
+A: Yes. For QI, both are great. Just keep:
 
 - Surveys focused
 - Interviews transcribed and thematically coded
 
-You don’t need formal stats, but you can use counts or charts to support findings.
+You don't need formal stats, but you can use counts or charts to support findings.
 
 ---
 
-**Q32: Best contact for questions? Will we get access to the tools she put in the recorded chat, for our usage?**
+## Project-Specific Guidance: Clinical Practice Guidelines (CPGs)
 
-A32: Please either reach out to me directly: [Joshua.lambert@uc.edu](mailto:Joshua.lambert@uc.edu) or submit a request here: [https://redcap.research.cchmc.org/surveys/?s=FR3YH89KT8](https://redcap.research.cchmc.org/surveys/?s=FR3YH89KT8)
+**Q: Do you have advice on using a survey to support CPG development and evaluation?**
 
----
+- *My DNP project involves developing a clinical practice guideline using the AGREE II tool. I plan to create and collect survey responses from APNs regarding the barriers they encounter. Do you have any advice?*
+- *Is a patient outcome measure suitable for evaluating a CPG, or should I use an instrument to determine whether APNs find the CPG useful in practice?*
+- *Do you have any other general recommendations on stats and evaluation for DNP projects that involve developing CPGs?*
 
-**Q33: The only question I have is that she shared links to the T-test calculator and tookkit for excel, where can we find these links? Are they on the DNP community page?**
+A:
 
-A33: Yes, they are on the DNP community page and they can be found here:
-
-- [T-test Tool](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd)
-- [Chi-square Tool](http://con-modeling.ad.uc.edu/statspicker/chimc.Rmd)
-
----
-
-**Q34: My DNP project involves developing a clinical practice guideline using the AGREE II tool. The second domain of the AGREE II tool, Stakeholder Involvement, emphasizes the importance of representing the views of the intended users, which for this project is advanced practice nurses (APNs). I plan to create and collect survey responses from APNs regarding the barriers they encounter to conducting comprehensive, whole-person assessments and evaluations in the ambulatory setting. This information will help guide the development of the CPG. Do you have any advice on using a survey to support CPG development?**
-
-A34:
 - Identify barriers APNs face in conducting whole-person assessments
 - Understand workflow, time, resource, or training issues
 - Gather input for tailoring your CPG to be practical and relevant
 - Demonstrate that your CPG reflects end-user needs (supports AGREE II)
+- Patient outcomes show clinical impact; APN feedback shows usability - use what aligns with your project goals
+- Use a validated tool (like AGREE II), get stakeholder input, and keep results organized by tool-specific category
 
 ---
 
-**Q35: The effectiveness of the CPG will be assessed using the [Whole Person Health Index](https://www.nccih.nih.gov/research/blog/the-whole-person-health-index-an-integrated-self-reported-measure-capturing-essential-components-of-health), an integrated, self-report measure that captures key health components. Is a patient outcome measure suitable for evaluating a CPG, or should I use an instrument to determine whether APNs find the CPG useful in practice?**
+## Graduation, Chair Oversight, and Process
 
-A35:
-- Patient outcomes show clinical impact
-- APN feedback shows usability
+**Q: Since having statistically significant data is not a requirement for graduation, how can we ensure we are successfully completing all necessary steps? Is this something our chair will be double checking?**
 
-Use what aligns best with your project goals.
+A: Yes - your chair is your primary guide throughout the project. They will review your methodology, data collection plan, and analysis approach at multiple checkpoints. Reach out to your chair early and often. Also consult with a statistician (like Dr. Lambert) during the planning phase to ensure your design and analysis are appropriate. The key to graduation is following the DNP project process correctly, not achieving statistical significance.
 
 ---
 
-**Q36: Do you have any other general recommendations on stats and evaluation for DNP projects that involve developing CPGs?**
+## Contact and Support
 
-A36:
-- Use a validated tool (like AGREE II)
-- Get stakeholder input
-- Keep results organized tool specific category
+**Q: Best contact for questions? Will we get access to the tools?**
 
----
-
-**Q37: What are the best practices for determining the appropriate number of questions for pre- and post-tests in statistical evaluation, and how might this influence the reliability of the results?**
-
-A37: 5–10 solid, well-designed questions are better than 20 unclear ones. Focus on clarity and alignment with your outcome.
+A: Please either reach out to me directly: [Joshua.lambert@uc.edu](mailto:Joshua.lambert@uc.edu) or submit a request here: [https://redcap.research.cchmc.org/surveys/?s=FR3YH89KT8](https://redcap.research.cchmc.org/surveys/?s=FR3YH89KT8)
 
 ---
-
-**Q38: How can I leverage tools like Excel’s Analysis Toolpak and other statistical platforms like the t-test calculator to perform accurate T-tests, and what are the pros and cons of each method in practical settings?**
-
-A38:
-- Excel’s Analysis Toolpak is more manual but lets you keep data in one place
-    - The [T-test Tool](http://con-modeling.ad.uc.edu/statspicker/ttest.Rmd) is faster and gives a summary statement
-
-Use the calculator if you're unsure how to run stats in Excel.
-
----
-
-**Q39: In what ways can I improve my statistical literacy to ensure proper evaluation of program outcomes and instructional effectiveness even as I get ready to work on my project and work on becoming a future nurse educator?**
-
-A39: You can always enroll in our PhD statistics classes as electives as time permits. There are lots of great YouTube videos and free resources online. StatQuest (YouTube) or Leila Gharani (excellent Excel tutorials)
-
----
-
-**Q40: How does one obtain unique identifiers?**
-
-A40:
-- Ask participants to create one using personal, non-identifying info
-- Or assign sequential IDs (001, 002, 003...)
-
----
-
-**Q41: How do you really determine the right software or tool to utilize for data collection and analysis?**
-
-A41: This can be difficult for beginners. Ultimately, picking one that matches your current ability is important. For beginners I recommend: Microsoft Forms, or Survey Monkey. For more advanced users Qualtrics and REDCap are great options. Choose based on what your time allows for.
-
-Analysis is similar. Beginners should stick to excel, online DNP calculators and descriptive statistics. Advanced users can choose JMP (free), SPSS (paid), R or Python.
-
-If you don’t have much time to commit to learning advanced software then I’d choose MF or SM and Excel, online calculators and descriptive statistics.
-
----
-
-**Q42: Do you have any advice about choosing a scale for pre and post test? I have selected a scale that seems to measure my endpoint and is validated, but wanted to see if there is anything additional I should be considering?**
-
-A42: If you’ve already picked a validated scale aligned with your endpoint, you’re in great shape. Just make sure it has:
-
-- Clear scoring
-- Good reliability (check prior studies)
-
----
-
-**Q43: Bailey had mentioned that she would not necessarily expect a statistically significant result with a small sample size. Would you still recommend calculating a p value with a quality improvement project on a single nursing unit?**
-
-A43: You can, but be cautious about over-interpreting. Focus more on direction of change and clinical relevance.
-
----
-
-**Q44: Would you recommend any specific types of graphs or ways to present statistical data for the dissemination of results?**
-
-A44:
-- Bar charts for categorical comparisons
-- Box plots for score changes
-- Line graphs for trends over time
-- Pie charts for demographics (use sparingly)
-
---- 
