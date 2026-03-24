@@ -205,7 +205,7 @@ plot(fit, which = 2, main = "Q-Q Plot")
 -   **Predictor (x):** BMI
 -   **Outcome (y):** Blood Pressure
 
-<a href="slr_ex1.csv" download>download example data (CSV)</a>
+<a href="https://github.com/joshuawlambert/NPHD9040/blob/master/course_data/slr_ex1.csv" download>download example data (CSV)</a>
 
 ```{r, eval=FALSE}
 # Example in R
