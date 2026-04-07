@@ -165,26 +165,6 @@ based on criteria like AIC, BIC, or p-values.
 3.  **No Outliers/Influential Observations:** Use Cook's distance or
     leverage plots.
 
-## Examples of Logistic Regression in Nursing Research
-
-### Example 1: Predicting Diabetes
-
-```{r, eval=FALSE}
-# Logistic Regression in R
-        data <- read.csv("health_data.csv")
-        model <- glm(Diabetes ~ Age + BMI, data = data, family = "binomial")
-        summary(model)
-```
-
-### Example 2: Predicting Heart Disease
-
-```{r, eval=FALSE}
-# Logistic Regression in R
-        data <- read.csv("heart_data.csv")
-        model <- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = "binomial")
-        summary(model)
-```
-
 ## Worked Example: Titanic Survival
 
 This example uses the Titanic dataset to predict survival based on passenger class, sex, and age.
