@@ -272,11 +272,8 @@ window.Quarto = {
   <li><a href="#example-1-predicting-diabetes" id="toc-example-1-predicting-diabetes" class="nav-link" data-scroll-target="#example-1-predicting-diabetes">Example 1: Predicting Diabetes</a></li>
   <li><a href="#example-2-predicting-heart-disease" id="toc-example-2-predicting-heart-disease" class="nav-link" data-scroll-target="#example-2-predicting-heart-disease">Example 2: Predicting Heart Disease</a></li>
   </ul></li>
-  <li><a href="#worked-example-titanic-survival" id="toc-worked-example-titanic-survival" class="nav-link" data-scroll-target="#worked-example-titanic-survival">Worked Example: Titanic Survival</a>
-  <ul class="collapse">
-  <li><a href="#example-2-predicting-heart-disease-1" id="toc-example-2-predicting-heart-disease-1" class="nav-link" data-scroll-target="#example-2-predicting-heart-disease-1">Example 2: Predicting Heart Disease</a></li>
-  </ul></li>
-  <li><a href="#worked-example-titanic-survival-1" id="toc-worked-example-titanic-survival-1" class="nav-link" data-scroll-target="#worked-example-titanic-survival-1">Worked Example: Titanic Survival</a></li>
+  <li><a href="#worked-example-titanic-survival" id="toc-worked-example-titanic-survival" class="nav-link" data-scroll-target="#worked-example-titanic-survival">Worked Example: Titanic Survival</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -425,39 +422,81 @@ window.Quarto = {
 </section>
 <section id="examples-of-logistic-regression-in-nursing-research" class="level2">
 <h2 class="anchored" data-anchor-id="examples-of-logistic-regression-in-nursing-research">Examples of Logistic Regression in Nursing Research</h2>
-<section id="example-1-predicting-diabetes" class="level3">
-<h3 class="anchored" data-anchor-id="example-1-predicting-diabetes">Example 1: Predicting Diabetes</h3>
-<p><code>{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv("health_data.csv")         model &lt;- glm(Diabetes ~ Age + BMI, data = data, family = "binomial")         summary(model)</code></p>
+<section id=”example-1-predicting-diabetes” class=”level3”>
+<h3 class=”anchored” data-anchor-id=”example-1-predicting-diabetes”>Example 1: Predicting Diabetes</h3>
+<pre><code class=”sourceCode r”># Logistic Regression in R
+data &lt;- read.csv(“health_data.csv”)
+model &lt;- glm(Diabetes ~ Age + BMI, data = data, family = “binomial”)
+summary(model)</code></pre>
 </section>
-<section id="example-2-predicting-heart-disease" class="level3">
-<h3 class="anchored" data-anchor-id="example-2-predicting-heart-disease">Example 2: Predicting Heart Disease</h3>
-<p><code>{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv("heart_data.csv")         model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = "binomial")         summary(model)</code></p>
+<section id=”example-2-predicting-heart-disease” class=”level3”>
+<h3 class=”anchored” data-anchor-id=”example-2-predicting-heart-disease”>Example 2: Predicting Heart Disease</h3>
+<pre><code class=”sourceCode r”># Logistic Regression in R
+data &lt;- read.csv(“heart_data.csv”)
+model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = “binomial”)
+summary(model)</code></pre>
 </section>
 </section>
-<section id="worked-example-titanic-survival" class="level2">
-<h2 class="anchored" data-anchor-id="worked-example-titanic-survival">Worked Example: Titanic Survival</h2>
+<section id=”worked-example-titanic-survival” class=”level2”>
+<h2 class=”anchored” data-anchor-id=”worked-example-titanic-survival”>Worked Example: Titanic Survival</h2>
 <p>This example uses the Titanic dataset to predict survival based on passenger class, sex, and age.</p>
-<p>```{r, eval=FALSE} df&lt;-read.csv(“https://github.com/datasciencedojo/datasets/raw/refs/heads/master/titanic.csv”) colnames(df) View(df)</p>
-<p>#set reference groups df<span class="math inline">\(Survived &lt;- relevel(as.factor(df\)</span>Survived), ref = “0”) #survied/died df<span class="math inline">\(Pclass &lt;- relevel(as.factor(df\)</span>Pclass), ref = “1”) #reference will be 1st class df<span class="math inline">\(Sex &lt;- relevel(as.factor(df\)</span>Sex), ref = “female”) #female is the reference group</p>
-<p>#continous df<span class="math inline">\(Age
-table(is.na(df\)</span>Age), df$Survived)</p>
-<p>#check levels levels(df<span class="math inline">\(Survived)
-levels(df\)</span>Pclass) levels(df$Sex)</p>
-<p>#fit logistic regression fit&lt;-glm(Survived~Pclass+Sex+Age,family = “binomial”,data=df) summary(fit)</p>
-<p>#get ORs coef(fit) #logit coef exp(coef(fit)) #Odds Ratios</p>
-<p>#Pclass2 coef #Estimate=0.27 odds of survival of 2nd class passengers divided by odds of survival for 1st class #Being in 2nd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.27), 0.73 # or 73%, adjusting for 3rd class, Sex and Age.</p>
-<p>#Pclass3 coef #Estimate=0.08 odds of survival of 3rd class passengers divided by odds of survival for 1st class #Being in 3rd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for 2nd class, Sex and Age.</p>
-<p>#Sex=Male coef #Estimate=0.08 odds of survival of Male passengers divided by odds of survival for Females #Being a Male (as compared to Female), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for Class and Age.</p>
-<p>#Age coef #Estimate=0.96 odds of survival of 1 year increase in age #For every 1 year increase in age a person was, their odds of survival decreased by (1-0.96) 0.04 or 4% # while adjusting for Sex, and Class.</p>
-<p>#For a passenger who was 10 years older, thier odds of survival decreased by 10*0.04=0.4 or 40% #while adjusing for Sex and Class.</p>
-<pre><code>
-## Conclusion
+<pre><code class=”sourceCode r”>df&lt;-read.csv(“https://github.com/datasciencedojo/datasets/raw/refs/heads/master/titanic.csv”)
+colnames(df)
+View(df)
 
-Logistic regression is a crucial tool in healthcare research, providing
+
+#set reference groups
+df$Survived &lt;- relevel(as.factor(df$Survived), ref = “0”) #survied/died
+df$Pclass &lt;- relevel(as.factor(df$Pclass), ref = “1”) #reference will be 1st class
+df$Sex &lt;- relevel(as.factor(df$Sex), ref = “female”) #female is the reference group
+
+#continous
+df$Age
+table(is.na(df$Age), df$Survived)
+
+#check levels
+levels(df$Survived)
+levels(df$Pclass)
+levels(df$Sex)
+
+#fit logistic regression
+fit&lt;-glm(Survived~Pclass+Sex+Age,family = “binomial”,data=df)
+summary(fit)
+
+#get ORs
+coef(fit) #logit coef
+exp(coef(fit)) #Odds Ratios
+
+#Pclass2 coef
+#Estimate=0.27 odds of survival of 2nd class passengers divided by odds of survival for 1st class
+#Being in 2nd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.27), 0.73
+# or 73%, adjusting for 3rd class, Sex and Age.
+
+#Pclass3 coef
+#Estimate=0.08 odds of survival of 3rd class passengers divided by odds of survival for 1st class
+#Being in 3rd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.08), 0.92
+# or 92%, adjusting for 2nd class, Sex and Age.
+
+#Sex=Male coef
+#Estimate=0.08 odds of survival of Male passengers divided by odds of survival for Females
+#Being a Male (as compared to Female), lowered your odds of Survival by (1-0.08), 0.92
+# or 92%, adjusting for Class and Age.
+
+#Age coef
+#Estimate=0.96 odds of survival of 1 year increase in age
+#For every 1 year increase in age a person was, their odds of survival decreased by (1-0.96) 0.04 or 4%
+# while adjusting for Sex, and Class.
+
+#For a passenger who was 10 years older, thier odds of survival decreased by 10*0.04=0.4 or 40%
+#while adjusing for Sex and Class.</code></pre>
+</section>
+<section id=”conclusion” class=”level2”>
+<h2 class=”anchored” data-anchor-id=”conclusion”>Conclusion</h2>
+<p>Logistic regression is a crucial tool in healthcare research, providing
 insights into the relationship between various factors and patient
 outcomes. Understanding how to interpret coefficients and use different
 software to fit logistic regression models enables effective
-decision-making and research.
+decision-making and research.</p>
 
 
 
@@ -709,38 +748,84 @@ based on criteria like AIC, BIC, or p-values.
 # Logistic Regression in R
         data &lt;- read.csv("health_data.csv")
         model &lt;- glm(Diabetes ~ Age + BMI, data = data, family = "binomial")
-        summary(model)</code></pre>
-<section id="example-2-predicting-heart-disease-1" class="level3">
-<h3 class="anchored" data-anchor-id="example-2-predicting-heart-disease-1">Example 2: Predicting Heart Disease</h3>
-<p><code>{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv("heart_data.csv")         model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = "binomial")         summary(model)</code></p>
-</section>
-</section>
-<section id="worked-example-titanic-survival-1" class="level2">
-<h2 class="anchored" data-anchor-id="worked-example-titanic-survival-1">Worked Example: Titanic Survival</h2>
-<p>This example uses the Titanic dataset to predict survival based on passenger class, sex, and age.</p>
-<p>```{r, eval=FALSE} df&lt;-read.csv(“https://github.com/datasciencedojo/datasets/raw/refs/heads/master/titanic.csv”) colnames(df) View(df)</p>
-<p>#set reference groups df<span class="math inline">\(Survived &lt;- relevel(as.factor(df\)</span>Survived), ref = “0”) #survied/died df<span class="math inline">\(Pclass &lt;- relevel(as.factor(df\)</span>Pclass), ref = “1”) #reference will be 1st class df<span class="math inline">\(Sex &lt;- relevel(as.factor(df\)</span>Sex), ref = “female”) #female is the reference group</p>
-<p>#continous df<span class="math inline">\(Age
-table(is.na(df\)</span>Age), df$Survived)</p>
-<p>#check levels levels(df<span class="math inline">\(Survived)
-levels(df\)</span>Pclass) levels(df$Sex)</p>
-<p>#fit logistic regression fit&lt;-glm(Survived~Pclass+Sex+Age,family = “binomial”,data=df) summary(fit)</p>
-<p>#get ORs coef(fit) #logit coef exp(coef(fit)) #Odds Ratios</p>
-<p>#Pclass2 coef #Estimate=0.27 odds of survival of 2nd class passengers divided by odds of survival for 1st class #Being in 2nd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.27), 0.73 # or 73%, adjusting for 3rd class, Sex and Age.</p>
-<p>#Pclass3 coef #Estimate=0.08 odds of survival of 3rd class passengers divided by odds of survival for 1st class #Being in 3rd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for 2nd class, Sex and Age.</p>
-<p>#Sex=Male coef #Estimate=0.08 odds of survival of Male passengers divided by odds of survival for Females #Being a Male (as compared to Female), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for Class and Age.</p>
-<p>#Age coef #Estimate=0.96 odds of survival of 1 year increase in age #For every 1 year increase in age a person was, their odds of survival decreased by (1-0.96) 0.04 or 4% # while adjusting for Sex, and Class.</p>
-<p>#For a passenger who was 10 years older, thier odds of survival decreased by 10*0.04=0.4 or 40% #while adjusing for Sex and Class.</p>
-<pre><code>
+        summary(model)
+```
+
+### Example 2: Predicting Heart Disease
+
+```{r, eval=FALSE}
+# Logistic Regression in R
+        data &lt;- read.csv(“heart_data.csv”)
+        model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = “binomial”)
+        summary(model)
+```
+
+## Worked Example: Titanic Survival
+
+This example uses the Titanic dataset to predict survival based on passenger class, sex, and age.
+
+```{r, eval=FALSE}
+df&lt;-read.csv(“https://github.com/datasciencedojo/datasets/raw/refs/heads/master/titanic.csv”)
+colnames(df)
+View(df)
+
+
+#set reference groups
+df$Survived &lt;- relevel(as.factor(df$Survived), ref = “0”) #survied/died
+df$Pclass &lt;- relevel(as.factor(df$Pclass), ref = “1”) #reference will be 1st class
+df$Sex &lt;- relevel(as.factor(df$Sex), ref = “female”) #female is the reference group
+
+#continous
+df$Age
+table(is.na(df$Age), df$Survived)
+
+#check levels
+levels(df$Survived)
+levels(df$Pclass)
+levels(df$Sex)
+
+#fit logistic regression
+fit&lt;-glm(Survived~Pclass+Sex+Age,family = “binomial”,data=df)
+summary(fit)
+
+#get ORs
+coef(fit) #logit coef
+exp(coef(fit)) #Odds Ratios
+
+#Pclass2 coef
+#Estimate=0.27 odds of survival of 2nd class passengers divided by odds of survival for 1st class
+#Being in 2nd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.27), 0.73
+# or 73%, adjusting for 3rd class, Sex and Age.
+
+#Pclass3 coef
+#Estimate=0.08 odds of survival of 3rd class passengers divided by odds of survival for 1st class
+#Being in 3rd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.08), 0.92
+# or 92%, adjusting for 2nd class, Sex and Age.
+
+#Sex=Male coef
+#Estimate=0.08 odds of survival of Male passengers divided by odds of survival for Females
+#Being a Male (as compared to Female), lowered your odds of Survival by (1-0.08), 0.92
+# or 92%, adjusting for Class and Age.
+
+#Age coef
+#Estimate=0.96 odds of survival of 1 year increase in age
+#For every 1 year increase in age a person was, their odds of survival decreased by (1-0.96) 0.04 or 4%
+# while adjusting for Sex, and Class.
+
+#For a passenger who was 10 years older, thier odds of survival decreased by 10*0.04=0.4 or 40%
+#while adjusing for Sex and Class.
+```
+
 ## Conclusion
 
 Logistic regression is a crucial tool in healthcare research, providing
 insights into the relationship between various factors and patient
 outcomes. Understanding how to interpret coefficients and use different
 software to fit logistic regression models enables effective
-decision-making and research.</code></pre>
-<p>:::</p>
-</section>
+decision-making and research.
+```````````````````
+::::
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
