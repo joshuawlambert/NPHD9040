@@ -907,7 +907,7 @@
     "href": "Lectures/introduction-to-logistic-regression.html#examples-of-logistic-regression-in-nursing-research",
     "title": "Introduction to Logistic Regression",
     "section": "Examples of Logistic Regression in Nursing Research",
-    "text": "Examples of Logistic Regression in Nursing Research\n\nExample 1: Predicting Diabetes\n\n# Logistic Regression in R\n        data &lt;- read.csv(\"health_data.csv\")\n        model &lt;- glm(Diabetes ~ Age + BMI, data = data, family = \"binomial\")\n        summary(model)\n\n\n\nExample 2: Predicting Heart Disease\n\n# Logistic Regression in R\n        data &lt;- read.csv(\"heart_data.csv\")\n        model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = \"binomial\")\n        summary(model)"
+    "text": "Examples of Logistic Regression in Nursing Research\n\nExample 1: Predicting Diabetes\n{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv(\"health_data.csv\")         model &lt;- glm(Diabetes ~ Age + BMI, data = data, family = \"binomial\")         summary(model)\n\n\nExample 2: Predicting Heart Disease\n{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv(\"heart_data.csv\")         model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = \"binomial\")         summary(model)"
   },
   {
     "objectID": "Lectures/introduction-to-logistic-regression.html#conclusion",

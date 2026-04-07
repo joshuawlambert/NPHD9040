@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -76,7 +41,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f17caaac48426fa16e753065ab0207b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ee54b6a96066e6e7b9b63fe9ca8dc43f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -266,7 +231,7 @@ window.Quarto = {
   </li>
   <li class="nav-item">
     <a class="nav-link" href="../Other/aboutDrL.html"> 
-<span class="menu-text">About Dr.&nbsp;L</span></a>
+<span class="menu-text">About Dr. L</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -307,7 +272,11 @@ window.Quarto = {
   <li><a href="#example-1-predicting-diabetes" id="toc-example-1-predicting-diabetes" class="nav-link" data-scroll-target="#example-1-predicting-diabetes">Example 1: Predicting Diabetes</a></li>
   <li><a href="#example-2-predicting-heart-disease" id="toc-example-2-predicting-heart-disease" class="nav-link" data-scroll-target="#example-2-predicting-heart-disease">Example 2: Predicting Heart Disease</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#worked-example-titanic-survival" id="toc-worked-example-titanic-survival" class="nav-link" data-scroll-target="#worked-example-titanic-survival">Worked Example: Titanic Survival</a>
+  <ul class="collapse">
+  <li><a href="#example-2-predicting-heart-disease-1" id="toc-example-2-predicting-heart-disease-1" class="nav-link" data-scroll-target="#example-2-predicting-heart-disease-1">Example 2: Predicting Heart Disease</a></li>
+  </ul></li>
+  <li><a href="#worked-example-titanic-survival-1" id="toc-worked-example-titanic-survival-1" class="nav-link" data-scroll-target="#worked-example-titanic-survival-1">Worked Example: Titanic Survival</a></li>
   </ul>
 </nav>
     </div>
@@ -458,30 +427,319 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="examples-of-logistic-regression-in-nursing-research">Examples of Logistic Regression in Nursing Research</h2>
 <section id="example-1-predicting-diabetes" class="level3">
 <h3 class="anchored" data-anchor-id="example-1-predicting-diabetes">Example 1: Predicting Diabetes</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic Regression in R</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"health_data.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        model <span class="ot">&lt;-</span> <span class="fu">glm</span>(Diabetes <span class="sc">~</span> Age <span class="sc">+</span> BMI, <span class="at">data =</span> data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p><code>{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv("health_data.csv")         model &lt;- glm(Diabetes ~ Age + BMI, data = data, family = "binomial")         summary(model)</code></p>
 </section>
 <section id="example-2-predicting-heart-disease" class="level3">
 <h3 class="anchored" data-anchor-id="example-2-predicting-heart-disease">Example 2: Predicting Heart Disease</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic Regression in R</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"heart_data.csv"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        model <span class="ot">&lt;-</span> <span class="fu">glm</span>(HeartDisease <span class="sc">~</span> Age <span class="sc">+</span> Cholesterol <span class="sc">+</span> Smoking, <span class="at">data =</span> data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p><code>{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv("heart_data.csv")         model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = "binomial")         summary(model)</code></p>
 </section>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Logistic regression is a crucial tool in healthcare research, providing insights into the relationship between various factors and patient outcomes. Understanding how to interpret coefficients and use different software to fit logistic regression models enables effective decision-making and research.</p>
+<section id="worked-example-titanic-survival" class="level2">
+<h2 class="anchored" data-anchor-id="worked-example-titanic-survival">Worked Example: Titanic Survival</h2>
+<p>This example uses the Titanic dataset to predict survival based on passenger class, sex, and age.</p>
+<p>```{r, eval=FALSE} df&lt;-read.csv(“https://github.com/datasciencedojo/datasets/raw/refs/heads/master/titanic.csv”) colnames(df) View(df)</p>
+<p>#set reference groups df<span class="math inline">\(Survived &lt;- relevel(as.factor(df\)</span>Survived), ref = “0”) #survied/died df<span class="math inline">\(Pclass &lt;- relevel(as.factor(df\)</span>Pclass), ref = “1”) #reference will be 1st class df<span class="math inline">\(Sex &lt;- relevel(as.factor(df\)</span>Sex), ref = “female”) #female is the reference group</p>
+<p>#continous df<span class="math inline">\(Age
+table(is.na(df\)</span>Age), df$Survived)</p>
+<p>#check levels levels(df<span class="math inline">\(Survived)
+levels(df\)</span>Pclass) levels(df$Sex)</p>
+<p>#fit logistic regression fit&lt;-glm(Survived~Pclass+Sex+Age,family = “binomial”,data=df) summary(fit)</p>
+<p>#get ORs coef(fit) #logit coef exp(coef(fit)) #Odds Ratios</p>
+<p>#Pclass2 coef #Estimate=0.27 odds of survival of 2nd class passengers divided by odds of survival for 1st class #Being in 2nd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.27), 0.73 # or 73%, adjusting for 3rd class, Sex and Age.</p>
+<p>#Pclass3 coef #Estimate=0.08 odds of survival of 3rd class passengers divided by odds of survival for 1st class #Being in 3rd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for 2nd class, Sex and Age.</p>
+<p>#Sex=Male coef #Estimate=0.08 odds of survival of Male passengers divided by odds of survival for Females #Being a Male (as compared to Female), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for Class and Age.</p>
+<p>#Age coef #Estimate=0.96 odds of survival of 1 year increase in age #For every 1 year increase in age a person was, their odds of survival decreased by (1-0.96) 0.04 or 4% # while adjusting for Sex, and Class.</p>
+<p>#For a passenger who was 10 years older, thier odds of survival decreased by 10*0.04=0.4 or 40% #while adjusing for Sex and Class.</p>
+<pre><code>
+## Conclusion
+
+Logistic regression is a crucial tool in healthcare research, providing
+insights into the relationship between various factors and patient
+outcomes. Understanding how to interpret coefficients and use different
+software to fit logistic regression models enables effective
+decision-making and research.
 
 
-<!-- -->
 
+
+:::{#quarto-navigation-envelope .hidden}
+[NPHD 9040]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl"}
+[NPHD 9040]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU="}
+[Home]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SG9tZQ=="}
+[/index.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L2luZGV4Lmh0bWw="}
+[Syllabus]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6U3lsbGFidXM="}
+[/Other/syl.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L090aGVyL3N5bC5odG1s"}
+[Lectures]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6TGVjdHVyZXM="}
+[Getting Started with R]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6R2V0dGluZyBTdGFydGVkIHdpdGggUg=="}
+[/Lectures/getting-started-with-r.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2dldHRpbmctc3RhcnRlZC13aXRoLXIuaHRtbA=="}
+[Preliminaries]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6UHJlbGltaW5hcmllcw=="}
+[/Lectures/preliminaries.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL3ByZWxpbWluYXJpZXMuaHRtbA=="}
+[Graphing Your Data]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6R3JhcGhpbmcgWW91ciBEYXRh"}
+[/Lectures/graphing-your-data.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2dyYXBoaW5nLXlvdXItZGF0YS5odG1s"}
+[Introduction to ANOVA]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SW50cm9kdWN0aW9uIHRvIEFOT1ZB"}
+[/Lectures/introduction-to-anova.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2ludHJvZHVjdGlvbi10by1hbm92YS5odG1s"}
+[Introduction to ANCOVA]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SW50cm9kdWN0aW9uIHRvIEFOQ09WQQ=="}
+[/Lectures/introduction-to-ancova.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2ludHJvZHVjdGlvbi10by1hbmNvdmEuaHRtbA=="}
+[Introduction to Two-Way ANOVA]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SW50cm9kdWN0aW9uIHRvIFR3by1XYXkgQU5PVkE="}
+[/Lectures/introduction-to-two-way-anova.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2ludHJvZHVjdGlvbi10by10d28td2F5LWFub3ZhLmh0bWw="}
+[Introduction to Repeated Measures ANOVA]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SW50cm9kdWN0aW9uIHRvIFJlcGVhdGVkIE1lYXN1cmVzIEFOT1ZB"}
+[/Lectures/introduction-to-repeated-measures-anova.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2ludHJvZHVjdGlvbi10by1yZXBlYXRlZC1tZWFzdXJlcy1hbm92YS5odG1s"}
+[Introduction to Simple Linear Regression]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SW50cm9kdWN0aW9uIHRvIFNpbXBsZSBMaW5lYXIgUmVncmVzc2lvbg=="}
+[/Lectures/introduction-to-simple-linear-regression.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2ludHJvZHVjdGlvbi10by1zaW1wbGUtbGluZWFyLXJlZ3Jlc3Npb24uaHRtbA=="}
+[Introduction to Multiple Linear Regression]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SW50cm9kdWN0aW9uIHRvIE11bHRpcGxlIExpbmVhciBSZWdyZXNzaW9u"}
+[/Lectures/introduction-to-multiple-linear-regression.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2ludHJvZHVjdGlvbi10by1tdWx0aXBsZS1saW5lYXItcmVncmVzc2lvbi5odG1s"}
+[Introduction to Logistic Regression]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SW50cm9kdWN0aW9uIHRvIExvZ2lzdGljIFJlZ3Jlc3Npb24="}
+[/Lectures/introduction-to-logistic-regression.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL2ludHJvZHVjdGlvbi10by1sb2dpc3RpYy1yZWdyZXNzaW9uLmh0bWw="}
+[Q&amp;A for EBP and QI Projects]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6USZBIGZvciBFQlAgYW5kIFFJIFByb2plY3Rz"}
+[/Lectures/QI_and_EBP.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0xlY3R1cmVzL1FJX2FuZF9FQlAuaHRtbA=="}
+[Flashcards]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6Rmxhc2hjYXJkcw=="}
+[ANOVA]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6QU5PVkE="}
+[/Flashcards/flashcards_anova.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0ZsYXNoY2FyZHMvZmxhc2hjYXJkc19hbm92YS5odG1s"}
+[2-Way ANOVA]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6Mi1XYXkgQU5PVkE="}
+[/Flashcards/flashcards_2wanova.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0ZsYXNoY2FyZHMvZmxhc2hjYXJkc18yd2Fub3ZhLmh0bWw="}
+[Assignments]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6QXNzaWdubWVudHM="}
+[HW1]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SFcx"}
+[/Assignments/hw1.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0Fzc2lnbm1lbnRzL2h3MS5odG1s"}
+[HW2]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SFcy"}
+[/Assignments/hw2.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0Fzc2lnbm1lbnRzL2h3Mi5odG1s"}
+[HW3]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SFcz"}
+[/Assignments/hw3.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0Fzc2lnbm1lbnRzL2h3My5odG1s"}
+[HW4]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SFc0"}
+[/Assignments/hw4.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0Fzc2lnbm1lbnRzL2h3NC5odG1s"}
+[HW5]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6SFc1"}
+[/Assignments/hw5.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0Fzc2lnbm1lbnRzL2h3NS5odG1s"}
+[Midterm Presentation]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6TWlkdGVybSBQcmVzZW50YXRpb24="}
+[/Assignments/midterm.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0Fzc2lnbm1lbnRzL21pZHRlcm0uaHRtbA=="}
+[Final Project]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6RmluYWwgUHJvamVjdA=="}
+[/Assignments/final.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L0Fzc2lnbm1lbnRzL2ZpbmFsLmh0bWw="}
+[About Dr. L]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6QWJvdXQgRHIuIEw="}
+[/Other/aboutDrL.html]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLWludC1uYXZiYXI6L090aGVyL2Fib3V0RHJMLmh0bWw="}
+:::
+
+
+
+:::{#quarto-meta-markdown .hidden}
+[Introduction to Logistic Regression – NPHD 9040]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLW1ldGF0aXRsZQ=="}
+[Introduction to Logistic Regression – NPHD 9040]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU="}
+[Introduction to Logistic Regression – NPHD 9040]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLW9nY2FyZHRpdGxl"}
+[NPHD 9040]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ=="}
+[]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="}
+[]{.hidden .quarto-markdown-envelope-contents render-id="cXVhcnRvLW9nY2FyZGRkZXNj"}
+:::
+
+
+
+
+&lt;!-- --&gt;
+
+::: {.quarto-embedded-source-code}
+```````````````````{.markdown shortcodes="false"}
+---
+title: "Introduction to Logistic Regression"
+author: "Dr. Joshua Lambert"
+output: html
+format:
+  html:
+    toc: true
+    toc-title: "Table of Contents"
+    code-fold: false
+    code-tools: true
+    css: ../styles.css
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+[**Download R Code for this Lecture**](code/introduction-to-logistic-regression.R){ .btn .btn-primary }
+
+
+
+## Introduction
+
+Logistic regression is a fundamental statistical method used to model
+the relationship between a dependent variable (often binary) and one or
+more independent variables. It is particularly useful in healthcare and
+nursing research to understand the influence of various factors on
+patient outcomes.
+
+## Objectives
+
+-   Understand the fundamentals of logistic regression.
+-   Learn the key differences between logistic and linear regression.
+-   Explore the logistic function and its interpretation.
+-   Calculate and interpret odds ratios.
+-   Formulate the logistic regression equation using maximum likelihood
+    estimation (MLE).
+-   Estimate and test the significance of the regression coefficients.
+-   Explore goodness-of-fit tests and the Hosmer-Lemeshow test.
+-   Learn about stepwise logistic regression.
+-   Check assumptions and assess multicollinearity.
+-   Provide examples in JMP, R, Python, SPSS, and Stata.
+
+## Definition and Purpose of Logistic Regression
+
+Logistic regression is used to predict the probability of a binary
+outcome (e.g., success/failure, disease/no disease) based on one or more
+predictor variables. It helps in answering questions like: - What are
+the chances that a patient has diabetes given their age, BMI, and family
+history? - How likely is a patient to respond to a specific treatment
+based on their health metrics?
+
+## Key Differences Between Logistic Regression and Linear Regression
+
+-   **Outcome Variable:** Logistic regression deals with binary
+    outcomes, while linear regression handles continuous outcomes.
+-   **Prediction Interpretation:** Logistic regression outputs
+    probabilities (between 0 and 1) instead of continuous values.
+-   **Model Fit Measure:** Logistic regression uses likelihood-based
+    measures like deviance, while linear regression relies on metrics
+    like R-squared.
+
+## Understanding the Logistic Function and Its Interpretation
+
+The logistic function transforms a linear combination of predictors into
+probabilities:
+
+$$ p = \frac{e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}} $$
+
+where ( p ) is the predicted probability, and ( \beta\_i ) are the
+regression coefficients.
+
+The log-odds (logit) transformation:
+
+$$ \log\left(\frac{p}{1 - p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k $$
+
+## Calculation and Interpretation of Odds Ratios
+
+An odds ratio (OR) is a measure of association between an exposure and
+an outcome. It is interpreted as the odds of the outcome occurring given
+the presence of a particular predictor.
+
+$$ \text{OR} = \exp(\beta_i) $$
+
+-   **OR \&gt; 1:** Positive association between predictor and outcome.
+-   **OR \&lt; 1:** Negative association between predictor and outcome.
+-   **OR = 1:** No association.
+
+## Formulating the Logistic Regression Equation; Maximum Likelihood Estimation (MLE)
+
+1.  **Model Specification:**
+    $$ \log\left(\frac{p}{1 - p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k $$
+
+2.  **Maximum Likelihood Estimation (MLE):** The logistic regression
+    coefficients are estimated by maximizing the likelihood function:
+    $$ L(\beta) = \prod_{i=1}^{n} p_i^{y_i} (1 - p_i)^{1 - y_i} $$ where
+    ( p_i ) is the predicted probability for the ( i )-th observation.
+
+## Estimating the Regression Coefficients
+
+The coefficients are estimated using MLE. Most statistical software
+provides direct estimation.
+
+## Testing the Significance of the Regression Coefficients
+
+-   **Wald Test:** Tests individual coefficients.
+-   **Likelihood Ratio Test:** Compares nested models.
+-   **Score Test:** Similar to the likelihood ratio test.
+
+## Confidence Intervals for the Coefficients
+
+Confidence intervals provide a range of plausible values for the
+coefficients.
+
+$$ CI = \hat{\beta_i} \pm z^* \cdot SE(\hat{\beta_i}) $$
+
+## Deviance and Goodness-of-Fit Tests
+
+-   **Deviance:** Measure of model fit, similar to residual sum of
+    squares.
+-   **Likelihood Ratio Test (Chi-Square):** Compares the deviance of
+    nested models.
+-   **Hosmer-Lemeshow Test:** Assesses model calibration.
+
+## Interpretation of Regression Coefficients; Understanding the Impact of Predictors on Odds
+
+### Example
+
+Assume a logistic regression model predicting diabetes (yes/no) based on
+age and BMI:
+
+$$ \log\left(\frac{p}{1 - p}\right) = -5 + 0.05 \cdot \text{Age} + 0.2 \cdot \text{BMI} $$
+
+Interpretation: - **Intercept (-5):** Baseline log-odds of diabetes for
+a patient with Age = 0 and BMI = 0. - **Age Coefficient (0.05):** For
+each one-year increase in age, the odds of diabetes increase by (
+e\^{0.05} \approx 1.05 ) times. - **BMI Coefficient (0.2):** For each
+unit increase in BMI, the odds of diabetes increase by ( e\^{0.2}
+\approx 1.22 ) times.
+
+## Stepwise Logistic Regression
+
+Stepwise logistic regression involves automatic selection of predictors
+based on criteria like AIC, BIC, or p-values.
+
+-   **Forward Selection:** Starts with no variables and adds one at a
+    time.
+-   **Backward Elimination:** Starts with all variables and removes one
+    at a time.
+-   **Bidirectional Elimination:** Combines forward and backward
+    methods.
+
+## Interpreting Odds Ratios for Categorical and Continuous Predictors
+
+-   **Categorical Predictors:** Interpret the OR relative to the
+    reference category.
+-   **Continuous Predictors:** Interpret the OR per unit increase in the
+    predictor.
+
+## Checking Assumptions of Logistic Regression
+
+1.  **Linearity in Logit:** Ensure continuous predictors are linearly
+    related to the logit.
+2.  **Absence of Multicollinearity:** Check variance inflation factors
+    (VIF).
+3.  **No Outliers/Influential Observations:** Use Cook's distance or
+    leverage plots.
+
+## Examples of Logistic Regression in Nursing Research
+
+### Example 1: Predicting Diabetes
+
+```{r, eval=FALSE}
+# Logistic Regression in R
+        data &lt;- read.csv("health_data.csv")
+        model &lt;- glm(Diabetes ~ Age + BMI, data = data, family = "binomial")
+        summary(model)</code></pre>
+<section id="example-2-predicting-heart-disease-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-predicting-heart-disease-1">Example 2: Predicting Heart Disease</h3>
+<p><code>{r, eval=FALSE} # Logistic Regression in R         data &lt;- read.csv("heart_data.csv")         model &lt;- glm(HeartDisease ~ Age + Cholesterol + Smoking, data = data, family = "binomial")         summary(model)</code></p>
+</section>
+</section>
+<section id="worked-example-titanic-survival-1" class="level2">
+<h2 class="anchored" data-anchor-id="worked-example-titanic-survival-1">Worked Example: Titanic Survival</h2>
+<p>This example uses the Titanic dataset to predict survival based on passenger class, sex, and age.</p>
+<p>```{r, eval=FALSE} df&lt;-read.csv(“https://github.com/datasciencedojo/datasets/raw/refs/heads/master/titanic.csv”) colnames(df) View(df)</p>
+<p>#set reference groups df<span class="math inline">\(Survived &lt;- relevel(as.factor(df\)</span>Survived), ref = “0”) #survied/died df<span class="math inline">\(Pclass &lt;- relevel(as.factor(df\)</span>Pclass), ref = “1”) #reference will be 1st class df<span class="math inline">\(Sex &lt;- relevel(as.factor(df\)</span>Sex), ref = “female”) #female is the reference group</p>
+<p>#continous df<span class="math inline">\(Age
+table(is.na(df\)</span>Age), df$Survived)</p>
+<p>#check levels levels(df<span class="math inline">\(Survived)
+levels(df\)</span>Pclass) levels(df$Sex)</p>
+<p>#fit logistic regression fit&lt;-glm(Survived~Pclass+Sex+Age,family = “binomial”,data=df) summary(fit)</p>
+<p>#get ORs coef(fit) #logit coef exp(coef(fit)) #Odds Ratios</p>
+<p>#Pclass2 coef #Estimate=0.27 odds of survival of 2nd class passengers divided by odds of survival for 1st class #Being in 2nd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.27), 0.73 # or 73%, adjusting for 3rd class, Sex and Age.</p>
+<p>#Pclass3 coef #Estimate=0.08 odds of survival of 3rd class passengers divided by odds of survival for 1st class #Being in 3rd Class (as compared to 1st Class), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for 2nd class, Sex and Age.</p>
+<p>#Sex=Male coef #Estimate=0.08 odds of survival of Male passengers divided by odds of survival for Females #Being a Male (as compared to Female), lowered your odds of Survival by (1-0.08), 0.92 # or 92%, adjusting for Class and Age.</p>
+<p>#Age coef #Estimate=0.96 odds of survival of 1 year increase in age #For every 1 year increase in age a person was, their odds of survival decreased by (1-0.96) 0.04 or 4% # while adjusting for Sex, and Class.</p>
+<p>#For a passenger who was 10 years older, thier odds of survival decreased by 10*0.04=0.4 or 40% #while adjusing for Sex and Class.</p>
+<pre><code>
+## Conclusion
+
+Logistic regression is a crucial tool in healthcare research, providing
+insights into the relationship between various factors and patient
+outcomes. Understanding how to interpret coefficients and use different
+software to fit logistic regression models enables effective
+decision-making and research.</code></pre>
+<p>:::</p>
 </section>
 
 </main> <!-- /main -->
@@ -935,202 +1193,7 @@ window.Quarto = {
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Introduction to Logistic Regression"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Dr. Joshua Lambert"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-title: "Table of Contents"</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: false</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    css: ../styles.css</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">  markdown: </span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    wrap: 72</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">**Download R Code for this Lecture**</span><span class="co">](code/introduction-to-logistic-regression.R)</span>{ .btn .btn-primary }</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>Logistic regression is a fundamental statistical method used to model</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>the relationship between a dependent variable (often binary) and one or</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>more independent variables. It is particularly useful in healthcare and</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>nursing research to understand the influence of various factors on</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>patient outcomes.</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Understand the fundamentals of logistic regression.</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Learn the key differences between logistic and linear regression.</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Explore the logistic function and its interpretation.</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Calculate and interpret odds ratios.</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Formulate the logistic regression equation using maximum likelihood</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    estimation (MLE).</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Estimate and test the significance of the regression coefficients.</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Explore goodness-of-fit tests and the Hosmer-Lemeshow test.</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Learn about stepwise logistic regression.</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Check assumptions and assess multicollinearity.</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Provide examples in JMP, R, Python, SPSS, and Stata.</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Definition and Purpose of Logistic Regression</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>Logistic regression is used to predict the probability of a binary</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>outcome (e.g., success/failure, disease/no disease) based on one or more</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>predictor variables. It helps in answering questions like: - What are</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>the chances that a patient has diabetes given their age, BMI, and family</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>history? - How likely is a patient to respond to a specific treatment</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>based on their health metrics?</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Key Differences Between Logistic Regression and Linear Regression</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Outcome Variable:** Logistic regression deals with binary</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    outcomes, while linear regression handles continuous outcomes.</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Prediction Interpretation:** Logistic regression outputs</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    probabilities (between 0 and 1) instead of continuous values.</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Model Fit Measure:** Logistic regression uses likelihood-based</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    measures like deviance, while linear regression relies on metrics</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    like R-squared.</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Understanding the Logistic Function and Its Interpretation</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>The logistic function transforms a linear combination of predictors into</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>probabilities:</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>$$ p = \frac{e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}}{1 + e^{\beta_0 + \beta_1X_1 + \cdots + \beta_kX_k}} $$</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>where ( p ) is the predicted probability, and ( \beta<span class="sc">\_</span>i ) are the</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>regression coefficients.</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>The log-odds (logit) transformation:</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>$$ \log\left(\frac{p}{1 - p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k $$</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculation and Interpretation of Odds Ratios</span></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>An odds ratio (OR) is a measure of association between an exposure and</span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>an outcome. It is interpreted as the odds of the outcome occurring given</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>the presence of a particular predictor.</span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>$$ \text{OR} = \exp(\beta_i) $$</span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**OR \&gt; 1:** Positive association between predictor and outcome.</span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**OR \&lt; 1:** Negative association between predictor and outcome.</span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**OR = 1:** No association.</span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## Formulating the Logistic Regression Equation; Maximum Likelihood Estimation (MLE)</span></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Model Specification:**</span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>    $$ \log\left(\frac{p}{1 - p}\right) = \beta_0 + \beta_1X_1 + \cdots + \beta_kX_k $$</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Maximum Likelihood Estimation (MLE):** The logistic regression</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>    coefficients are estimated by maximizing the likelihood function:</span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    $$ L(\beta) = \prod_{i=1}^{n} p_i^{y_i} (1 - p_i)^{1 - y_i} $$ where</span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    ( p_i ) is the predicted probability for the ( i )-th observation.</span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estimating the Regression Coefficients</span></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>The coefficients are estimated using MLE. Most statistical software</span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>provides direct estimation.</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## Testing the Significance of the Regression Coefficients</span></span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Wald Test:** Tests individual coefficients.</span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Likelihood Ratio Test:** Compares nested models.</span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Score Test:** Similar to the likelihood ratio test.</span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## Confidence Intervals for the Coefficients</span></span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>Confidence intervals provide a range of plausible values for the</span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>coefficients.</span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>$$ CI = \hat{\beta_i} \pm z^* \cdot SE(\hat{\beta_i}) $$</span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## Deviance and Goodness-of-Fit Tests</span></span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Deviance:** Measure of model fit, similar to residual sum of</span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>    squares.</span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Likelihood Ratio Test (Chi-Square):** Compares the deviance of</span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>    nested models.</span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hosmer-Lemeshow Test:** Assesses model calibration.</span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretation of Regression Coefficients; Understanding the Impact of Predictors on Odds</span></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example</span></span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>Assume a logistic regression model predicting diabetes (yes/no) based on</span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>age and BMI:</span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>$$ \log\left(\frac{p}{1 - p}\right) = -5 + 0.05 \cdot \text{Age} + 0.2 \cdot \text{BMI} $$</span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>Interpretation: - **Intercept (-5):** Baseline log-odds of diabetes for</span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>a patient with Age = 0 and BMI = 0. - **Age Coefficient (0.05):** For</span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>each one-year increase in age, the odds of diabetes increase by (</span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>e\^{0.05} \approx 1.05 ) times. - **BMI Coefficient (0.2):** For each</span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>unit increase in BMI, the odds of diabetes increase by ( e\^{0.2}</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>\approx 1.22 ) times.</span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## Stepwise Logistic Regression</span></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>Stepwise logistic regression involves automatic selection of predictors</span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>based on criteria like AIC, BIC, or p-values.</span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Forward Selection:** Starts with no variables and adds one at a</span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>    time.</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Backward Elimination:** Starts with all variables and removes one</span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>    at a time.</span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Bidirectional Elimination:** Combines forward and backward</span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>    methods.</span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpreting Odds Ratios for Categorical and Continuous Predictors</span></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Categorical Predictors:** Interpret the OR relative to the</span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>    reference category.</span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Continuous Predictors:** Interpret the OR per unit increase in the</span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    predictor.</span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="fu">## Checking Assumptions of Logistic Regression</span></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Linearity in Logit:** Ensure continuous predictors are linearly</span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>    related to the logit.</span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Absence of Multicollinearity:** Check variance inflation factors</span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>    (VIF).</span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**No Outliers/Influential Observations:** Use Cook's distance or</span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>    leverage plots.</span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## Examples of Logistic Regression in Nursing Research</span></span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 1: Predicting Diabetes</span></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic Regression in R</span></span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"health_data.csv"</span>)</span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>        model <span class="ot">&lt;-</span> <span class="fu">glm</span>(Diabetes <span class="sc">~</span> Age <span class="sc">+</span> BMI, <span class="at">data =</span> data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summary</span>(model)</span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example 2: Predicting Heart Disease</span></span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic Regression in R</span></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"heart_data.csv"</span>)</span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>        model <span class="ot">&lt;-</span> <span class="fu">glm</span>(HeartDisease <span class="sc">~</span> Age <span class="sc">+</span> Cholesterol <span class="sc">+</span> Smoking, <span class="at">data =</span> data, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summary</span>(model)</span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a>Logistic regression is a crucial tool in healthcare research, providing</span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>insights into the relationship between various factors and patient</span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>outcomes. Understanding how to interpret coefficients and use different</span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>software to fit logistic regression models enables effective</span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>decision-making and research.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
-</div></div></div></div></div>
+  </script>
 </div> <!-- /content -->
 
 
